@@ -21,13 +21,13 @@
         "subheading_002r": {
           "type": "subheading",
           "settings": {
-            "text": "#OurBrand"
+            "text": "#CAS ABAYA"
           }
         },
         "heading_002s": {
           "type": "heading",
           "settings": {
-            "heading": "About us",
+            "heading": "CAS Abaya: Best Emirati Abaya Brand in Dubai",
             "size": "large",
             "show_line": false
           }
@@ -35,7 +35,7 @@
         "text_002t": {
           "type": "text",
           "settings": {
-            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p><p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+            "text": "<p>Born in Dubai and shaped by the timeless elegance of Emirati heritage, CAS Abaya stands as a refined expression of modern modest couture. Rooted in craftsmanship and elevated by contemporary design, CAS redefines the Emirati abaya style by honouring tradition while shaping the future of luxury modest fashion.</p><p>CAS Abaya is created for women who move effortlessly between heritage and modernity — women who value refined tailoring, exceptional fabric quality, and sophisticated silhouettes. Each piece is thoughtfully designed to celebrate the grace of modest dressing while reflecting the evolving aesthetic of the latest abaya design and new abaya design movements emerging from Dubai’s dynamic fashion landscape.</p>"
           }
         }
       },
@@ -62,22 +62,22 @@
         "column_002u": {
           "type": "column",
           "settings": {
-            "heading": "Craftsmanship & design",
-            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+            "heading": "Artisanal Hand-Stitched Details",
+            "text": "<p>From delicate floral beading to sculptural threadwork, our artisans craft each detail with patience and care, creating abayas with refined dimension and grace.</p>"
           }
         },
         "column_002v": {
           "type": "column",
           "settings": {
-            "heading": "Customer-first experience",
-            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+            "heading": "Timeless Emirati Craftsmanship",
+            "text": "<p>Rooted in Dubai couture traditions, each abaya is tailored using high-grade fabrics, custom measurements, and finishes that feel effortless yet elevated.</p>"
           }
         },
         "column_002w": {
           "type": "column",
           "settings": {
-            "heading": "Purposeful creation",
-            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+            "heading": "Sustainability Through Purposeful Creation",
+            "text": "<p>We craft to order, reducing waste and honouring fabrics through considered design, mindful production, and enduring styles made to last season after season.</p>"
           }
         }
       },
@@ -95,7 +95,7 @@
         "overlay_opacity": 40,
         "heading": "",
         "heading_h1": false,
-        "text": "<p>Through visionary design, elevated craftsmanship and unwavering customer focus, we continue to shape a new chapter in modest fashion.</p>",
+        "text": "<p>Through visionary design, elevated craftsmanship, and an unwavering commitment to quality, CAS Abaya continues to redefine the Emirati abaya experience — offering women a sophisticated expression of modern luxury, where each abaya is crafted with purpose, passion, and exceptional attention to detail.</p>",
         "horizontal_position": "center",
         "vertical_position": "middle",
         "text_alignment": "center",
@@ -118,7 +118,7 @@
         "heading_002x": {
           "type": "heading",
           "settings": {
-            "heading": "Vision & core values",
+            "heading": "Vision & Core Values",
             "size": "medium",
             "show_line": true
           }
@@ -126,7 +126,7 @@
         "text_002y": {
           "type": "text",
           "settings": {
-            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+            "text": "<p>At CAS Abaya, we believe that true elegance lies in refined simplicity and enduring quality. Our vision is to elevate the modern modest wardrobe through deliberate craftsmanship, innovative silhouettes, and an uncompromising dedication to bespoke luxury.</p>"
           }
         }
       },
@@ -151,7 +151,7 @@
         "heading_002z": {
           "type": "heading",
           "settings": {
-            "heading": "Our story",
+            "heading": "Our Story: From Fabric Mastery to Modern Design Abaya",
             "size": "medium",
             "show_line": true
           }
@@ -159,7 +159,7 @@
         "text_0030": {
           "type": "text",
           "settings": {
-            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p><p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+            "text": "<p>Every abaya begins with a foundation of fabric excellence. Having spent years developing and selecting high-grade textiles, CAS brings an intimate understanding of drape, weight, and movement to every collection.</p><p>From our atelier in Dubai, each piece is brought to life by master tailors who honour traditional cuts while embracing contemporary cuts and bespoke sizing.</p>"
           }
         }
       },
@@ -181,13 +181,13 @@
         "subheading_0031": {
           "type": "subheading",
           "settings": {
-            "text": "#GivingBack"
+            "text": "#CAS IMPACT"
           }
         },
         "heading_0032": {
           "type": "heading",
           "settings": {
-            "heading": "Our impact",
+            "heading": "Our Impact",
             "size": "medium",
             "show_line": false
           }
@@ -195,7 +195,7 @@
         "text_0033": {
           "type": "text",
           "settings": {
-            "text": "<p>Every order helps fuel a monthly charity donation.</p>"
+            "text": "<p>Over AED 120,000 in donated abayas in 6 months.</p>"
           }
         },
         "button_0034": {
@@ -218,10 +218,10 @@
     "comparison": {
       "type": "cb-comparison",
       "settings": {
-        "heading": "Why choose us?",
+        "heading": "WHY CHOOSE CAS?",
         "text": "<p>Discover the difference that sets us apart</p>",
-        "us_label": "Us",
-        "them_label": "Others",
+        "us_label": "CAS",
+        "them_label": "OTHERS",
         "padding_top": 60,
         "padding_bottom": 60
       },
@@ -229,29 +229,29 @@
         "row_0035": {
           "type": "row",
           "settings": {
-            "us": "Customised sizes and colours with no hidden charges",
-            "them": "Extra charges for customisation"
+            "us": "Customised sizes and lengths at no extra cost",
+            "them": "Extra charges for size and length alteration"
           }
         },
         "row_0036": {
           "type": "row",
           "settings": {
-            "us": "Premium fabric at fair prices",
-            "them": "Premium prices for average fabric"
+            "us": "High-grade luxury fabrics sourced globally",
+            "them": "Standard fabrics with high markup"
           }
         },
         "row_0037": {
           "type": "row",
           "settings": {
-            "us": "Customer support whenever you need it",
-            "them": "Limited support hours"
+            "us": "At-home stylist service with 100 abayas",
+            "them": "In-store visits only"
           }
         },
         "row_0038": {
           "type": "row",
           "settings": {
-            "us": "Home service and video shopping",
-            "them": "In-store only"
+            "us": "Matching sheila included with every abaya",
+            "them": "Sheila sold separately"
           }
         }
       },
