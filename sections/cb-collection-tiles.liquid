@@ -1,0 +1,259 @@
+{%- liquid
+  assign container = 'cb-container'
+  if section.settings.full_width
+    assign container = 'cb-container cb-container--full'
+  elsif section.settings.max_width == 'compact'
+    assign container = 'cb-container cb-container--compact'
+  endif
+
+  assign heading_class = 'cb-heading'
+  if section.settings.heading_size == 'large'
+    assign heading_class = 'cb-heading cb-heading--xl'
+  endif
+  assign title_style = section.settings.title_style | default: 'caps'
+
+  assign grid_class = 'cb-grid'
+  if section.settings.mobile_layout == 'carousel'
+    assign grid_class = 'cb-grid cb-grid--carousel'
+  endif
+
+  assign mobile_cols = 2
+  if section.settings.mobile_layout == 'one'
+    assign mobile_cols = 1
+  endif
+
+  assign sizes = '(min-width: 750px) calc(100vw / ' | append: section.settings.columns | append: '), 50vw'
+-%}
+
+<div
+  class="cb-section cb-tiles cb-tiles--{{ section.settings.title_position }} cb-tiles--title-{{ title_style }}"
+  {% if section.settings.anchor != blank %}
+    id="{{ section.settings.anchor | handleize }}"
+  {% endif %}
+  style="{% render 'cb-section-style', settings: section.settings %} --cb-tile-radius: {{ section.settings.corner_radius }}px; --cb-tile-overlay: {{ section.settings.overlay_opacity | default: 30 | divided_by: 100.0 }};"
+>
+  <div class="{{ container }}">
+    {%- if section.settings.heading != blank -%}
+      <div class="cb-header cb-align-{{ section.settings.heading_alignment }}{% if section.settings.heading_size == 'large' %} cb-header--xl{% endif %}">
+        <h2 class="{{ heading_class }}">{{ section.settings.heading }}</h2>
+        {%- if section.settings.show_line -%}
+          <span class="cb-heading-line"></span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div
+      class="{{ grid_class }}"
+      style="--cb-cols: {{ section.settings.columns }}; --cb-cols-mobile: {{ mobile_cols }}; --cb-gap: {{ section.settings.gap }}px; --cb-gap-mobile: 12px; --cb-slide-mobile: 44%;"
+    >
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign tile_collection = block.settings.collection
+            assign tile_image = block.settings.image | default: tile_collection.featured_image
+            assign tile_title = block.settings.title | default: tile_collection.title
+            assign tile_url = block.settings.link | default: tile_collection.url
+            assign tile_swatch = block.settings.swatch
+          -%}
+          <a class="cb-tiles__card cb-hover-scale" href="{{ tile_url | default: '#' }}" {{ block.shopify_attributes }}>
+            <div class="cb-media cb-tiles__media cb-ratio-{{ section.settings.image_ratio }}">
+              {%- if tile_swatch != blank -%}
+                <span class="cb-tiles__swatch" style="background-color: {{ tile_swatch }};"></span>
+              {%- elsif tile_image != blank -%}
+                {{
+                  tile_image
+                  | image_url: width: 1200
+                  | image_tag: loading: 'lazy', sizes: sizes, widths: '360, 540, 720, 900, 1200', alt: tile_title
+                }}
+              {%- else -%}
+                {%- liquid
+                  assign placeholder_index = forloop.index0 | modulo: 6 | plus: 1
+                  assign placeholder_name = 'collection-' | append: placeholder_index
+                  echo placeholder_name | placeholder_svg_tag: 'placeholder-svg'
+                -%}
+              {%- endif -%}
+            </div>
+            <span class="cb-tiles__title">
+              <span class="cb-tiles__name">{{ tile_title | default: 'Collection title' }}</span>
+              {%- if title_style == 'plain_link' and section.settings.link_text != blank -%}
+                <span class="cb-tiles__cta">{{ section.settings.link_text }}</span>
+              {%- endif -%}
+            </span>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for tile_collection in collections limit: section.settings.limit -%}
+          <a class="cb-tiles__card cb-hover-scale" href="{{ tile_collection.url }}">
+            <div class="cb-media cb-tiles__media cb-ratio-{{ section.settings.image_ratio }}">
+              {%- if tile_collection.featured_image != blank -%}
+                {{
+                  tile_collection.featured_image
+                  | image_url: width: 1200
+                  | image_tag: loading: 'lazy', sizes: sizes, widths: '360, 540, 720, 900, 1200', alt: tile_collection.title
+                }}
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            <span class="cb-tiles__title">
+              <span class="cb-tiles__name">{{ tile_collection.title }}</span>
+              {%- if title_style == 'plain_link' and section.settings.link_text != blank -%}
+                <span class="cb-tiles__cta">{{ section.settings.link_text }}</span>
+              {%- endif -%}
+            </span>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection tiles",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Custom image", "info": "Defaults to the collection image" },
+        { "type": "color", "id": "swatch", "label": "Colour swatch", "info": "Shows a solid colour instead of an image" },
+        { "type": "text", "id": "title", "label": "Custom title" },
+        { "type": "url", "id": "link", "label": "Custom link" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by collection" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    { "type": "checkbox", "id": "show_line", "label": "Show line under heading", "default": false },
+    {
+      "type": "paragraph",
+      "content": "Add collection blocks to curate tiles. With no blocks, all collections are shown."
+    },
+    { "type": "range", "id": "limit", "label": "Collections to show (no blocks)", "min": 2, "max": 24, "step": 1, "default": 12 },
+    { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 6, "step": 1, "default": 6 },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "options": [
+        { "value": "two", "label": "2 columns" },
+        { "value": "one", "label": "1 column" },
+        { "value": "carousel", "label": "Swipe carousel" }
+      ],
+      "default": "two"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image shape",
+      "options": [
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "tall", "label": "Tall" },
+        { "value": "square", "label": "Square" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "swatch", "label": "Wide (2:1)" },
+        { "value": "circle", "label": "Circle" }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "select",
+      "id": "title_position",
+      "label": "Title position",
+      "options": [
+        { "value": "below", "label": "Below image" },
+        { "value": "overlay", "label": "On image (bottom)" },
+        { "value": "center", "label": "On image (center)" }
+      ],
+      "default": "below"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image overlay",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 30,
+      "visible_if": "{{ section.settings.title_position == 'center' }}"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title style",
+      "options": [
+        { "value": "caps", "label": "Small caps, centered" },
+        { "value": "plain", "label": "Plain, left" },
+        { "value": "plain_link", "label": "Plain, left, with link text" }
+      ],
+      "default": "caps",
+      "visible_if": "{{ section.settings.title_position == 'below' }}"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Shop",
+      "visible_if": "{{ section.settings.title_style == 'plain_link' }}"
+    },
+    { "type": "range", "id": "corner_radius", "label": "Corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "gap", "label": "Gap", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 16 },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    {
+      "type": "select",
+      "id": "max_width",
+      "label": "Width",
+      "options": [
+        { "value": "page", "label": "Page" },
+        { "value": "compact", "label": "Compact (1280px)" }
+      ],
+      "default": "page",
+      "visible_if": "{{ section.settings.full_width == false }}"
+    },
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "info": "Lets buttons jump here, e.g. colour → link to #colour" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [
+    {
+      "name": "Collection tiles",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

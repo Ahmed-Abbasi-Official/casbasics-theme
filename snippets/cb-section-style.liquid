@@ -1,0 +1,23 @@
+{%- doc -%}
+  Outputs the inline CSS custom properties shared by every cb-* section:
+  background, text color and vertical padding.
+
+  @param {object} settings - section.settings (expects background_color, text_color, padding_top, padding_bottom)
+{%- enddoc -%}
+
+{%- liquid
+  assign style = ''
+  if settings.background_color != blank and settings.background_color.alpha != 0
+    assign style = style | append: '--cb-bg: ' | append: settings.background_color | append: ';'
+  endif
+  if settings.text_color != blank and settings.text_color.alpha != 0
+    assign style = style | append: '--cb-fg: ' | append: settings.text_color | append: ';'
+  endif
+  if settings.padding_top != nil
+    assign style = style | append: '--cb-pt: ' | append: settings.padding_top | append: 'px;'
+  endif
+  if settings.padding_bottom != nil
+    assign style = style | append: '--cb-pb: ' | append: settings.padding_bottom | append: 'px;'
+  endif
+-%}
+{{- style -}}

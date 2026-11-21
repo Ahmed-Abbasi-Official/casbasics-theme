@@ -1,0 +1,167 @@
+{%- liquid
+  assign container = 'cb-container'
+  if section.settings.width == 'narrow'
+    assign container = 'cb-container cb-container--narrow'
+  elsif section.settings.width == 'slim'
+    assign container = 'cb-container cb-container--slim'
+  endif
+  assign split = false
+  if section.settings.layout == 'split' and section.settings.heading != blank
+    assign split = true
+  endif
+-%}
+
+<div
+  class="cb-section cb-accordions-section"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="{{ container }}">
+    <div class="cb-accordions cb-accordions--{{ section.settings.layout }}{% if split %} cb-accordions--split{% endif %} cb-accordions--icon-{{ section.settings.icon | default: 'plus' }} cb-accordions--heading-{{ section.settings.heading_style | default: 'default' }}">
+      {%- if section.settings.heading != blank or section.settings.text != blank -%}
+        <div class="cb-accordions__header{% unless split %} cb-align-{{ section.settings.heading_alignment }}{% endunless %}">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="cb-heading">{{ section.settings.heading }}</h2>
+            <span class="cb-heading-line"></span>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="cb-rte" style="margin-top: 16px;">{{ section.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="cb-accordions__list">
+        {%- for block in section.blocks -%}
+          <details
+            class="cb-accordion"
+            {% if forloop.first and section.settings.open_first %}
+              open
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <summary>
+              <span>{{ block.settings.question }}</span>
+              <span class="cb-accordion__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="cb-accordion__body cb-rte">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- if section.settings.faq_schema and section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | strip_html | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Accordions",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Frequently asked question" },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked questions" },
+    { "type": "richtext", "id": "text", "label": "Intro text" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Heading above" },
+        { "value": "split", "label": "Heading left, questions right" },
+        { "value": "grid", "label": "Heading above, questions in two columns of boxes" }
+      ],
+      "default": "split"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment (stacked)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "slim", "label": "Slim (720px)" },
+        { "value": "narrow", "label": "Narrow" },
+        { "value": "normal", "label": "Normal" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        { "value": "plus", "label": "Plus" },
+        { "value": "chevron", "label": "Chevron" }
+      ],
+      "default": "plus"
+    },
+    {
+      "type": "select",
+      "id": "heading_style",
+      "label": "Heading style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "caps", "label": "Small spaced capitals, no line" }
+      ],
+      "default": "default"
+    },
+    { "type": "checkbox", "id": "open_first", "label": "Open first question", "default": false },
+    {
+      "type": "checkbox",
+      "id": "faq_schema",
+      "label": "Add FAQ structured data (SEO)",
+      "info": "Turn on for one accordion section per page only",
+      "default": false
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 }
+  ],
+  "presets": [
+    {
+      "name": "Accordions",
+      "blocks": [{ "type": "item" }, { "type": "item" }, { "type": "item" }]
+    }
+  ]
+}
+{% endschema %}

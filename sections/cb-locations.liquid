@@ -1,0 +1,114 @@
+<div
+  class="cb-section cb-locations-section cb-locations-section--{{ section.settings.layout | default: 'list' }}"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container">
+    <cb-locations class="cb-locations">
+      <div class="cb-locations__info">
+        {%- if section.settings.subheading != blank -%}
+          <span class="cb-subheading">{{ section.settings.subheading }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cb-heading">{{ section.settings.heading }}</h2>
+          <span class="cb-heading-line"></span>
+        {%- endif -%}
+
+        <ul class="cb-locations__stores" role="list">
+          {%- for block in section.blocks -%}
+            <li
+              class="cb-locations__store"
+              data-store
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              <button type="button" class="cb-locations__button">
+                <span class="cb-locations__address">{{ block.settings.address }}</span>
+                {%- if block.settings.hours != blank -%}
+                  <span class="cb-locations__hours cb-rte">{{ block.settings.hours }}</span>
+                {%- endif -%}
+              </button>
+              {%- if block.settings.map_link != blank -%}
+                <a class="cb-text-link cb-locations__map" href="{{ block.settings.map_link }}" target="_blank" rel="noopener">
+                  {{- block.settings.map_label | default: 'View on Google Maps' -}}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- if section.settings.layout == 'slider' and section.blocks.size > 1 -%}
+          <div class="cb-locations__arrows">
+            <button type="button" class="cb-locations__arrow" data-store-prev aria-label="Previous store">
+              {%- render 'cb-icon', icon: 'chevron-down', class: 'cb-locations__arrow-icon cb-locations__arrow-icon--prev' -%}
+            </button>
+            <button type="button" class="cb-locations__arrow" data-store-next aria-label="Next store">
+              {%- render 'cb-icon', icon: 'chevron-down', class: 'cb-locations__arrow-icon cb-locations__arrow-icon--next' -%}
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="cb-locations__images">
+        {%- for block in section.blocks -%}
+          <div class="cb-media cb-locations__image" data-store-image {% if forloop.first %}data-active{% endif %}>
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 1400
+                | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 50vw, 100vw', widths: '540, 720, 1000, 1400', alt: block.settings.address
+              }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </cb-locations>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Locations",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Store",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "address", "label": "Name / address", "default": "Store address" },
+        { "type": "richtext", "id": "hours", "label": "Opening hours", "default": "<p>Mon – Sun: 10 AM – 10 PM</p>" },
+        { "type": "url", "id": "map_link", "label": "Map link" },
+        { "type": "text", "id": "map_label", "label": "Map link label", "default": "View on Google Maps" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Our stores" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Locations & hours" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "list", "label": "List of stores" },
+        { "value": "slider", "label": "One store at a time, with arrows" }
+      ],
+      "default": "list"
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 }
+  ],
+  "presets": [
+    {
+      "name": "Locations",
+      "blocks": [{ "type": "store" }, { "type": "store" }]
+    }
+  ]
+}
+{% endschema %}

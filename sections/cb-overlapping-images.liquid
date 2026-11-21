@@ -1,0 +1,112 @@
+<div
+  class="cb-section cb-overlapping"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container">
+    <div class="cb-overlap{% if section.settings.layout == 'right' %} cb-overlap--reverse{% endif %}{% if section.settings.rounded %} cb-overlap--rounded{% endif %} cb-overlap--{{ section.settings.images_style | default: 'stacked' }}">
+      <div class="cb-overlap__images">
+        <div class="cb-media cb-overlap__primary">
+          {%- if section.settings.image_1 != blank -%}
+            {{
+              section.settings.image_1
+              | image_url: width: 1400
+              | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 50vw, 100vw', widths: '540, 720, 1000, 1400'
+            }}
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        <div class="cb-media cb-overlap__secondary">
+          {%- if section.settings.image_2 != blank -%}
+            {{
+              section.settings.image_2
+              | image_url: width: 800
+              | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 25vw, 50vw', widths: '360, 540, 800'
+            }}
+          {%- else -%}
+            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="cb-overlap__content cb-align-{{ section.settings.alignment }}">
+        {%- if section.settings.subheading != blank -%}
+          <span class="cb-subheading">{{ section.settings.subheading }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cb-heading">{{ section.settings.heading }}</h2>
+          <span class="cb-heading-line"></span>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="cb-rte" style="margin-top: 20px;">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <div class="cb-buttons">
+            <a class="cb-btn cb-btn--outline" href="{{ section.settings.button_link | default: '#' }}">
+              {{- section.settings.button_label -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Overlapping images",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image_1", "label": "Large image" },
+    { "type": "image_picker", "id": "image_2", "label": "Small image" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Images position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "images_style",
+      "label": "Images",
+      "options": [
+        { "value": "stacked", "label": "Large image with small one in the corner" },
+        { "value": "side", "label": "Two equal images, overlapping side by side" }
+      ],
+      "default": "stacked"
+    },
+    { "type": "checkbox", "id": "rounded", "label": "Rounded corners", "default": false },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore our collection" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>From everyday essentials to occasion pieces, every design is crafted with care using premium fabrics.</p>"
+    },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#e7e4e1" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 }
+  ],
+  "presets": [{ "name": "Overlapping images" }]
+}
+{% endschema %}

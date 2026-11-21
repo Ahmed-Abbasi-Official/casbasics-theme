@@ -1,0 +1,90 @@
+<div
+  class="cb-section cb-report"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="cb-header cb-align-center">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cb-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="cb-rte" style="margin-top: 8px;">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="cb-report__grid">
+      {%- for block in section.blocks -%}
+        <article class="cb-report__card" {{ block.shopify_attributes }}>
+          <h3 class="cb-report__month">{{ block.settings.month }}</h3>
+          {%- if block.settings.campaign != blank -%}
+            <div class="cb-rte">{{ block.settings.campaign }}</div>
+          {%- endif -%}
+          <div class="cb-report__figures">
+            <div>
+              <span class="cb-report__label">{{ section.settings.target_label }}</span>
+              <span class="cb-report__value">{{ block.settings.target }}</span>
+            </div>
+            <div>
+              <span class="cb-report__label">{{ section.settings.achieved_label }}</span>
+              <span class="cb-report__value">{{ block.settings.achieved }}</span>
+            </div>
+          </div>
+          {%- if block.settings.donated_to != blank -%}
+            <p class="cb-rte">
+              <span class="cb-report__label">{{ section.settings.donated_label }}</span>
+              {{ block.settings.donated_to }}
+            </p>
+          {%- endif -%}
+          {%- if block.settings.proof_link != blank -%}
+            <a class="cb-text-link" href="{{ block.settings.proof_link }}" target="_blank" rel="noopener">
+              {{- block.settings.proof_label | default: 'View proof' -}}
+            </a>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Impact report",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "entry",
+      "name": "Month",
+      "settings": [
+        { "type": "text", "id": "month", "label": "Month", "default": "Month 2026" },
+        { "type": "richtext", "id": "campaign", "label": "Campaign", "default": "<p>Campaign description</p>" },
+        { "type": "text", "id": "target", "label": "Target", "default": "AED 10,000" },
+        { "type": "text", "id": "achieved", "label": "Achieved", "default": "AED 8,000" },
+        { "type": "text", "id": "donated_to", "label": "Donated to", "default": "Charity partner" },
+        { "type": "url", "id": "proof_link", "label": "Proof link" },
+        { "type": "text", "id": "proof_label", "label": "Proof link label", "default": "View proof of deposit" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Monthly campaign impact report" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Making a difference together" },
+    { "type": "text", "id": "target_label", "label": "Target label", "default": "Target" },
+    { "type": "text", "id": "achieved_label", "label": "Achieved label", "default": "Achieved" },
+    { "type": "text", "id": "donated_label", "label": "Donated to label", "default": "Donated to" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [
+    {
+      "name": "Impact report",
+      "blocks": [{ "type": "entry" }, { "type": "entry" }]
+    }
+  ]
+}
+{% endschema %}

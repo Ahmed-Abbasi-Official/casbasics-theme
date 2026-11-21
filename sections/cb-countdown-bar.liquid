@@ -1,0 +1,50 @@
+<div
+  class="cb-countdown"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <cb-countdown
+    class="cb-countdown__inner cb-container"
+    data-end="{{ section.settings.end_date | escape }}"
+    {% if section.settings.hide_expired %}
+      data-hide-expired
+    {% endif %}
+  >
+    {%- if section.settings.text != blank -%}
+      <span>{{ section.settings.text }}</span>
+    {%- endif -%}
+    <span class="cb-countdown__timer" aria-label="Time remaining">
+      <span class="cb-countdown__unit"><b data-unit="days">00</b><span>d</span></span>
+      <span class="cb-countdown__unit"><b data-unit="hours">00</b><span>h</span></span>
+      <span class="cb-countdown__unit"><b data-unit="minutes">00</b><span>m</span></span>
+      <span class="cb-countdown__unit"><b data-unit="seconds">00</b><span>s</span></span>
+    </span>
+    {%- if section.settings.link_label != blank -%}
+      <a class="cb-countdown__link" href="{{ section.settings.link | default: '#' }}">{{ section.settings.link_label }}</a>
+    {%- endif -%}
+  </cb-countdown>
+</div>
+
+{% schema %}
+{
+  "name": "Countdown bar",
+  "tag": "section",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Sale ends in" },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "End date and time",
+      "info": "Format: YYYY-MM-DD HH:MM (shopper's local time)",
+      "default": "2026-12-31 23:59"
+    },
+    { "type": "checkbox", "id": "hide_expired", "label": "Hide bar after it ends", "default": true },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop now" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#0b0b0b" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" }
+  ],
+  "presets": [{ "name": "Countdown bar" }]
+}
+{% endschema %}

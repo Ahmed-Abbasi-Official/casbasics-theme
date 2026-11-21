@@ -1,0 +1,113 @@
+{%- liquid
+  assign container = 'cb-container cb-container--narrow'
+  if section.settings.layout == 'split'
+    assign container = 'cb-container cb-container--compact'
+  endif
+-%}
+
+<div
+  class="cb-section cb-shop-hero cb-shop-hero--{{ section.settings.layout }} cb-align-{{ section.settings.alignment }}"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="{{ container }}">
+    <div class="cb-shop-hero__inner{% if section.settings.show_divider %} cb-shop-hero__inner--divider{% endif %}">
+      <div class="cb-shop-hero__text">
+        {%- if section.settings.show_breadcrumbs -%}
+          <nav aria-label="Breadcrumb">
+            <ol class="cb-crumbs" role="list">
+              <li><a href="{{ routes.root_url }}">{{ section.settings.home_label }}</a></li>
+              <li aria-current="page">{{ page.title | default: section.settings.heading }}</li>
+            </ol>
+          </nav>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="cb-heading cb-heading--large cb-shop-hero__heading">{{ section.settings.heading }}</h1>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="cb-rte cb-shop-hero__subtext">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="cb-jump">
+          {%- for block in section.blocks -%}
+            <a
+              class="cb-btn {% if block.settings.highlight %}cb-btn--solid{% else %}cb-btn--outline{% endif %} cb-btn--small"
+              href="{{ block.settings.link | default: '#' }}"
+              {{ block.shopify_attributes }}
+            >
+              {{- block.settings.label -}}
+              {%- if block.settings.show_arrow -%}
+                <span class="cb-btn__arrow" aria-hidden="true">&rarr;</span>
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page intro with links",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Jump link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Colour" },
+        { "type": "text", "id": "link", "label": "Link", "info": "A page URL, or #anchor to jump to a section on this page (e.g. #colour)", "default": "#colour" },
+        { "type": "checkbox", "id": "highlight", "label": "Highlight", "default": false },
+        { "type": "checkbox", "id": "show_arrow", "label": "Show arrow", "default": false }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "checkbox", "id": "show_breadcrumbs", "label": "Show breadcrumbs", "default": true },
+    { "type": "text", "id": "home_label", "label": "Breadcrumb home label", "default": "Home" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop all" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Browse by colour, fabric or style.</p>" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "split", "label": "Text left, links right" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center",
+      "visible_if": "{{ section.settings.layout == 'stacked' }}"
+    },
+    { "type": "checkbox", "id": "show_divider", "label": "Show line below", "default": false },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 24 }
+  ],
+  "presets": [
+    {
+      "name": "Page intro with links",
+      "blocks": [
+        { "type": "link", "settings": { "label": "Colour", "link": "#colour" } },
+        { "type": "link", "settings": { "label": "Fabric", "link": "#fabric" } },
+        { "type": "link", "settings": { "label": "Style", "link": "#style" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

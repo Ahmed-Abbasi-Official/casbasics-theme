@@ -1,0 +1,68 @@
+{%- liquid
+  assign header_title = section.settings.heading | default: collection.title
+  assign header_text = collection.description
+  if section.settings.show_description == false
+    assign header_text = ''
+  endif
+-%}
+
+<div
+  class="cb-section cb-col-header cb-align-{{ section.settings.alignment }}"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container">
+    <h1 class="cb-col-header__title">{{ header_title }}</h1>
+
+    {%- if header_text != blank -%}
+      <cb-read-more class="cb-col-header__text" style="--cb-read-more-lines: {{ section.settings.lines }};">
+        <div class="cb-rte cb-read-more__content" data-content id="CollectionDescription-{{ section.id }}">
+          {{ header_text }}
+        </div>
+        <button
+          type="button"
+          class="cb-read-more__toggle"
+          data-toggle
+          data-more="{{ section.settings.read_more_label | escape }}"
+          data-less="{{ section.settings.read_less_label | escape }}"
+          aria-controls="CollectionDescription-{{ section.id }}"
+          aria-expanded="false"
+          hidden
+        >
+          {{- section.settings.read_more_label -}}
+        </button>
+      </cb-read-more>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection header",
+  "tag": "section",
+  "enabled_on": { "templates": ["collection"] },
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Defaults to the collection title" },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": true },
+    { "type": "range", "id": "lines", "label": "Lines before \"Read more\"", "min": 1, "max": 6, "step": 1, "default": 1 },
+    { "type": "text", "id": "read_more_label", "label": "Read more label", "default": "Read More" },
+    { "type": "text", "id": "read_less_label", "label": "Read less label", "default": "Read Less" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [{ "name": "Collection header" }]
+}
+{% endschema %}

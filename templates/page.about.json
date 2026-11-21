@@ -1,0 +1,331 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "cb-text",
+      "settings": {
+        "width": "normal",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60
+      },
+      "blocks": {
+        "subheading_002r": {
+          "type": "subheading",
+          "settings": {
+            "text": "#OurBrand"
+          }
+        },
+        "heading_002s": {
+          "type": "heading",
+          "settings": {
+            "heading": "About us",
+            "size": "large",
+            "show_line": false
+          }
+        },
+        "text_002t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p><p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_002r",
+        "heading_002s",
+        "text_002t"
+      ]
+    },
+    "pillars": {
+      "type": "cb-columns",
+      "settings": {
+        "heading": "",
+        "columns": 3,
+        "gap": 32,
+        "image_ratio": "portrait",
+        "show_placeholders": true,
+        "alignment": "left",
+        "carousel_mobile": true,
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "column_002u": {
+          "type": "column",
+          "settings": {
+            "heading": "Craftsmanship & design",
+            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+          }
+        },
+        "column_002v": {
+          "type": "column",
+          "settings": {
+            "heading": "Customer-first experience",
+            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+          }
+        },
+        "column_002w": {
+          "type": "column",
+          "settings": {
+            "heading": "Purposeful creation",
+            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_002u",
+        "column_002v",
+        "column_002w"
+      ]
+    },
+    "banner": {
+      "type": "cb-banner-image",
+      "settings": {
+        "height": "large",
+        "zoom": true,
+        "overlay_opacity": 40,
+        "heading": "",
+        "heading_h1": false,
+        "text": "<p>Through visionary design, elevated craftsmanship and unwavering customer focus, we continue to shape a new chapter in modest fashion.</p>",
+        "horizontal_position": "center",
+        "vertical_position": "middle",
+        "text_alignment": "center",
+        "text_color": "#ffffff"
+      }
+    },
+    "vision": {
+      "type": "cb-image-with-text",
+      "settings": {
+        "image_position": "left",
+        "image_width": "50",
+        "image_height": "650",
+        "boxed": false,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "heading_002x": {
+          "type": "heading",
+          "settings": {
+            "heading": "Vision & core values",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "text_002y": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_002x",
+        "text_002y"
+      ]
+    },
+    "story": {
+      "type": "cb-image-with-text",
+      "settings": {
+        "image_position": "left",
+        "image_width": "40",
+        "image_height": "full",
+        "boxed": false,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "heading_002z": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our story",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "text_0030": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p><p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_002z",
+        "text_0030"
+      ]
+    },
+    "impact": {
+      "type": "cb-text",
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "background_color": "#e7e4e1"
+      },
+      "blocks": {
+        "subheading_0031": {
+          "type": "subheading",
+          "settings": {
+            "text": "#GivingBack"
+          }
+        },
+        "heading_0032": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our impact",
+            "size": "medium",
+            "show_line": false
+          }
+        },
+        "text_0033": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every order helps fuel a monthly charity donation.</p>"
+          }
+        },
+        "button_0034": {
+          "type": "button",
+          "settings": {
+            "label": "Read more",
+            "link": "shopify://pages/our-impact",
+            "style": "text",
+            "size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_0031",
+        "heading_0032",
+        "text_0033",
+        "button_0034"
+      ]
+    },
+    "comparison": {
+      "type": "cb-comparison",
+      "settings": {
+        "heading": "Why choose us?",
+        "text": "<p>Discover the difference that sets us apart</p>",
+        "us_label": "Us",
+        "them_label": "Others",
+        "padding_top": 60,
+        "padding_bottom": 60
+      },
+      "blocks": {
+        "row_0035": {
+          "type": "row",
+          "settings": {
+            "us": "Customised sizes and colours with no hidden charges",
+            "them": "Extra charges for customisation"
+          }
+        },
+        "row_0036": {
+          "type": "row",
+          "settings": {
+            "us": "Premium fabric at fair prices",
+            "them": "Premium prices for average fabric"
+          }
+        },
+        "row_0037": {
+          "type": "row",
+          "settings": {
+            "us": "Customer support whenever you need it",
+            "them": "Limited support hours"
+          }
+        },
+        "row_0038": {
+          "type": "row",
+          "settings": {
+            "us": "Home service and video shopping",
+            "them": "In-store only"
+          }
+        }
+      },
+      "block_order": [
+        "row_0035",
+        "row_0036",
+        "row_0037",
+        "row_0038"
+      ]
+    },
+    "press": {
+      "type": "cb-columns",
+      "settings": {
+        "heading": "Featured in",
+        "show_line": true,
+        "columns": 4,
+        "gap": 24,
+        "image_ratio": "landscape",
+        "show_placeholders": true,
+        "alignment": "center",
+        "carousel_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      },
+      "blocks": {
+        "column_0039": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>“A strong design identity and a commitment to ethical practices.” — Publication one</p>",
+            "link_label": "View article"
+          }
+        },
+        "column_003a": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>“Redefining what it means to be a premier destination for modest wear.” — Publication two</p>",
+            "link_label": "View article"
+          }
+        },
+        "column_003b": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>“Beauty in the intersection of tradition and modernity.” — Publication three</p>",
+            "link_label": "View article"
+          }
+        },
+        "column_003c": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>“Handcrafted using the most premium materials available.” — Publication four</p>",
+            "link_label": "View article"
+          }
+        }
+      },
+      "block_order": [
+        "column_0039",
+        "column_003a",
+        "column_003b",
+        "column_003c"
+      ]
+    }
+  },
+  "order": [
+    "intro",
+    "pillars",
+    "banner",
+    "vision",
+    "story",
+    "impact",
+    "comparison",
+    "press"
+  ]
+}

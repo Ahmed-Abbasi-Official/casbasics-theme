@@ -1,0 +1,274 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "cb-text",
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60
+      },
+      "blocks": {
+        "heading_003d": {
+          "type": "heading",
+          "settings": {
+            "heading": "FAQs",
+            "size": "large",
+            "show_line": false
+          }
+        },
+        "text_003e": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Answers to common questions about sizing, customisation, delivery, payment and care.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_003d",
+        "text_003e"
+      ]
+    },
+    "payments": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Payments & safety",
+        "text": "",
+        "layout": "split",
+        "heading_alignment": "center",
+        "width": "normal",
+        "open_first": false,
+        "faq_schema": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "item_003f": {
+          "type": "item",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>Card payments, cash on delivery (where available), bank transfer, Apple Pay and instalment plans at checkout.</p>"
+          }
+        },
+        "item_003g": {
+          "type": "item",
+          "settings": {
+            "question": "Is my payment secure?",
+            "answer": "<p>Yes. All payments are processed through encrypted, PCI-compliant checkout.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_003f",
+        "item_003g"
+      ]
+    },
+    "shipping": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Shipping & delivery",
+        "text": "",
+        "layout": "split",
+        "heading_alignment": "center",
+        "width": "normal",
+        "open_first": false,
+        "faq_schema": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "item_003h": {
+          "type": "item",
+          "settings": {
+            "question": "How long does it take to get my order?",
+            "answer": "<p>Custom pieces are made within 10–12 business days, then shipped. Ready-to-wear ships within 1–2 days.</p>"
+          }
+        },
+        "item_003i": {
+          "type": "item",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>Yes, we ship worldwide. Costs are calculated at checkout.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_003h",
+        "item_003i"
+      ]
+    },
+    "returns": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Returns & exchange policy",
+        "text": "",
+        "layout": "split",
+        "heading_alignment": "center",
+        "width": "normal",
+        "open_first": false,
+        "faq_schema": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "item_003j": {
+          "type": "item",
+          "settings": {
+            "question": "What if it doesn’t fit?",
+            "answer": "<p>Pieces are made to the measurements you provide. Please review the size chart carefully before ordering.</p>"
+          }
+        },
+        "item_003k": {
+          "type": "item",
+          "settings": {
+            "question": "Can I exchange my order?",
+            "answer": "<p>Eligible orders can be exchanged within 7 days. See our exchange policy for details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_003j",
+        "item_003k"
+      ]
+    },
+    "fabric": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Product & fabric",
+        "text": "",
+        "layout": "split",
+        "heading_alignment": "center",
+        "width": "normal",
+        "open_first": false,
+        "faq_schema": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "item_003l": {
+          "type": "item",
+          "settings": {
+            "question": "Which fabrics do you offer?",
+            "answer": "<p>Lightweight everyday fabrics like Nada and Crepe, and richer fabrics for occasions.</p>"
+          }
+        },
+        "item_003m": {
+          "type": "item",
+          "settings": {
+            "question": "Do pieces come with a sheila?",
+            "answer": "<p>Yes, most pieces are sold with a matching sheila.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_003l",
+        "item_003m"
+      ]
+    },
+    "fit": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Fit, style & customisation",
+        "text": "",
+        "layout": "split",
+        "heading_alignment": "center",
+        "width": "normal",
+        "open_first": false,
+        "faq_schema": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "item_003n": {
+          "type": "item",
+          "settings": {
+            "question": "How do I make sure it fits?",
+            "answer": "<p>Measure an existing garment that fits you well and use our size chart.</p>"
+          }
+        },
+        "item_003o": {
+          "type": "item",
+          "settings": {
+            "question": "Can I customise the design?",
+            "answer": "<p>Yes, many designs can be customised in size and colour.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_003n",
+        "item_003o"
+      ]
+    },
+    "events": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Events & seasons",
+        "text": "",
+        "layout": "split",
+        "heading_alignment": "center",
+        "width": "normal",
+        "open_first": false,
+        "faq_schema": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "item_003p": {
+          "type": "item",
+          "settings": {
+            "question": "Do you have seasonal collections?",
+            "answer": "<p>Yes, we launch festive collections every season. Order early as pieces are made to order.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_003p"
+      ]
+    },
+    "care": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Care",
+        "text": "",
+        "layout": "split",
+        "heading_alignment": "center",
+        "width": "normal",
+        "open_first": false,
+        "faq_schema": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "item_003q": {
+          "type": "item",
+          "settings": {
+            "question": "How should I clean my pieces?",
+            "answer": "<p>We recommend professional dry cleaning to preserve delicate fabrics and embellishments.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_003q"
+      ]
+    }
+  },
+  "order": [
+    "intro",
+    "payments",
+    "shipping",
+    "returns",
+    "fabric",
+    "fit",
+    "events",
+    "care"
+  ]
+}

@@ -1,0 +1,74 @@
+{%- liquid
+  assign container = 'cb-container'
+  if section.settings.width == 'full'
+    assign container = 'cb-container cb-container--bleed'
+  endif
+  assign frame_class = 'cb-image__frame--original'
+  if section.settings.height != 'original'
+    assign frame_class = 'cb-image__frame--fixed'
+  endif
+-%}
+
+<div
+  class="cb-section cb-image"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="{{ container }}">
+    {%- if section.settings.link != blank -%}<a href="{{ section.settings.link }}" class="cb-image__link">{%- endif -%}
+    <div
+      class="cb-media cb-image__frame {{ frame_class }}"
+      style="--cb-img-h: {{ section.settings.height }}px; border-radius: {{ section.settings.radius }}px;"
+    >
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 3000
+          | image_tag: loading: 'lazy', sizes: '100vw', widths: '750, 1100, 1500, 2000, 3000'
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    {%- if section.settings.link != blank -%}</a>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "url", "id": "link", "label": "Link" },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "page", "label": "Page width" },
+        { "value": "full", "label": "Full width" }
+      ],
+      "default": "page"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        { "value": "original", "label": "Original image ratio" },
+        { "value": "400", "label": "400px" },
+        { "value": "600", "label": "600px" },
+        { "value": "800", "label": "800px" }
+      ],
+      "default": "original"
+    },
+    { "type": "range", "id": "radius", "label": "Corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 24 }
+  ],
+  "presets": [{ "name": "Image" }]
+}
+{% endschema %}

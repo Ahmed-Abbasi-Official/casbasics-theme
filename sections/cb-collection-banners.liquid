@@ -1,0 +1,121 @@
+{%- liquid
+  assign container = 'cb-container cb-container--compact'
+  if section.settings.width == 'page'
+    assign container = 'cb-container'
+  endif
+-%}
+
+<div
+  class="cb-section cb-banners"
+  {% if section.settings.anchor != blank %}
+    id="{{ section.settings.anchor | handleize }}"
+  {% endif %}
+  style="{% render 'cb-section-style', settings: section.settings %} --cb-banner-panel: {{ section.settings.panel_color | default: '#e8e0d4' }}; --cb-banner-accent: {{ section.settings.accent_color | default: '#6c0013' }}; --cb-gap: {{ section.settings.gap }}px;"
+>
+  <div class="{{ container }}">
+    <div class="cb-banners__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign banner_collection = block.settings.collection
+          assign banner_image = block.settings.image | default: banner_collection.featured_image
+          assign banner_heading = block.settings.heading | default: banner_collection.title
+          assign banner_url = block.settings.link | default: banner_collection.url | default: '#'
+          if block.settings.width == 'full'
+            assign banner_sizes = '(min-width: 750px) 66vw, 100vw'
+          else
+            assign banner_sizes = '(min-width: 750px) 33vw, 100vw'
+          endif
+        -%}
+        <div class="cb-banners__item cb-banners__item--{{ block.settings.width }}" {{ block.shopify_attributes }}>
+          <div class="cb-banners__panel">
+            {%- if block.settings.eyebrow != blank -%}
+              <span class="cb-banners__eyebrow">{{ block.settings.eyebrow }}</span>
+            {%- endif -%}
+            {%- if block.settings.accent_text != blank -%}
+              <span class="cb-banners__accent" dir="auto">{{ block.settings.accent_text }}</span>
+            {%- endif -%}
+            <h2 class="cb-banners__heading" dir="auto">{{ banner_heading | default: 'Collection title' }}</h2>
+            {%- if block.settings.link_label != blank -%}
+              <a class="cb-banners__link" href="{{ banner_url }}">{{ block.settings.link_label }}</a>
+            {%- endif -%}
+          </div>
+          <a class="cb-banners__media cb-media cb-hover-scale" href="{{ banner_url }}" tabindex="-1" aria-hidden="true">
+            {%- if banner_image != blank -%}
+              {{
+                banner_image
+                | image_url: width: 2000
+                | image_tag: loading: 'lazy', sizes: banner_sizes, widths: '540, 720, 900, 1200, 1600, 2000', alt: banner_heading
+              }}
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection banners",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Defaults to the collection image" },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            { "value": "full", "label": "Full row" },
+            { "value": "half", "label": "Half row" }
+          ],
+          "default": "half"
+        },
+        { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Featured collection" },
+        { "type": "text", "id": "accent_text", "label": "Accent text", "info": "Optional line above the heading, e.g. the Arabic collection name" },
+        { "type": "text", "id": "heading", "label": "Heading", "info": "Defaults to the collection title" },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop the collection" },
+        { "type": "url", "id": "link", "label": "Custom link", "info": "Defaults to the collection" }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Section width",
+      "options": [
+        { "value": "compact", "label": "Compact (1280px)" },
+        { "value": "page", "label": "Page" }
+      ],
+      "default": "compact"
+    },
+    { "type": "range", "id": "gap", "label": "Gap", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 24 },
+    { "type": "text", "id": "anchor", "label": "Anchor ID" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "panel_color", "label": "Text panel", "default": "#e8e0d4" },
+    { "type": "color", "id": "accent_color", "label": "Small label and accent text", "default": "#6c0013" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [
+    {
+      "name": "Collection banners",
+      "blocks": [
+        { "type": "banner", "settings": { "width": "full" } },
+        { "type": "banner" },
+        { "type": "banner" }
+      ]
+    }
+  ]
+}
+{% endschema %}
