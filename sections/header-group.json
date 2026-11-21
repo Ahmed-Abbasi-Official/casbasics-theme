@@ -11,63 +11,6 @@
   "type": "header",
   "name": "t:names.header",
   "sections": {
-    "announcement_marquee": {
-      "type": "marquee",
-      "settings": {
-        "movement_direction": "reverse",
-        "background_color": "#0b0b0b",
-        "padding-block-start": 10,
-        "padding-block-end": 10,
-        "gap_between_elements": 56
-      },
-      "blocks": {
-        "text_005v": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Free shipping on qualifying orders</p>",
-            "width": "fit-content",
-            "type_preset": "custom",
-            "font_size": "0.75rem",
-            "case": "uppercase",
-            "letter_spacing": "loose",
-            "text_color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "text_005w": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Made to measure at no extra cost</p>",
-            "width": "fit-content",
-            "type_preset": "custom",
-            "font_size": "0.75rem",
-            "case": "uppercase",
-            "letter_spacing": "loose",
-            "text_color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "text_005x": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Worldwide delivery</p>",
-            "width": "fit-content",
-            "type_preset": "custom",
-            "font_size": "0.75rem",
-            "case": "uppercase",
-            "letter_spacing": "loose",
-            "text_color": "#ffffff"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_005v",
-        "text_005w",
-        "text_005x"
-      ],
-      "disabled": true
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -143,7 +86,6 @@
     }
   },
   "order": [
-    "announcement_marquee",
     "header_section",
     "countdown_bar"
   ]
