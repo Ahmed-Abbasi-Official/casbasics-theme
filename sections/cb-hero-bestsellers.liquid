@@ -1,0 +1,331 @@
+{%- liquid
+  assign veil = section.settings.overlay_opacity | divided_by: 100.0
+  assign has_mobile = false
+  if section.settings.image_mobile != blank
+    assign has_mobile = true
+  endif
+  assign panel_collection = section.settings.collection
+  assign show_panel = false
+  if section.settings.show_panel
+    assign show_panel = true
+  endif
+-%}
+
+<cb-hero-panel
+  class="cb-hero cb-hero--h-{{ section.settings.height }} cb-hero--panel-{{ section.settings.panel_position }} cb-hero--{{ section.settings.panel_style | default: 'light' }}"
+  data-section-id="{{ section.id }}"
+  {% if section.settings.start_collapsed %}
+    data-start-collapsed
+  {% endif %}
+  style="--cb-veil: {{ veil }};{% if section.settings.text_color != blank %} --cb-fg: {{ section.settings.text_color }};{% endif %}"
+>
+  <div class="cb-hero__bg">
+    {%- if section.settings.image != blank -%}
+      {%- liquid
+        assign img_class = 'cb-hero__img'
+        if has_mobile
+          assign img_class = 'cb-hero__img cb-hero__img--has-mobile'
+        endif
+      -%}
+      {{
+        section.settings.image
+        | image_url: width: 3200
+        | image_tag: class: img_class, loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 2000, 2600, 3200'
+      }}
+      {%- if has_mobile -%}
+        {{
+          section.settings.image_mobile
+          | image_url: width: 1400
+          | image_tag: class: 'cb-hero__img--mobile', loading: 'eager', sizes: '100vw', widths: '450, 750, 1100, 1400'
+        }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="cb-hero__veil"></div>
+
+  <div class="cb-hero__inner cb-container">
+    <div class="cb-hero__copy">
+      {%- if section.settings.kicker != blank -%}
+        <span class="cb-hero__kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="cb-hero__title">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="cb-hero__text cb-rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank or section.settings.button_label_2 != blank -%}
+        <div class="cb-buttons">
+          {%- if section.settings.button_label != blank -%}
+            <a class="cb-btn cb-btn--light" href="{{ section.settings.button_link | default: '#' }}">
+              {{- section.settings.button_label -}}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.button_label_2 != blank -%}
+            <a class="cb-btn cb-btn--outline" href="{{ section.settings.button_link_2 | default: '#' }}">
+              {{- section.settings.button_label_2 -}}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if show_panel -%}
+      <aside class="cb-hero__panel" data-panel aria-labelledby="CbHeroPanel-{{ section.id }}">
+        <div class="cb-hero__panel-head">
+          <h2 class="cb-hero__panel-title" id="CbHeroPanel-{{ section.id }}">{{ section.settings.panel_title }}</h2>
+          <button
+            type="button"
+            class="cb-hero__toggle"
+            data-panel-toggle
+            aria-expanded="true"
+            aria-label="Collapse {{ section.settings.panel_title | escape }}"
+            data-label-collapse="Collapse {{ section.settings.panel_title | escape }}"
+            data-label-expand="Expand {{ section.settings.panel_title | escape }}"
+          >
+            {%- render 'cb-icon', icon: 'chevron-down' -%}
+          </button>
+        </div>
+
+        <ul class="cb-hero__list" role="list">
+          {%- if panel_collection != blank and panel_collection.products_count > 0 -%}
+            {%- for product in panel_collection.products limit: section.settings.limit -%}
+              {%- if section.settings.panel_style == 'glass' -%}
+                <li class="cb-hero__item cb-hero__item--row">
+                  <a class="cb-media cb-hero__thumb" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+                    {%- if product.featured_media -%}
+                      {{
+                        product.featured_media
+                        | image_url: width: 160
+                        | image_tag: loading: 'lazy', sizes: '56px', widths: '112, 160', alt: product.title
+                      }}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </a>
+                  <div class="cb-hero__item-info">
+                    <a class="cb-hero__item-title" href="{{ product.url }}">{{ product.title }}</a>
+                    {%- if product.available -%}
+                      <div class="cb-hero__item-price">{{ product.price | money }}</div>
+                    {%- else -%}
+                      <div class="cb-hero__item-soldout">{{ 'products.product.sold_out' | t }}</div>
+                    {%- endif -%}
+                  </div>
+                  {%- if product.available == false -%}
+                    <span class="cb-hero__cart" aria-hidden="true">{%- render 'cb-icon', icon: 'cart' -%}</span>
+                  {%- elsif product.has_only_default_variant -%}
+                    <cb-quick-add
+                      id="CbQuickAdd-{{ section.id }}-{{ product.id }}"
+                      data-product-id="{{ product.id }}"
+                      data-text-added="{{ 'actions.added' | t | escape }}"
+                      data-text-error="Something went wrong, please try again"
+                    >
+                      {%- form 'product', product, class: 'cb-hero__cart-form', novalidate: 'novalidate' -%}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button
+                          type="submit"
+                          class="cb-hero__cart"
+                          data-add-button
+                          aria-label="{{ 'actions.add_to_cart' | t | escape }}: {{ product.title | escape }}"
+                        >
+                          {%- render 'cb-icon', icon: 'cart' -%}
+                        </button>
+                        <span class="cb-visually-hidden" data-add-status role="status" aria-live="polite"></span>
+                      {%- endform -%}
+                    </cb-quick-add>
+                  {%- else -%}
+                    {%- comment -%} Size and length must be chosen first, so the cart button opens the product {%- endcomment -%}
+                    <a class="cb-hero__cart" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+                      {%- render 'cb-icon', icon: 'cart' -%}
+                    </a>
+                  {%- endif -%}
+                </li>
+                {%- continue -%}
+              {%- endif -%}
+              <li class="cb-hero__item">
+                <a class="cb-media cb-hero__thumb" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+                  {%- if product.featured_media -%}
+                    {{
+                      product.featured_media
+                      | image_url: width: 240
+                      | image_tag: loading: 'lazy', sizes: '72px', widths: '144, 240', alt: product.title
+                    }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </a>
+                <div>
+                  <a class="cb-hero__item-title" href="{{ product.url }}">{{ product.title }}</a>
+                  <div class="cb-hero__item-price">
+                    {{- product.price | money -}}
+                    {%- if product.compare_at_price > product.price -%}
+                      <s>{{ product.compare_at_price | money }}</s>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if product.available -%}
+                    {%- assign first_available = product.selected_or_first_available_variant -%}
+                    <cb-quick-add
+                      id="CbQuickAdd-{{ section.id }}-{{ product.id }}"
+                      data-product-id="{{ product.id }}"
+                      data-text-add="{{ 'actions.add_to_cart' | t | escape }}"
+                      data-text-sold-out="{{ 'products.product.sold_out' | t | escape }}"
+                      data-text-unavailable="{{ 'products.product.unavailable' | t | escape }}"
+                      data-text-added="{{ 'actions.added' | t | escape }}"
+                      data-text-error="Something went wrong, please try again"
+                    >
+                      {%- form 'product', product, class: 'cb-hero__form', novalidate: 'novalidate' -%}
+                        <input type="hidden" name="id" value="{{ first_available.id }}">
+                        <input type="hidden" name="quantity" value="1">
+
+                        {%- unless product.has_only_default_variant -%}
+                          {%- for option in product.options_with_values -%}
+                            <label class="cb-visually-hidden" for="CbOpt-{{ section.id }}-{{ product.id }}-{{ forloop.index0 }}">
+                              {{- option.name -}}
+                            </label>
+                            <select
+                              class="cb-hero__select"
+                              id="CbOpt-{{ section.id }}-{{ product.id }}-{{ forloop.index0 }}"
+                              data-option-index="{{ forloop.index0 }}"
+                            >
+                              {%- for value in option.values -%}
+                                <option
+                                  value="{{ value | escape }}"
+                                  {% if option.selected_value == value %}
+                                    selected
+                                  {% endif %}
+                                >
+                                  {{- option.name }}: {{ value -}}
+                                </option>
+                              {%- endfor -%}
+                            </select>
+                          {%- endfor -%}
+                          <script type="application/json" data-variants>
+                            [
+                              {%- for variant in product.variants -%}
+                                { "id": {{ variant.id }}, "available": {{ variant.available | json }}, "options": {{ variant.options | json }} }{% unless forloop.last %},{% endunless %}
+                              {%- endfor -%}
+                            ]
+                          </script>
+                        {%- endunless -%}
+
+                        <button type="submit" class="cb-btn cb-btn--solid cb-btn--small cb-hero__add" data-add-button>
+                          {{- 'actions.add_to_cart' | t -}}
+                        </button>
+                        <p class="cb-hero__status" data-add-status role="status" aria-live="polite"></p>
+                      {%- endform -%}
+                    </cb-quick-add>
+                  {%- else -%}
+                    <p class="cb-hero__status">{{ 'products.product.sold_out' | t }}</p>
+                  {%- endif -%}
+                </div>
+              </li>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for i in (1..3) -%}
+              <li class="cb-hero__item">
+                <span class="cb-media cb-hero__thumb">
+                  {%- assign placeholder_name = 'product-' | append: i -%}
+                  {{ placeholder_name | placeholder_svg_tag: 'placeholder-svg' }}
+                </span>
+                <div>
+                  <span class="cb-hero__item-title">Product title</span>
+                  <div class="cb-hero__item-price">{{ 19900 | money }}</div>
+                </div>
+              </li>
+            {%- endfor -%}
+          {%- endif -%}
+        </ul>
+
+        {%- if section.settings.panel_style == 'glass' -%}
+          <div class="cb-hero__panel-foot cb-hero__panel-foot--row">
+            {%- if panel_collection != blank and section.settings.panel_link_label != blank -%}
+              <a class="cb-hero__view-all" href="{{ panel_collection.url }}">
+                {{- section.settings.panel_link_label -}}
+                {%- render 'cb-icon', icon: 'arrow-right' -%}
+              </a>
+            {%- endif -%}
+            <button
+              type="button"
+              class="cb-hero__toggle cb-hero__scroll"
+              data-panel-scroll
+              aria-label="Show more {{ section.settings.panel_title | escape }}"
+            >
+              {%- render 'cb-icon', icon: 'chevron-down' -%}
+            </button>
+          </div>
+        {%- elsif panel_collection != blank and section.settings.panel_link_label != blank -%}
+          <div class="cb-hero__panel-foot">
+            <a class="cb-btn cb-btn--outline cb-btn--small" href="{{ panel_collection.url }}">
+              {{- section.settings.panel_link_label -}}
+            </a>
+          </div>
+        {%- endif -%}
+      </aside>
+    {%- endif -%}
+  </div>
+</cb-hero-panel>
+
+{% schema %}
+{
+  "name": "Hero with best sellers",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Background" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Mobile image" },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "full", "label": "Full screen" }
+      ],
+      "default": "full"
+    },
+    { "type": "range", "id": "overlay_opacity", "label": "Bottom shade", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 35 },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#ffffff" },
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Timeless pieces, made to measure" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "button_label_2", "label": "Second button label" },
+    { "type": "url", "id": "button_link_2", "label": "Second button link" },
+    { "type": "header", "content": "Best sellers panel" },
+    { "type": "checkbox", "id": "show_panel", "label": "Show panel", "default": true },
+    { "type": "text", "id": "panel_title", "label": "Panel title", "default": "Best sellers" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "limit", "label": "Products", "min": 2, "max": 16, "step": 1, "default": 8 },
+    { "type": "text", "id": "panel_link_label", "label": "View all label", "default": "View all" },
+    {
+      "type": "select",
+      "id": "panel_position",
+      "label": "Panel position",
+      "options": [
+        { "value": "right", "label": "Right" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "panel_style",
+      "label": "Panel style",
+      "options": [
+        { "value": "light", "label": "Light card with size pickers" },
+        { "value": "glass", "label": "Dark glass, compact rows" }
+      ],
+      "default": "light"
+    },
+    { "type": "checkbox", "id": "start_collapsed", "label": "Start collapsed", "default": false }
+  ],
+  "presets": [{ "name": "Hero with best sellers" }]
+}
+{% endschema %}

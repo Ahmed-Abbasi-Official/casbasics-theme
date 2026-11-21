@@ -1,0 +1,59 @@
+{%- doc -%}
+  Sticky bar above the collection grid: breadcrumbs, a "Sort by" menu (plain links, one radio per
+  option) and the product count. Used by main-collection when "Toolbar" is set to "Breadcrumbs, sort and count".
+
+  @param {object} collection - The collection being shown
+  @param {object} section - The main-collection section (for padding settings)
+{%- enddoc -%}
+
+{%- liquid
+  assign current_sort = collection.sort_by | default: collection.default_sort_by
+  assign count = collection.products_count
+  if count == 1
+    assign count_label = 'content.search_results_resource_products_count.one' | t: count: count
+  else
+    assign count_label = 'content.search_results_resource_products_count.other' | t: count: count
+  endif
+-%}
+
+<div
+  class="cb-col-toolbar"
+  style="--cb-toolbar-pad-start: {{ section.settings.padding-inline-start }}px; --cb-toolbar-pad-end: {{ section.settings.padding-inline-end }}px;"
+>
+  <nav class="cb-col-toolbar__crumbs" aria-label="Breadcrumb">
+    <ol role="list">
+      <li><a href="{{ routes.root_url }}">{{ 'accessibility.link_to_home' | t }}</a></li>
+      <li><a href="{{ routes.collections_url }}">{{ 'content.search_results_resource_collections' | t }}</a></li>
+      <li aria-current="page">{{ collection.title }}</li>
+    </ol>
+  </nav>
+
+  <div class="cb-col-toolbar__row">
+    {%- if collection.sort_options.size > 0 -%}
+      <details class="cb-sort">
+        <summary class="cb-sort__summary">
+          Sort by
+          <span class="svg-wrapper cb-sort__caret" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+        </summary>
+        <ul class="cb-sort__menu" role="list">
+          {%- for option in collection.sort_options -%}
+            <li>
+              <a
+                class="cb-sort__option"
+                href="{{ collection.url }}?sort_by={{ option.value }}"
+                {% if option.value == current_sort %}
+                  aria-current="true"
+                {% endif %}
+              >
+                <span class="cb-sort__radio" aria-hidden="true"></span>
+                {{- option.name -}}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </details>
+    {%- endif -%}
+
+    <span class="cb-col-toolbar__count" role="status">{{ count_label }}</span>
+  </div>
+</div>

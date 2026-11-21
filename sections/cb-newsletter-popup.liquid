@@ -1,0 +1,108 @@
+{%- if section.settings.enable -%}
+  {%- liquid
+    assign form_id = 'CbPopupForm-' | append: section.id
+  -%}
+  <cb-popup
+    class="cb-popup"
+    data-section-id="{{ section.id }}"
+    data-delay="{{ section.settings.delay }}"
+    data-days="{{ section.settings.frequency }}"
+    {% unless section.settings.show_on_mobile %}
+      data-desktop-only
+    {% endunless %}
+    aria-hidden="true"
+    style="{% render 'cb-section-style', settings: section.settings %}"
+  >
+    {%- form 'customer', id: form_id -%}
+      {%- if form.posted_successfully? -%}
+        <span hidden data-cb-popup-submitted></span>
+      {%- endif -%}
+      <div
+        class="cb-popup__dialog{% if section.settings.image != blank %} cb-popup__dialog--image{% endif %}"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="CbPopupHeading-{{ section.id }}"
+      >
+        <button type="button" class="cb-popup__close" data-popup-close aria-label="{{ 'actions.close' | t | escape }}">
+          {%- render 'cb-icon', icon: 'close' -%}
+        </button>
+
+        {%- if section.settings.image != blank -%}
+          <div class="cb-media cb-popup__media">
+            {{ section.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 410px, 100vw' }}
+          </div>
+        {%- endif -%}
+
+        <div class="cb-popup__body">
+          {%- if section.settings.subheading != blank -%}
+            <span class="cb-subheading">{{ section.settings.subheading }}</span>
+          {%- endif -%}
+          <h2 class="cb-heading" id="CbPopupHeading-{{ section.id }}">{{ section.settings.heading }}</h2>
+          {%- if section.settings.text != blank -%}
+            <div class="cb-rte" style="margin-top: 12px;">{{ section.settings.text }}</div>
+          {%- endif -%}
+
+          {%- if form.posted_successfully? -%}
+            <p class="cb-form-note" role="status">{{ section.settings.success_message }}</p>
+          {%- else -%}
+            <input type="hidden" name="contact[tags]" value="newsletter,popup">
+            <div class="cb-form-row">
+              <label class="cb-visually-hidden" for="CbPopupEmail-{{ section.id }}">Email</label>
+              <input
+                class="cb-input"
+                id="CbPopupEmail-{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                autocomplete="email"
+                required
+                placeholder="{{ section.settings.placeholder | escape }}"
+              >
+              <button type="submit" class="cb-btn cb-btn--solid">{{ section.settings.button_label }}</button>
+            </div>
+            {%- if form.errors -%}
+              <p class="cb-form-note" role="alert">{{ form.errors | default_errors }}</p>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endform -%}
+  </cb-popup>
+
+  {%- comment -%} Open the popup again after a submit so the shopper sees the result {%- endcomment -%}
+  <script>
+    (function () {
+      var marker = document.querySelector('#shopify-section-{{ section.id }} [data-cb-popup-submitted]');
+      if (marker) marker.closest('cb-popup').setAttribute('data-submitted', '');
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Newsletter popup",
+  "tag": "section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Enable popup", "default": true },
+    { "type": "range", "id": "delay", "label": "Show after (seconds)", "min": 1, "max": 60, "step": 1, "default": 6 },
+    { "type": "range", "id": "frequency", "label": "Show again after (days)", "min": 1, "max": 60, "step": 1, "default": 7 },
+    { "type": "checkbox", "id": "show_on_mobile", "label": "Show on mobile", "default": true },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Newsletter" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A little something to get you started" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Stay up to date with new collections, products and exclusive offers.</p>"
+    },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Your email" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks for subscribing!" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#f0eee9" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#0b0b0b" }
+  ],
+  "presets": [{ "name": "Newsletter popup" }]
+}
+{% endschema %}

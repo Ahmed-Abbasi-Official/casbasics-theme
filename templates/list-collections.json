@@ -1,0 +1,395 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "tiles_main": {
+      "type": "cb-collection-tiles",
+      "settings": {
+        "heading": "Explore our collection",
+        "heading_alignment": "left",
+        "columns": 6,
+        "mobile_layout": "two",
+        "image_ratio": "portrait",
+        "title_position": "below",
+        "corner_radius": 0,
+        "gap": 16,
+        "full_width": false,
+        "anchor": "",
+        "limit": 12,
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "collection_001r": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-in",
+            "title": ""
+          }
+        },
+        "collection_001s": {
+          "type": "collection",
+          "settings": {
+            "collection": "premium-abaya",
+            "title": ""
+          }
+        },
+        "collection_001t": {
+          "type": "collection",
+          "settings": {
+            "collection": "printed-abaya",
+            "title": ""
+          }
+        },
+        "collection_001u": {
+          "type": "collection",
+          "settings": {
+            "collection": "ready-to-wear-abayas",
+            "title": ""
+          }
+        },
+        "collection_001v": {
+          "type": "collection",
+          "settings": {
+            "collection": "lace-abaya",
+            "title": ""
+          }
+        },
+        "collection_001w": {
+          "type": "collection",
+          "settings": {
+            "collection": "pleated-abayas",
+            "title": ""
+          }
+        },
+        "collection_001x": {
+          "type": "collection",
+          "settings": {
+            "collection": "work-abayas-professional-office-wear",
+            "title": ""
+          }
+        },
+        "collection_001y": {
+          "type": "collection",
+          "settings": {
+            "collection": "travel-wear",
+            "title": ""
+          }
+        },
+        "collection_001z": {
+          "type": "collection",
+          "settings": {
+            "collection": "under-abaya-dress",
+            "title": ""
+          }
+        },
+        "collection_0020": {
+          "type": "collection",
+          "settings": {
+            "collection": "embroidered-abaya",
+            "title": ""
+          }
+        },
+        "collection_0021": {
+          "type": "collection",
+          "settings": {
+            "collection": "bisht-abaya",
+            "title": ""
+          }
+        },
+        "collection_0022": {
+          "type": "collection",
+          "settings": {
+            "collection": "hajj-and-umrah-abayas",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_001r",
+        "collection_001s",
+        "collection_001t",
+        "collection_001u",
+        "collection_001v",
+        "collection_001w",
+        "collection_001x",
+        "collection_001y",
+        "collection_001z",
+        "collection_0020",
+        "collection_0021",
+        "collection_0022"
+      ]
+    },
+    "tiles_colour": {
+      "type": "cb-collection-tiles",
+      "settings": {
+        "heading": "Explore by colour",
+        "heading_alignment": "left",
+        "columns": 6,
+        "mobile_layout": "carousel",
+        "image_ratio": "portrait",
+        "title_position": "below",
+        "corner_radius": 0,
+        "gap": 16,
+        "full_width": false,
+        "anchor": "",
+        "limit": 12,
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "collection_0023": {
+          "type": "collection",
+          "settings": {
+            "collection": "black-abaya",
+            "title": ""
+          }
+        },
+        "collection_0024": {
+          "type": "collection",
+          "settings": {
+            "collection": "maroon-abaya",
+            "title": ""
+          }
+        },
+        "collection_0025": {
+          "type": "collection",
+          "settings": {
+            "collection": "blue-abayas",
+            "title": ""
+          }
+        },
+        "collection_0026": {
+          "type": "collection",
+          "settings": {
+            "collection": "brown-abaya",
+            "title": ""
+          }
+        },
+        "collection_0027": {
+          "type": "collection",
+          "settings": {
+            "collection": "purple-abaya",
+            "title": ""
+          }
+        },
+        "collection_0028": {
+          "type": "collection",
+          "settings": {
+            "collection": "orange-abaya",
+            "title": ""
+          }
+        },
+        "collection_0029": {
+          "type": "collection",
+          "settings": {
+            "collection": "green-abaya",
+            "title": ""
+          }
+        },
+        "collection_002a": {
+          "type": "collection",
+          "settings": {
+            "collection": "white-abaya",
+            "title": ""
+          }
+        },
+        "collection_002b": {
+          "type": "collection",
+          "settings": {
+            "collection": "beige-abaya",
+            "title": ""
+          }
+        },
+        "collection_002c": {
+          "type": "collection",
+          "settings": {
+            "collection": "pink-abayas",
+            "title": ""
+          }
+        },
+        "collection_002d": {
+          "type": "collection",
+          "settings": {
+            "collection": "yellow-abaya",
+            "title": ""
+          }
+        },
+        "collection_002e": {
+          "type": "collection",
+          "settings": {
+            "collection": "grey-abaya",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_0023",
+        "collection_0024",
+        "collection_0025",
+        "collection_0026",
+        "collection_0027",
+        "collection_0028",
+        "collection_0029",
+        "collection_002a",
+        "collection_002b",
+        "collection_002c",
+        "collection_002d",
+        "collection_002e"
+      ]
+    },
+    "tiles_fabric": {
+      "type": "cb-collection-tiles",
+      "settings": {
+        "heading": "Explore by fabric",
+        "heading_alignment": "left",
+        "columns": 4,
+        "mobile_layout": "carousel",
+        "image_ratio": "portrait",
+        "title_position": "below",
+        "corner_radius": 0,
+        "gap": 16,
+        "full_width": false,
+        "anchor": "",
+        "limit": 12,
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "collection_002f": {
+          "type": "collection",
+          "settings": {
+            "collection": "nada",
+            "title": ""
+          }
+        },
+        "collection_002g": {
+          "type": "collection",
+          "settings": {
+            "collection": "turkish-cupro",
+            "title": ""
+          }
+        },
+        "collection_002h": {
+          "type": "collection",
+          "settings": {
+            "collection": "jacquard-abaya",
+            "title": ""
+          }
+        },
+        "collection_002i": {
+          "type": "collection",
+          "settings": {
+            "collection": "crepe-abaya",
+            "title": ""
+          }
+        },
+        "collection_002j": {
+          "type": "collection",
+          "settings": {
+            "collection": "dantel-abaya",
+            "title": ""
+          }
+        },
+        "collection_002k": {
+          "type": "collection",
+          "settings": {
+            "collection": "linen-abaya",
+            "title": ""
+          }
+        },
+        "collection_002l": {
+          "type": "collection",
+          "settings": {
+            "collection": "velvet-abaya",
+            "title": ""
+          }
+        },
+        "collection_002m": {
+          "type": "collection",
+          "settings": {
+            "collection": "tweed-abaya",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_002f",
+        "collection_002g",
+        "collection_002h",
+        "collection_002i",
+        "collection_002j",
+        "collection_002k",
+        "collection_002l",
+        "collection_002m"
+      ]
+    },
+    "tiles_essentials": {
+      "type": "cb-collection-tiles",
+      "settings": {
+        "heading": "Essentials",
+        "heading_alignment": "left",
+        "columns": 4,
+        "mobile_layout": "carousel",
+        "image_ratio": "portrait",
+        "title_position": "below",
+        "corner_radius": 0,
+        "gap": 16,
+        "full_width": false,
+        "anchor": "",
+        "limit": 12,
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "collection_002n": {
+          "type": "collection",
+          "settings": {
+            "collection": "inner-abaya-dress",
+            "title": ""
+          }
+        },
+        "collection_002o": {
+          "type": "collection",
+          "settings": {
+            "collection": "abaya-sheila",
+            "title": ""
+          }
+        },
+        "collection_002p": {
+          "type": "collection",
+          "settings": {
+            "collection": "kaftan",
+            "title": ""
+          }
+        },
+        "collection_002q": {
+          "type": "collection",
+          "settings": {
+            "collection": "abaya-cover",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_002n",
+        "collection_002o",
+        "collection_002p",
+        "collection_002q"
+      ]
+    }
+  },
+  "order": [
+    "tiles_main",
+    "tiles_colour",
+    "tiles_fabric",
+    "tiles_essentials"
+  ]
+}

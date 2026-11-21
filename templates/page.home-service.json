@@ -1,0 +1,321 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "cb-image-with-text",
+      "settings": {
+        "image_position": "left",
+        "image_width": "52",
+        "image_height": "560",
+        "boxed": false,
+        "compact_text": true,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "accent_color": "#6c0013",
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "subheading_hs1": {
+          "type": "subheading",
+          "settings": {
+            "text": "By appointment"
+          }
+        },
+        "heading_hs1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Home service",
+            "size": "caps",
+            "show_line": false
+          }
+        },
+        "text_hs1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A CAS stylist comes to your home with 120 abayas. You choose in private, and each piece is made to your measurements.</p>",
+            "size": "normal"
+          }
+        },
+        "button_hs1": {
+          "type": "button",
+          "settings": {
+            "label": "Request a home appointment",
+            "link": "https://wa.me/971585959872",
+            "style": "solid",
+            "shape": "pill",
+            "icon": "chat"
+          }
+        },
+        "text_hs2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Complimentary · For orders of five abayas or more</p>",
+            "size": "note"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_hs1",
+        "heading_hs1",
+        "text_hs1",
+        "button_hs1",
+        "text_hs2"
+      ]
+    },
+    "visit": {
+      "type": "cb-feature-list",
+      "settings": {
+        "heading": "The visit",
+        "layout": "list",
+        "columns": 3,
+        "gap": 40,
+        "accent_color": "#6c0013",
+        "padding_top": 80,
+        "padding_bottom": 56
+      },
+      "blocks": {
+        "item_visit_1": {
+          "type": "item",
+          "settings": {
+            "icon": "rack",
+            "title": "120 abayas come to you",
+            "text": "Including this week's new designs"
+          }
+        },
+        "item_visit_2": {
+          "type": "item",
+          "settings": {
+            "icon": "heart",
+            "title": "Chosen around your taste",
+            "text": "Tell us the styles you love and we bring more of them"
+          }
+        },
+        "item_visit_3": {
+          "type": "item",
+          "settings": {
+            "icon": "home",
+            "title": "Try everything on in private",
+            "text": "At your own pace, in your own home"
+          }
+        },
+        "item_visit_4": {
+          "type": "item",
+          "settings": {
+            "icon": "ruler",
+            "title": "Made to your measurements",
+            "text": "With customisation included when you order"
+          }
+        },
+        "item_visit_5": {
+          "type": "item",
+          "settings": {
+            "icon": "gift",
+            "title": "The visit is complimentary",
+            "text": "Appointments are arranged for orders of five abayas or more"
+          }
+        },
+        "item_visit_6": {
+          "type": "item",
+          "settings": {
+            "icon": "calendar",
+            "title": "Delivered within 15–21 working days",
+            "text": "Every piece made to order, then brought to your door"
+          }
+        }
+      },
+      "block_order": [
+        "item_visit_1",
+        "item_visit_2",
+        "item_visit_3",
+        "item_visit_4",
+        "item_visit_5",
+        "item_visit_6"
+      ]
+    },
+    "how": {
+      "type": "cb-feature-list",
+      "settings": {
+        "heading": "How it works",
+        "layout": "steps",
+        "columns": 4,
+        "gap": 26,
+        "accent_color": "#6c0013",
+        "background_color": "#e7e4e1",
+        "padding_top": 64,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "item_step_1": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "title": "Message us on WhatsApp",
+            "text": "We reply within minutes, 10 am to 10 pm."
+          }
+        },
+        "item_step_2": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "title": "Choose your date",
+            "text": "And tell us the styles you like, so we can bring more of them."
+          }
+        },
+        "item_step_3": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "title": "Your stylist arrives with 120 abayas",
+            "text": "Try them on, choose, and we take your measurements."
+          }
+        },
+        "item_step_4": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "title": "Made for you and delivered",
+            "text": "Within 15–21 working days of your appointment."
+          }
+        }
+      },
+      "block_order": [
+        "item_step_1",
+        "item_step_2",
+        "item_step_3",
+        "item_step_4"
+      ]
+    },
+    "family": {
+      "type": "cb-callout",
+      "settings": {
+        "icon": "users",
+        "title": "Better with Family & Friends",
+        "text": "Family & Friends to join. Each of them chooses her own pieces and is measured too.",
+        "box_color": "#f8f7f5",
+        "accent_color": "#6c0013",
+        "padding_top": 80,
+        "padding_bottom": 40
+      }
+    },
+    "faq": {
+      "type": "cb-accordions",
+      "settings": {
+        "heading": "Questions",
+        "text": "",
+        "layout": "stacked",
+        "heading_alignment": "left",
+        "width": "slim",
+        "icon": "chevron",
+        "heading_style": "caps",
+        "open_first": false,
+        "faq_schema": true,
+        "padding_top": 40,
+        "padding_bottom": 80
+      },
+      "blocks": {
+        "item_hsq_1": {
+          "type": "item",
+          "settings": {
+            "question": "Is the home visit free?",
+            "answer": "<p>Yes. The visit is complimentary for orders of five abayas or more.</p>"
+          }
+        },
+        "item_hsq_2": {
+          "type": "item",
+          "settings": {
+            "question": "Which areas do you cover?",
+            "answer": "<p>Message us on WhatsApp with your area and we will confirm availability.</p>"
+          }
+        },
+        "item_hsq_3": {
+          "type": "item",
+          "settings": {
+            "question": "When will my abayas arrive?",
+            "answer": "<p>Every piece is made to order and delivered within 15–21 working days of your appointment.</p>"
+          }
+        },
+        "item_hsq_4": {
+          "type": "item",
+          "settings": {
+            "question": "How do I pay?",
+            "answer": "<p>Your stylist confirms the payment options when you book. We accept Visa, American Express, Mastercard and Tabby, and cash on delivery is available in the UAE.</p>"
+          }
+        },
+        "item_hsq_5": {
+          "type": "item",
+          "settings": {
+            "question": "What if I'd like a change after delivery?",
+            "answer": "<p>Message us on WhatsApp and our team will help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_hsq_1",
+        "item_hsq_2",
+        "item_hsq_3",
+        "item_hsq_4",
+        "item_hsq_5"
+      ]
+    },
+    "cta": {
+      "type": "cb-text",
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "background_color": "#0b0b0b",
+        "text_color": "#ffffff",
+        "padding_top": 76,
+        "padding_bottom": 72
+      },
+      "blocks": {
+        "subheading_cta": {
+          "type": "subheading",
+          "settings": {
+            "text": "By appointment"
+          }
+        },
+        "heading_cta": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your next abayas, chosen at home.",
+            "size": "xsmall",
+            "show_line": false
+          }
+        },
+        "button_cta": {
+          "type": "button",
+          "settings": {
+            "label": "Request a home appointment",
+            "link": "https://wa.me/971585959872",
+            "style": "light",
+            "size": "medium",
+            "shape": "pill",
+            "icon": "chat"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_cta",
+        "heading_cta",
+        "button_cta"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "visit",
+    "how",
+    "family",
+    "faq",
+    "cta"
+  ]
+}
