@@ -12,8 +12,10 @@
     "hero_bestsellers": {
       "type": "cb-hero-bestsellers",
       "settings": {
+        "image": "shopify://shop_images/Gemini_Generated_Image_jd1zgejd1zgejd1z.jpg",
+        "image_mobile": "shopify://shop_images/Gemini_Generated_Image_fddat8fddat8fdda.jpg",
         "height": "large",
-        "overlay_opacity": 0,
+        "overlay_opacity": 5,
         "text_color": "#ffffff",
         "kicker": "",
         "heading": "",
@@ -28,8 +30,8 @@
         "limit": 8,
         "panel_link_label": "View all",
         "panel_position": "right",
-        "start_collapsed": false,
-        "panel_style": "glass"
+        "panel_style": "glass",
+        "start_collapsed": false
       }
     },
     "featured_seasonal": {
@@ -55,11 +57,13 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -82,6 +86,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -99,6 +104,10 @@
                 "label": "Browse",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -118,9 +127,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 4,
@@ -136,6 +147,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 8,
@@ -158,6 +170,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -183,6 +196,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -214,70 +228,66 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 30,
+        "background_color": "",
         "padding-block-start": 60,
         "padding-block-end": 40
       }
     },
     "tiles_featured": {
       "type": "cb-collection-tiles",
-      "settings": {
-        "heading": "Explore our featured collection",
-        "heading_alignment": "center",
-        "columns": 6,
-        "mobile_layout": "two",
-        "image_ratio": "circle",
-        "title_position": "center",
-        "overlay_opacity": 30,
-        "corner_radius": 0,
-        "gap": 16,
-        "full_width": true,
-        "anchor": "",
-        "limit": 12,
-        "padding_top": 48,
-        "padding_bottom": 48,
-        "show_line": true
-      },
       "blocks": {
         "collection_0001": {
           "type": "collection",
           "settings": {
             "collection": "new-in",
-            "title": "New In"
+            "swatch": "",
+            "title": "New In",
+            "link": ""
           }
         },
         "collection_0002": {
           "type": "collection",
           "settings": {
             "collection": "black-abaya",
-            "title": "Black"
+            "swatch": "",
+            "title": "Black",
+            "link": ""
           }
         },
         "collection_0003": {
           "type": "collection",
           "settings": {
             "collection": "printed-abaya-1",
-            "title": "Printed"
+            "swatch": "",
+            "title": "Printed",
+            "link": ""
           }
         },
         "collection_0004": {
           "type": "collection",
           "settings": {
             "collection": "luxury-abaya",
-            "title": "Premium"
+            "swatch": "",
+            "title": "Premium",
+            "link": ""
           }
         },
         "collection_0005": {
           "type": "collection",
           "settings": {
             "collection": "under-abaya-dress",
-            "title": "Dress"
+            "swatch": "",
+            "title": "Dress",
+            "link": ""
           }
         },
         "collection_0006": {
           "type": "collection",
           "settings": {
             "collection": "abaya-sheila",
-            "title": "Sheila"
+            "swatch": "",
+            "title": "Sheila",
+            "link": ""
           }
         }
       },
@@ -288,21 +298,33 @@
         "collection_0004",
         "collection_0005",
         "collection_0006"
-      ]
+      ],
+      "settings": {
+        "heading": "Explore our featured collection",
+        "heading_size": "medium",
+        "heading_alignment": "center",
+        "show_line": true,
+        "limit": 12,
+        "columns": 6,
+        "mobile_layout": "two",
+        "image_ratio": "circle",
+        "title_position": "center",
+        "overlay_opacity": 30,
+        "title_style": "caps",
+        "link_text": "Shop",
+        "corner_radius": 0,
+        "gap": 16,
+        "full_width": true,
+        "max_width": "page",
+        "anchor": "",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     },
     "press": {
       "type": "cb-press",
-      "settings": {
-        "heading": "Featured in",
-        "autoplay": 6,
-        "logo_height": 36,
-        "rounded": false,
-        "box_color": "rgba(0,0,0,0)",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "layout": "band",
-        "background_color": "#e7e4e1"
-      },
       "blocks": {
         "quote_0007": {
           "type": "quote",
@@ -320,7 +342,8 @@
             "publication": "Publication two",
             "quote": "<p>Each timeless piece is handcrafted using the most premium materials available and valued craftsmanship.</p>",
             "source": "",
-            "link_label": "Read more →"
+            "link_label": "Read more →",
+            "link": ""
           }
         },
         "quote_0009": {
@@ -329,7 +352,8 @@
             "publication": "Publication three",
             "quote": "<p>Beauty lies in the intersection of tradition and modernity — and this label lives right there.</p>",
             "source": "",
-            "link_label": "Read more →"
+            "link_label": "Read more →",
+            "link": ""
           }
         }
       },
@@ -337,68 +361,75 @@
         "quote_0007",
         "quote_0008",
         "quote_0009"
-      ]
+      ],
+      "settings": {
+        "heading": "Featured in",
+        "autoplay": 6,
+        "logo_height": 36,
+        "layout": "band",
+        "rounded": false,
+        "box_color": "rgba(0,0,0,0)",
+        "background_color": "#e7e4e1",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "tiles_fabric": {
       "type": "cb-collection-tiles",
-      "settings": {
-        "heading": "Explore our Abaya Collection by Fabric",
-        "heading_alignment": "center",
-        "show_line": true,
-        "columns": 6,
-        "mobile_layout": "two",
-        "image_ratio": "circle",
-        "title_position": "center",
-        "overlay_opacity": 30,
-        "corner_radius": 0,
-        "gap": 16,
-        "full_width": true,
-        "anchor": "",
-        "limit": 12,
-        "padding_top": 48,
-        "padding_bottom": 48
-      },
       "blocks": {
         "collection_000a": {
           "type": "collection",
           "settings": {
             "collection": "nada",
-            "title": "Nada"
+            "swatch": "",
+            "title": "Nada",
+            "link": ""
           }
         },
         "collection_000b": {
           "type": "collection",
           "settings": {
             "collection": "jacquard-abaya",
-            "title": "Jacquard"
+            "swatch": "",
+            "title": "Jacquard",
+            "link": ""
           }
         },
         "collection_000c": {
           "type": "collection",
           "settings": {
             "collection": "crepe-abaya",
-            "title": "Crepe"
+            "swatch": "",
+            "title": "Crepe",
+            "link": ""
           }
         },
         "collection_000d": {
           "type": "collection",
           "settings": {
             "collection": "dantel-abaya",
-            "title": "Dantel"
+            "swatch": "",
+            "title": "Dantel",
+            "link": ""
           }
         },
         "collection_000e": {
           "type": "collection",
           "settings": {
             "collection": "satin-abaya",
-            "title": "Satin"
+            "swatch": "",
+            "title": "Satin",
+            "link": ""
           }
         },
         "collection_000f": {
           "type": "collection",
           "settings": {
             "collection": "linen-abaya",
-            "title": "Linen"
+            "swatch": "",
+            "title": "Linen",
+            "link": ""
           }
         }
       },
@@ -409,7 +440,30 @@
         "collection_000d",
         "collection_000e",
         "collection_000f"
-      ]
+      ],
+      "settings": {
+        "heading": "Explore our Abaya Collection by Fabric",
+        "heading_size": "medium",
+        "heading_alignment": "center",
+        "show_line": true,
+        "limit": 12,
+        "columns": 6,
+        "mobile_layout": "two",
+        "image_ratio": "circle",
+        "title_position": "center",
+        "overlay_opacity": 30,
+        "title_style": "caps",
+        "link_text": "Shop",
+        "corner_radius": 0,
+        "gap": 16,
+        "full_width": true,
+        "max_width": "page",
+        "anchor": "",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     },
     "featured_new": {
       "type": "product-list",
@@ -434,11 +488,13 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -461,6 +517,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -478,6 +535,10 @@
                 "label": "Shop now",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -497,9 +558,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 4,
@@ -515,6 +578,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 8,
@@ -537,6 +601,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -562,6 +627,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -593,6 +659,7 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 30,
+        "background_color": "",
         "padding-block-start": 60,
         "padding-block-end": 40
       }
@@ -620,11 +687,13 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -647,6 +716,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -664,6 +734,10 @@
                 "label": "Shop now",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -683,9 +757,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 4,
@@ -701,6 +777,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 8,
@@ -723,6 +800,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -748,6 +826,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -779,6 +858,7 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 30,
+        "background_color": "",
         "padding-block-start": 60,
         "padding-block-end": 40
       }
@@ -806,11 +886,13 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -833,6 +915,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -850,6 +933,10 @@
                 "label": "Shop now",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -869,9 +956,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 4,
@@ -887,6 +976,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 8,
@@ -909,6 +999,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -934,6 +1025,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -965,6 +1057,7 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 30,
+        "background_color": "",
         "padding-block-start": 60,
         "padding-block-end": 40
       }
@@ -992,11 +1085,13 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -1019,6 +1114,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -1036,6 +1132,10 @@
                 "label": "Shop now",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -1055,9 +1155,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 4,
@@ -1073,6 +1175,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 8,
@@ -1095,6 +1198,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -1120,6 +1224,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -1151,6 +1256,7 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 30,
+        "background_color": "",
         "padding-block-start": 60,
         "padding-block-end": 40
       }
@@ -1178,11 +1284,13 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -1205,6 +1313,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -1222,6 +1331,10 @@
                 "label": "Shop now",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -1241,9 +1354,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 4,
@@ -1259,6 +1374,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 8,
@@ -1281,6 +1397,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -1306,6 +1423,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -1337,18 +1455,13 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 30,
+        "background_color": "",
         "padding-block-start": 60,
         "padding-block-end": 40
       }
     },
     "text_story": {
       "type": "cb-text",
-      "settings": {
-        "width": "narrow",
-        "alignment": "center",
-        "padding_top": 100,
-        "padding_bottom": 60
-      },
       "blocks": {
         "subheading_000g": {
           "type": "subheading",
@@ -1377,7 +1490,8 @@
             "link": "shopify://pages/about-us",
             "style": "solid",
             "size": "small",
-            "shape": "rounded"
+            "shape": "rounded",
+            "icon": "none"
           }
         }
       },
@@ -1386,12 +1500,21 @@
         "heading_000h",
         "text_000i",
         "button_000j"
-      ]
+      ],
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 100,
+        "padding_bottom": 60
+      }
     },
     "overlapping": {
       "type": "cb-overlapping-images",
       "settings": {
         "layout": "left",
+        "images_style": "side",
         "rounded": false,
         "subheading": "",
         "heading": "Explore our Abaya Collection",
@@ -1400,25 +1523,13 @@
         "button_link": "shopify://collections/all",
         "alignment": "center",
         "background_color": "#e7e4e1",
+        "text_color": "",
         "padding_top": 60,
-        "padding_bottom": 60,
-        "images_style": "side"
+        "padding_bottom": 60
       }
     },
     "columns": {
       "type": "cb-columns",
-      "settings": {
-        "heading": "",
-        "show_line": false,
-        "columns": 3,
-        "gap": 20,
-        "image_ratio": "classic",
-        "show_placeholders": true,
-        "alignment": "left",
-        "carousel_mobile": false,
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
         "column_000k": {
           "type": "column",
@@ -1452,23 +1563,24 @@
         "column_000k",
         "column_000l",
         "column_000m"
-      ]
+      ],
+      "settings": {
+        "heading": "",
+        "show_line": false,
+        "columns": 3,
+        "gap": 20,
+        "image_ratio": "classic",
+        "show_placeholders": true,
+        "alignment": "left",
+        "carousel_mobile": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "icons_why": {
       "type": "cb-icons-row",
-      "settings": {
-        "heading": "Why Choose CAS Abaya?",
-        "text": "<p>If you are confused regarding your size, please head over to our size chart and easily choose your abaya dress size and length according to your body measurements and height. If you are still unsure and require further help, please do not hesitate to contact us. We are just a call or WhatsApp away.</p>",
-        "style": "borders",
-        "layout": "center",
-        "columns": 3,
-        "mobile_two_columns": false,
-        "icon_size": 44,
-        "show_numbers": false,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "background_color": "#e7e4e1"
-      },
       "blocks": {
         "item_why_1": {
           "type": "item",
@@ -1553,22 +1665,25 @@
         "item_why_7",
         "item_why_8",
         "item_why_9"
-      ]
-    },
-    "icons_values": {
-      "type": "cb-icons-row",
+      ],
       "settings": {
-        "heading": "",
-        "text": "",
-        "style": "plain",
+        "heading": "Why Choose CAS Abaya?",
+        "text": "<p>If you are confused regarding your size, please head over to our size chart and easily choose your abaya dress size and length according to your body measurements and height. If you are still unsure and require further help, please do not hesitate to contact us. We are just a call or WhatsApp away.</p>",
+        "style": "borders",
         "layout": "center",
         "columns": 3,
         "mobile_two_columns": false,
         "icon_size": 44,
         "show_numbers": false,
-        "padding_top": 48,
-        "padding_bottom": 48
-      },
+        "box_color": "",
+        "background_color": "#e7e4e1",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "icons_values": {
+      "type": "cb-icons-row",
       "blocks": {
         "item_000t": {
           "type": "item",
@@ -1600,16 +1715,25 @@
         "item_000u",
         "item_000v"
       ],
-      "disabled": true
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "text": "",
+        "style": "plain",
+        "layout": "center",
+        "columns": 3,
+        "mobile_two_columns": false,
+        "icon_size": 44,
+        "show_numbers": false,
+        "box_color": "",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     },
     "text_seo": {
       "type": "cb-text",
-      "settings": {
-        "width": "full",
-        "alignment": "center",
-        "padding_top": 60,
-        "padding_bottom": 20
-      },
       "blocks": {
         "subheading_000w": {
           "type": "subheading",
@@ -1636,25 +1760,26 @@
         "subheading_000w",
         "heading_000x",
         "text_000y"
-      ]
+      ],
+      "settings": {
+        "width": "full",
+        "alignment": "center",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 20
+      }
     },
     "locations": {
       "type": "cb-locations",
-      "settings": {
-        "subheading": "Our stores",
-        "heading": "Locations & hours",
-        "padding_top": 40,
-        "padding_bottom": 60,
-        "layout": "slider"
-      },
       "blocks": {
         "store_000z": {
           "type": "store",
           "settings": {
             "address": "7JQR+3FG - Bani Yas - East 9 - Baniyas Centre - Abu Dhabi",
             "hours": "<p>Mon - Sun: 10 AM–2 PM, 4–11 PM</p>",
-            "map_label": "View on Google Maps",
-            "map_link": "https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi"
+            "map_link": "https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi",
+            "map_label": "View on Google Maps"
           }
         },
         "store_0010": {
@@ -1662,24 +1787,27 @@
           "settings": {
             "address": "CAS Abaya Outlet - Ajman",
             "hours": "",
-            "map_label": "View on Google Maps",
-            "map_link": "https://www.google.com/maps/search/?api=1&query=CAS+Abaya+Ajman"
+            "map_link": "https://www.google.com/maps/search/?api=1&query=CAS+Abaya+Ajman",
+            "map_label": "View on Google Maps"
           }
         }
       },
       "block_order": [
         "store_000z",
         "store_0010"
-      ]
+      ],
+      "settings": {
+        "subheading": "Our stores",
+        "heading": "Locations & hours",
+        "layout": "slider",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 40,
+        "padding_bottom": 60
+      }
     },
     "text_help": {
       "type": "cb-text",
-      "settings": {
-        "width": "full",
-        "alignment": "center",
-        "padding_top": 80,
-        "padding_bottom": 60
-      },
       "blocks": {
         "heading_0011": {
           "type": "heading",
@@ -1702,7 +1830,8 @@
             "link": "https://wa.me/971585959872",
             "style": "outline",
             "size": "medium",
-            "shape": "rounded"
+            "shape": "rounded",
+            "icon": "none"
           }
         }
       },
@@ -1710,16 +1839,18 @@
         "heading_0011",
         "text_0012",
         "button_0013"
-      ]
+      ],
+      "settings": {
+        "width": "full",
+        "alignment": "center",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 80,
+        "padding_bottom": 60
+      }
     },
     "text_reviews": {
       "type": "cb-text",
-      "settings": {
-        "width": "narrow",
-        "alignment": "center",
-        "padding_top": 40,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_0014": {
           "type": "heading",
@@ -1732,30 +1863,29 @@
       },
       "block_order": [
         "heading_0014"
-      ]
+      ],
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 40,
+        "padding_bottom": 8
+      }
     },
     "apps_reviews": {
       "type": "cb-apps",
       "settings": {
         "heading": "",
         "full_width": false,
+        "background_color": "",
+        "text_color": "",
         "padding_top": 32,
         "padding_bottom": 32
       }
     },
     "faq": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "text": "",
-        "layout": "grid",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": true,
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
         "item_faq_1": {
           "type": "item",
@@ -1847,22 +1977,25 @@
         "item_faq_9",
         "item_faq_10",
         "item_faq_11"
-      ]
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": true,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "icons_promises": {
       "type": "cb-icons-row",
-      "settings": {
-        "heading": "",
-        "text": "",
-        "style": "borders",
-        "layout": "center",
-        "columns": 3,
-        "mobile_two_columns": false,
-        "icon_size": 32,
-        "show_numbers": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
         "item_0019": {
           "type": "item",
@@ -1893,7 +2026,22 @@
         "item_0019",
         "item_001a",
         "item_001b"
-      ]
+      ],
+      "settings": {
+        "heading": "",
+        "text": "",
+        "style": "borders",
+        "layout": "center",
+        "columns": 3,
+        "mobile_two_columns": false,
+        "icon_size": 32,
+        "show_numbers": false,
+        "box_color": "",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
     }
   },
   "order": [
