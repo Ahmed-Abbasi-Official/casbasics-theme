@@ -1769,7 +1769,7 @@
         "text_000y": {
           "type": "text",
           "settings": {
-            "text": "<p>At <strong>CAS Abaya</strong>, you can shop high-quality <strong>designer abayas online</strong> with <strong>worldwide delivery</strong>. Our abayas are crafted with premium fabrics like Turkish Cupro and Crepe, offering elegant designs that blend modern style with modest fashion.<br>You can explore and order your favorite abaya directly from our online store — <a href=\"/\">CASBasics.com</a> — and enjoy secure international shipping.<br>Whether you're shopping online or visiting in person, CAS Basics ensures a luxury abaya experience — trusted by modest fashion lovers around the world.</p>"
+            "text": "<p>At CAS Abaya, you can shop high-quality <strong>designer abayas online</strong> with <strong>worldwide delivery</strong>. Our abayas are crafted with premium fabrics like Turkish Cupro and Crepe, offering elegant designs that blend modern style with modest fashion.<br/>You can explore and order your favorite abaya directly from our online store — <a href=\"/\">CASBasics.com</a> — and enjoy secure international shipping.<br/>Whether you're shopping online or visiting in person, CAS Basics ensures a luxury abaya experience — trusted by modest fashion lovers around the world.</p>"
           }
         }
       },
@@ -1875,7 +1875,7 @@
           "type": "heading",
           "settings": {
             "heading": "<a href=\"/pages/reviews\">6000</a>+ Customer Reviews",
-            "size": "medium",
+            "size": "medium_bold",
             "show_line": false
           }
         }
