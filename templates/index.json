@@ -1803,6 +1803,7 @@
         "store_0010": {
           "type": "store",
           "settings": {
+            "image": "shopify://shop_images/2024-11-07_1.webp",
             "address": "CAS Abaya Outlet - Ajman",
             "hours": "",
             "map_link": "https://www.google.com/maps/search/?api=1&query=CAS+Abaya+Ajman",
