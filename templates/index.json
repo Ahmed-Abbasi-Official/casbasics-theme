@@ -1525,6 +1525,8 @@
     "overlapping": {
       "type": "cb-overlapping-images",
       "settings": {
+        "image_1": "shopify://shop_images/c-2916-classic-blue-lasercut-abaya-2.jpg",
+        "image_2": "shopify://shop_images/c-2916-classic-blue-lasercut-abaya.jpg",
         "layout": "left",
         "images_style": "side",
         "rounded": false,
