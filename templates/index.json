@@ -1793,6 +1793,7 @@
         "store_000z": {
           "type": "store",
           "settings": {
+            "image": "shopify://shop_images/2024-11-07_1.webp",
             "address": "7JQR+3FG - Bani Yas - East 9 - Baniyas Centre - Abu Dhabi",
             "hours": "<p>Mon - Sun: 10 AM–2 PM, 4–11 PM</p>",
             "map_link": "https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi",
