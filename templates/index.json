@@ -269,9 +269,10 @@
           "type": "collection",
           "settings": {
             "collection": "luxury-abaya",
+            "image": "shopify://shop_images/c-2928-03-orange-lilac-blend-printed-abaya.jpg",
             "swatch": "",
             "title": "Premium",
-            "link": ""
+            "link": "shopify://collections/premium-abaya"
           }
         },
         "collection_0005": {
