@@ -397,6 +397,7 @@
           "type": "collection",
           "settings": {
             "collection": "jacquard-abaya",
+            "image": "shopify://shop_images/1.png",
             "swatch": "",
             "title": "Jacquard",
             "link": ""
