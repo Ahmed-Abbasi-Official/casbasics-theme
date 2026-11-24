@@ -511,7 +511,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>New In</h2>",
+                "text": "<h2><a href=\"/collections/new-in\" title=\"New IN\"><strong>New In</strong></a></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -710,7 +710,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Premium Abaya</h2>",
+                "text": "<h2><a href=\"/collections/premium-abaya\" title=\"Premium Abaya\"><strong>Premium Abaya</strong></a></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -909,7 +909,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Printed Abaya</h2>",
+                "text": "<h2><a href=\"/collections/printed-abaya\" title=\"Printed Abaya\"><strong>Printed Abaya</strong></a></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1307,7 +1307,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Black Abaya</h2>",
+                "text": "<h2><a href=\"/collections/black-abaya\" title=\"Black Abaya\"><strong>Black Abaya</strong></a></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
