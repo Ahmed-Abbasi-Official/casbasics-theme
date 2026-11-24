@@ -2074,8 +2074,9 @@
         "button_label": "Get Discount Link",
         "min_purchase": "Minimum purchase amount: AED 350",
         "terms_text": "<p>By submitting, I acknowledge the <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding_top": 40,
+        "padding_bottom": 64,
+        "width": "normal"
       }
     }
   },

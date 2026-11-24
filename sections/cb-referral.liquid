@@ -1,8 +1,19 @@
+{%- liquid
+  assign container = 'cb-container'
+  if section.settings.width == 'narrow'
+    assign container = 'cb-container cb-container--narrow'
+  elsif section.settings.width == 'slim'
+    assign container = 'cb-container cb-container--slim'
+  elsif section.settings.width == 'compact'
+    assign container = 'cb-container cb-container--compact'
+  endif
+-%}
+
 <div
   class="cb-section cb-referral-section"
   style="{% render 'cb-section-style', settings: section.settings %}"
 >
-  <div class="cb-container">
+  <div class="{{ container }}">
     <div class="cb-referral-card">
       {%- if section.settings.heading != blank -%}
         <h2 class="cb-referral__heading">{{ section.settings.heading }}</h2>
@@ -82,26 +93,32 @@
 
 <style>
   .cb-referral-section {
-    padding-top: var(--cb-pt, 64px);
+    padding-top: var(--cb-pt, 40px);
     padding-bottom: var(--cb-pb, 64px);
     background-color: var(--cb-bg, inherit);
     color: var(--cb-fg, inherit);
   }
 
+  .cb-referral-section > .cb-container:not(.cb-container--narrow):not(.cb-container--slim) {
+    max-width: calc(1305px + var(--page-margin, 16px) * 2);
+  }
+
   .cb-referral-card {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
 
   .cb-referral__heading {
-    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
     font-weight: 700;
     line-height: 1.25;
     color: #0b0b0b;
     margin: 0 0 10px 0;
     letter-spacing: -0.01em;
+    text-align: left;
   }
 
   .cb-referral__subtext {
@@ -109,12 +126,14 @@
     line-height: 1.55;
     color: #4a4641;
     margin: 0 0 24px 0;
+    text-align: left;
   }
 
   .cb-referral-form {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 100%;
   }
 
   .cb-referral-field {
@@ -122,6 +141,7 @@
     flex-direction: column;
     gap: 6px;
     text-align: left;
+    width: 100%;
   }
 
   .cb-referral-label {
@@ -140,8 +160,8 @@
 
   .cb-referral-input {
     width: 100%;
-    height: 48px;
-    padding: 10px 16px;
+    height: 52px;
+    padding: 12px 18px;
     font-size: 0.95rem;
     border: 1px solid #d2ccc4;
     border-radius: 8px;
@@ -165,7 +185,7 @@
   .cb-referral-submit {
     display: block;
     width: 100%;
-    height: 50px;
+    height: 52px;
     padding: 0 24px;
     margin-top: 4px;
     background-color: #0b0b0b;
@@ -175,6 +195,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
+    box-sizing: border-box;
     transition: background-color 0.2s ease, opacity 0.2s ease;
   }
 
@@ -184,7 +205,7 @@
 
   .cb-referral-footer {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 12px;
   }
 
   .cb-referral-min {
@@ -244,6 +265,18 @@
   "name": "Referral discount",
   "tag": "section",
   "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "normal", "label": "Normal (matches FAQ)" },
+        { "value": "compact", "label": "Compact" },
+        { "value": "narrow", "label": "Narrow" },
+        { "value": "slim", "label": "Slim" }
+      ],
+      "default": "normal"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -324,7 +357,7 @@
       "max": 160,
       "step": 4,
       "unit": "px",
-      "default": 64
+      "default": 40
     },
     {
       "type": "range",
