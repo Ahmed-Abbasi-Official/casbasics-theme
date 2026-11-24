@@ -214,7 +214,7 @@
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "oud-coffee-early-access",
+        "collection": "oud-coffee-collection",
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "max_products": 4,
