@@ -249,9 +249,10 @@
           "type": "collection",
           "settings": {
             "collection": "black-abaya",
+            "image": "shopify://shop_images/c-2919.jpg",
             "swatch": "",
             "title": "Black",
-            "link": ""
+            "link": "shopify://collections/black-abaya"
           }
         },
         "collection_0003": {
