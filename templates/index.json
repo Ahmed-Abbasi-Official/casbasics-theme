@@ -448,10 +448,7 @@
         "collection_000e",
         "collection_000f"
       ],
-      "custom_css": [
-        "/* grey ring hatao */.collection-card,.collection-card__image,.collection-card__inner {background: transparent !important; border: 0 !important; padding: 0 !important;}",
-        "/* image hamesha poora fill kare (hover jaisi) */.collection-card img,.collection-card__image img {width: 100% !important; height: 100% !important; object-fit: cover !important; transform: scale(1.05) !important; border-radius: 50% !important;}"
-      ],
+      "custom_css": [],
       "settings": {
         "heading": "Explore our Abaya Collection by Fabric",
         "heading_size": "medium",
