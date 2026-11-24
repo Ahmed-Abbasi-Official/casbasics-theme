@@ -289,9 +289,10 @@
           "type": "collection",
           "settings": {
             "collection": "abaya-sheila",
+            "image": "shopify://shop_images/c-2923-black-printed-abaya-3.jpg",
             "swatch": "",
             "title": "Sheila",
-            "link": ""
+            "link": "shopify://collections/shiela-abaya"
           }
         }
       },
