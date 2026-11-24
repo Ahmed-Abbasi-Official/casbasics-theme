@@ -2061,6 +2061,22 @@
         "padding_top": 32,
         "padding_bottom": 32
       }
+    },
+    "referral": {
+      "type": "cb-referral",
+      "settings": {
+        "heading": "Give 10%, Get AED 30",
+        "subtext": "Share a 10% discount link with your friends and family, and earn AED 30 for every purchase they make.",
+        "email_label": "Email",
+        "email_placeholder": "Your email",
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "button_label": "Get Discount Link",
+        "min_purchase": "Minimum purchase amount: AED 350",
+        "terms_text": "<p>By submitting, I acknowledge the <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -2085,6 +2101,7 @@
     "text_reviews",
     "apps_reviews",
     "faq",
+    "referral",
     "icons_promises"
   ]
 }
