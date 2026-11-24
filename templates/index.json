@@ -1875,7 +1875,7 @@
           "type": "heading",
           "settings": {
             "heading": "<a href=\"/pages/reviews\">6000</a>+ Customer Reviews",
-            "size": "medium_bold",
+            "size": "compact",
             "show_line": false
           }
         }
