@@ -75,7 +75,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Oud &amp; Coffee Collection</h2>",
+                "text": "<h2><a href=\"/collections/oud-coffee-collection\" title=\"Oud & Coffee Collection\">Oud & Coffee Collection</a></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
