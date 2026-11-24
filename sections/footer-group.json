@@ -109,7 +109,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text_color": "#0B0B0B",
+                "text_color": "#0b0b0b",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -305,7 +305,7 @@
         "social_icons": {
           "type": "social-links",
           "settings": {
-            "icon_color": "",
+            "icon_color": "#000000",
             "facebook_url": "https://www.facebook.com",
             "instagram_url": "https://www.instagram.com",
             "youtube_url": "",
