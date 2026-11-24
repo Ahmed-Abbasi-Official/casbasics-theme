@@ -259,9 +259,10 @@
           "type": "collection",
           "settings": {
             "collection": "printed-abaya-1",
+            "image": "shopify://shop_images/c-2922-beige-petals-printed-abaya.jpg",
             "swatch": "",
             "title": "Printed",
-            "link": ""
+            "link": "shopify://collections/printed-abaya"
           }
         },
         "collection_0004": {
