@@ -14,6 +14,141 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "menu_main": {
+          "type": "menu",
+          "settings": {
+            "menu": "",
+            "heading": "Shop",
+            "menu_spacing": 12,
+            "show_as_accordion": true,
+            "accordion_icon": "plus",
+            "accordion_dividers": false,
+            "background_color": "",
+            "text_color": "",
+            "heading_preset": "paragraph",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "menu_footer": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer",
+            "heading": "Help",
+            "menu_spacing": 12,
+            "show_as_accordion": true,
+            "accordion_icon": "plus",
+            "accordion_dividers": false,
+            "background_color": "",
+            "text_color": "",
+            "heading_preset": "paragraph",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "group_005y": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_005z": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Contact Us</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_0060": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Fill out our contact form or email us at info@casbasics.com</p><p>Call us on +971 6 551 8372</p><p>Or <a href=\"https://wa.me/971585959872\">WhatsApp</a> us between 10 am - 10 pm</p><p>Visit CAS Abaya Store in <a href=\"https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi\">Abu Dhabi</a> UAE<br>Visit CAS Abaya Outlet in <a href=\"https://www.google.com/maps/search/?api=1&query=CAS+Abaya+Ajman\">Ajman</a></p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_005z",
+            "text_0060"
+          ]
+        },
         "group_wErUQf": {
           "type": "group",
           "settings": {
@@ -32,6 +167,7 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "toggle_overlay": false,
@@ -41,6 +177,7 @@
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "link": "",
             "open_in_new_tab": false,
@@ -55,7 +192,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Newsletter</h2>",
+                "text": "<h2><strong>Newsletter</strong></h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -66,6 +203,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -91,6 +229,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -108,18 +247,21 @@
                 "width": "fill",
                 "custom_width": 100,
                 "heading": "",
+                "heading_text_color": "",
                 "heading_preset": "h3",
                 "border_style": "all",
                 "input_style": "custom",
                 "border_width": 1,
                 "border_radius": 8,
                 "input_background_color": "rgba(0,0,0,0)",
+                "input_text_color": "#0b0b0b",
                 "input_border_color": "#0b0b0b",
                 "input_type_preset": "paragraph",
                 "style_class": "button-unstyled",
                 "custom_button_background": "#0b0b0b",
                 "custom_button_text": "#f0eee9",
                 "custom_button_border": "#f0eee9",
+                "link_text_color": "",
                 "display_type": "arrow",
                 "label": "Sign up",
                 "integrated_button": true,
@@ -127,8 +269,7 @@
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
-                "padding-inline-end": 0,
-                "input_text_color": "#0b0b0b"
+                "padding-inline-end": 0
               },
               "blocks": {}
             }
@@ -137,75 +278,6 @@
             "text_pF6rVi",
             "text_HafH7P",
             "email-signup_HafH7P"
-          ]
-        },
-        "menu_footer": {
-          "type": "menu",
-          "settings": {
-            "menu": "footer",
-            "heading": "Help",
-            "menu_spacing": 12,
-            "show_as_accordion": true,
-            "accordion_icon": "plus",
-            "accordion_dividers": false,
-            "heading_preset": "paragraph",
-            "link_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
-        },
-        "menu_main": {
-          "type": "menu",
-          "settings": {
-            "menu": "footer-shop",
-            "heading": "Shop",
-            "menu_spacing": 12,
-            "show_as_accordion": true,
-            "accordion_icon": "plus",
-            "accordion_dividers": false,
-            "heading_preset": "paragraph",
-            "link_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
-        },
-        "group_005y": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
-            "gap": 12,
-            "width": "fill"
-          },
-          "blocks": {
-            "text_005z": {
-              "type": "text",
-              "settings": {
-                "text": "<h2>Contact Us</h2>",
-                "type_preset": "paragraph",
-                "width": "100%"
-              },
-              "blocks": {}
-            },
-            "text_0060": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Fill out our contact form or email us at info@casbasics.com</p><p>Call us on +971 6 551 8372</p><p>Or <a href=\"https://wa.me/971585959872\">WhatsApp</a> us between 10 am - 10 pm</p><p>Visit CAS Abaya Store in <a href=\"https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi\">Abu Dhabi</a> UAE<br>Visit CAS Abaya Outlet in <a href=\"https://www.google.com/maps/search/?api=1&query=CAS+Abaya+Ajman\">Ajman</a></p>",
-                "type_preset": "rte",
-                "width": "100%"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_005z",
-            "text_0060"
           ]
         }
       },
@@ -227,32 +299,44 @@
     "utilities": {
       "type": "footer-utilities",
       "blocks": {
-        "copyright": {
-          "type": "footer-copyright",
-          "settings": {
-            "show_powered_by": false,
-            "font_size": "0.75rem",
-            "case": "none"
-          }
-        },
-        "policy_list": {
-          "type": "footer-policy-list",
-          "settings": {
-            "font_size": "0.75rem",
-            "case": "none"
-          }
-        },
         "social_icons": {
           "type": "social-links",
           "settings": {
+            "icon_color": "",
             "facebook_url": "https://www.facebook.com",
             "instagram_url": "https://www.instagram.com",
             "youtube_url": "",
             "tiktok_url": "https://www.tiktok.com",
             "twitter_url": "",
+            "threads_url": "",
+            "linkedin_url": "",
+            "bluesky_url": "",
             "snapchat_url": "https://www.snapchat.com",
-            "pinterest_url": "https://www.pinterest.com"
-          }
+            "pinterest_url": "https://www.pinterest.com",
+            "tumblr_url": "",
+            "vimeo_url": "",
+            "custom_url": ""
+          },
+          "blocks": {}
+        },
+        "copyright": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": false,
+            "text_color": "",
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "policy_list": {
+          "type": "footer-policy-list",
+          "settings": {
+            "text_color": "",
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -265,6 +349,7 @@
         "gap": 24,
         "background_color": "",
         "divider_thickness": 0,
+        "divider_color": "",
         "padding-block-start": 20,
         "padding-block-end": 30
       }
