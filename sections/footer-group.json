@@ -305,11 +305,11 @@
         "social_icons": {
           "type": "social-links",
           "settings": {
-            "icon_color": "#000000",
-            "facebook_url": "https://www.facebook.com",
-            "instagram_url": "https://www.instagram.com",
-            "youtube_url": "",
-            "tiktok_url": "https://www.tiktok.com",
+            "icon_color": "#0B0B0B",
+            "facebook_url": "shopify://collections/dress",
+            "instagram_url": "shopify://collections/dentel-abaya",
+            "youtube_url": "shopify://collections/jacquard-abaya",
+            "tiktok_url": "shopify://collections/jacquard-abaya",
             "twitter_url": "",
             "threads_url": "",
             "linkedin_url": "",
