@@ -279,9 +279,10 @@
           "type": "collection",
           "settings": {
             "collection": "under-abaya-dress",
+            "image": "shopify://shop_images/c-2937-premium-silver-turkish-cupro-abaya-3.jpg",
             "swatch": "",
             "title": "Dress",
-            "link": ""
+            "link": "shopify://collections/dress"
           }
         },
         "collection_0006": {
