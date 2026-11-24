@@ -39,6 +39,7 @@
       data-testid="menu-details"
       style="
         --spacing--size: {{ block_settings.menu_spacing }}px;
+        --heading-gap: {{ block_settings.heading_gap }}px;
         {% render 'spacing-style', settings: block_settings %}
       "
       {% if show_as_accordion == false %}
@@ -97,10 +98,24 @@
     width: 100%;
   }
 
+  /* heading ke neeche ka gap: ab Heading gap slider se */
   .menu:not(:has(.menu__heading--empty)) .details-content {
-    margin-block-start: var(--spacing--size);
+    margin-block-start: var(--heading-gap, 6px);
   }
 
+  /* heading ka extra space khatam */
+  .menu .menu__heading {
+    margin: 0;
+    padding-block: 0;
+    line-height: 1.2;
+  }
+
+  .menu .details-content ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* links ke beech ka gap: purana Vertical gap slider */
   .menu__item + .menu__item {
     margin-block-start: var(--spacing--size);
   }
@@ -132,7 +147,7 @@
     }
 
     .menu--accordion .details-content {
-      margin-block-start: var(--spacing--size);
+      margin-block-start: var(--heading-gap, 6px);
     }
 
     .menu--accordion .menu__details {
@@ -180,6 +195,16 @@
       "default": 12
     },
     {
+      "type": "range",
+      "id": "heading_gap",
+      "label": "Heading gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
       "type": "checkbox",
       "id": "show_as_accordion",
       "label": "t:settings.show_as_accordion",
@@ -190,14 +215,8 @@
       "id": "accordion_icon",
       "label": "t:settings.icon",
       "options": [
-        {
-          "value": "caret",
-          "label": "t:options.caret"
-        },
-        {
-          "value": "plus",
-          "label": "t:options.plus"
-        }
+        { "value": "caret", "label": "t:options.caret" },
+        { "value": "plus", "label": "t:options.plus" }
       ],
       "default": "caret",
       "visible_if": "{{ block.settings.show_as_accordion == true }}"
@@ -230,38 +249,14 @@
       "id": "heading_preset",
       "label": "t:settings.heading_preset",
       "options": [
-        {
-          "value": "",
-          "label": "t:options.default"
-        },
-        {
-          "value": "paragraph",
-          "label": "t:options.paragraph"
-        },
-        {
-          "value": "h1",
-          "label": "t:options.h1"
-        },
-        {
-          "value": "h2",
-          "label": "t:options.h2"
-        },
-        {
-          "value": "h3",
-          "label": "t:options.h3"
-        },
-        {
-          "value": "h4",
-          "label": "t:options.h4"
-        },
-        {
-          "value": "h5",
-          "label": "t:options.h5"
-        },
-        {
-          "value": "h6",
-          "label": "t:options.h6"
-        }
+        { "value": "", "label": "t:options.default" },
+        { "value": "paragraph", "label": "t:options.paragraph" },
+        { "value": "h1", "label": "t:options.h1" },
+        { "value": "h2", "label": "t:options.h2" },
+        { "value": "h3", "label": "t:options.h3" },
+        { "value": "h4", "label": "t:options.h4" },
+        { "value": "h5", "label": "t:options.h5" },
+        { "value": "h6", "label": "t:options.h6" }
       ],
       "default": "h3"
     },
@@ -270,38 +265,14 @@
       "id": "link_preset",
       "label": "t:settings.link_preset",
       "options": [
-        {
-          "value": "",
-          "label": "t:options.default"
-        },
-        {
-          "value": "paragraph",
-          "label": "t:options.paragraph"
-        },
-        {
-          "value": "h1",
-          "label": "t:options.h1"
-        },
-        {
-          "value": "h2",
-          "label": "t:options.h2"
-        },
-        {
-          "value": "h3",
-          "label": "t:options.h3"
-        },
-        {
-          "value": "h4",
-          "label": "t:options.h4"
-        },
-        {
-          "value": "h5",
-          "label": "t:options.h5"
-        },
-        {
-          "value": "h6",
-          "label": "t:options.h6"
-        }
+        { "value": "", "label": "t:options.default" },
+        { "value": "paragraph", "label": "t:options.paragraph" },
+        { "value": "h1", "label": "t:options.h1" },
+        { "value": "h2", "label": "t:options.h2" },
+        { "value": "h3", "label": "t:options.h3" },
+        { "value": "h4", "label": "t:options.h4" },
+        { "value": "h5", "label": "t:options.h5" },
+        { "value": "h6", "label": "t:options.h6" }
       ],
       "default": "paragraph"
     },
