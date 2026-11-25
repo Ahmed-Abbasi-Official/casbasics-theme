@@ -1,0 +1,159 @@
+{%- doc -%}
+  Rewards page "Ways to Earn" / "Ways to Redeem": centred heading and line of text, then
+  white rounded cards (240px, four to a row) with an icon, title, points and an arrow.
+  Cards are plain links: points themselves are given by the loyalty app.
+{%- enddoc -%}
+
+<div
+  class="cb-section cb-loyalty cb-loyalty-cards-section"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container cb-loyalty__container">
+    <div class="cb-loyalty__block">
+      <div class="cb-loyalty__wrapper">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cb-loyalty__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="cb-loyalty__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+
+        <div class="cb-loyalty-cards">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign href = blank
+              case block.settings.action
+                when 'link'
+                  assign href = block.settings.link
+                when 'register'
+                  assign href = routes.account_register_url
+                when 'login'
+                  assign href = routes.account_login_url
+                when 'shop'
+                  assign href = routes.all_products_collection_url
+              endcase
+              assign external = false
+              if href contains 'http' and block.settings.action == 'link'
+                assign external = true
+              endif
+            -%}
+            {%- if href != blank -%}
+              <a
+                class="cb-loyalty-card"
+                href="{{ href }}"
+                {% if external %}
+                  target="_blank" rel="noopener"
+                {% endif %}
+                {{ block.shopify_attributes }}
+              >
+            {%- else -%}
+              <div class="cb-loyalty-card" {{ block.shopify_attributes }}>
+            {%- endif -%}
+            <span class="cb-loyalty-card__icon">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: block.settings.title }}
+              {%- elsif block.settings.icon == 'placeholder' -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- else -%}
+                {%- render 'cb-loyalty-icon', icon: block.settings.icon -%}
+              {%- endif -%}
+            </span>
+            <span class="cb-loyalty-card__content">
+              {%- if block.settings.title != blank -%}
+                <span class="cb-loyalty-card__title">{{ block.settings.title }}</span>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <span class="cb-loyalty-card__description">{{ block.settings.description }}</span>
+              {%- endif -%}
+              <span class="cb-loyalty-card__arrow" aria-hidden="true">
+                {%- comment -%} Same 20px arrow-in-a-ring as the live widget {%- endcomment -%}
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <circle cx="10" cy="10" r="8.875" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6.25 10h7.5M11 7l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </span>
+            {%- if href != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rewards cards",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Place an order" },
+        { "type": "text", "id": "description", "label": "Points", "default": "1 points for every د.إ2 spent" },
+        { "type": "image_picker", "id": "image", "label": "Picture", "info": "Shown 50px tall. Without a picture the icon below is used" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "bag", "label": "Shopping bag" },
+            { "value": "basket", "label": "Basket" },
+            { "value": "smile", "label": "Smile" },
+            { "value": "globe", "label": "Globe / link" },
+            { "value": "share", "label": "Share" },
+            { "value": "thumbs-up", "label": "Like" },
+            { "value": "heart-plus", "label": "Follow" },
+            { "value": "user", "label": "Person" },
+            { "value": "user-check", "label": "Account" },
+            { "value": "mail-check", "label": "Email" },
+            { "value": "cake", "label": "Birthday" },
+            { "value": "card-star", "label": "Card with star" },
+            { "value": "dollar", "label": "Coin" },
+            { "value": "percent", "label": "Percent" },
+            { "value": "gift", "label": "Gift" },
+            { "value": "placeholder", "label": "Dummy product picture" }
+          ],
+          "default": "bag"
+        },
+        {
+          "type": "select",
+          "id": "action",
+          "label": "Card opens",
+          "options": [
+            { "value": "none", "label": "Nothing" },
+            { "value": "link", "label": "Link below" },
+            { "value": "shop", "label": "All products" },
+            { "value": "register", "label": "Create account page" },
+            { "value": "login", "label": "Sign in page" }
+          ],
+          "default": "none"
+        },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ways to Earn" },
+    { "type": "text", "id": "text", "label": "Text under heading", "default": "Earn points by completing these actions" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
+  ],
+  "presets": [
+    {
+      "name": "Rewards cards",
+      "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }, { "type": "card" }]
+    }
+  ]
+}
+{% endschema %}

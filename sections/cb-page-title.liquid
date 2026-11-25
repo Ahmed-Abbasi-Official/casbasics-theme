@@ -1,0 +1,39 @@
+{%- doc -%}
+  Page title, as on the live store's pages: a centred 36px heading (500) with 25px under it,
+  optionally followed by the page's own content from Shopify admin.
+{%- enddoc -%}
+
+{%- assign heading = section.settings.heading | default: page.title -%}
+
+<div
+  class="cb-section cb-page-title"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container cb-page-title__container">
+    {%- if heading != blank -%}
+      <h1 class="cb-page-title__title">{{ heading }}</h1>
+    {%- endif -%}
+    {%- if section.settings.show_content and page.content != blank -%}
+      <div class="cb-page-title__content cb-rte">{{ page.content }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page title",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty to use the page title" },
+    { "type": "checkbox", "id": "show_content", "label": "Show page content", "info": "The text written on the page in Shopify admin", "default": false },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
+  ],
+  "presets": [{ "name": "Page title" }]
+}
+{% endschema %}

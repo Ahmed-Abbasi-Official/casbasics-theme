@@ -19,8 +19,8 @@
           "settings": {
             "menu": "footer-shop",
             "heading": "Shop",
-            "menu_spacing": 12,
-            "heading_gap": 24,
+            "menu_spacing": 7,
+            "heading_gap": 20,
             "show_as_accordion": true,
             "accordion_icon": "plus",
             "accordion_dividers": false,
@@ -40,8 +40,8 @@
           "settings": {
             "menu": "footer",
             "heading": "Help",
-            "menu_spacing": 12,
-            "heading_gap": 24,
+            "menu_spacing": 7,
+            "heading_gap": 20,
             "show_as_accordion": true,
             "accordion_icon": "plus",
             "accordion_dividers": false,
@@ -65,8 +65,8 @@
             "vertical_alignment": "flex-start",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 20,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -123,7 +123,7 @@
             "text_0060": {
               "type": "text",
               "settings": {
-                "text": "<p>Fill out our contact form or email us at info@casbasics.com</p><p>Call us on +971 6 551 8372</p><p>Or <a href=\"https://wa.me/971585959872\">WhatsApp</a> us between 10 am - 10 pm</p><p>Visit CAS Abaya Store in <a href=\"https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi\">Abu Dhabi</a> UAE<br>Visit CAS Abaya Outlet in <a href=\"https://www.google.com/maps/search/?api=1&query=CAS+Abaya+Ajman\">Ajman</a></p>",
+                "text": "<p>Fill out our contact form or email us at info@casbasics.com</p><p>Call us on +971 544 065806<br><br><br></p><p>Or <a href=\"https://wa.me/971585959872\" title=\"cas whatsapp\">WhatsApp</a> us between 10 am - 10 pm</p><p>Visit CAS Abaya Store in <a href=\"https://maps.app.goo.gl/pQpznCMGUc7fbJgW7\">Abu Dhabi</a> UAE<br>Visit CAS Abaya Outlet in <a href=\"https://maps.app.goo.gl/vh6mzTCQ3BMMszra6\">Ajman</a></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -157,11 +157,11 @@
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
+            "vertical_alignment": "flex-start",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 20,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -299,62 +299,26 @@
         "padding-block-end": 30
       }
     },
-    "utilities": {
-      "type": "footer-utilities",
-      "blocks": {
-        "social_icons": {
-          "type": "social-links",
-          "settings": {
-            "icon_color": "#0B0B0B",
-            "facebook_url": "shopify://collections/dress",
-            "instagram_url": "shopify://collections/dentel-abaya",
-            "youtube_url": "shopify://collections/jacquard-abaya",
-            "tiktok_url": "shopify://collections/jacquard-abaya",
-            "twitter_url": "",
-            "threads_url": "",
-            "linkedin_url": "",
-            "bluesky_url": "",
-            "snapchat_url": "https://www.snapchat.com",
-            "pinterest_url": "https://www.pinterest.com",
-            "tumblr_url": "",
-            "vimeo_url": "",
-            "custom_url": ""
-          },
-          "blocks": {}
-        },
-        "copyright": {
-          "type": "footer-copyright",
-          "settings": {
-            "show_powered_by": false,
-            "text_color": "",
-            "font_size": "0.75rem",
-            "case": "none"
-          },
-          "blocks": {}
-        },
-        "policy_list": {
-          "type": "footer-policy-list",
-          "settings": {
-            "text_color": "",
-            "font_size": "0.75rem",
-            "case": "none"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "social_icons",
-        "copyright",
-        "policy_list"
-      ],
+    "bottom": {
+      "type": "cb-footer-bottom",
       "settings": {
-        "section_width": "page-width",
-        "gap": 24,
+        "instagram_url": "https://www.instagram.com/crystalabayastudio",
+        "tiktok_url": "https://www.tiktok.com/@crystalabayastudio",
+        "facebook_url": "https://www.facebook.com/crystalabayastudio",
+        "snapchat_url": "https://www.snapchat.com/@casabaya",
+        "pinterest_url": "https://www.pinterest.com/casabayaa/",
+        "youtube_url": "",
+        "x_url": "",
+        "show_country": true,
+        "show_language": true,
+        "brand_name": "CAS Abaya",
+        "copyright_text": "Best Emirati Abaya Brand in Dubai",
+        "menu": "footer",
+        "show_payment_icons": true,
         "background_color": "",
-        "divider_thickness": 0,
-        "divider_color": "",
-        "padding-block-start": 20,
-        "padding-block-end": 30
+        "text_color": "",
+        "padding_top": 10,
+        "padding_bottom": 60
       }
     },
     "newsletter_popup": {
@@ -377,7 +341,7 @@
   },
   "order": [
     "footer",
-    "utilities",
+    "bottom",
     "newsletter_popup"
   ]
 }

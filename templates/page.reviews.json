@@ -9,63 +9,595 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "reviews": {
+      "type": "cb-reviews-wall",
       "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "t:names.title",
+        "review_01": {
+          "type": "review",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "name": "Khlloudd A.",
+            "verified": true,
+            "date": "11/25/2026",
+            "rating": 5,
+            "text": "100/100",
+            "product_title": "C 2334 Black Lace Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
         },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
+        "review_02": {
+          "type": "review",
+          "settings": {
+            "name": "Badriya A.",
+            "verified": true,
+            "date": "11/25/2026",
+            "rating": 5,
+            "text": "The abaya is elegant, the fit is perfect, and the fabric quality is excellent.",
+            "product_title": "C 2595 Black Embroidered Flowers Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_03": {
+          "type": "review",
+          "settings": {
+            "name": "Halima A.",
+            "verified": true,
+            "date": "11/24/2026",
+            "rating": 5,
+            "text": "Excellent",
+            "product_title": "C 1114 Black Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_04": {
+          "type": "review",
+          "settings": {
+            "name": "Amna A.",
+            "verified": true,
+            "date": "11/23/2026",
+            "rating": 5,
+            "text": "Everything is perfect! The material, design, quality, and measurements are all top-notch. I absolutely love the abayas you create.",
+            "product_title": "C 005-13/62 Premium Dark Brown Under Abaya Dress",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_05": {
+          "type": "review",
+          "settings": {
+            "name": "Hessa A.",
+            "verified": true,
+            "date": "11/23/2026",
+            "rating": 5,
+            "text": "i love the fabrics the quality the colors. you have a lot of options.",
+            "product_title": "C 2096-01 Ice Blue Amira Abaya",
+            "media": "video",
+            "media_ratio": 178
+          }
+        },
+        "review_06": {
+          "type": "review",
+          "settings": {
+            "name": "Fatima A A.",
+            "verified": true,
+            "date": "11/22/2026",
+            "rating": 5,
+            "text": "Great fabric",
+            "product_title": "C 005-04 Premium Black Under Abaya Dress",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_07": {
+          "type": "review",
+          "settings": {
+            "name": "Fatima A A.",
+            "verified": true,
+            "date": "11/22/2026",
+            "rating": 5,
+            "text": "Great fabric",
+            "product_title": "C 005-14/76 Premium Light Beige Under Abaya Dress",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_08": {
+          "type": "review",
+          "settings": {
+            "name": "Fatima A A.",
+            "verified": true,
+            "date": "11/22/2026",
+            "rating": 5,
+            "text": "Great shop",
+            "product_title": "C 005-01 Premium Maroon Under Abaya Dress",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_09": {
+          "type": "review",
+          "settings": {
+            "name": "Amna A.",
+            "verified": true,
+            "date": "11/22/2026",
+            "rating": 5,
+            "text": "الكواليتي ممتازه و الخياطه نظيفه",
+            "product_title": "C 005-12 Premium Purple Under Abaya Dress",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_10": {
+          "type": "review",
+          "settings": {
+            "name": "Maryam A.",
+            "verified": true,
+            "date": "11/21/2026",
+            "rating": 5,
+            "text": "Nice fabric and super quality \nThe finishing is so good \nI love it",
+            "product_title": "C 2809-02 Noir Oud Tweed Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_11": {
+          "type": "review",
+          "settings": {
+            "name": "Fatima A A.",
+            "verified": true,
+            "date": "11/21/2026",
+            "rating": 5,
+            "text": "Great fabric",
+            "product_title": "C 2812 Royal Berry Tweed Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_12": {
+          "type": "review",
+          "settings": {
+            "name": "Reem A.",
+            "verified": true,
+            "date": "11/20/2026",
+            "rating": 5,
+            "text": "شكرا",
+            "product_title": "C 2009 Burgundy Floral Printed Abaya",
+            "media": "photo",
+            "media_ratio": 130
+          }
+        },
+        "review_13": {
+          "type": "review",
+          "settings": {
+            "name": "Ayah A.",
+            "verified": true,
+            "date": "11/19/2026",
+            "rating": 5,
+            "text": "It’s nice the quality",
+            "product_title": "C 1729 Black Lace Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_14": {
+          "type": "review",
+          "settings": {
+            "name": "Dana A.",
+            "verified": true,
+            "date": "11/17/2026",
+            "rating": 4,
+            "text": "خياللل❤️❤️",
+            "product_title": "C 2776-04 Burgundy Dantel Abaya",
+            "media": "photo",
+            "media_ratio": 133
+          }
+        },
+        "review_15": {
+          "type": "review",
+          "settings": {
+            "name": "Amal A.",
+            "verified": true,
+            "date": "11/17/2026",
+            "rating": 5,
+            "text": "Love it and now im going to order another abaya❤️",
+            "product_title": "C 2272 Black Floral Abaya",
+            "media": "photo",
+            "media_ratio": 133
+          }
+        },
+        "review_16": {
+          "type": "review",
+          "settings": {
+            "name": "Sarah S.",
+            "verified": true,
+            "date": "11/16/2026",
+            "rating": 5,
+            "text": "Love CAS! My go to.",
+            "product_title": "C 2324-02 Violet Dantel Abaya",
+            "media": "video",
+            "media_ratio": 178
+          }
+        },
+        "review_17": {
+          "type": "review",
+          "settings": {
+            "name": "Maha O.",
+            "verified": true,
+            "date": "11/15/2026",
+            "rating": 5,
+            "text": "Increadible",
+            "product_title": "C 2755 Black Floral Crystal Lace Abaya",
+            "media": "video",
+            "media_ratio": 178
+          }
+        },
+        "review_18": {
+          "type": "review",
+          "settings": {
+            "name": "Analyn R.",
+            "verified": true,
+            "date": "11/13/2026",
+            "rating": 5,
+            "text": "Absolutely in love with this purple abaya. The elegance, beautiful details, and graceful design make it truly special. It’s the perfect blend of sophistication and femininity. Such a timeless and classy piece! 💜",
+            "product_title": "C 1446 Grape Lace Abaya",
+            "media": "video",
+            "media_ratio": 178
+          }
+        },
+        "review_19": {
+          "type": "review",
+          "settings": {
+            "name": "Maysa K.",
+            "verified": true,
+            "date": "11/12/2026",
+            "rating": 5,
+            "text": "Beautiful abayas and the designs are elegant",
+            "product_title": "C 2713 Black Polka Dot Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_20": {
+          "type": "review",
+          "settings": {
+            "name": "Maysa K.",
+            "verified": true,
+            "date": "11/12/2026",
+            "rating": 5,
+            "text": "Beautiful collection, amazing quality and elgant designs.",
+            "product_title": "C 2827 Black Striped Leopard Print Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_21": {
+          "type": "review",
+          "settings": {
+            "name": "Asma K.",
+            "verified": true,
+            "date": "11/12/2026",
+            "rating": 4,
+            "text": "❤️",
+            "product_title": "C 2796 Black Floral Dantel Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_22": {
+          "type": "review",
+          "settings": {
+            "name": "Roudha A.",
+            "verified": true,
+            "date": "11/10/2026",
+            "rating": 5,
+            "text": "Amazing!",
+            "product_title": "C 2443 Navy Blue Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_23": {
+          "type": "review",
+          "settings": {
+            "name": "Natasha N.",
+            "verified": true,
+            "date": "11/8/2026",
+            "rating": 5,
+            "text": "Perfect fit and lovely material",
+            "product_title": "C 2528/114 Blueberry Bliss Lace Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_24": {
+          "type": "review",
+          "settings": {
+            "name": "Hajar A.",
+            "verified": true,
+            "date": "11/8/2026",
+            "rating": 5,
+            "text": "Amazing design thats beautifully executed, high quality ❤️",
+            "product_title": "C 2568/82 Almond Mousse Lace Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_25": {
+          "type": "review",
+          "settings": {
+            "name": "Sara I.",
+            "verified": true,
+            "date": "11/8/2026",
+            "rating": 5,
+            "text": "I am happy to pay all my abaya from ur shop",
+            "product_title": "C 2810-03 Grey Tweed Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_26": {
+          "type": "review",
+          "settings": {
+            "name": "Noon H.",
+            "verified": true,
+            "date": "11/7/2026",
+            "rating": 5,
+            "text": "Perfect",
+            "product_title": "C 2735-06 Rose Quartz Lace Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_27": {
+          "type": "review",
+          "settings": {
+            "name": "Fatma I.",
+            "verified": true,
+            "date": "11/6/2026",
+            "rating": 5,
+            "text": "Love the experience",
+            "product_title": "C 2610 Black Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_28": {
+          "type": "review",
+          "settings": {
+            "name": "Aylin C.",
+            "verified": true,
+            "date": "11/6/2026",
+            "rating": 5,
+            "text": "Really beautiful abaya! The material is high quality, the finishing is lovely, and the fit is perfect. It looks so elegant and luxurious, with a very expensive feel. Absolutely love it!",
+            "product_title": "C 2758 Black Beaded Lace Abaya",
+            "media": "video",
+            "media_ratio": 178
+          }
+        },
+        "review_29": {
+          "type": "review",
+          "settings": {
+            "name": "Farwa F.",
+            "verified": true,
+            "date": "11/4/2026",
+            "rating": 5,
+            "text": "Loved it.\nThank you",
+            "product_title": "C 2139 Black Work Abaya",
+            "media": "video",
+            "media_ratio": 133
+          }
+        },
+        "review_30": {
+          "type": "review",
+          "settings": {
+            "name": "Fatema A.",
+            "verified": true,
+            "date": "11/4/2026",
+            "rating": 5,
+            "text": "Best casual yet classy abaya. Perfect for both work and fancy dinners.",
+            "product_title": "C Pleated Green Abaya Coat",
+            "media": "video",
+            "media_ratio": 178
+          }
+        },
+        "review_31": {
+          "type": "review",
+          "settings": {
+            "name": "Farah N.",
+            "verified": true,
+            "date": "11/4/2026",
+            "rating": 5,
+            "text": "Wonderful experience",
+            "product_title": "C 1108 Cornflower Lace Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_32": {
+          "type": "review",
+          "settings": {
+            "name": "Hafsah U.",
+            "verified": true,
+            "date": "11/4/2026",
+            "rating": 5,
+            "text": "Excellent quality! They were able to customise it for nursing for me",
+            "product_title": "C 008 Premium Black Under Abaya Dress",
+            "media": "video",
+            "media_ratio": 178
+          }
+        },
+        "review_33": {
+          "type": "review",
+          "settings": {
+            "name": "Maryam A.",
+            "verified": true,
+            "date": "11/3/2026",
+            "rating": 5,
+            "text": "Fantastic",
+            "product_title": "C 2609 Black Dantel Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_34": {
+          "type": "review",
+          "settings": {
+            "name": "Sabeen N.",
+            "verified": true,
+            "date": "11/3/2026",
+            "rating": 5,
+            "text": "Outstanding collection always ! Great service",
+            "product_title": "C 2739-03 Olive Grey Paris Silk Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_35": {
+          "type": "review",
+          "settings": {
+            "name": "Tharwa F.",
+            "verified": true,
+            "date": "11/2/2026",
+            "rating": 5,
+            "text": "I love it !!",
+            "product_title": "C 1904 Premium Navy Blue Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_36": {
+          "type": "review",
+          "settings": {
+            "name": "Marwa A.",
+            "verified": true,
+            "date": "11/2/2026",
+            "rating": 5,
+            "text": "Love all the abayas I received",
+            "product_title": "C 2272 Black Floral Abaya",
+            "media": "video",
+            "media_ratio": 217
+          }
+        },
+        "review_37": {
+          "type": "review",
+          "settings": {
+            "name": "Afroze Faisal S.",
+            "verified": true,
+            "date": "11/1/2026",
+            "rating": 5,
+            "text": "The abaya is simply stunning. The colour and fabric is as per the description.",
+            "product_title": "C 2711 Sapphire Blue Beaded Abaya",
+            "media": "video",
+            "media_ratio": 133
+          }
+        },
+        "review_38": {
+          "type": "review",
+          "settings": {
+            "name": "Anoud A.",
+            "verified": true,
+            "date": "11/1/2026",
+            "rating": 5,
+            "text": "Abaya was very elegant and perfect size",
+            "product_title": "C 2086 Black Floral Lace Abaya",
+            "media": "photo",
+            "media_ratio": 133
+          }
+        },
+        "review_39": {
+          "type": "review",
+          "settings": {
+            "name": "Ebtihal A.",
+            "verified": true,
+            "date": "11/1/2026",
+            "rating": 5,
+            "text": "love it",
+            "product_title": "C 2101 Black Floral Abaya",
+            "media": "none",
+            "media_ratio": 133
+          }
+        },
+        "review_40": {
+          "type": "review",
+          "settings": {
+            "name": "Aisha A.",
+            "verified": true,
+            "date": "10/30/2026",
+            "rating": 5,
+            "text": "العباه وايد حلوة وانيقة والكواليتي ممتاز",
+            "product_title": "C 2494 Black Crystal Lace Abaya",
+            "media": "video",
+            "media_ratio": 178
+          }
         }
       },
       "block_order": [
-        "heading",
-        "page-content"
+        "review_01",
+        "review_02",
+        "review_03",
+        "review_04",
+        "review_05",
+        "review_06",
+        "review_07",
+        "review_08",
+        "review_09",
+        "review_10",
+        "review_11",
+        "review_12",
+        "review_13",
+        "review_14",
+        "review_15",
+        "review_16",
+        "review_17",
+        "review_18",
+        "review_19",
+        "review_20",
+        "review_21",
+        "review_22",
+        "review_23",
+        "review_24",
+        "review_25",
+        "review_26",
+        "review_27",
+        "review_28",
+        "review_29",
+        "review_30",
+        "review_31",
+        "review_32",
+        "review_33",
+        "review_34",
+        "review_35",
+        "review_36",
+        "review_37",
+        "review_38",
+        "review_39",
+        "review_40"
       ],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 48,
-        "padding-block-end": 64
-      }
-    },
-    "apps_reviews": {
-      "type": "cb-apps",
-      "settings": {
-        "heading": "",
-        "full_width": false,
-        "padding_top": 32,
-        "padding_bottom": 32
+        "show_heading": true,
+        "heading": "CAS Reviews",
+        "average": "4.8",
+        "total_count": "6,201",
+        "reviews_label": "Reviews",
+        "count_5": "5,349",
+        "count_4": "727",
+        "count_3": "77",
+        "count_2": "19",
+        "count_1": "29",
+        "initial_count": 20,
+        "more_count": 20,
+        "more_label": "Show more reviews",
+        "text": "<p>From casual and office wear to festive and luxury collections, our customers praise the quality, comfort, and stylish designs that make us the <strong>best abaya in Dubai</strong>. Browse testimonials to learn how our abayas, fabrics, and personalized services create confidence, comfort, and timeless modest fashion for women across Dubai, UAE, and GCC.</p>",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
-    "main",
-    "apps_reviews"
+    "reviews"
   ]
 }

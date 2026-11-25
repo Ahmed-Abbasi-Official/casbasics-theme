@@ -1,0 +1,114 @@
+{%- doc -%}
+  Size chart page, as on the live store: centred page title, the measuring diagram,
+  then one table per block ("Size:", "Length:", "Travel Set:"). Each block's table is typed
+  as text: the header cells on one line and one line per row, cells separated by "|".
+{%- enddoc -%}
+
+{%- assign heading = section.settings.heading | default: page.title -%}
+
+<div
+  class="cb-section cb-size-chart"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container cb-size-chart__container">
+    {%- if heading != blank -%}
+      <h1 class="cb-size-chart__title">{{ heading }}</h1>
+    {%- endif -%}
+
+    <div class="cb-size-chart__body">
+      {%- if section.settings.show_diagram -%}
+        <div class="cb-size-chart__diagram">
+          {%- if section.settings.image != blank -%}
+            {{
+              section.settings.image
+              | image_url: width: 2160
+              | image_tag: loading: 'lazy', sizes: '(min-width: 1200px) 1080px, 100vw', widths: '540, 720, 1080, 1620, 2160', alt: section.settings.image.alt
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign head_cells = block.settings.header | split: '|'
+          assign row_lines = block.settings.rows | newline_to_br | split: '<br />'
+        -%}
+        <div class="cb-size-chart__table" {{ block.shopify_attributes }}>
+          {%- if block.settings.label != blank -%}
+            <p class="cb-size-chart__label">{{ block.settings.label }}</p>
+          {%- endif -%}
+          <div class="cb-size-chart__scroll">
+            <table>
+              {%- if head_cells.size > 0 -%}
+                <thead>
+                  <tr>
+                    {%- for cell in head_cells -%}
+                      <th scope="col">{{ cell | strip }}</th>
+                    {%- endfor -%}
+                  </tr>
+                </thead>
+              {%- endif -%}
+              <tbody>
+                {%- for line in row_lines -%}
+                  {%- assign row_text = line | strip -%}
+                  {%- if row_text != blank -%}
+                    <tr>
+                      {%- assign cells = row_text | split: '|' -%}
+                      {%- for cell in cells -%}
+                        <td>{{ cell | strip }}</td>
+                      {%- endfor -%}
+                    </tr>
+                  {%- endif -%}
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Size chart",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "blocks": [
+    {
+      "type": "table",
+      "name": "Table",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Size:" },
+        { "type": "text", "id": "header", "label": "Header row", "info": "Cells separated by |", "default": "Size | Chest (in) | Hip (in)" },
+        {
+          "type": "textarea",
+          "id": "rows",
+          "label": "Rows",
+          "info": "One row per line, cells separated by |",
+          "default": "XS | 31″ – 33″ | 32″ – 34″\nS | 34″ – 36″ | 36″ – 38″"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty to use the page title" },
+    { "type": "checkbox", "id": "show_diagram", "label": "Show measuring diagram", "default": true },
+    { "type": "image_picker", "id": "image", "label": "Diagram image" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
+  ],
+  "presets": [
+    {
+      "name": "Size chart",
+      "blocks": [{ "type": "table" }]
+    }
+  ]
+}
+{% endschema %}

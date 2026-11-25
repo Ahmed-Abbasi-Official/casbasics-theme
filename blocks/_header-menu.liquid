@@ -93,13 +93,19 @@
 
     {% capture children %}
       {% for link in block_settings.menu.links %}
+        {%- liquid
+          assign use_dropdown = false
+          if link.links != blank and block_settings.submenu_style == 'dropdown'
+            assign use_dropdown = true
+          endif
+        -%}
         <li
-          class="menu-list__list-item"
+          class="menu-list__list-item{% if use_dropdown %} menu-list__list-item--dropdown{% endif %}"
           on:blur="/deactivate"
           on:pointerenter="/activate"
           on:pointerleave="/deactivate"
         >
-          {%- if link.links != blank -%}
+          {%- if link.links != blank and use_dropdown == false -%}
             <span class="menu-list__trigger">
           {%- endif -%}
           <a
@@ -113,7 +119,27 @@
           >
             <span class="menu-list__link-title">{{- link.title -}}</span>
           </a>
-          {%- if link.links != blank -%}
+          {%- if use_dropdown -%}
+            {%- comment -%} Small dropdown under the link (live store style); opens on hover and keyboard focus {%- endcomment -%}
+            <div class="cb-nav-dropdown{{ background_color_classes }}">
+              <ul class="cb-nav-dropdown__list" role="list">
+                {%- for child in link.links -%}
+                  <li>
+                    <a
+                      href="{{ child.url }}"
+                      class="cb-nav-dropdown__link"
+                      {% if child.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{- child.title -}}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          {%- if link.links != blank and use_dropdown == false -%}
             <button
               type="button"
               class="menu-list__disclosure button-unstyled"
@@ -1078,6 +1104,22 @@
     {
       "type": "header",
       "content": "t:content.submenu_feature"
+    },
+    {
+      "type": "select",
+      "id": "submenu_style",
+      "label": "Submenu",
+      "options": [
+        {
+          "value": "mega",
+          "label": "Full-width mega menu"
+        },
+        {
+          "value": "dropdown",
+          "label": "Small dropdown"
+        }
+      ],
+      "default": "mega"
     },
     {
       "type": "select",

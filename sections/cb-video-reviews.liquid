@@ -1,0 +1,187 @@
+{%- doc -%}
+  Video reviews in a "spotlight" slider: the centre reel is full size and the reels beside it
+  shrink step by step. The centre reel plays its short muted preview and the slider moves on when
+  it ends; clicking the centre reel plays the full video with sound. Behaviour: cb-video-reviews in cb-theme.js.
+{%- enddoc -%}
+
+<div
+  class="cb-section cb-video-reviews"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container">
+    {%- if section.blocks.size > 0 -%}
+      <cb-video-reviews
+        class="cb-reels{% unless section.settings.show_arrows_mobile %} cb-reels--no-mobile-arrows{% endunless %}"
+        style="--reel-radius: {{ section.settings.radius }}px;"
+        {% if section.settings.autoplay %}
+          data-autoplay
+        {% endif %}
+      >
+        <div class="cb-reels__viewport" data-reels-viewport>
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign full_src = block.settings.video_url
+              assign preview_src = block.settings.preview_url
+              assign poster_src = block.settings.poster_url
+
+              if block.settings.video != blank
+                assign mp4 = block.settings.video.sources | where: 'mime_type', 'video/mp4' | sort: 'height' | last
+                if mp4.url != blank
+                  assign full_src = mp4.url
+                endif
+                assign poster_src = block.settings.video.preview_image | image_url: width: 720
+              endif
+              if block.settings.poster != blank
+                assign poster_src = block.settings.poster | image_url: width: 720
+              endif
+
+              assign rating = block.settings.rating | default: 5
+              assign label = block.settings.alt | default: block.settings.name | escape
+            -%}
+            <div
+              class="cb-reels__slide"
+              data-reel
+              role="group"
+              aria-roledescription="slide"
+              aria-label="{{ forloop.index }} / {{ section.blocks.size }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="cb-reels__card" style="--reel-bg: {{ block.settings.color | default: '#a8a8a8' }};">
+                {%- if full_src != blank or preview_src != blank -%}
+                  <video
+                    class="cb-reels__video"
+                    data-preview="{{ preview_src }}"
+                    data-full="{{ full_src }}"
+                    muted
+                    playsinline
+                    preload="none"
+                    aria-label="{{ label }}"
+                  ></video>
+                {%- endif -%}
+
+                {%- if poster_src != blank -%}
+                  <img class="cb-reels__poster" src="{{ poster_src }}" alt="{{ label }}" loading="lazy">
+                {%- endif -%}
+
+                <button type="button" class="cb-reels__hit" data-reel-hit aria-label="{{ 'Play video review' }}{% if block.settings.name != blank %}: {{ block.settings.name | escape }}{% endif %}"></button>
+
+                <div class="cb-reels__controls">
+                  <button type="button" class="cb-reels__control" data-reel-mute aria-label="Mute">
+                    <svg class="cb-reels__icon-sound" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M10 7.22 6.603 10H3v4h3.603L10 16.78V7.22ZM5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16h-.001Zm13.517 4.134-1.416-1.416A8.977 8.977 0 0 0 21 12a8.983 8.983 0 0 0-3.304-6.968l1.42-1.42A10.977 10.977 0 0 1 23 12c0 3.223-1.386 6.122-3.594 8.134Zm-3.543-3.543-1.422-1.422A3.992 3.992 0 0 0 16 12c0-1.43-.75-2.685-1.88-3.392l1.439-1.439A5.99 5.99 0 0 1 18 12c0 1.842-.83 3.49-2.137 4.591Z"/>
+                    </svg>
+                    <svg class="cb-reels__icon-muted" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M10 7.22 6.603 10H3v4h3.603L10 16.78V7.22ZM5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16h-.001Zm14.525-4 2.122 2.121-1.415 1.415L19 13.414l-2.121 2.122-1.415-1.415L17.586 12l-2.122-2.121 1.415-1.415L19 10.586l2.121-2.122 1.415 1.415L20.414 12Z"/>
+                    </svg>
+                  </button>
+                  <button type="button" class="cb-reels__control" data-reel-pause aria-label="Pause">
+                    <svg class="cb-reels__icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M6 5h4v14H6V5Zm8 0h4v14h-4V5Z"/>
+                    </svg>
+                    <svg class="cb-reels__icon-resume" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M19.376 12.416 8.777 19.482A.5.5 0 0 1 8 19.066V4.934a.5.5 0 0 1 .777-.416l10.599 7.066a.5.5 0 0 1 0 .832Z"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="cb-reels__progress" aria-hidden="true"><span></span></div>
+
+                {%- if section.settings.show_name or section.settings.show_rating -%}
+                  <div class="cb-reels__detail">
+                    {%- if section.settings.show_name and block.settings.name != blank -%}
+                      <p class="cb-reels__name">
+                        {{- block.settings.name | escape -}}
+                        {%- if block.settings.verified -%}
+                          <svg viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Verified">
+                            <path d="m10.6 16.6 7.05-7.05-1.4-1.4-5.65 5.65-2.85-2.85-1.4 1.4 4.25 4.25ZM12 22a9.738 9.738 0 0 1-3.9-.788 10.099 10.099 0 0 1-3.175-2.137c-.9-.9-1.612-1.958-2.137-3.175A9.738 9.738 0 0 1 2 12a9.74 9.74 0 0 1 .788-3.9 10.099 10.099 0 0 1 2.137-3.175c.9-.9 1.958-1.612 3.175-2.137A9.738 9.738 0 0 1 12 2a9.74 9.74 0 0 1 3.9.788 10.098 10.098 0 0 1 3.175 2.137c.9.9 1.613 1.958 2.137 3.175A9.738 9.738 0 0 1 22 12a9.738 9.738 0 0 1-.788 3.9 10.098 10.098 0 0 1-2.137 3.175c-.9.9-1.958 1.613-3.175 2.137A9.738 9.738 0 0 1 12 22Z"/>
+                          </svg>
+                        {%- endif -%}
+                      </p>
+                    {%- endif -%}
+                    {%- if section.settings.show_rating -%}
+                      <span class="cb-reels__rating" role="img" aria-label="{{ rating }} / 5 star review">
+                        {%- for star in (1..5) -%}
+                          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            {%- if star <= rating -%}
+                              <path d="M24 9.425c0 .212-.125.443-.375.693l-5.236 5.105 1.24 7.212c.01.067.015.164.015.289a.85.85 0 0 1-.151.511.51.51 0 0 1-.44.21c-.183 0-.375-.058-.577-.174L12 19.869l-6.476 3.404c-.212.115-.404.173-.577.173-.202 0-.353-.07-.454-.21a.85.85 0 0 1-.152-.511c0-.058.01-.154.03-.289l1.24-7.211-5.25-5.106C.12 9.858 0 9.628 0 9.425c0-.355.27-.577.808-.663l7.24-1.053 3.245-6.562c.183-.395.418-.592.707-.592s.524.197.707.592l3.245 6.562 7.24 1.053c.539.086.808.308.808.663Z"/>
+                            {%- else -%}
+                              <path d="m16.399 14.574 4.413-4.283-6.086-.894L12 3.887l-2.726 5.51-6.086.894L7.6 14.574l-1.053 6.072L12 17.776l5.438 2.87-1.039-6.072ZM24 9.425c0 .212-.125.443-.375.693l-5.236 5.105 1.24 7.212c.01.067.015.164.015.289 0 .48-.197.72-.591.72-.183 0-.375-.057-.577-.172L12 19.867l-6.476 3.404c-.212.115-.404.173-.577.173-.202 0-.353-.07-.454-.21a.85.85 0 0 1-.152-.511c0-.058.01-.154.03-.289l1.24-7.211-5.25-5.106C.12 9.858 0 9.628 0 9.425c0-.355.27-.577.808-.663l7.24-1.053 3.245-6.562c.183-.395.418-.592.707-.592s.524.197.707.592l3.245 6.562 7.24 1.053c.539.086.808.308.808.663Z"/>
+                            {%- endif -%}
+                          </svg>
+                        {%- endfor -%}
+                      </span>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+                <span class="cb-reels__play" aria-hidden="true">
+                  <span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.376 12.416 8.777 19.482A.5.5 0 0 1 8 19.066V4.934a.5.5 0 0 1 .777-.416l10.599 7.066a.5.5 0 0 1 0 .832Z"/>
+                    </svg>
+                  </span>
+                </span>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <button type="button" class="cb-reels__arrow cb-reels__arrow--prev" data-reels-prev aria-label="Previous video">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="m7.828 11 5.364-5.364-1.414-1.414L4 12l7.778 7.778 1.414-1.414L7.828 13H20v-2H7.828Z"/>
+          </svg>
+        </button>
+        <button type="button" class="cb-reels__arrow cb-reels__arrow--next" data-reels-next aria-label="Next video">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="m16.172 11-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2h12.172Z"/>
+          </svg>
+        </button>
+      </cb-video-reviews>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video reviews",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "blocks": [
+    {
+      "type": "reel",
+      "name": "Video review",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video", "info": "Upload to Shopify, or use the links below" },
+        { "type": "url", "id": "video_url", "label": "Video link (MP4)", "info": "Plays with sound when the video is clicked" },
+        { "type": "url", "id": "preview_url", "label": "Short preview link (MP4)", "info": "Plays muted in the slider. Leave empty to use the video." },
+        { "type": "image_picker", "id": "poster", "label": "Cover image" },
+        { "type": "url", "id": "poster_url", "label": "Cover image link" },
+        { "type": "text", "id": "name", "label": "Reviewer name", "default": "Customer" },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true },
+        { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "color", "id": "color", "label": "Card colour", "info": "Shows around videos that are not 9:16", "default": "#a8a8a8" },
+        { "type": "text", "id": "alt", "label": "Video description", "info": "For screen readers" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "checkbox", "id": "autoplay", "label": "Play the centre video automatically", "default": true },
+    { "type": "checkbox", "id": "show_name", "label": "Show reviewer name", "default": true },
+    { "type": "checkbox", "id": "show_rating", "label": "Show rating", "default": true },
+    { "type": "checkbox", "id": "show_arrows_mobile", "label": "Show arrows on mobile", "default": false },
+    { "type": "range", "id": "radius", "label": "Corner radius", "min": 0, "max": 32, "step": 1, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Video reviews",
+      "blocks": [{ "type": "reel" }, { "type": "reel" }, { "type": "reel" }]
+    }
+  ]
+}
+{% endschema %}

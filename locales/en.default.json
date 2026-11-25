@@ -89,7 +89,7 @@
     "back": "Back",
     "back_to": "Back to {{ title }}",
     "back_to_main_menu": "Back to main menu",
-    "choose": "Choose",
+    "choose": "Quick Buy",
     // Button to reset current selection or input
     "clear": "Clear",
     // Button to remove all applied product filters
@@ -144,7 +144,7 @@
     },
     "email_signup": {
       "label": "Email",
-      "placeholder": "Email address",
+      "placeholder": "Your email",
       "success": "Thanks for subscribing!"
     },
     "filter": "Filter",

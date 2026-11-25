@@ -1,0 +1,12 @@
+{%- doc -%}
+  Rating star for the reviews wall: solid, or an outline for the stars a review did not get.
+  Sized by its container (1em).
+
+  @param {boolean} fill - Solid star
+{%- enddoc -%}
+
+{%- if fill -%}
+  <svg class="cb-review-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .9l3.48 7.05 7.78 1.13-5.63 5.49 1.33 7.75L12 18.66l-6.96 3.66 1.33-7.75L.74 9.08l7.78-1.13z" fill="currentColor"/></svg>
+{%- else -%}
+  <svg class="cb-review-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.1l2.82 5.71 6.3.92-4.56 4.44 1.08 6.27L12 17.48l-5.64 2.96 1.08-6.27-4.56-4.44 6.3-.92z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+{%- endif -%}

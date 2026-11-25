@@ -9,6 +9,12 @@
   if section.settings.layout == 'split' and section.settings.heading != blank
     assign split = true
   endif
+
+  assign columns = false
+  if section.settings.layout == 'grid'
+    assign columns = true
+    assign column_break = section.blocks.size | plus: 1 | divided_by: 2
+  endif
 -%}
 
 <div
@@ -30,7 +36,10 @@
       {%- endif -%}
 
       <div class="cb-accordions__list">
+        {%- comment -%} Grid: first half in the left column, the rest in the right, so each column opens on its own {%- endcomment -%}
+        {%- if columns -%}<div class="cb-accordions__column">{%- endif -%}
         {%- for block in section.blocks -%}
+          {%- if columns and forloop.index0 == column_break -%}</div><div class="cb-accordions__column">{%- endif -%}
           <details
             class="cb-accordion"
             {% if forloop.first and section.settings.open_first %}
@@ -45,6 +54,7 @@
             <div class="cb-accordion__body cb-rte">{{ block.settings.answer }}</div>
           </details>
         {%- endfor -%}
+        {%- if columns -%}</div>{%- endif -%}
       </div>
     </div>
   </div>
@@ -138,7 +148,8 @@
       "label": "Heading style",
       "options": [
         { "value": "default", "label": "Default" },
-        { "value": "caps", "label": "Small spaced capitals, no line" }
+        { "value": "caps", "label": "Small spaced capitals, no line" },
+        { "value": "classic", "label": "Centred spaced capitals, 720px (product page)" }
       ],
       "default": "default"
     },
@@ -154,8 +165,8 @@
     { "type": "color", "id": "background_color", "label": "Background" },
     { "type": "color", "id": "text_color", "label": "Text" },
     { "type": "header", "content": "Padding" },
-    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 }
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
   ],
   "presets": [
     {

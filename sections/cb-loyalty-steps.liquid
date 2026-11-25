@@ -1,0 +1,99 @@
+{%- doc -%}
+  Rewards page "How It Works": centred 28px heading, then the steps side by side,
+  each with a 50px picture (or one of the theme's line icons), a 20px title and a line of text.
+{%- enddoc -%}
+
+<div
+  class="cb-section cb-loyalty cb-loyalty-steps-section"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container cb-loyalty__container">
+    <div class="cb-loyalty__block">
+      <div class="cb-loyalty__wrapper">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cb-loyalty__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="cb-loyalty__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+
+        <div class="cb-loyalty-steps">
+          {%- for block in section.blocks -%}
+            <div class="cb-loyalty-step" {{ block.shopify_attributes }}>
+              <div class="cb-loyalty-step__media">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: height: 100 | image_tag: loading: 'lazy', alt: block.settings.title }}
+                {%- else -%}
+                  {%- render 'cb-loyalty-icon', icon: block.settings.icon -%}
+                {%- endif -%}
+              </div>
+              {%- if block.settings.title != blank -%}
+                <div class="cb-loyalty-step__title">{{ block.settings.title }}</div>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="cb-loyalty-step__text">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rewards steps",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Picture", "info": "Shown 50px tall. Without a picture the icon below is used" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "user-check", "label": "Account" },
+            { "value": "user", "label": "Person" },
+            { "value": "bag", "label": "Shopping bag" },
+            { "value": "basket", "label": "Basket" },
+            { "value": "card-star", "label": "Card with star" },
+            { "value": "dollar", "label": "Coin" },
+            { "value": "percent", "label": "Percent" },
+            { "value": "gift", "label": "Gift" },
+            { "value": "smile", "label": "Smile" }
+          ],
+          "default": "user-check"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Sign up" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Create an account on our store" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How It Works" },
+    { "type": "text", "id": "text", "label": "Text under heading" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 20 }
+  ],
+  "presets": [
+    {
+      "name": "Rewards steps",
+      "blocks": [
+        { "type": "step", "settings": { "icon": "user-check", "title": "Sign up", "text": "Create an account on our store" } },
+        { "type": "step", "settings": { "icon": "card-star", "title": "Earn", "text": "Earn points for shopping" } },
+        { "type": "step", "settings": { "icon": "gift", "title": "Redeem", "text": "Redeem your points for rewards" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,25 @@
+{%- doc -%}
+  Loading screen between pages, as on the live store: a full-screen dark layer with the logo
+  pulsing in the middle, faded out over a second once the new page has loaded
+  (html.page-loading is removed in layout/theme.liquid).
+{%- enddoc -%}
+
+{%- if settings.cb_page_loader -%}
+  <div
+    class="cb-loader"
+    aria-hidden="true"
+    style="--cb-loader-bg: {{ settings.cb_loader_background | default: '#000000' }}; --cb-loader-logo: {{ settings.cb_loader_logo_width | default: 40 }}px;"
+  >
+    <div class="cb-loader__logo">
+      {%- if settings.cb_loader_logo != blank -%}
+        {{ settings.cb_loader_logo | image_url: width: 300 | image_tag: alt: '', loading: 'eager', class: 'cb-loader__image' }}
+      {%- elsif settings.logo_inverse != blank -%}
+        {{ settings.logo_inverse | image_url: width: 300 | image_tag: alt: '', loading: 'eager', class: 'cb-loader__image' }}
+      {%- elsif settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 300 | image_tag: alt: '', loading: 'eager', class: 'cb-loader__image cb-loader__image--invert' }}
+      {%- else -%}
+        <span class="cb-loader__name">{{ shop.name }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

@@ -1,50 +1,67 @@
+{%- comment -%}
+  Monthly campaign report, as on the live store: a #faf7f5 band with a 1200px column;
+  each month is a white card with target / achieved, an orange progress bar and who it was donated to.
+{%- endcomment -%}
 <div
   class="cb-section cb-report"
   style="{% render 'cb-section-style', settings: section.settings %}"
 >
-  <div class="cb-container">
+  <div class="cb-report__container">
     {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
-      <div class="cb-header cb-align-center">
+      <div class="cb-report__header">
         {%- if section.settings.heading != blank -%}
-          <h2 class="cb-heading">{{ section.settings.heading }}</h2>
+          <h2 class="cb-report__title">{{ section.settings.heading }}</h2>
         {%- endif -%}
         {%- if section.settings.subheading != blank -%}
-          <p class="cb-rte" style="margin-top: 8px;">{{ section.settings.subheading }}</p>
+          <p class="cb-report__subtitle">{{ section.settings.subheading }}</p>
         {%- endif -%}
       </div>
     {%- endif -%}
 
-    <div class="cb-report__grid">
-      {%- for block in section.blocks -%}
-        <article class="cb-report__card" {{ block.shopify_attributes }}>
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign target_number = block.settings.target | remove: 'AED' | remove: ',' | remove: ' ' | times: 1
+        assign achieved_number = block.settings.achieved | remove: 'AED' | remove: ',' | remove: ' ' | times: 1
+        assign percent = 0
+        if target_number > 0
+          assign percent = achieved_number | times: 100.0 | divided_by: target_number
+        endif
+        if percent > 100
+          assign percent = 100
+        endif
+      -%}
+      <article class="cb-report__card" {{ block.shopify_attributes }}>
+        <div class="cb-report__month-row">
           <h3 class="cb-report__month">{{ block.settings.month }}</h3>
           {%- if block.settings.campaign != blank -%}
-            <div class="cb-rte">{{ block.settings.campaign }}</div>
+            <span class="cb-report__campaign">{{ block.settings.campaign | strip_html | strip }}</span>
           {%- endif -%}
-          <div class="cb-report__figures">
-            <div>
-              <span class="cb-report__label">{{ section.settings.target_label }}</span>
-              <span class="cb-report__value">{{ block.settings.target }}</span>
-            </div>
-            <div>
-              <span class="cb-report__label">{{ section.settings.achieved_label }}</span>
-              <span class="cb-report__value">{{ block.settings.achieved }}</span>
-            </div>
+        </div>
+        <div class="cb-report__stats">
+          <div>
+            <p class="cb-report__label">{{ section.settings.target_label }}</p>
+            <p class="cb-report__value">{{ block.settings.target }}</p>
           </div>
+          <div>
+            <p class="cb-report__label">{{ section.settings.achieved_label }}</p>
+            <p class="cb-report__value">{{ block.settings.achieved }}</p>
+          </div>
+        </div>
+        <div class="cb-report__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ percent | round }}">
+          <div class="cb-report__fill" style="width: {{ percent | round }}%;"></div>
+        </div>
+        <div class="cb-report__footer">
           {%- if block.settings.donated_to != blank -%}
-            <p class="cb-rte">
-              <span class="cb-report__label">{{ section.settings.donated_label }}</span>
-              {{ block.settings.donated_to }}
-            </p>
+            <p class="cb-report__org">{{ section.settings.donated_label }} <span>{{ block.settings.donated_to }}</span></p>
           {%- endif -%}
-          {%- if block.settings.proof_link != blank -%}
-            <a class="cb-text-link" href="{{ block.settings.proof_link }}" target="_blank" rel="noopener">
-              {{- block.settings.proof_label | default: 'View proof' -}}
+          {%- if block.settings.proof_label != blank -%}
+            <a class="cb-report__proof" href="{{ block.settings.proof_link | default: '#' }}" target="_blank" rel="noopener noreferrer">
+              {{- block.settings.proof_label -}}
             </a>
           {%- endif -%}
-        </article>
-      {%- endfor -%}
-    </div>
+        </div>
+      </article>
+    {%- endfor -%}
   </div>
 </div>
 
@@ -63,7 +80,7 @@
         { "type": "text", "id": "achieved", "label": "Achieved", "default": "AED 8,000" },
         { "type": "text", "id": "donated_to", "label": "Donated to", "default": "Charity partner" },
         { "type": "url", "id": "proof_link", "label": "Proof link" },
-        { "type": "text", "id": "proof_label", "label": "Proof link label", "default": "View proof of deposit" }
+        { "type": "text", "id": "proof_label", "label": "Proof link label", "default": "View Proof of Deposit", "info": "Shown even without a link, like the live store" }
       ]
     }
   ],
@@ -72,13 +89,13 @@
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Making a difference together" },
     { "type": "text", "id": "target_label", "label": "Target label", "default": "Target" },
     { "type": "text", "id": "achieved_label", "label": "Achieved label", "default": "Achieved" },
-    { "type": "text", "id": "donated_label", "label": "Donated to label", "default": "Donated to" },
+    { "type": "text", "id": "donated_label", "label": "Donated to label", "default": "Donated to:" },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "background_color", "label": "Background" },
     { "type": "color", "id": "text_color", "label": "Text" },
     { "type": "header", "content": "Padding" },
-    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 }
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 20 }
   ],
   "presets": [
     {

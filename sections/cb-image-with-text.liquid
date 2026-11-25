@@ -14,22 +14,30 @@
       assign img_h = '100svh'
   endcase
 
+  assign img_h_mobile = ''
+  if section.settings.image_height_mobile != blank and section.settings.image_height_mobile != 'default'
+    assign img_h_mobile = section.settings.image_height_mobile | append: 'px'
+  endif
+
   assign container = 'cb-container cb-container--bleed'
   assign boxed = false
   if section.settings.boxed
     assign container = 'cb-container'
     assign boxed = true
   endif
+  if section.settings.classic
+    assign container = 'cb-container'
+  endif
 -%}
 
 <div
-  class="cb-section cb-image-with-text"
+  class="cb-section cb-image-with-text{% if section.settings.classic %} cb-image-with-text--classic{% endif %}"
   style="{% render 'cb-section-style', settings: section.settings %}{% if section.settings.accent_color != blank %} --cb-accent: {{ section.settings.accent_color }};{% endif %}"
 >
   <div class="{{ container }}">
     <div
       class="cb-iwt cb-iwt--{{ section.settings.image_position }}{% if height == 'auto' %} cb-iwt--auto{% endif %}{% if boxed %} cb-iwt--boxed{% endif %}{% if section.settings.compact_text %} cb-iwt--compact-text{% endif %}"
-      style="--cb-img-w: {{ section.settings.image_width }}%; --cb-img-h: {{ img_h }}; --cb-valign: {{ section.settings.vertical_alignment }};"
+      style="--cb-img-w: {{ section.settings.image_width }}%; --cb-img-h: {{ img_h }};{% if img_h_mobile != blank %} --cb-img-h-mobile: {{ img_h_mobile }};{% endif %} --cb-valign: {{ section.settings.vertical_alignment }};"
     >
       <div class="cb-media cb-iwt__media">
         {%- if section.settings.image != blank -%}
@@ -75,6 +83,16 @@
                   {%- endif -%}
                 </div>
               {%- endif -%}
+            {%- when 'accordion' -%}
+              <details class="cb-iwt-accordion" {{ block.shopify_attributes }}>
+                <summary>
+                  <span>{{ block.settings.title }}</span>
+                  <span class="cb-iwt-accordion__icon" aria-hidden="true"></span>
+                </summary>
+                {%- if block.settings.content != blank -%}
+                  <div class="cb-iwt-accordion__body cb-rte">{{ block.settings.content }}</div>
+                {%- endif -%}
+              </details>
           {%- endcase -%}
         {%- endfor -%}
       </div>
@@ -87,6 +105,14 @@
   "name": "Image with text",
   "tag": "section",
   "blocks": [
+    {
+      "type": "accordion",
+      "name": "Collapsible row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Collapsible row" },
+        { "type": "richtext", "id": "content", "label": "Content" }
+      ]
+    },
     {
       "type": "subheading",
       "name": "Subheading",
@@ -216,7 +242,22 @@
       ],
       "default": "650"
     },
+    {
+      "type": "select",
+      "id": "image_height_mobile",
+      "label": "Image height on mobile",
+      "options": [
+        { "value": "default", "label": "300px" },
+        { "value": "250", "label": "250px" },
+        { "value": "350", "label": "350px" },
+        { "value": "450", "label": "450px" },
+        { "value": "560", "label": "560px" },
+        { "value": "650", "label": "650px" }
+      ],
+      "default": "default"
+    },
     { "type": "checkbox", "id": "boxed", "label": "Keep within page width", "default": false },
+    { "type": "checkbox", "id": "classic", "label": "Classic layout", "info": "Like the live store: within the 1305px column, 40px beside the image, 36px heading, 14.4px text", "default": false },
     { "type": "checkbox", "id": "compact_text", "label": "Compact text column", "info": "Less padding next to the image and a narrower paragraph", "default": false },
     {
       "type": "select",

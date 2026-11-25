@@ -2,8 +2,13 @@
   assign raised = section.settings.raised | default: 0
   assign goal = section.settings.goal | default: 0
   assign progress = 0
+  assign progress_exact = 0
   if goal > 0
     assign progress = raised | times: 100 | divided_by: goal
+    assign progress_exact = raised | times: 100.0 | divided_by: goal
+  endif
+  if progress_exact > 100
+    assign progress_exact = 100
   endif
   if progress > 100
     assign progress = 100
@@ -13,47 +18,61 @@
     assign remaining = 0
   endif
 
+  assign remaining_label = remaining
+  if remaining >= 1000
+    assign thousands = remaining | divided_by: 1000
+    assign rest = remaining | modulo: 1000 | prepend: '00' | slice: -3, 3
+    assign remaining_label = thousands | append: ',' | append: rest
+  endif
+
   assign bar_style = ''
   if section.settings.bar_color != blank and section.settings.bar_color.alpha != 0
     assign bar_style = '--cb-bar: ' | append: section.settings.bar_color | append: ';'
   endif
 -%}
 
+{%- comment -%}
+  Fundraising card, as on the live store: amount raised (green) and goal on one row,
+  a 24px bar with the percentage inside, then the amount still to raise.
+{%- endcomment -%}
 <div
   class="cb-section cb-goal-section"
   style="{% render 'cb-section-style', settings: section.settings %} {{ bar_style }}"
 >
-  <div class="cb-container">
-    <cb-goal class="cb-goal">
-      {%- if section.settings.heading != blank -%}
-        <h2 class="cb-heading cb-heading--small">{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      <div class="cb-goal__stats">
-        <span>
-          <span class="cb-goal__amount">{{ raised }} {{ section.settings.currency }}</span>
-          {{ section.settings.raised_label }}
-        </span>
-        <span>{{ section.settings.goal_label }} {{ goal }} {{ section.settings.currency }}</span>
+  <cb-goal class="cb-goal-card">
+    {%- if section.settings.heading != blank or section.settings.text != blank -%}
+      <div class="cb-goal-card__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cb-goal-card__title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="cb-goal-card__subtitle">{{ section.settings.text }}</div>
+        {%- endif -%}
       </div>
-      <div
-        class="cb-goal__track"
-        role="progressbar"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-valuenow="{{ progress }}"
-        aria-label="{{ section.settings.heading | default: 'Progress' | escape }}"
-      >
-        <span class="cb-goal__fill" data-goal-fill data-progress="{{ progress }}%"></span>
+    {%- endif -%}
+
+    <div class="cb-goal-card__stats">
+      <div class="cb-goal-card__amount">{{ raised }} {{ section.settings.currency }} {{ section.settings.raised_label }}</div>
+      <div class="cb-goal-card__goal">{{ section.settings.goal_label }} {{ goal }} {{ section.settings.currency }}</div>
+    </div>
+
+    <div
+      class="cb-goal-card__bar"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="{{ progress }}"
+      aria-label="{{ section.settings.heading | default: 'Fundraising progress' | escape }}"
+    >
+      <div class="cb-goal-card__fill" data-goal-fill data-progress="{{ progress_exact }}%">
+        <span class="cb-goal-card__percent">{{ progress }}%</span>
       </div>
-      <div class="cb-goal__meta">
-        <span>{{ progress }}%</span>
-        <span>{{ section.settings.remaining_label }} {{ remaining }} {{ section.settings.currency }}</span>
-      </div>
-      {%- if section.settings.text != blank -%}
-        <div class="cb-rte" style="margin-top: 20px;">{{ section.settings.text }}</div>
-      {%- endif -%}
-    </cb-goal>
-  </div>
+    </div>
+
+    <div class="cb-goal-card__details">
+      <div>{{ section.settings.remaining_label }} <strong>{{ remaining_label }} {{ section.settings.currency }}</strong></div>
+    </div>
+  </cb-goal>
 </div>
 
 {% schema %}
@@ -74,8 +93,8 @@
     { "type": "color", "id": "background_color", "label": "Background" },
     { "type": "color", "id": "text_color", "label": "Text" },
     { "type": "header", "content": "Padding" },
-    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 }
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 }
   ],
   "presets": [{ "name": "Fundraising goal" }]
 }

@@ -1,0 +1,246 @@
+{%- doc -%}
+  Social feed: a row of posts from Instagram, TikTok, YouTube and other channels, like the
+  "From Our Instagram" feed on the live store. Each post is a block with a video or image
+  (uploaded in Shopify) and a link to the post. Videos play muted on hover, or on their own.
+  Behaviour: cb-social-feed in cb-theme.js.
+{%- enddoc -%}
+
+{%- liquid
+  assign columns = section.settings.columns
+  assign columns_mobile = section.settings.columns_mobile
+  assign desktop_max = columns | times: section.settings.rows
+  assign mobile_max = columns_mobile | times: section.settings.rows_mobile
+
+  assign container = 'cb-container'
+  if section.settings.full_width
+    assign container = 'cb-container cb-container--full'
+  endif
+
+  assign image_sizes = '(min-width: 750px) calc(100vw / ' | append: columns | append: '), calc(100vw / ' | append: columns_mobile | append: ')'
+
+  assign ratio = '4 / 5'
+  case section.settings.aspect_ratio
+    when 'square'
+      assign ratio = '1 / 1'
+    when 'tall'
+      assign ratio = '9 / 16'
+  endcase
+-%}
+
+{%- if section.blocks.size > 0 or request.design_mode -%}
+  <div
+    class="cb-section cb-social{% if section.settings.mobile_carousel %} cb-social--carousel{% endif %}"
+    style="{% render 'cb-section-style', settings: section.settings %} --social-cols: {{ columns }}; --social-cols-mobile: {{ columns_mobile }}; --social-gap: {{ section.settings.gap }}px; --social-ratio: {{ ratio }};"
+  >
+    <div class="{{ container }}">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="cb-social__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <cb-social-feed class="cb-social__grid" data-video="{{ section.settings.video_play }}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign video = block.settings.video
+            assign video_src = ''
+            if video != blank
+              assign sources = video.sources | where: 'mime_type', 'video/mp4' | sort: 'height'
+              for source in sources
+                assign video_src = source.url
+                if source.height >= 480
+                  break
+                endif
+              endfor
+            endif
+
+            assign cover = block.settings.image
+            if cover == blank and video != blank
+              assign cover = video.preview_image
+            endif
+
+            assign platform = block.settings.platform | default: 'instagram'
+            assign platform_name = 'Instagram'
+            case platform
+              when 'tiktok'
+                assign platform_name = 'TikTok'
+              when 'youtube'
+                assign platform_name = 'YouTube'
+              when 'facebook'
+                assign platform_name = 'Facebook'
+              when 'x'
+                assign platform_name = 'X'
+              when 'other'
+                assign platform_name = 'the post'
+            endcase
+            assign label = block.settings.caption | default: block.settings.link | escape
+
+            assign item_class = ''
+            if forloop.index > desktop_max
+              assign item_class = item_class | append: ' cb-social__item--desktop-hidden'
+            endif
+            if forloop.index > mobile_max and section.settings.mobile_carousel == false
+              assign item_class = item_class | append: ' cb-social__item--mobile-hidden'
+            endif
+            if video_src != blank and section.settings.video_play != 'none'
+              assign item_class = item_class | append: ' cb-social__item--video'
+            endif
+          -%}
+          <div class="cb-social__item{{ item_class }}" data-social-item {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a
+                class="cb-social__tile"
+                href="{{ block.settings.link }}"
+                {% if section.settings.new_tab %}
+                  target="_blank" rel="noopener"
+                {% endif %}
+                aria-label="Open on {{ platform_name }}{% if block.settings.caption != blank %}: {{ block.settings.caption | escape }}{% endif %}"
+              >
+            {%- else -%}
+              <div class="cb-social__tile">
+            {%- endif -%}
+
+            {%- if cover != blank -%}
+              {{
+                cover
+                | image_url: width: 900
+                | image_tag:
+                  class: 'cb-social__media',
+                  loading: 'lazy',
+                  widths: '300, 450, 600, 900',
+                  sizes: image_sizes,
+                  alt: label
+              }}
+            {%- elsif video_src == blank -%}
+              {{ 'image' | placeholder_svg_tag: 'cb-social__media cb-social__placeholder' }}
+            {%- endif -%}
+
+            {%- if video_src != blank -%}
+              {%- comment -%} Without a cover the video shows its first frame {%- endcomment -%}
+              <video
+                class="cb-social__media cb-social__video{% if cover == blank %} cb-social__video--cover{% endif %}"
+                {% if cover == blank %}
+                  src="{{ video_src }}" preload="metadata"
+                {% else %}
+                  data-src="{{ video_src }}" preload="none"
+                {% endif %}
+                muted
+                loop
+                playsinline
+                aria-hidden="true"
+              ></video>
+            {%- endif -%}
+
+            {%- if section.settings.show_icon -%}
+              <span class="cb-social__overlay" aria-hidden="true">
+                {%- render 'cb-social-icon', platform: platform -%}
+              </span>
+            {%- endif -%}
+
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+        {%- if section.blocks.size == 0 -%}
+          {%- comment -%} Theme editor only: empty tiles until posts are added {%- endcomment -%}
+          {%- for i in (1..columns) -%}
+            <div class="cb-social__item">
+              <div class="cb-social__tile">
+                {{ 'image' | placeholder_svg_tag: 'cb-social__media cb-social__placeholder' }}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </cb-social-feed>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Social feed",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Post",
+      "settings": [
+        {
+          "type": "select",
+          "id": "platform",
+          "label": "Channel",
+          "options": [
+            { "value": "instagram", "label": "Instagram" },
+            { "value": "tiktok", "label": "TikTok" },
+            { "value": "youtube", "label": "YouTube" },
+            { "value": "facebook", "label": "Facebook" },
+            { "value": "x", "label": "X (Twitter)" },
+            { "value": "other", "label": "Other" }
+          ],
+          "default": "instagram"
+        },
+        { "type": "url", "id": "link", "label": "Post link", "info": "Opens when the post is clicked" },
+        { "type": "video", "id": "video", "label": "Video" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Shown when there is no video, or as the video's cover" },
+        { "type": "text", "id": "caption", "label": "Description", "info": "For screen readers" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "From Our Instagram" },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Post shape",
+      "options": [
+        { "value": "portrait", "label": "Portrait (4:5)" },
+        { "value": "square", "label": "Square" },
+        { "value": "tall", "label": "Tall (9:16)" }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "select",
+      "id": "video_play",
+      "label": "Videos",
+      "options": [
+        { "value": "hover", "label": "Play on hover" },
+        { "value": "auto", "label": "Play automatically" },
+        { "value": "none", "label": "Show cover only" }
+      ],
+      "default": "hover"
+    },
+    { "type": "checkbox", "id": "show_icon", "label": "Show channel icon on hover", "default": true },
+    { "type": "checkbox", "id": "new_tab", "label": "Open links in a new tab", "default": true },
+    { "type": "range", "id": "gap", "label": "Space between posts", "min": 0, "max": 24, "step": 1, "unit": "px", "default": 2 },
+    { "type": "header", "content": "Desktop" },
+    { "type": "range", "id": "columns", "label": "Posts per row", "min": 2, "max": 10, "step": 1, "default": 8 },
+    { "type": "range", "id": "rows", "label": "Rows", "min": 1, "max": 4, "step": 1, "default": 1 },
+    { "type": "header", "content": "Mobile" },
+    { "type": "range", "id": "columns_mobile", "label": "Posts per row", "min": 1, "max": 4, "step": 1, "default": 2 },
+    { "type": "range", "id": "rows_mobile", "label": "Rows", "min": 1, "max": 4, "step": 1, "default": 1 },
+    { "type": "checkbox", "id": "mobile_carousel", "label": "Swipe through all posts", "info": "Ignores rows", "default": false },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
+  ],
+  "presets": [
+    {
+      "name": "Social feed",
+      "blocks": [
+        { "type": "post", "settings": { "platform": "instagram" } },
+        { "type": "post", "settings": { "platform": "tiktok" } },
+        { "type": "post", "settings": { "platform": "instagram" } },
+        { "type": "post", "settings": { "platform": "tiktok" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

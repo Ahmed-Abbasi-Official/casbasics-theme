@@ -11,270 +11,500 @@
   "sections": {
     "intro": {
       "type": "cb-text",
-      "settings": {
-        "width": "narrow",
-        "alignment": "center",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
-        "heading_003d": {
+        "heading_faq": {
           "type": "heading",
           "settings": {
             "heading": "FAQs",
-            "size": "large",
-            "show_line": false
+            "size": "compact",
+            "show_line": true
           }
         },
-        "text_003e": {
+        "text_faq": {
           "type": "text",
           "settings": {
-            "text": "<p>Answers to common questions about sizing, customisation, delivery, payment and care.</p>"
+            "text": "<p>CAS Abaya offers a wide range of high-quality abayas and travel wear, specializing in customized abayas that allow customers to personalize their sizes and design details. This FAQ section answers common questions about sizing, customization, delivery, payments, exchanges, and abaya care to help you shop with confidence. If you need further assistance, our team is always available via WhatsApp, social media, email, or live chat.</p>"
           }
         }
       },
       "block_order": [
-        "heading_003d",
-        "text_003e"
-      ]
+        "heading_faq",
+        "text_faq"
+      ],
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "style": "classic",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 30
+      }
     },
     "payments": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Payments & safety",
-        "text": "",
-        "layout": "split",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
-        "item_003f": {
+        "payments_1": {
           "type": "item",
           "settings": {
-            "question": "What payment methods do you accept?",
-            "answer": "<p>Card payments, cash on delivery (where available), bank transfer, Apple Pay and instalment plans at checkout.</p>"
+            "question": "What payment methods does CAS accept?",
+            "answer": "<p>CAS Abaya offers multiple secure payment options:</p><p>• Online Card Payment<br/>• Cash on Delivery (COD) - for UAE Customers only<br/>• Bank Transfer<br/>• Apple Pay<br/>• Tabby (Installment payments — website checkout only)</p>"
           }
         },
-        "item_003g": {
+        "payments_2": {
           "type": "item",
           "settings": {
-            "question": "Is my payment secure?",
-            "answer": "<p>Yes. All payments are processed through encrypted, PCI-compliant checkout.</p>"
+            "question": "Can I pay Cash on Delivery?",
+            "answer": "<p>Yes, COD is available with certain conditions.<br/>✔ Option available for UAE customers only<br/>✔ Returning customers can use COD for any order amount<br/>✔ First-time customers ordering AED 900 or above must pay at least 50% in advance</p><p>This helps us secure customized orders prepared specifically for you.</p>"
+          }
+        },
+        "payments_3": {
+          "type": "item",
+          "settings": {
+            "question": "Why do first-time customers need to pay in advance for orders above AED 900?",
+            "answer": "<p>CAS Abaya customizes most abayas individually. Once an order is confirmed, fabric is sourced and stitching begins specifically for the customer. Advance payment helps cover production costs for bespoke pieces.<br/></p>"
+          }
+        },
+        "payments_4": {
+          "type": "item",
+          "settings": {
+            "question": "Can I pay in installments?",
+            "answer": "<p>Yes. CAS offers <strong>Tabby installment payments</strong>, allowing you to split payments into smaller amounts without any interest rate.</p><p>📌 Tabby is available only when checking out directly through the website.</p>"
+          }
+        },
+        "payments_5": {
+          "type": "item",
+          "settings": {
+            "question": "Do you accept online payments?",
+            "answer": "<p>Yes, we accept online payments through Stripe, PayPal, Apple Pay, Visa, MasterCard, and American Express.&nbsp;</p>"
+          }
+        },
+        "payments_6": {
+          "type": "item",
+          "settings": {
+            "question": "Is my payment data safe with you?",
+            "answer": "<p>Yes. Your payment security is extremely important to us. CAS Abaya does <strong>not store or have access to your card details</strong>. All payments are processed through secure, trusted payment gateways that comply with <strong>PCI-DSS security standards</strong>, managed by the PCI Security Standards Council (including Visa, MasterCard, American Express, and Discover). This ensures your payment information is encrypted and protected at all times.<br/><br/></p>"
+          }
+        },
+        "payments_7": {
+          "type": "item",
+          "settings": {
+            "question": "Can I pay through bank transfer?",
+            "answer": "<p>Yes. Customers can pay through bank transfer and share payment proof to confirm their order.</p><p>Your order will be processed once payment is verified.</p>"
+          }
+        },
+        "payments_8": {
+          "type": "item",
+          "settings": {
+            "question": "How do I confirm my payment?",
+            "answer": "<p>After completing online payment or bank transfer:</p><p>✔ Share payment screenshot or receipt on our email (info@casbasics.com or Whatsapp ( +971585959872)&nbsp;<br/><br/>✔ Your order will be confirmed after verification<br/><br/>✔ You will receive an order confirmation message</p>"
+          }
+        },
+        "payments_9": {
+          "type": "item",
+          "settings": {
+            "question": "Is full payment required before delivery?",
+            "answer": "<p>It depends on the order type:</p><p>• COD orders — Pay at delivery (eligible customers only)<br/><br/>• Customized orders above AED 900 (first-time customers) — Partial or full advance payment required<br/><br/>• Online / Tabby / Apple Pay — Payment completed at checkout</p>"
+          }
+        },
+        "payments_10": {
+          "type": "item",
+          "settings": {
+            "question": "Will I receive payment confirmation?",
+            "answer": "<p>Yes. Once your payment is verified, CAS will send you an official order confirmation via WhatsApp or email.</p>"
+          }
+        },
+        "payments_11": {
+          "type": "item",
+          "settings": {
+            "question": "What happens if payment proof is not shared?",
+            "answer": "<p>Orders requiring advance payment will <strong>not be processed</strong> until payment proof is received and verified.</p>"
           }
         }
       },
       "block_order": [
-        "item_003f",
-        "item_003g"
-      ]
+        "payments_1",
+        "payments_2",
+        "payments_3",
+        "payments_4",
+        "payments_5",
+        "payments_6",
+        "payments_7",
+        "payments_8",
+        "payments_9",
+        "payments_10",
+        "payments_11"
+      ],
+      "settings": {
+        "heading": "Payments & Safety",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
     },
     "shipping": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Shipping & delivery",
-        "text": "",
-        "layout": "split",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
-        "item_003h": {
+        "shipping_1": {
           "type": "item",
           "settings": {
-            "question": "How long does it take to get my order?",
-            "answer": "<p>Custom pieces are made within 10–12 business days, then shipped. Ready-to-wear ships within 1–2 days.</p>"
+            "question": "How long does it take to get my abaya?",
+            "answer": "<p>Here’s what you can expect regarding shipping:</p><ul><li><strong>Production Time</strong>: Your customized abaya will be made within <strong>10-12 business days</strong>.</li><li><strong>Domestic Shipping (within UAE)</strong>: Once your abaya is ready, domestic shipping can take up to <strong>2-5 business days</strong>.</li><li><strong>International Shipping</strong>: Shipping times for international orders will vary depending on your location.</li></ul><p></p><p>If 14 business days have passed and you haven't received your order yet please send us a WhatsApp or drop us an email at <strong>info@casbasics.com</strong> with your Full Name, Order Number and Contact Number.</p><p>&nbsp;</p>"
           }
         },
-        "item_003i": {
+        "shipping_2": {
+          "type": "item",
+          "settings": {
+            "question": "How much does it cost?",
+            "answer": "<p>Standard&nbsp;rate of&nbsp;<strong>AED 19&nbsp;</strong>for all cities across UAE (Abu Dhabi, Ajman, Dubai, Sharjah, UAQ, Ras Al Khaimah, Fujairah).&nbsp;</p><p>For international deliveries, shipping costs are calculated during checkout based on weight, dimensions and&nbsp;destination of the items in the order.</p>"
+          }
+        },
+        "shipping_3": {
+          "type": "item",
+          "settings": {
+            "question": "Is there free shipping?",
+            "answer": "<p>Yes! We provide free shipping on domestic orders over <strong>AED 999</strong>. Be sure to check your cart for details on our current free shipping offer!</p>"
+          }
+        },
+        "shipping_4": {
           "type": "item",
           "settings": {
             "question": "Do you ship internationally?",
-            "answer": "<p>Yes, we ship worldwide. Costs are calculated at checkout.</p>"
+            "answer": "<p>Yes, we ship our products worldwide!&nbsp;</p><p><strong>Please note that free shipping does not apply to international orders</strong>, and shipping rates may vary depending on your region.&nbsp;</p><p>We use <strong>DHL </strong>for reliable and efficient international shipping.&nbsp;</p>"
+          }
+        },
+        "shipping_5": {
+          "type": "item",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p><strong>How much is shipping?</strong></p><p><strong>UAE:</strong> AED 19. Orders of AED 1,000+ Free delivery</p><p><strong>Saudi Arabia, Kuwait, Bahrain, Oman:</strong> AED 40. Orders of AED 1,200+ &nbsp;Free delivery</p><p><strong>Qatar:</strong> From AED 80</p><p><strong>UK:</strong> From AED 100</p><p><strong>Jordan:</strong> From AED 100</p><p><strong>USA, Canada, Australia:</strong> From AED 150</p><p><strong>Lebanon, Egypt, Iraq:</strong> From AED 150</p><p><strong>Rest of the world:</strong> From AED 160</p><p></p><p>International rates vary with order size. Your exact shipping cost is shown at checkout before you pay.</p>"
+          }
+        },
+        "shipping_6": {
+          "type": "item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>To see your order status, please email your order details to info@casbasics.com or provide these details into WhatsApp Chat icon on bottom left.</p>"
+          }
+        },
+        "shipping_7": {
+          "type": "item",
+          "settings": {
+            "question": "Do you have physical stores or in-home shopping?",
+            "answer": "<p><br/>Yes – our main branch is in Abu Dhabi, Dubai with outlets in Ajman and Ras Al Khaimah. We also offer a <strong>free home service</strong>: we bring 80–100 abayas to your home on a scheduled date. (To <a href=\"/pages/home-service-abaya\" title=\"CAS Abaya Home Service\">book a home visit</a>, a minimum purchase of 5 pieces is required – there is no booking or delivery fee.)<br/><br/></p>"
           }
         }
       },
       "block_order": [
-        "item_003h",
-        "item_003i"
-      ]
+        "shipping_1",
+        "shipping_2",
+        "shipping_3",
+        "shipping_4",
+        "shipping_5",
+        "shipping_6",
+        "shipping_7"
+      ],
+      "settings": {
+        "heading": "Shipping & Delivery",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 30
+      }
     },
     "returns": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Returns & exchange policy",
-        "text": "",
-        "layout": "split",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
-        "item_003j": {
+        "returns_1": {
           "type": "item",
           "settings": {
-            "question": "What if it doesn’t fit?",
-            "answer": "<p>Pieces are made to the measurements you provide. Please review the size chart carefully before ordering.</p>"
+            "question": "What if the abaya doesn’t fit or I need alterations?",
+            "answer": "<p>CAS abayas are stitched exactly according to the measurements provided by the customer. To ensure the best fit, we strongly recommend reviewing our size chart and double-checking measurements before placing your order.</p><p>If the abaya is <strong>too loose or long</strong>, we offer a professional alteration service for <strong>AED 50</strong>, which includes pickup and delivery.</p><p>If the abaya is <strong>too tight or short</strong>, fabric cannot be extended, and a brand-new replacement abaya must be stitched. This service is available for <strong>AED 150</strong>, including delivery.</p><p>If you wish to change the fabric after receiving your abaya, we can create a new replacement piece for <strong>AED 150</strong>, as fabrics are sourced specifically for each customized order.</p>"
           }
         },
-        "item_003k": {
+        "returns_2": {
           "type": "item",
           "settings": {
-            "question": "Can I exchange my order?",
-            "answer": "<p>Eligible orders can be exchanged within 7 days. See our exchange policy for details.</p>"
+            "question": "Can I make changes right after placing my order?",
+            "answer": "<p>Yes. Customers may request order changes through Email or WhatsApp <strong>within 24 hours of placing the order</strong> without any additional charges.</p><p>After 24 hours, production begins and changes may not be possible. Any sizing or fabric changes requested after production has started will be treated as alteration or replacement requests and applicable service fees will apply.</p><p>To avoid additional charges, we recommend carefully reviewing your measurements, design details, and customization requests before confirming your order.</p>"
+          }
+        },
+        "returns_3": {
+          "type": "item",
+          "settings": {
+            "question": "Can I exchange a Ready-to-Wear abaya?",
+            "answer": "<p>No. Ready-to-Wear abayas are sold strictly as final sale items and are <strong>not eligible for customization, alterations, refunds, or exchanges under any circumstances</strong>.</p><p>RTW abayas are dispatched exactly as displayed and cannot be modified after purchase.</p>"
+          }
+        },
+        "returns_4": {
+          "type": "item",
+          "settings": {
+            "question": "Can I cancel my order?",
+            "answer": "<p>An order can only be cancelled within 48 hours of placing it. Please provide your order number so we can assist you with the cancellation process.</p>"
           }
         }
       },
       "block_order": [
-        "item_003j",
-        "item_003k"
-      ]
+        "returns_1",
+        "returns_2",
+        "returns_3",
+        "returns_4"
+      ],
+      "settings": {
+        "heading": "Returns & Exchange Policy",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 30
+      }
     },
     "fabric": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Product & fabric",
-        "text": "",
-        "layout": "split",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
-        "item_003l": {
+        "fabric_1": {
           "type": "item",
           "settings": {
-            "question": "Which fabrics do you offer?",
-            "answer": "<p>Lightweight everyday fabrics like Nada and Crepe, and richer fabrics for occasions.</p>"
+            "question": "What fabrics do CAS abayas come in, and which are best for everyday or special occasions?",
+            "answer": "<p>CAS Abaya offers many fabrics to suit different needs. For daily wear, <strong>Nada</strong> is a luxurious, soft and lightweight fabric, and <strong>Crepe</strong> is also comfortable and breathable (with a slight texture and drape). <strong>Chiffon</strong> is lightweight and airy (often layered to avoid transparency). For work or formal wear, <strong>Jacquard</strong> and <strong>Soft Jacquard</strong> are textured, durable fabrics with a sophisticated look. For special events (weddings, parties), we use richer fabrics like <strong>Bridal Satin</strong> (heavy with subtle shine) and <strong>Dantel lace</strong> (intricate, feminine). <strong>Velvet</strong>, <strong>Suede</strong>, and <strong>Tweed</strong> are heavier winter fabrics, while <strong>Linen</strong> is a cool, breathable fabric ideal for summer.<br/><br/></p>"
           }
         },
-        "item_003m": {
+        "fabric_2": {
           "type": "item",
           "settings": {
-            "question": "Do pieces come with a sheila?",
-            "answer": "<p>Yes, most pieces are sold with a matching sheila.</p>"
+            "question": "Are CAS abayas see-through or transparent?",
+            "answer": "<p>Most CAS abayas are designed using premium fabrics that provide comfortable coverage while maintaining elegance. Some lightweight fabrics such as chiffon may naturally be more sheer; however, these designs are usually layered or can be customized with additional lining (batana) for extra coverage. Customers can request lining if they prefer a more opaque finish.</p>"
+          }
+        },
+        "fabric_3": {
+          "type": "item",
+          "settings": {
+            "question": "How do I choose a fabric for hot weather or everyday comfort?",
+            "answer": "<p>For hot climates and casual wear, we recommend lighter fabrics. <strong>Nada</strong>, <strong>Crepe</strong>, and <strong>Chiffon</strong> are all lightweight and breathable. <strong>Linen</strong> is specifically noted for summer wear – it’s natural, airy and durable. These fabrics keep you cool while maintaining elegance.</p>"
+          }
+        },
+        "fabric_4": {
+          "type": "item",
+          "settings": {
+            "question": "Are CAS fabrics suitable for daily wear and long hours of use?",
+            "answer": "<p>Yes. CAS carefully selects fabrics that combine comfort, durability, and elegance. Fabrics like Nada, Crepe, Soft Jacquard, and Linen are particularly popular for everyday wear because they are breathable, lightweight, and easy to carry for long hours while maintaining a polished and modest look.</p>"
           }
         }
       },
       "block_order": [
-        "item_003l",
-        "item_003m"
-      ]
+        "fabric_1",
+        "fabric_2",
+        "fabric_3",
+        "fabric_4"
+      ],
+      "settings": {
+        "heading": "Product & Fabric",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 30
+      }
     },
     "fit": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Fit, style & customisation",
-        "text": "",
-        "layout": "split",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
-        "item_003n": {
+        "fit_1": {
           "type": "item",
           "settings": {
-            "question": "How do I make sure it fits?",
-            "answer": "<p>Measure an existing garment that fits you well and use our size chart.</p>"
+            "question": "How do I ensure my abaya will fit correctly?",
+            "answer": "<p>Custom abayas are made to your measurements. We work from <strong>abaya (garment) measurements, not body measurements</strong>. Please measure an existing abaya (chest, hips, length, sleeves from neck, shoulder) in inches. We also offer standard sizes (XXS to 6XL) and can customize any length. If fit issues arise after delivery, we provide alterations or replacements (see Returns & Exchanges below)</p>"
           }
         },
-        "item_003o": {
+        "fit_2": {
           "type": "item",
           "settings": {
-            "question": "Can I customise the design?",
-            "answer": "<p>Yes, many designs can be customised in size and colour.</p>"
+            "question": "What abaya styles do you offer (open front vs closed front)?",
+            "answer": "<p>CAS abayas come in various styles. An <strong>open-front</strong> abaya is like a coat that buttons down the front. We can also make <strong>half-closed</strong> (with 3–4 buttons) or <strong>fully closed front</strong> designs. In fact, we can create a completely closed-front abaya that you wear over the head. All our styles are designed for modesty; choose the front style that you’re most comfortable with. Necklines are also customizable (V-neck, round, high, etc.).<br/></p>"
+          }
+        },
+        "fit_3": {
+          "type": "item",
+          "settings": {
+            "question": "What customizations are available and are they free?",
+            "answer": "<p>Many customizations are <strong>free of charge</strong>. We tailor every abaya to your exact size (any size up to 6XL and any length up to 63″). You can add or remove features at no extra cost: for example, add buttons to the front or sleeves, include zip or button closures (useful for moms), insert side or front pockets, and choose any neckline (V, round, high). You can even remove our logo from the abaya or sheila if you wish.<br/><br/>A few enhancements carry a small fee: for example, adding a full lining (batana) under the abaya is AED 70, adding an extra chiffon layer is AED 100, and extending the sheila beyond the standard length costs AED 40. We’ll always tell you about any charges before completing your order.</p>"
+          }
+        },
+        "fit_4": {
+          "type": "item",
+          "settings": {
+            "question": "Do you have options for pregnant or nursing mothers?",
+            "answer": "<p>Yes. We can adjust the size and cut to accommodate pregnancy. For nursing, we offer practical features: for example, <strong>zippers or buttons can be added</strong> to our inner dresses to facilitate breastfeeding. Just let us know your needs when ordering.</p>"
+          }
+        },
+        "fit_5": {
+          "type": "item",
+          "settings": {
+            "question": "Can I have a size Guide?",
+            "answer": "<p>Yes, you can find our size guide here: <a href=\"/pages/abaya-size-chart\" title=\"Abaya Size Chart\">Abaya size guide</a></p>"
+          }
+        },
+        "fit_6": {
+          "type": "item",
+          "settings": {
+            "question": "How do I provide measurements, and how long does a custom order take?",
+            "answer": "<p><br/>Please send us your <strong>measurements in inches</strong>: chest, hips, abaya length, sleeve length (from neck), and shoulder width. We recommend measuring a similar abaya for accuracy. After ordering, most custom abayas are ready in <strong>10–12 business days</strong>. During busy seasons (Ramadan/Eid) allow up to 12–15 days. If you need an abaya sooner, check our<a href=\"/collections/ready-to-wear-abayas\" title=\"Ready to Wear Abayas\"> Ready-to-Wear collection </a>(delivered in 1–2 days within the UAE).<br/></p>"
           }
         }
       },
       "block_order": [
-        "item_003n",
-        "item_003o"
-      ]
+        "fit_1",
+        "fit_2",
+        "fit_3",
+        "fit_4",
+        "fit_5",
+        "fit_6"
+      ],
+      "settings": {
+        "heading": "Fit, Style & Customizations",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 30
+      }
     },
     "events": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Events & seasons",
-        "text": "",
-        "layout": "split",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
-        "item_003p": {
+        "events_1": {
           "type": "item",
           "settings": {
-            "question": "Do you have seasonal collections?",
-            "answer": "<p>Yes, we launch festive collections every season. Order early as pieces are made to order.</p>"
+            "question": "Do you have special Eid or Ramadan collections, and when should I order?",
+            "answer": "<p>Yes, we typically launch festive collections for <a href=\"/collections/ramadan-eid-abaya-2026\" title=\"Ramadan | Eid Abaya 2026\">Eid and Ramadan</a> with special designs and handwork. These pieces are custom-made, so plan ahead: production is usually <strong>10–12 days</strong>, and during Ramadan/Eid periods it can take <strong>12–15 days</strong>. We recommend ordering well before the holiday to ensure timely delivery. (Also note: if you need exchanges for intricate Eid abayas, additional fees may apply due to handwork.)<br/></p>"
+          }
+        },
+        "events_2": {
+          "type": "item",
+          "settings": {
+            "question": "What abayas do you recommend for weddings or parties?",
+            "answer": "<p>For weddings and formal parties, we suggest our <a href=\"/collections/satin-abaya\" title=\"Satin Abaya\"><strong>Bridal Satin</strong></a> abayas (heavy weight with an elegant shine) or those in <a href=\"/collections/dantel-abaya\" title=\"Dantel Abaya\"><strong>Dantel,</strong></a><strong> </strong><a href=\"/collections/lace-abaya\" title=\"Lace Abaya\"><strong>lace</strong></a> (intricate and luxurious). These fabrics and cuts create a refined, festive look. You can customize length and embellishments as needed.</p>"
+          }
+        },
+        "events_3": {
+          "type": "item",
+          "settings": {
+            "question": "What about travel or vacation outfits?",
+            "answer": "<p>We offer<a href=\"/collections/travel-wear\" title=\"Travel Wear\"> <strong>travel sets</strong></a> (coordinated abaya + sheila or matching separates) made for comfort on the go. For example, light cotton or linen blends are great for travel. (Please note: due to hygiene, travel wear and inner sets cannot be exchanged.)</p>"
+          }
+        },
+        "events_4": {
+          "type": "item",
+          "settings": {
+            "question": "Do you offer Abayas for Hajj & Umrah?",
+            "answer": "<p>Yes, find our exclusive collection for <a href=\"/collections/hajj-and-umrah-abayas\" title=\"Hajj and Umrah Abayas\">Hajj & Umrah</a></p>"
           }
         }
       },
       "block_order": [
-        "item_003p"
-      ]
+        "events_1",
+        "events_2",
+        "events_3",
+        "events_4"
+      ],
+      "settings": {
+        "heading": "Events & Seasons",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 30
+      }
     },
     "care": {
       "type": "cb-accordions",
-      "settings": {
-        "heading": "Care",
-        "text": "",
-        "layout": "split",
-        "heading_alignment": "center",
-        "width": "normal",
-        "open_first": false,
-        "faq_schema": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      },
       "blocks": {
-        "item_003q": {
+        "care_1": {
           "type": "item",
           "settings": {
-            "question": "How should I clean my pieces?",
-            "answer": "<p>We recommend professional dry cleaning to preserve delicate fabrics and embellishments.</p>"
+            "question": "How should I wash or clean my abaya?",
+            "answer": "<p>Because CAS abayas uses delicate fabrics (nada, crepe, chiffon) and embellishments, we <strong>strongly recommend professional dry cleaning</strong>. Dry cleaning is the safest way to preserve the fabric and embroidery.<br/></p>"
+          }
+        },
+        "care_2": {
+          "type": "item",
+          "settings": {
+            "question": "How do I make my abaya last longer?",
+            "answer": "<p>Follow the care instructions to keep your abaya beautiful. After wearing, hang it up to air out. Store it in a cover away from direct sunlight. Always clean stains promptly with professional help. Following these steps and avoiding harsh treatment will help your abaya “stay stunning for years”.<br/></p>"
+          }
+        },
+        "care_3": {
+          "type": "item",
+          "settings": {
+            "question": "Can I machine wash or tumble dry my abaya?",
+            "answer": "<p>No – please avoid machine washing, tumble drying, bleach or harsh detergents. These can shrink or fade delicate materials and damage any beads, embroidery or stones. It’s best to handle abayas gently (hang or steam out wrinkles).</p>"
           }
         }
       },
       "block_order": [
-        "item_003q"
-      ]
-    },
-    "referral": {
-      "type": "cb-referral",
+        "care_1",
+        "care_2",
+        "care_3"
+      ],
       "settings": {
-        "heading": "Give 10%, Get AED 30",
-        "subtext": "Share a 10% discount link with your friends and family, and earn AED 30 for every purchase they make.",
-        "email_label": "Email",
-        "email_placeholder": "Your email",
-        "name_label": "Name",
-        "name_placeholder": "Your name",
-        "button_label": "Get Discount Link",
-        "min_purchase": "Minimum purchase amount: AED 350",
-        "terms_text": "<p>By submitting, I acknowledge the <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>",
-        "padding_top": 40,
-        "padding_bottom": 64,
-        "width": "normal"
+        "heading": "Abaya Care",
+        "text": "",
+        "layout": "grid",
+        "heading_alignment": "center",
+        "width": "normal",
+        "icon": "plus",
+        "heading_style": "default",
+        "open_first": false,
+        "faq_schema": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
@@ -286,7 +516,6 @@
     "fabric",
     "fit",
     "events",
-    "care",
-    "referral"
+    "care"
   ]
 }

@@ -1,0 +1,90 @@
+{%- doc -%}
+  "You may also like" / "Recently viewed" tabs on the product page, as on the live store.
+  You may also like: Shopify's product recommendations (loaded after the page), shown first from
+  the product's collection. Recently viewed: products this visitor opened, kept in their browser.
+{%- enddoc -%}
+
+{%- liquid
+  assign limit = section.settings.products_count
+  assign fallback = section.settings.collection | default: product.collections.first
+  assign recommended = false
+  if recommendations.products.size > 0
+    assign recommended = true
+  endif
+-%}
+
+<div
+  class="cb-section cb-related"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <cb-related
+    class="cb-related__container"
+    data-handle="{{ product.handle }}"
+    data-limit="{{ limit }}"
+    {% if product and recommended == false %}
+      data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ limit }}&intent=related"
+    {% endif %}
+  >
+    <div class="cb-related__head">
+      <div class="cb-related__tabs">
+        <div class="cb-related__nav" role="tablist">
+          <button type="button" class="cb-related__tab is-active" role="tab" aria-selected="true" aria-controls="CbRelated-{{ section.id }}" data-related-tab>
+            {{- section.settings.heading -}}
+          </button>
+          {%- if section.settings.recent_heading != blank -%}
+            <button type="button" class="cb-related__tab" role="tab" aria-selected="false" aria-controls="CbRecent-{{ section.id }}" data-related-tab>
+              {{- section.settings.recent_heading -}}
+            </button>
+          {%- endif -%}
+        </div>
+        <div class="cb-related__bar" aria-hidden="true"><span data-related-thumb></span></div>
+      </div>
+    </div>
+
+    <div class="cb-related__panel" id="CbRelated-{{ section.id }}" role="tabpanel">
+      <div class="cb-related__grid" data-related-grid>
+        {%- if recommended -%}
+          {%- for item in recommendations.products limit: limit -%}
+            {%- render 'cb-related-card', product: item -%}
+          {%- endfor -%}
+        {%- elsif fallback != blank -%}
+          {%- assign shown = 0 -%}
+          {%- for item in fallback.products limit: 12 -%}
+            {%- if item.id != product.id and shown < limit -%}
+              {%- render 'cb-related-card', product: item -%}
+              {%- assign shown = shown | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.recent_heading != blank -%}
+      <div class="cb-related__panel" id="CbRecent-{{ section.id }}" role="tabpanel" hidden>
+        <div class="cb-related__grid" data-recent-grid></div>
+        <p class="cb-related__empty" data-recent-empty hidden>{{ section.settings.recent_empty }}</p>
+      </div>
+    {%- endif -%}
+  </cb-related>
+</div>
+
+{% schema %}
+{
+  "name": "Related products",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You may also like" },
+    { "type": "text", "id": "recent_heading", "label": "Recently viewed tab", "info": "Leave empty to hide the tab", "default": "Recently viewed" },
+    { "type": "text", "id": "recent_empty", "label": "Recently viewed, nothing yet", "default": "Products you look at will show here." },
+    { "type": "range", "id": "products_count", "label": "Products", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "collection", "id": "collection", "label": "Collection to show until recommendations load", "info": "Leave empty to use the product's first collection" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
+  ]
+}
+{% endschema %}

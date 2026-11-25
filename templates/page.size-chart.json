@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "main": {
+      "type": "cb-size-chart",
+      "blocks": {
+        "table_1": {
+          "type": "table",
+          "settings": {
+            "label": "Size:",
+            "header": "Size | Chest (in) | Hip (in)",
+            "rows": "XS | 31″ – 33″ | 32″ – 34″\nS | 34″ – 36″ | 36″ – 38″\nM | 39″ – 41″ | 40″ – 42″\nL | 42″ – 44″ | 44″ – 46″\nXL | 45″ – 47″ | 48″ – 50″\n2XL | 48″ – 50″ | 52″ – 54″\n3XL | 51″ – 52″ | 56″ – 58″"
+          }
+        },
+        "table_2": {
+          "type": "table",
+          "settings": {
+            "label": "Length:",
+            "header": "Abaya Length (in) | Your Height (cm) | Sleeve Length (inches from neck)",
+            "rows": "50″ | 146 | 25″\n51″ | 150 | 25.5″\n52″ | 153 | 26″\n53″ | 156 | 26.5″\n54″ | 159 | 27″\n55″ | 162 | 27.5″\n56″ | 165 | 28″\n57″ | 168 | 28.5″\n58″ | 171 | 29″\n59″ | 174 | 29.5″\n60″ | 177 | 30″"
+          }
+        },
+        "table_3": {
+          "type": "table",
+          "settings": {
+            "label": "Travel Set:",
+            "header": "Size | Chest (in) | Waist | Trouser Length",
+            "rows": "XS | 33″ | 25″ | 35″\nS | 35″ | 27″ | 35″\nM | 38″ | 29″ | 36″\nL | 43″ | 33″ | 36″\nXL | 48″ | 39″ | 38″\n2XL | 52″ | 43″ | 39″\n3XL | 56″ | 47″ | 40″"
+          }
+        }
+      },
+      "block_order": [
+        "table_1",
+        "table_2",
+        "table_3"
+      ],
+      "settings": {
+        "heading": "",
+        "show_diagram": true,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

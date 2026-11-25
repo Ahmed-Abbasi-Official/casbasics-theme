@@ -2151,5 +2151,54 @@
         "default": "You qualify for FREE shipping!"
       }
     ]
+  },
+  {
+    "name": "Casbasics: animations",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Animations like the live store: sections fade in as they scroll into view, a loading screen between pages, and product cards that wipe to their second picture on hover."
+      },
+      {
+        "type": "checkbox",
+        "id": "cb_scroll_animations",
+        "label": "Animate sections on scroll",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cb_page_loader",
+        "label": "Loading screen between pages",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "cb_loader_background",
+        "label": "Loading screen background",
+        "default": "#000000"
+      },
+      {
+        "type": "image_picker",
+        "id": "cb_loader_logo",
+        "label": "Loading screen logo",
+        "info": "A light logo shows best on the dark screen. Without one, the store logo is shown in white."
+      },
+      {
+        "type": "range",
+        "id": "cb_loader_logo_width",
+        "label": "Loading screen logo width",
+        "min": 20,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "checkbox",
+        "id": "cb_card_hover",
+        "label": "Product cards: second picture and quick buy on hover",
+        "default": true
+      }
+    ]
   }
 ]

@@ -1,0 +1,49 @@
+{%- doc -%}
+  Thin centred announcement line, like "Loved by over 6,000+ customers since 2020" under the header
+  on the live store's product page: 12px Jost, 10px above and below, links underlined with a 1px line.
+{%- enddoc -%}
+
+{%- if section.settings.text != blank -%}
+  {%- if section.settings.font == 'jost' -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400&display=swap">
+  {%- endif -%}
+
+  <div
+    class="cb-section cb-strip cb-strip--{{ section.settings.font }}"
+    style="{% render 'cb-section-style', settings: section.settings %}"
+  >
+    <div class="cb-container cb-strip__container">
+      <p class="cb-strip__text">{{ section.settings.text }}</p>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement line",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "settings": [
+    { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Loved by over 6,000+ customers since 2020" },
+    {
+      "type": "select",
+      "id": "font",
+      "label": "Font",
+      "options": [
+        { "value": "jost", "label": "Jost (as on the live store)" },
+        { "value": "body", "label": "Theme body font" }
+      ],
+      "default": "jost"
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 10 }
+  ],
+  "presets": [{ "name": "Announcement line" }]
+}
+{% endschema %}

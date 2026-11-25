@@ -7,6 +7,29 @@
   dir="{{ request.locale.direction | default: 'ltr' }}"
 >
   <head>
+    {%- comment -%}
+      Casbasics animations: the loading screen shows until the page has parsed, and sections fade in
+      on scroll (assets/cb-theme.js). Skipped for people who prefer less motion and in the theme editor.
+    {%- endcomment -%}
+    {%- unless request.design_mode -%}
+      <script>
+        (function () {
+          var root = document.documentElement;
+          var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          {%- if settings.cb_page_loader %}
+          root.classList.add('page-loading', 'cb-loader-on');
+          var done = function () { root.classList.remove('page-loading'); };
+          document.addEventListener('DOMContentLoaded', done);
+          window.addEventListener('pageshow', function (event) { if (event.persisted) done(); });
+          setTimeout(done, 6000);
+          {%- endif %}
+          {%- if settings.cb_scroll_animations %}
+          if (!still) root.classList.add('cb-aos');
+          {%- endif %}
+        })();
+      </script>
+    {%- endunless -%}
+
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
@@ -35,7 +58,8 @@
     {{ content_for_header }}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if settings.cb_card_hover %} cb-card-hover{% endif %}">
+    {%- unless request.design_mode -%}{% render 'cb-page-loader' %}{%- endunless -%}
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 
     {% render 'chat-drawer' %}

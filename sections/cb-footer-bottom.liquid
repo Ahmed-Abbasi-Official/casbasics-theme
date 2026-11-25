@@ -1,0 +1,165 @@
+{%- doc -%}
+  Bottom of the footer, as on the live store: social icons on the left; currency / language,
+  copyright and a row of links in the middle; payment icons on the right.
+{%- enddoc -%}
+
+{%- liquid
+  assign brand = section.settings.brand_name | default: shop.name
+  assign menu = section.settings.menu
+  assign socials = 'instagram,tiktok,facebook,snapchat,pinterest,youtube,x' | split: ','
+-%}
+
+<div
+  class="cb-section cb-footer-bottom"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-footer-bottom__inner">
+    <div class="cb-footer-bottom__social">
+      {%- for platform in socials -%}
+        {%- assign setting_id = platform | append: '_url' -%}
+        {%- assign url = section.settings[setting_id] -%}
+        {%- if url != blank -%}
+          {%- liquid
+            assign platform_name = platform | capitalize
+            case platform
+              when 'tiktok'
+                assign platform_name = 'TikTok'
+              when 'youtube'
+                assign platform_name = 'YouTube'
+              when 'x'
+                assign platform_name = 'X'
+            endcase
+          -%}
+          <a
+            class="cb-footer-bottom__social-link"
+            href="{{ url }}"
+            target="_blank"
+            rel="noopener"
+            aria-label="{{ brand | escape }} on {{ platform_name }}"
+          >
+            {%- if platform == 'youtube' or platform == 'x' -%}
+              {%- render 'cb-social-icon', platform: platform -%}
+            {%- else -%}
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                {%- case platform -%}
+                  {%- when 'instagram' -%}
+                    <path d="M8 3a5 5 0 0 0-5 5v8a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V8a5 5 0 0 0-5-5H8Zm10 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-6 2a5 5 0 1 1-.001 10.001A5 5 0 0 1 12 7Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                  {%- when 'tiktok' -%}
+                    <path d="M6 3C4.355 3 3 4.355 3 6v12c0 1.645 1.355 3 3 3h12c1.645 0 3-1.355 3-3V6c0-1.645-1.355-3-3-3H6Zm6 4h2c0 1.005 1.471 2 2 2v2c-.605 0-1.332-.266-2-.715V14c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3v2a1.001 1.001 0 0 0 0 2c.552 0 1-.449 1-1V7Z"/>
+                  {%- when 'facebook' -%}
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 5.013 3.693 9.153 8.505 9.876V14.65H8.031v-2.629h2.474v-1.749c0-2.896 1.411-4.167 3.818-4.167 1.153 0 1.762.085 2.051.124v2.294h-1.642c-1.022 0-1.379.969-1.379 2.061v1.437h2.995l-.406 2.629h-2.588v7.247C18.235 21.236 22 17.062 22 12c0-5.523-4.477-10-10-10Z"/>
+                  {%- when 'snapchat' -%}
+                    <path d="M22.451 16.837c-2.786-.459-4.06-3.345-4.1-3.438a.954.954 0 0 0-.027-.064c-.084-.169-.168-.407-.097-.576.122-.288.701-.472 1.048-.583.122-.04.238-.075.328-.11.842-.334 1.262-.77 1.253-1.298-.008-.426-.334-.815-.814-.984a1.416 1.416 0 0 0-.551-.107c-.132 0-.33.019-.522.107-.32.15-.602.23-.802.24a.884.884 0 0 1-.113-.011l.021-.33c.094-1.493.212-3.353-.293-4.484-1.488-3.331-4.642-3.59-5.574-3.59l-.424.004c-.93 0-4.078.258-5.563 3.588-.504 1.13-.388 2.989-.292 4.483l.004.057.016.271c-.208.038-.615-.031-1.036-.228-.574-.268-1.607.086-1.75.836-.064.332.013.962 1.236 1.444.092.037.206.073.33.112.345.11.924.293 1.046.583.071.17-.013.407-.112.612-.053.121-1.319 3.007-4.11 3.466a.705.705 0 0 0-.591.737.87.87 0 0 0 .07.285c.252.595 1.173 1.003 2.89 1.283.03.101.064.251.083.334.036.17.075.343.128.523.05.17.225.566.768.566.165 0 .345-.036.538-.073a5.345 5.345 0 0 1 1.1-.126c.254 0 .517.023.781.066.488.08.928.394 1.44.754.799.566 1.704 1.205 3.109 1.205.037 0 .075-.002.11-.003l.156.003c1.404 0 2.31-.641 3.11-1.205.488-.347.95-.672 1.439-.754.264-.043.527-.066.782-.066.44 0 .789.056 1.1.118.222.043.398.064.56.064a.742.742 0 0 0 .745-.557 6.98 6.98 0 0 0 .128-.52c.015-.063.05-.224.082-.331 1.718-.28 2.638-.688 2.89-1.277a.881.881 0 0 0 .07-.292.706.706 0 0 0-.59-.734Z"/>
+                  {%- when 'pinterest' -%}
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.087-.791-.167-2.005.035-2.868.182-.78 1.172-4.971 1.172-4.971s-.299-.599-.299-1.484c0-1.391.806-2.428 1.809-2.428.853 0 1.265.641 1.265 1.408 0 .858-.546 2.141-.828 3.329-.236.996.499 1.807 1.481 1.807 1.777 0 3.143-1.874 3.143-4.579 0-2.394-1.72-4.068-4.177-4.068-2.845 0-4.515 2.134-4.515 4.34 0 .859.331 1.781.744 2.282a.3.3 0 0 1 .069.287c-.076.316-.244.995-.277 1.134-.043.183-.145.222-.334.133-1.249-.582-2.03-2.408-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.472 6.165 5.776 0 3.447-2.173 6.22-5.189 6.22-1.013 0-1.966-.527-2.292-1.148 0 0-.502 1.909-.623 2.378-.226.868-.835 1.958-1.243 2.622.935.287 1.929.444 2.96.444 5.522 0 10-4.478 10-10S17.523 2 12 2Z"/>
+                {%- endcase -%}
+              </svg>
+            {%- endif -%}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="cb-footer-bottom__center">
+      {%- if section.settings.show_country or section.settings.show_language -%}
+        {%- form 'localization', class: 'cb-footer-bottom__localization' -%}
+          {%- if section.settings.show_country and localization.available_countries.size > 0 -%}
+            <div class="cb-footer-bottom__select">
+              <img
+                class="cb-footer-bottom__flag"
+                src="//cdn.shopify.com/static/images/flags/{{ localization.country.iso_code | downcase }}.svg?width=40"
+                alt=""
+                width="20"
+                height="15"
+                loading="lazy"
+              >
+              <span>{{ localization.country.currency.iso_code }}{{ localization.country.currency.symbol }}</span>
+              <svg class="cb-footer-bottom__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="m1 1 4 4 4-4"/>
+              </svg>
+              <select name="country_code" aria-label="Country/region" data-cb-localization>
+                {%- for country in localization.available_countries -%}
+                  <option value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+                    {{- country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.show_language and localization.available_languages.size > 0 -%}
+            <div class="cb-footer-bottom__select">
+              <span>{{ localization.language.iso_code | upcase }}</span>
+              <svg class="cb-footer-bottom__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="m1 1 4 4 4-4"/>
+              </svg>
+              <select name="language_code" aria-label="Language" data-cb-localization>
+                {%- for language in localization.available_languages -%}
+                  <option value="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} selected{% endif %}>
+                    {{- language.endonym_name | capitalize -}}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      {%- endif -%}
+
+      <p class="cb-footer-bottom__copyright">
+        &copy; {{ 'now' | date: '%Y' }}, <a href="{{ routes.root_url }}">{{ brand | escape }}</a>
+        {%- if section.settings.copyright_text != blank %} - {{ section.settings.copyright_text | escape }}{% endif %}
+      </p>
+
+      {%- if menu != blank and menu.links.size > 0 -%}
+        <nav class="cb-footer-bottom__menu" aria-label="{{ menu.title | escape }}">
+          {%- for link in menu.links -%}
+            <a href="{{ link.url }}">{{ link.title | escape }}</a>
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    </div>
+
+    <div class="cb-footer-bottom__payment">
+      {%- if section.settings.show_payment_icons -%}
+        <ul class="cb-footer-bottom__payment-list" role="list" aria-label="Payment methods">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'cb-footer-bottom__payment-icon' }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer bottom",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "header", "content": "Social media" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram" },
+    { "type": "url", "id": "tiktok_url", "label": "TikTok" },
+    { "type": "url", "id": "facebook_url", "label": "Facebook" },
+    { "type": "url", "id": "snapchat_url", "label": "Snapchat" },
+    { "type": "url", "id": "pinterest_url", "label": "Pinterest" },
+    { "type": "url", "id": "youtube_url", "label": "YouTube" },
+    { "type": "url", "id": "x_url", "label": "X (Twitter)" },
+    { "type": "header", "content": "Middle" },
+    { "type": "checkbox", "id": "show_country", "label": "Show country / currency selector", "default": true },
+    { "type": "checkbox", "id": "show_language", "label": "Show language selector", "default": true },
+    { "type": "text", "id": "brand_name", "label": "Name in the copyright line", "info": "Leave empty to use the store name" },
+    { "type": "text", "id": "copyright_text", "label": "Copyright text", "default": "Best Emirati Abaya Brand in Dubai" },
+    { "type": "link_list", "id": "menu", "label": "Links under the copyright", "default": "footer" },
+    { "type": "header", "content": "Right" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 10 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 60 }
+  ],
+  "presets": [{ "name": "Footer bottom" }]
+}
+{% endschema %}

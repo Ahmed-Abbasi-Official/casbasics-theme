@@ -9,98 +9,95 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 48,
-        "padding-block-end": 64
-      }
-    },
-    "apps_landing": {
-      "type": "cb-apps",
+    "title": {
+      "type": "cb-page-title",
       "settings": {
         "heading": "",
-        "full_width": false,
-        "padding_top": 32,
-        "padding_bottom": 32
+        "show_content": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "tiers_intro": {
       "type": "cb-text",
+      "blocks": {
+        "heading_tiers": {
+          "type": "heading",
+          "settings": {
+            "heading": "Loyalty Tiers",
+            "size": "compact",
+            "show_line": true
+          }
+        },
+        "text_tiers": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>CAS Abaya Rewards</strong> follows a simple points-based tier system designed to reward you as you shop more. Earn points on every purchase and redeem them on future orders. As your spending grows, you move up through higher tiers, unlocking enhanced benefits and exclusive rewards.</p>"
+          }
+        },
+        "heading_point": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>1 POINT = AED 2</strong>",
+            "size": "xsmall",
+            "show_line": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_tiers",
+        "text_tiers",
+        "heading_point"
+      ],
       "settings": {
         "width": "narrow",
         "alignment": "center",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
-      "blocks": {
-        "subheading_0049": {
-          "type": "subheading",
-          "settings": {
-            "text": "1 point = AED 2"
-          }
-        },
-        "heading_004a": {
-          "type": "heading",
-          "settings": {
-            "heading": "Loyalty tiers",
-            "size": "medium",
-            "show_line": false
-          }
-        },
-        "text_004b": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Earn points on every purchase and redeem them on future orders. As you shop more you move up through tiers, unlocking more benefits.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_0049",
-        "heading_004a",
-        "text_004b"
-      ]
+        "style": "classic",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 30,
+        "padding_bottom": 0
+      }
     },
     "tier_1": {
       "type": "cb-image-with-text",
+      "blocks": {
+        "tier_1_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Membership Tier"
+          }
+        },
+        "tier_1_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Princess",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "tier_1_text": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>1.25</strong> Points multiplier</li><li>Surprise Discount Vouchers</li></ul>"
+          }
+        },
+        "tier_1_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 1500",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "tier_1_sub",
+        "tier_1_heading",
+        "tier_1_text",
+        "tier_1_points"
+      ],
       "settings": {
         "image_position": "left",
         "image_width": "50",
@@ -108,39 +105,49 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
-      },
-      "blocks": {
-        "subheading_004c": {
-          "type": "subheading",
-          "settings": {
-            "text": "Membership tier"
-          }
-        },
-        "heading_004d": {
-          "type": "heading",
-          "settings": {
-            "heading": "Silver",
-            "size": "medium",
-            "show_line": true
-          }
-        },
-        "text_004e": {
-          "type": "text",
-          "settings": {
-            "text": "<p>1.25x points multiplier · Surprise discount vouchers</p><p>Points needed to reach this tier: 1500</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_004c",
-        "heading_004d",
-        "text_004e"
-      ]
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
     },
     "tier_2": {
       "type": "cb-image-with-text",
+      "blocks": {
+        "tier_2_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Membership Tier"
+          }
+        },
+        "tier_2_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Queen",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "tier_2_text": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>2x</strong> Points multiplier</li><li>Priority Customer Support</li></ul>"
+          }
+        },
+        "tier_2_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 7000",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "tier_2_sub",
+        "tier_2_heading",
+        "tier_2_text",
+        "tier_2_points"
+      ],
       "settings": {
         "image_position": "right",
         "image_width": "50",
@@ -148,39 +155,49 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
-      },
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
+    },
+    "tier_3": {
+      "type": "cb-image-with-text",
       "blocks": {
-        "subheading_004f": {
+        "tier_3_sub": {
           "type": "subheading",
           "settings": {
-            "text": "Membership tier"
+            "text": "Membership Tier"
           }
         },
-        "heading_004g": {
+        "tier_3_heading": {
           "type": "heading",
           "settings": {
-            "heading": "Gold",
+            "heading": "Empress",
             "size": "medium",
             "show_line": true
           }
         },
-        "text_004h": {
+        "tier_3_text": {
           "type": "text",
           "settings": {
-            "text": "<p>2x points multiplier · Priority customer support</p><p>Points needed to reach this tier: 7000</p>"
+            "text": "<ul><li><strong>2.5x</strong> Points multiplier</li><li>Priority Customer Support</li></ul>"
+          }
+        },
+        "tier_3_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 12000",
+            "content": ""
           }
         }
       },
       "block_order": [
-        "subheading_004f",
-        "heading_004g",
-        "text_004h"
-      ]
-    },
-    "tier_3": {
-      "type": "cb-image-with-text",
+        "tier_3_sub",
+        "tier_3_heading",
+        "tier_3_text",
+        "tier_3_points"
+      ],
       "settings": {
         "image_position": "left",
         "image_width": "50",
@@ -188,39 +205,49 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
-      },
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
+    },
+    "tier_4": {
+      "type": "cb-image-with-text",
       "blocks": {
-        "subheading_004i": {
+        "tier_4_sub": {
           "type": "subheading",
           "settings": {
-            "text": "Membership tier"
+            "text": "Membership Tier"
           }
         },
-        "heading_004j": {
+        "tier_4_heading": {
           "type": "heading",
           "settings": {
-            "heading": "Platinum",
+            "heading": "CAS Elite",
             "size": "medium",
             "show_line": true
           }
         },
-        "text_004k": {
+        "tier_4_text": {
           "type": "text",
           "settings": {
-            "text": "<p>2.5x points multiplier · Priority customer support</p><p>Points needed to reach this tier: 12000</p>"
+            "text": "<ul><li><strong>2.5x</strong> Points multiplier</li><li>Dedicated VIP Quick Customer Service</li></ul>"
+          }
+        },
+        "tier_4_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 20000",
+            "content": ""
           }
         }
       },
       "block_order": [
-        "subheading_004i",
-        "heading_004j",
-        "text_004k"
-      ]
-    },
-    "tier_4": {
-      "type": "cb-image-with-text",
+        "tier_4_sub",
+        "tier_4_heading",
+        "tier_4_text",
+        "tier_4_points"
+      ],
       "settings": {
         "image_position": "right",
         "image_width": "50",
@@ -228,55 +255,340 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
-      },
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
+    },
+    "hero": {
+      "type": "cb-loyalty-hero",
+      "settings": {
+        "height": 500,
+        "height_mobile": 300,
+        "heading": "Join CAS Rewards Program",
+        "text": "CAS Rewards lets you earn points every time you shop. Enjoy exclusive offers, early access to new collections, and special members-only benefits—because your style deserves rewarding.",
+        "button_1_label": "Join Now",
+        "button_1_link": "",
+        "button_2_label": "Sign In",
+        "button_2_link": "",
+        "card_x": "left",
+        "card_y": "center",
+        "text_alignment": "left",
+        "media_color": "#f0eee9",
+        "card_color": "#f0eee9",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "how_it_works": {
+      "type": "cb-loyalty-steps",
       "blocks": {
-        "subheading_004l": {
-          "type": "subheading",
+        "step_1": {
+          "type": "step",
           "settings": {
-            "text": "Membership tier"
+            "icon": "user-check",
+            "title": "Sign up",
+            "text": "Create an account on our store"
           }
         },
-        "heading_004m": {
-          "type": "heading",
+        "step_2": {
+          "type": "step",
           "settings": {
-            "heading": "Elite",
-            "size": "medium",
-            "show_line": true
+            "icon": "card-star",
+            "title": "Earn",
+            "text": "Earn points for shopping"
           }
         },
-        "text_004n": {
-          "type": "text",
+        "step_3": {
+          "type": "step",
           "settings": {
-            "text": "<p>2.5x points multiplier · Dedicated VIP service</p><p>Points needed to reach this tier: 20000</p>"
+            "icon": "gift",
+            "title": "Redeem",
+            "text": "Redeem your points for rewards"
           }
         }
       },
       "block_order": [
-        "subheading_004l",
-        "heading_004m",
-        "text_004n"
-      ]
-    },
-    "apps_earn": {
-      "type": "cb-apps",
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
       "settings": {
-        "heading": "",
-        "full_width": false,
-        "padding_top": 32,
-        "padding_bottom": 32
+        "heading": "How It Works",
+        "text": "",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 20
+      }
+    },
+    "ways_to_earn": {
+      "type": "cb-loyalty-cards",
+      "blocks": {
+        "earn_1": {
+          "type": "card",
+          "settings": {
+            "title": "Place an order",
+            "description": "1 points for every د.إ2 spent",
+            "icon": "bag",
+            "action": "shop",
+            "link": ""
+          }
+        },
+        "earn_2": {
+          "type": "card",
+          "settings": {
+            "title": "Daily visit",
+            "description": "20 points",
+            "icon": "smile",
+            "action": "none",
+            "link": ""
+          }
+        },
+        "earn_3": {
+          "type": "card",
+          "settings": {
+            "title": "Follow WhatsApp Channel",
+            "description": "20 points",
+            "icon": "globe",
+            "action": "link",
+            "link": "https://whatsapp.com/channel/0029VaBIqsC8qIznKC6hUz47"
+          }
+        },
+        "earn_4": {
+          "type": "card",
+          "settings": {
+            "title": "Share on Facebook",
+            "description": "50 points",
+            "icon": "share",
+            "action": "link",
+            "link": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcasbasics.com"
+          }
+        },
+        "earn_5": {
+          "type": "card",
+          "settings": {
+            "title": "Like on Facebook",
+            "description": "70 points",
+            "icon": "thumbs-up",
+            "action": "link",
+            "link": "https://www.facebook.com/crystalabayastudio"
+          }
+        },
+        "earn_6": {
+          "type": "card",
+          "settings": {
+            "title": "Follow on TikTok",
+            "description": "75 points",
+            "icon": "heart-plus",
+            "action": "link",
+            "link": "https://www.tiktok.com/@crystalabayastudio"
+          }
+        },
+        "earn_7": {
+          "type": "card",
+          "settings": {
+            "title": "Sign up",
+            "description": "100 points",
+            "icon": "user",
+            "action": "register",
+            "link": ""
+          }
+        },
+        "earn_8": {
+          "type": "card",
+          "settings": {
+            "title": "Subscribe to our newsletter",
+            "description": "100 points",
+            "icon": "mail-check",
+            "action": "none",
+            "link": ""
+          }
+        },
+        "earn_9": {
+          "type": "card",
+          "settings": {
+            "title": "Follow on Instagram",
+            "description": "100 points",
+            "icon": "heart-plus",
+            "action": "link",
+            "link": "https://www.instagram.com/crystalabayastudio"
+          }
+        },
+        "earn_10": {
+          "type": "card",
+          "settings": {
+            "title": "Place your first order",
+            "description": "300 points",
+            "icon": "basket",
+            "action": "shop",
+            "link": ""
+          }
+        },
+        "earn_11": {
+          "type": "card",
+          "settings": {
+            "title": "Celebrate a birthday",
+            "description": "300 points",
+            "icon": "cake",
+            "action": "none",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "earn_1",
+        "earn_2",
+        "earn_3",
+        "earn_4",
+        "earn_5",
+        "earn_6",
+        "earn_7",
+        "earn_8",
+        "earn_9",
+        "earn_10",
+        "earn_11"
+      ],
+      "settings": {
+        "heading": "Ways to Earn",
+        "text": "Earn points by completing these actions",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ways_to_redeem": {
+      "type": "cb-loyalty-cards",
+      "blocks": {
+        "redeem_1": {
+          "type": "card",
+          "settings": {
+            "title": "5% off discount",
+            "description": "500 points",
+            "icon": "percent",
+            "action": "login",
+            "link": ""
+          }
+        },
+        "redeem_2": {
+          "type": "card",
+          "settings": {
+            "title": "10% off discount",
+            "description": "1000 points",
+            "icon": "percent",
+            "action": "login",
+            "link": ""
+          }
+        },
+        "redeem_3": {
+          "type": "card",
+          "settings": {
+            "title": "20% off discount",
+            "description": "4000 points",
+            "icon": "percent",
+            "action": "login",
+            "link": ""
+          }
+        },
+        "redeem_4": {
+          "type": "card",
+          "settings": {
+            "title": "C 005-04 Premium Black Under Abaya Dress",
+            "description": "6000 points",
+            "icon": "placeholder",
+            "action": "login",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "redeem_1",
+        "redeem_2",
+        "redeem_3",
+        "redeem_4"
+      ],
+      "settings": {
+        "heading": "Ways to Redeem",
+        "text": "Redeem points for these rewards",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "faq": {
+      "type": "cb-loyalty-faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "What is our Rewards Program?",
+            "answer": "<p>Our Rewards Program is an exclusive loyalty system designed to enhance your shopping experience. Earn points through purchases and special activities, then redeem them for discounts, exclusive products, and VIP benefits. It's our way of saying thank you for your continued support.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "How do I become a member?",
+            "answer": "<p>Membership is automatic and completely free! Simply create an account or place your first order, and you'll instantly become part of our rewards community. No additional sign-up steps required.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "How can I track my rewards and tier status?",
+            "answer": "<p>Your rewards dashboard provides a complete overview of your points balance, tier status, and available benefits. Visit the \"Rewards\" section to view your points history, redeem rewards, or check your progress towards the next tier level.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "How do I advance to higher VIP tiers?",
+            "answer": "<p>Advancing through our VIP tiers is simple: earn points through purchases and program activities. Each tier has specific point requirements, and your progress is clearly displayed in your rewards dashboard. The more you engage with our program, the faster you'll unlock premium benefits.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Do my reward points expire?",
+            "answer": "<p>Your reward points are yours to keep indefinitely. There's no expiration date, giving you complete flexibility to save and redeem your points whenever you choose. We believe in rewarding your loyalty on your terms.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "text": "Have questions? We have answers!",
+        "faq_schema": true,
+        "line_color": "#000000",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
-    "main",
-    "apps_landing",
+    "title",
+    "hero",
+    "how_it_works",
     "tiers_intro",
     "tier_1",
     "tier_2",
     "tier_3",
     "tier_4",
-    "apps_earn"
+    "ways_to_earn",
+    "ways_to_redeem",
+    "faq"
   ]
 }

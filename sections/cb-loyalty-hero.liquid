@@ -1,0 +1,121 @@
+{%- doc -%}
+  Rewards page hero, like the loyalty app's landing banner on the live store: a wide image
+  (500px) with a rounded cream card on it holding the heading, a paragraph and two buttons.
+  On phones the image is 300px and the card sits under it.
+{%- enddoc -%}
+
+{%- liquid
+  assign link_1 = section.settings.button_1_link | default: routes.account_register_url
+  assign link_2 = section.settings.button_2_link | default: routes.account_login_url
+-%}
+
+<div
+  class="cb-section cb-loyalty cb-loyalty-hero"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <div class="cb-container cb-loyalty__container">
+    <div
+      class="cb-loyalty-hero__inner"
+      style="--cb-lh-h: {{ section.settings.height }}px; --cb-lh-h-m: {{ section.settings.height_mobile }}px; --cb-lh-media: {{ section.settings.media_color }}; --cb-lh-card: {{ section.settings.card_color }};"
+    >
+      <div class="cb-loyalty-hero__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 2640
+            | image_tag: loading: 'lazy', sizes: '(min-width: 1440px) 1305px, 100vw', widths: '750, 1100, 1500, 2000, 2640', alt: section.settings.image.alt
+          }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <div class="cb-loyalty-hero__wrapper cb-loyalty-hero__wrapper--x-{{ section.settings.card_x }} cb-loyalty-hero__wrapper--y-{{ section.settings.card_y }}">
+        <div class="cb-loyalty-hero__card cb-align-{{ section.settings.text_alignment }}">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="cb-loyalty-hero__heading">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="cb-loyalty-hero__text">{{ section.settings.text }}</div>
+          {%- endif -%}
+          {%- if section.settings.button_1_label != blank or section.settings.button_2_label != blank -%}
+            <div class="cb-loyalty-hero__buttons">
+              {%- if section.settings.button_1_label != blank -%}
+                <a class="cb-loyalty-btn" href="{{ link_1 }}">{{ section.settings.button_1_label }}</a>
+              {%- endif -%}
+              {%- if section.settings.button_2_label != blank -%}
+                <a class="cb-loyalty-btn" href="{{ link_2 }}">{{ section.settings.button_2_label }}</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rewards hero",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "range", "id": "height", "label": "Height", "min": 300, "max": 800, "step": 10, "unit": "px", "default": 500 },
+    { "type": "range", "id": "height_mobile", "label": "Height on mobile", "min": 200, "max": 600, "step": 10, "unit": "px", "default": 300 },
+    { "type": "header", "content": "Card" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Join CAS Rewards Program" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "CAS Rewards lets you earn points every time you shop. Enjoy exclusive offers, early access to new collections, and special members-only benefits—because your style deserves rewarding."
+    },
+    { "type": "text", "id": "button_1_label", "label": "First button label", "default": "Join Now" },
+    { "type": "url", "id": "button_1_link", "label": "First button link", "info": "Leave empty to open the create account page" },
+    { "type": "text", "id": "button_2_label", "label": "Second button label", "default": "Sign In" },
+    { "type": "url", "id": "button_2_link", "label": "Second button link", "info": "Leave empty to open the sign in page" },
+    {
+      "type": "select",
+      "id": "card_x",
+      "label": "Card position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "card_y",
+      "label": "Card vertical position",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "media_color", "label": "Behind the image", "default": "#f0eee9" },
+    { "type": "color", "id": "card_color", "label": "Card", "default": "#f0eee9" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
+  ],
+  "presets": [{ "name": "Rewards hero" }]
+}
+{% endschema %}

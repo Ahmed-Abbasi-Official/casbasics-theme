@@ -12,10 +12,43 @@
   if section.settings.box_color != blank and section.settings.box_color.alpha != 0
     assign box_style = '--cb-box-bg: ' | append: section.settings.box_color | append: ';'
   endif
+  if section.settings.line_color != blank and section.settings.line_color.alpha != 0
+    assign box_style = box_style | append: '--cb-icons-line: ' | append: section.settings.line_color | append: ';'
+  endif
+  if section.settings.description_color != blank and section.settings.description_color.alpha != 0
+    assign box_style = box_style | append: '--cb-icons-desc: ' | append: section.settings.description_color | append: ';'
+  endif
+
+  assign count = section.blocks.size
+  assign last_column = cols | minus: 1
+  assign last_row_start = count | minus: 1 | divided_by: cols | times: cols | plus: 1
+
+  assign mobile_first_full = false
+  if mobile_cols == 2
+    assign odd = count | modulo: 2
+    if odd == 1
+      assign mobile_first_full = true
+    endif
+  endif
+  assign mobile_last_row_start = count
+  if mobile_cols == 2 and count > 1
+    assign mobile_last_row_start = count | minus: 1
+  endif
+
+  assign section_class = ''
+  if mobile_cols == 2
+    assign section_class = section_class | append: ' cb-icons--mobile-2'
+  endif
+  if section.settings.border_top
+    assign section_class = section_class | append: ' cb-icons--border-top'
+  endif
+  if section.settings.border_bottom
+    assign section_class = section_class | append: ' cb-icons--border-bottom'
+  endif
 -%}
 
 <div
-  class="cb-section cb-icons cb-icons--{{ section.settings.style }} cb-icons--{{ section.settings.layout }} cb-icons--cols-{{ cols }}"
+  class="cb-section cb-icons cb-icons--{{ section.settings.style }} cb-icons--{{ section.settings.layout }} cb-icons--cols-{{ cols }}{{ section_class }}"
   style="{% render 'cb-section-style', settings: section.settings %} {{ box_style }} --cb-icon-size: {{ section.settings.icon_size }}px;"
 >
   <div class="cb-container">
@@ -31,13 +64,72 @@
     {%- endif -%}
 
     <div class="cb-icons__grid" style="--cb-cols: {{ cols }}; --cb-cols-mobile: {{ mobile_cols }};">
+      {%- comment -%}
+        Row classes let the grid-lines style draw lines only between items.
+        Mobile with two columns: an odd first item gets its own row (--m-full), then pairs (--m-left = left of a pair).
+      {%- endcomment -%}
       {%- for block in section.blocks -%}
-        <div class="cb-icons__item" {{ block.shopify_attributes }}>
+        {%- liquid
+          assign column = forloop.index0 | modulo: cols
+          assign item_class = ''
+          if column == 0
+            assign item_class = item_class | append: ' cb-icons__item--row-start'
+          endif
+          if column == last_column or forloop.last
+            assign item_class = item_class | append: ' cb-icons__item--row-end'
+          endif
+          if forloop.index <= cols
+            assign item_class = item_class | append: ' cb-icons__item--first-row'
+          endif
+          if forloop.index >= last_row_start
+            assign item_class = item_class | append: ' cb-icons__item--last-row'
+          endif
+
+          if mobile_first_full and forloop.first
+            assign item_class = item_class | append: ' cb-icons__item--m-full'
+          elsif mobile_cols == 2
+            assign pair_position = forloop.index
+            if mobile_first_full
+              assign pair_position = forloop.index | minus: 1
+            endif
+            assign pair_side = pair_position | modulo: 2
+            if pair_side == 1
+              assign item_class = item_class | append: ' cb-icons__item--m-left'
+            endif
+          endif
+          if forloop.index >= mobile_last_row_start
+            assign item_class = item_class | append: ' cb-icons__item--m-last-row'
+          endif
+        -%}
+        <div class="cb-icons__item{{ item_class }}" {{ block.shopify_attributes }}>
           {%- if section.settings.show_numbers -%}
             <span class="cb-icons__number">{{ forloop.index }}</span>
           {%- elsif block.settings.image != blank -%}
-            <span class="cb-icons__icon">
+            <span class="cb-icons__icon cb-icons__icon--image">
               {{ block.settings.image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+            </span>
+          {%- elsif block.settings.icon contains '.png' -%}
+            <span class="cb-icons__icon cb-icons__icon--image">
+              <img
+                src="{{ 'cb-icon-' | append: block.settings.icon | asset_url }}"
+                alt=""
+                width="90"
+                loading="lazy"
+              >
+            </span>
+          {%- elsif block.settings.icon contains 'thin-' -%}
+            {%- comment -%} Thin line icons drawn on an 82px grid, as on the live store {%- endcomment -%}
+            <span class="cb-icons__icon">
+              <svg class="cb-icon cb-icon--thin" viewBox="0 0 82 82" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false">
+                {%- case block.settings.icon -%}
+                  {%- when 'thin-truck' -%}
+                    <path d="M7.238 68.717H1.867V2.12H58.4v16.736h3.886c9.755 0 17.663 7.908 17.663 17.663v32.199h-5.917M55.781 68.717H25.487"/><path d="M58.334 42.124h15.068v-4.27c0-6.82-5.53-12.35-12.351-12.35h-2.718v16.62M73.909 70.236a9.125 9.125 0 1 0-18.013-2.931 9.125 9.125 0 0 0 18.013 2.93ZM25.367 70.235a9.125 9.125 0 1 0-18.012-2.931 9.125 9.125 0 0 0 7.54 10.471 9.125 9.125 0 0 0 10.472-7.54Z"/><path d="M13.723 77.507c-3.966.658-7.937 1.51-11.857 2.593M60.373 76.736c-10.512-1.212-24.298-1.969-38.645-.451M79.768 80.121s-4.96-1.222-12.975-2.395"/>
+                  {%- when 'thin-check' -%}
+                    <path d="M28.405 48.928S44.542 23.912 75.372 2.55c2.763-1.915 6.046 1.572 3.979 4.234-13.918 17.921-37.073 49.81-43.093 70.8-.782 2.728-4.346 3.291-5.927.941C25.63 71.543 17 60.565 3.384 49.668c-2.359-1.888-1.617-5.774 1.574-6.211 5.206-.714 13.211-.483 23.447 5.471Z"/>
+                  {%- when 'thin-eco' -%}
+                    <path d="M55.751 44.921c8.592-14.035 27.427-4.617 23.788 11.287C75.978 71.77 55.751 80 55.751 80s-20.229-8.23-23.788-23.792c-3.639-15.904 15.194-25.323 23.788-11.287Z"/><path d="M73.656 40.142c.047-.751.071-1.509.071-2.272C73.726 18.06 57.67 2 37.863 2S2 18.06 2 37.87c0 19.811 16.056 35.87 35.863 35.87a36.13 36.13 0 0 0 6.006-.501"/><path d="M27.249 3.637s10.498 7.661 5.503 14.39c-4.995 6.729-5.912 8.462-6.218 14.987-.306 6.525-1.771 19.86-21.425 19.207M52.176 5.104s-11.495 5.174-8.539 12.719c2.956 7.544 7.819 3.101 12.13 7.035 5.81 5.302 12.48 3.658 15.937 1.725"/>
+                {%- endcase -%}
+              </svg>
             </span>
           {%- elsif block.settings.icon != 'none' -%}
             <span class="cb-icons__icon">{% render 'cb-icon', icon: block.settings.icon %}</span>
@@ -92,7 +184,19 @@
             { "value": "box", "label": "Box" },
             { "value": "tag", "label": "Tag" },
             { "value": "map-pin", "label": "Map pin" },
-            { "value": "mail", "label": "Mail" }
+            { "value": "mail", "label": "Mail" },
+            { "value": "prices.png", "label": "Illustration: price tag in hand" },
+            { "value": "styles.png", "label": "Illustration: abaya" },
+            { "value": "fabrics.png", "label": "Illustration: fabric roll" },
+            { "value": "shipping.png", "label": "Illustration: delivery truck" },
+            { "value": "exchange.png", "label": "Illustration: box with return arrow" },
+            { "value": "support.png", "label": "Illustration: support agent" },
+            { "value": "payment.png", "label": "Illustration: card with shield" },
+            { "value": "sustainability.png", "label": "Illustration: recycle" },
+            { "value": "donation.png", "label": "Illustration: heart in hand" },
+            { "value": "thin-truck", "label": "Thin: delivery truck" },
+            { "value": "thin-check", "label": "Thin: check" },
+            { "value": "thin-eco", "label": "Thin: globe with heart" }
           ],
           "default": "star"
         },
@@ -112,10 +216,13 @@
       "options": [
         { "value": "plain", "label": "Plain" },
         { "value": "borders", "label": "Borders" },
+        { "value": "grid", "label": "Grid lines" },
         { "value": "boxes", "label": "Boxes" }
       ],
       "default": "plain"
     },
+    { "type": "checkbox", "id": "border_top", "label": "Line above section", "default": false },
+    { "type": "checkbox", "id": "border_bottom", "label": "Line below section", "default": false },
     {
       "type": "select",
       "id": "layout",
@@ -128,12 +235,14 @@
     },
     { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 6, "step": 1, "default": 3 },
     { "type": "checkbox", "id": "mobile_two_columns", "label": "2 columns on mobile", "default": false },
-    { "type": "range", "id": "icon_size", "label": "Icon size", "min": 20, "max": 80, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "icon_size", "label": "Icon size", "min": 20, "max": 80, "step": 1, "unit": "px", "default": 36 },
     { "type": "checkbox", "id": "show_numbers", "label": "Show step numbers instead of icons", "default": false },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "box_color", "label": "Box background" },
     { "type": "color", "id": "background_color", "label": "Background" },
     { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "color", "id": "description_color", "label": "Description text", "info": "Grid lines style. Defaults to the text colour." },
+    { "type": "color", "id": "line_color", "label": "Lines", "info": "Grid lines style. Defaults to the text colour." },
     { "type": "header", "content": "Padding" },
     { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
     { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 }

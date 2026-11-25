@@ -6,10 +6,23 @@
     when 'full'
       assign width_class = 'cb-container cb-container--full'
   endcase
+
+  assign style_class = ''
+  if section.settings.style == 'classic'
+    assign style_class = ' cb-text--classic'
+    assign heading_semibold = settings.type_heading_font | font_modify: 'weight', '600'
+  endif
 -%}
 
+{%- comment -%} Classic heading uses the semibold (600) cut, which Shopify does not load by default {%- endcomment -%}
+{%- if heading_semibold -%}
+  <style>
+    {{ heading_semibold | font_face: font_display: 'swap' }}
+  </style>
+{%- endif -%}
+
 <div
-  class="cb-section cb-text cb-text--{{ section.settings.width }} cb-align-{{ section.settings.alignment }}"
+  class="cb-section cb-text cb-text--{{ section.settings.width }}{{ style_class }} cb-align-{{ section.settings.alignment }}"
   style="{% render 'cb-section-style', settings: section.settings %}"
 >
   <div class="{{ width_class }}">
@@ -27,7 +40,7 @@
             {%- endif -%}
           </div>
         {%- when 'text' -%}
-          <div class="cb-text__block cb-rte" {{ block.shopify_attributes }}>
+          <div class="cb-text__block cb-rte{% if block.settings.size == 'statement' %} cb-rte--statement{% endif %}" {{ block.shopify_attributes }}>
             {{ block.settings.text }}
           </div>
         {%- when 'button' -%}
@@ -99,6 +112,16 @@
           "id": "text",
           "label": "Text",
           "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "statement", "label": "Statement (20px, links in maroon)" }
+          ],
+          "default": "normal"
         }
       ]
     },
@@ -179,12 +202,22 @@
       ],
       "default": "center"
     },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "classic", "label": "Classic (720px text, 30px semibold heading)" }
+      ],
+      "default": "default"
+    },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "background_color", "label": "Background" },
     { "type": "color", "id": "text_color", "label": "Text" },
     { "type": "header", "content": "Padding" },
-    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 }
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
   ],
   "presets": [
     {

@@ -10,475 +10,96 @@
 {
   "sections": {
     "marquee": {
-      "type": "marquee",
+      "type": "cb-strip",
       "settings": {
-        "movement_direction": "reverse",
-        "background_color": "#e7e4e1",
-        "padding-block-start": 14,
-        "padding-block-end": 14,
-        "gap_between_elements": 48
-      },
-      "blocks": {
-        "text_001f": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Loved by thousands of customers since 2020</p>",
-            "width": "fit-content",
-            "type_preset": "custom",
-            "font_size": "0.75rem",
-            "case": "uppercase",
-            "letter_spacing": "loose"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_001f"
-      ]
+        "text": "Loved by over <a href=\"shopify://pages/cas-family-reviews\" title=\"CAS Reviews\">6,000</a>+ customers since 2020",
+        "font": "jost",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 10,
+        "padding_bottom": 10
+      }
     },
     "main": {
-      "type": "product-information",
+      "type": "cb-main-product",
       "blocks": {
-        "media-gallery": {
-          "type": "_product-media-gallery",
-          "static": true,
+        "acc_piece": {
+          "type": "accordion",
           "settings": {
-            "media_presentation": "carousel",
-            "media_columns": "two",
-            "image_gap": 4,
-            "large_first_image": false,
-            "icons_style": "arrow",
-            "slideshow_controls_style": "thumbnails",
-            "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "bottom",
-            "thumbnail_width": 44,
-            "aspect_ratio": "adapt",
-            "constrain_to_viewport": true,
-            "media_fit": "contain",
-            "media_radius": 0,
-            "extend_media": false,
-            "zoom": true,
-            "video_loop": false,
-            "hide_variants": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "title": "The piece",
+            "source": "description",
+            "content": ""
+          }
         },
-        "product-details": {
-          "type": "_product-details",
-          "static": true,
+        "acc_size": {
+          "type": "accordion",
           "settings": {
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "details_position": "flex-start",
-            "gap": 28,
-            "sticky_details_desktop": true,
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 24,
-            "padding-block-end": 24,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "group_icgrde": {
-              "type": "group",
-              "name": "t:names.header",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "text_xpVMaM": {
-                  "type": "text",
-                  "name": "t:names.title",
-                  "settings": {
-                    "text": "<h1>{{ closest.product.title }}</h1>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "h3",
-                    "font": "var(--font-heading--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "price_tVjtKg": {
-                  "type": "price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": true,
-                    "show_tax_info": true,
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "text_eyebrow": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Made to measure</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-body--family)",
-                    "font_size": "0.75rem",
-                    "line_height": "normal",
-                    "letter_spacing": "loose",
-                    "case": "uppercase"
-                  },
-                  "blocks": {}
-                },
-                "sku_main": {
-                  "type": "sku",
-                  "settings": {
-                    "type_preset": "custom",
-                    "font_size": "0.75rem",
-                    "case": "uppercase",
-                    "letter_spacing": "loose"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_eyebrow",
-                "text_xpVMaM",
-                "sku_main",
-                "price_tVjtKg"
-              ]
-            },
-            "divider_VJhene": {
-              "type": "_divider",
-              "name": "t:names.divider",
-              "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "divider_color": "#d2ccc4",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "variant_picker_R3rGDr": {
-              "type": "variant-picker",
-              "settings": {
-                "variant_style": "buttons",
-                "show_swatches": false,
-                "alignment": "left",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "buy_buttons_eYQEYi": {
-              "type": "buy-buttons",
-              "settings": {
-                "stacking": true,
-                "show_pickup_availability": false,
-                "gift_card_form": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                }
-              },
-              "block_order": []
-            },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "t:names.product_description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_trust": {
-              "type": "text",
-              "settings": {
-                "text": "<p>★★★★★ Trusted by thousands of happy customers</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "0.875rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none"
-              },
-              "blocks": {}
-            },
-            "text_pairing": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Paired with its matching sheila.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "0.875rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none"
-              },
-              "blocks": {}
-            },
-            "text_size_guide": {
-              "type": "text",
-              "settings": {
-                "text": "<p><a href=\"/pages/abaya-size-chart\" title=\"Size guide\">Size guide</a></p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "0.875rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none"
-              },
-              "blocks": {}
-            },
-            "accordion_info": {
-              "type": "accordion",
-              "settings": {
-                "icon": "plus",
-                "dividers": true,
-                "type_preset": "h6"
-              },
-              "blocks": {
-                "row_shipping": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Shipping & delivery",
-                    "open_by_default": false,
-                    "icon": "none"
-                  },
-                  "blocks": {
-                    "text_001c": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Custom pieces are made within 10–12 business days. Ready-to-wear pieces ship within 1–2 business days.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_001c"
-                  ]
-                },
-                "row_exchange": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Exchange policy",
-                    "open_by_default": false,
-                    "icon": "none"
-                  },
-                  "blocks": {
-                    "text_001d": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Exchanges are accepted within 7 days on eligible orders. See our exchange policy for details.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_001d"
-                  ]
-                },
-                "row_care": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Care",
-                    "open_by_default": false,
-                    "icon": "none"
-                  },
-                  "blocks": {
-                    "text_001e": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>We recommend professional dry cleaning to preserve fabric and embellishments.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_001e"
-                  ]
-                }
-              },
-              "block_order": [
-                "row_shipping",
-                "row_exchange",
-                "row_care"
-              ]
-            }
-          },
-          "block_order": [
-            "group_icgrde",
-            "text_trust",
-            "text_pairing",
-            "divider_VJhene",
-            "text_size_guide",
-            "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi",
-            "text_aEtTtq",
-            "accordion_info"
-          ]
+            "title": "Size & fit",
+            "source": "size_chart",
+            "content": ""
+          }
         },
-        "disclosures": {
-          "type": "disclosures",
+        "acc_fabric": {
+          "type": "accordion",
           "settings": {
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
-          "blocks": {}
+            "title": "Fabric & care",
+            "source": "custom",
+            "content": "<p>Dry clean or cold wash only.</p><p>Colours can look slightly different on screen than in person, depending on lighting and your device.</p>"
+          }
+        },
+        "acc_delivery": {
+          "type": "accordion",
+          "settings": {
+            "title": "Delivery & returns",
+            "source": "custom",
+            "content": "<p><strong>Made to measure</strong><br>With you within 12–15 days of your order.</p><p><strong>Ready to wear</strong><br>Dispatched within 1–2 days.</p><p><strong>International</strong><br>Delivery times vary by destination.</p><p><strong>Exchanges</strong><br>Each abaya is made for you, so please read our <a href=\"/pages/exchange-refund-policy\" title=\"Exchange policy\">exchange policy</a> before ordering.</p>"
+          }
         }
       },
       "block_order": [
-        "disclosures"
+        "acc_piece",
+        "acc_size",
+        "acc_fabric",
+        "acc_delivery"
       ],
       "settings": {
-        "content_width": "content-center-aligned",
-        "desktop_media_position": "left",
-        "equal_columns": true,
-        "limit_details_width": false,
-        "gap": 48,
-        "padding-block-start": 24,
-        "padding-block-end": 48
+        "badge_made": "Made to measure",
+        "badge_ready": "Ready to wear",
+        "trust_text": "Trusted by 6000+ Women!",
+        "trust_link": "shopify://pages/cas-family-reviews",
+        "sheila_text": "Paired with its sheila.",
+        "sheila_type": "",
+        "size_chart_page": "abaya-size-chart",
+        "size_guide_label": "Size guide",
+        "floating_label": "📏 Size Chart",
+        "delivery_title": "Made for you after you order",
+        "delivery_steps": "You|order\nCut to|your size\nSewn &|finished\nDelivered|to you",
+        "show_fields": true,
+        "style_label": "Abaya Style",
+        "style_placeholder": "-- Please Select --",
+        "style_options": "Open Front (As Seen On Model)\nClosed Front (With buttons)\nHalf Closed Front (3-4 Buttons from top)\nCompletely Closed (To wear from top)",
+        "upload_label": "Customized Measurements (Optional)",
+        "upload_button": "Upload a photo",
+        "upload_help": "Please upload a clear photo of your measurements (written measurements or sketch from tailor) if you require a customized product.",
+        "comments_label": "Comments",
+        "comments_help": "Any extra requirements (free of charge) such as: sleeve length, extra buttons, extra fabric behind buttons, buttons on dress for breastfeeding etc...",
+        "buy_now_label": "Buy It Now",
+        "stylist_label": "Speak to a stylist",
+        "stylist_link": "https://wa.me/+971544065806",
+        "upsell_heading": "Complete Your Look",
+        "upsell_products": [
+          "c-005-premium-white-under-abaya-dress",
+          "c-005-03-premium-nude-under-abaya-dress",
+          "c-005-04-premium-black-under-abaya-dress"
+        ],
+        "quick_buy_label": "Quick Buy",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 30,
+        "padding_bottom": 60,
+        "rtw_title": "Ready to wear",
+        "rtw_text": "Already made, and sent to you once you order",
+        "fields_type": "Abaya"
       }
     },
     "text_loved": {
@@ -486,253 +107,212 @@
       "settings": {
         "width": "narrow",
         "alignment": "center",
-        "padding_top": 40,
-        "padding_bottom": 8
+        "style": "classic",
+        "padding_top": 56,
+        "padding_bottom": 28
       },
       "blocks": {
-        "text_001g": {
+        "text_loved": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Loved by thousands of women since 2020</strong></p>"
+            "text": "<p>Loved by more than <a href=\"shopify://pages/cas-family-reviews\" title=\"CAS Reviews\">6,000 women</a> since 2020</p>",
+            "size": "statement"
           }
         }
       },
       "block_order": [
-        "text_001g"
+        "text_loved"
       ]
-    },
-    "apps_reviews": {
-      "type": "cb-apps",
-      "settings": {
-        "heading": "",
-        "full_width": false,
-        "padding_top": 32,
-        "padding_bottom": 32
-      }
     },
     "comparison": {
       "type": "cb-comparison",
-      "settings": {
-        "heading": "Why us",
-        "text": "<p>What sets our pieces apart</p>",
-        "us_label": "Us",
-        "them_label": "Others",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
-        "row_001h": {
+        "row_1": {
           "type": "row",
           "settings": {
             "us": "Made to your measurements, at no extra cost",
             "them": "Customisation charged as an extra"
           }
         },
-        "row_001i": {
+        "row_2": {
           "type": "row",
           "settings": {
             "us": "Fine fabrics, chosen piece by piece",
             "them": "Mass-produced fabrics"
           }
         },
-        "row_001j": {
+        "row_3": {
           "type": "row",
           "settings": {
             "us": "Personal support from our stylists",
-            "them": "Little help once you've paid"
+            "them": "Little help once you’ve paid"
           }
         },
-        "row_001k": {
+        "row_4": {
           "type": "row",
           "settings": {
-            "us": "Shop online, by video call or at home",
-            "them": "One way to shop"
+            "us": "Shop online, in store, at home or by video call",
+            "them": "Online or in store only"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "us": "New designs every week",
+            "them": "The same designs season after season"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "us": "Made to order, so nothing goes to waste",
+            "them": "Fast fashion and overstock"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "us": "Pay by card, Tabby or cash on delivery",
+            "them": "Card payment only"
           }
         }
       },
       "block_order": [
-        "row_001h",
-        "row_001i",
-        "row_001j",
-        "row_001k"
-      ]
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7"
+      ],
+      "settings": {
+        "heading": "Why CAS",
+        "text": "<p>What sets a CAS abaya apart</p>",
+        "us_label": "CAS",
+        "them_label": "Others",
+        "style": "classic",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
     },
     "related": {
-      "type": "product-recommendations",
-      "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
-          "settings": {
-            "text": "<h2>You may also like</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h3",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 8,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
-        }
-      },
-      "block_order": [
-        "text_cbcgyb"
-      ],
-      "name": "t:names.product_recommendations",
+      "type": "cb-related-products",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "carousel",
-        "carousel_on_mobile": true,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "full-width",
-        "gap": 28,
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "heading": "You may also like",
+        "recent_heading": "Recently viewed",
+        "recent_empty": "Products you look at will show here.",
+        "products_count": 4,
+        "collection": "",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "faq": {
       "type": "cb-accordions",
+      "blocks": {
+        "q_1": {
+          "type": "item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>Email us at info@casbasics.com or message us through the chat at the bottom of the page with your order number, and we’ll update you.</p>"
+          }
+        },
+        "q_2": {
+          "type": "item",
+          "settings": {
+            "question": "Can I receive an abaya sooner?",
+            "answer": "<p>Yes. Our ready-to-wear pieces are already made and are dispatched within 1–2 days. You’ll find them in the Ready to Wear collection, marked \"RTW\" in the name.</p>"
+          }
+        },
+        "q_3": {
+          "type": "item",
+          "settings": {
+            "question": "How long will my order take?",
+            "answer": "<p>Made-to-measure abayas arrive within 12–15 days of your order.</p><p>If 15 days have passed and your order hasn’t arrived, message us on WhatsApp or email info@casbasics.com with your full name and phone number. We’ll come back to you within 24 hours.</p>"
+          }
+        },
+        "q_4": {
+          "type": "item",
+          "settings": {
+            "question": "Which fabrics are best for warm weather?",
+            "answer": "<p>For warm days and everyday wear, choose a lighter fabric. <strong>Nada</strong>, <strong>Crepe</strong> and <strong>Chiffon</strong> are light and breathable, and <strong>Linen</strong> is made for summer: natural, airy and durable. Each keeps you cool without compromising on elegance.</p>"
+          }
+        },
+        "q_5": {
+          "type": "item",
+          "settings": {
+            "question": "Which customisations are available?",
+            "answer": "<p>Most customisations are <strong>complimentary</strong>. We tailor every abaya to your size, from XS to 3XL, and to any length up to 63″. You can also add buttons to the front or sleeves, choose a zip or button closure (thoughtful for nursing mothers), add pockets, choose your neckline, or remove our logo from the abaya or shayla.</p><p>A few additions carry a small fee: a full lining (batana) is AED 70, an extra chiffon layer is AED 100, and a longer shayla is AED 40. We’ll always confirm any charge before your order is finalised.</p>"
+          }
+        },
+        "q_6": {
+          "type": "item",
+          "settings": {
+            "question": "Can I make changes to an abaya?",
+            "answer": "<p>Yes. Message our team on <a href=\"https://wa.me/971585959872\" title=\"WhatsApp\">WhatsApp</a> to talk through the changes you’d like.</p>"
+          }
+        },
+        "q_7": {
+          "type": "item",
+          "settings": {
+            "question": "What is your exchange policy?",
+            "answer": "<p>Exchanges are accepted within 7 days of delivery, for pieces that are unworn and in their original condition (terms apply). Please read our full <a href=\"/pages/exchange-refund-policy\" title=\"Exchange policy\">exchange policy</a>.</p>"
+          }
+        },
+        "q_8": {
+          "type": "item",
+          "settings": {
+            "question": "Which fabrics do you offer, and which suit which occasion?",
+            "answer": "<p>For everyday wear, <strong>Nada</strong> is soft and light, and <strong>Crepe</strong> is comfortable and breathable with a gentle drape. <strong>Chiffon</strong> is airy and usually layered. For work or formal occasions, <strong>Jacquard</strong> and <strong>Soft Jacquard</strong> bring texture and structure. For weddings and evenings, <strong>Bridal Satin</strong> has a subtle sheen and <strong>Dantel lace</strong> adds intricate detail. <strong>Velvet</strong>, <strong>Suede</strong> and <strong>Tweed</strong> are our winter fabrics, and <strong>Linen</strong> is for summer.</p>"
+          }
+        },
+        "q_9": {
+          "type": "item",
+          "settings": {
+            "question": "How do I make sure my abaya fits?",
+            "answer": "<p>Made-to-measure abayas are cut to your measurements. We work from garment measurements rather than body measurements, so the easiest way is to measure an abaya you already love: chest, hips, length, sleeve from the neck and shoulder, in inches. We also offer standard sizes from XS to 3XL, in any length. If anything isn’t right after delivery, our team will help with an alteration or replacement.</p>"
+          }
+        },
+        "q_10": {
+          "type": "item",
+          "settings": {
+            "question": "How do I send my measurements?",
+            "answer": "<p>Send us your measurements in inches: chest, hips, abaya length, sleeve length (from the neck) and shoulder width. Measuring a similar abaya gives the most accurate result. <a href=\"/pages/abaya-size-chart\" title=\"Size guide\">See our size guide</a>.</p><p>Made-to-measure abayas arrive within 12–15 days of your order. Need it sooner? Our ready-to-wear pieces are dispatched within 1–2 days.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3",
+        "q_4",
+        "q_5",
+        "q_6",
+        "q_7",
+        "q_8",
+        "q_9",
+        "q_10"
+      ],
       "settings": {
         "heading": "Questions, answered",
         "text": "",
         "layout": "stacked",
         "heading_alignment": "center",
         "width": "narrow",
+        "icon": "plus",
+        "heading_style": "classic",
         "open_first": false,
-        "faq_schema": false,
+        "faq_schema": true,
+        "background_color": "",
+        "text_color": "",
         "padding_top": 60,
         "padding_bottom": 60
-      },
-      "blocks": {
-        "item_001l": {
-          "type": "item",
-          "settings": {
-            "question": "How can I track my order?",
-            "answer": "<p>Email us or message us on chat with your order number and we will update you.</p>"
-          }
-        },
-        "item_001m": {
-          "type": "item",
-          "settings": {
-            "question": "Can I receive my order sooner?",
-            "answer": "<p>Yes. Ready-to-wear pieces are already made and ship within 1–2 business days.</p>"
-          }
-        },
-        "item_001n": {
-          "type": "item",
-          "settings": {
-            "question": "What if it does not fit?",
-            "answer": "<p>Pieces are made to the measurements you provide. Please check the size chart before ordering.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_001l",
-        "item_001m",
-        "item_001n"
-      ]
+      }
     },
     "icons": {
       "type": "cb-icons-row",
@@ -743,26 +323,26 @@
         "layout": "inline",
         "columns": 3,
         "mobile_two_columns": false,
-        "icon_size": 36,
+        "icon_size": 30,
         "show_numbers": false,
-        "padding_top": 48,
-        "padding_bottom": 48,
-        "box_color": "#f0eee9",
+        "padding_top": 20,
+        "padding_bottom": 56,
+        "box_color": "#e8e4dd",
         "background_color": "#e7e4e1"
       },
       "blocks": {
         "item_001o": {
           "type": "item",
           "settings": {
-            "icon": "truck",
+            "icon": "thin-truck",
             "title": "Free delivery",
-            "text": "<p>On qualifying orders</p>"
+            "text": "<p>On UAE orders over AED 999</p>"
           }
         },
         "item_001p": {
           "type": "item",
           "settings": {
-            "icon": "shield",
+            "icon": "thin-check",
             "title": "Quality, guaranteed",
             "text": "<p>Fabrics and finishing we stand behind</p>"
           }
@@ -770,7 +350,7 @@
         "item_001q": {
           "type": "item",
           "settings": {
-            "icon": "hand",
+            "icon": "thin-eco",
             "title": "Finished by hand",
             "text": "<p>Every seam finished with care</p>"
           }
@@ -781,13 +361,131 @@
         "item_001p",
         "item_001q"
       ]
+    },
+    "video_reviews": {
+      "type": "cb-video-reviews",
+      "blocks": {
+        "reel_1": {
+          "type": "reel",
+          "settings": {
+            "name": "Hessa A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_2": {
+          "type": "reel",
+          "settings": {
+            "name": "Sarah S.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_3": {
+          "type": "reel",
+          "settings": {
+            "name": "Maha O.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_4": {
+          "type": "reel",
+          "settings": {
+            "name": "Analyn R.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_5": {
+          "type": "reel",
+          "settings": {
+            "name": "Aylin C.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_6": {
+          "type": "reel",
+          "settings": {
+            "name": "Farwa F.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_7": {
+          "type": "reel",
+          "settings": {
+            "name": "Fatema A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_8": {
+          "type": "reel",
+          "settings": {
+            "name": "Hafsah U.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_10": {
+          "type": "reel",
+          "settings": {
+            "name": "Afroze Faisal S.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        },
+        "reel_11": {
+          "type": "reel",
+          "settings": {
+            "name": "Aisha A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8"
+          }
+        }
+      },
+      "block_order": [
+        "reel_1",
+        "reel_2",
+        "reel_3",
+        "reel_4",
+        "reel_5",
+        "reel_6",
+        "reel_7",
+        "reel_8",
+        "reel_10",
+        "reel_11"
+      ],
+      "settings": {
+        "autoplay": true,
+        "show_name": true,
+        "show_rating": true,
+        "show_arrows_mobile": false,
+        "radius": 16,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "marquee",
     "main",
     "text_loved",
-    "apps_reviews",
+    "video_reviews",
     "comparison",
     "related",
     "faq",

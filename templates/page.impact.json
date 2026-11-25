@@ -14,21 +14,22 @@
       "settings": {
         "width": "narrow",
         "alignment": "center",
+        "style": "classic",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 30
       },
       "blocks": {
         "subheading_003w": {
           "type": "subheading",
           "settings": {
-            "text": "#GivingBack"
+            "text": "#CASforACause #WearHope"
           }
         },
         "heading_003x": {
           "type": "heading",
           "settings": {
-            "heading": "A part of every order goes to a monthly charity campaign",
-            "size": "medium",
+            "heading": "<strong>Every abaya sold helps fuel a meaningful AED 10 donation to Red Crescent every month!</strong>",
+            "size": "compact",
             "show_line": false
           }
         }
@@ -44,22 +45,22 @@
         "width": "page",
         "height": "original",
         "radius": 0,
-        "padding_top": 16,
-        "padding_bottom": 16
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "goal": {
       "type": "cb-progress-goal",
       "settings": {
-        "heading": "This month's campaign",
+        "heading": "",
         "raised": 8730,
         "goal": 10000,
         "currency": "AED",
         "raised_label": "raised",
         "goal_label": "Goal:",
         "remaining_label": "Remaining:",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "story": {
@@ -67,6 +68,7 @@
       "settings": {
         "width": "normal",
         "alignment": "center",
+        "style": "classic",
         "padding_top": 60,
         "padding_bottom": 60
       },
@@ -74,7 +76,7 @@
         "text_003y": {
           "type": "text",
           "settings": {
-            "text": "<p>Use this space to tell customers more about your brand, your craftsmanship and what makes your pieces special.</p>"
+            "text": "<p>The people of Gaza continue to face hardship, and as always, we stand with Palestine. <br><strong>This December, we’ll be donating AED 10 from every order to the Emirates Red Crescent, contributing towards relief and humanitarian aid to those affected. </strong><br>Every abaya is more than just a purchase, it’s a gesture of compassion, unity, and hope.</p>"
           }
         }
       },
@@ -85,30 +87,35 @@
     "report": {
       "type": "cb-impact-report",
       "settings": {
-        "heading": "Monthly campaign impact report",
-        "subheading": "Making a difference together",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "heading": "Monthly Campaign Impact Report",
+        "subheading": "Making a Difference Together!",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "target_label": "Target",
+        "achieved_label": "Achieved",
+        "donated_label": "Donated to:"
       },
       "blocks": {
         "entry_003z": {
           "type": "entry",
           "settings": {
             "month": "November 2025",
-            "campaign": "<p>Campaign: relief support</p>",
+            "campaign": "<p>Campaign: Support to those affected in Gaza, Palestine</p>",
             "target": "AED 10,000",
             "achieved": "AED 8,860",
-            "donated_to": "Charity partner"
+            "donated_to": "Emirates Red Crescent",
+            "proof_label": "View Proof of Deposit"
           }
         },
         "entry_0040": {
           "type": "entry",
           "settings": {
             "month": "October 2025",
-            "campaign": "<p>Campaign: supporting women</p>",
+            "campaign": "<p>Campaign: Support Women Fighting Breast Cancer</p>",
             "target": "AED 10,000",
-            "achieved": "AED 9,200",
-            "donated_to": "Charity partner"
+            "achieved": "AED 8680",
+            "donated_to": "Emirates Red Crescent",
+            "proof_label": "View Proof of Deposit"
           }
         }
       },
@@ -122,15 +129,16 @@
       "settings": {
         "width": "narrow",
         "alignment": "center",
-        "padding_top": 40,
-        "padding_bottom": 24
+        "style": "classic",
+        "padding_top": 60,
+        "padding_bottom": 60
       },
       "blocks": {
         "heading_0041": {
           "type": "heading",
           "settings": {
-            "heading": "Our pillars",
-            "size": "medium",
+            "heading": "<strong>OUR PILLARS</strong>",
+            "size": "compact",
             "show_line": false
           }
         }
@@ -148,14 +156,16 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "650"
       },
       "blocks": {
         "heading_0042": {
           "type": "heading",
           "settings": {
-            "heading": "Sustainability",
+            "heading": "<strong>Sustainability </strong>",
             "size": "medium",
             "show_line": true
           }
@@ -163,7 +173,7 @@
         "text_0043": {
           "type": "text",
           "settings": {
-            "text": "<p>We operate on a pre-order basis, so we only use the resources we need.</p>"
+            "text": "<p>We operate on a pre-order basis, which means we only use as many resources as we need according to the number of orders we receive. </p><p>From eco-friendly materials to thoughtful packaging, we always make sure that we leave a lighter carbon footprint on our planet. </p>"
           }
         }
       },
@@ -181,14 +191,16 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "650"
       },
       "blocks": {
         "heading_0044": {
           "type": "heading",
           "settings": {
-            "heading": "Women empowerment",
+            "heading": "<strong>Women Empowerment</strong>",
             "size": "medium",
             "show_line": true
           }
@@ -196,7 +208,7 @@
         "text_0045": {
           "type": "text",
           "settings": {
-            "text": "<p>Every purchase helps women build a better, sustainable life for themselves and their families.</p>"
+            "text": "<p>Every purchase you make contributes to helping less fortunate women build a better, and sustainable life for themselves and their families.</p>"
           }
         }
       },
@@ -214,14 +226,16 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "650"
       },
       "blocks": {
         "heading_0046": {
           "type": "heading",
           "settings": {
-            "heading": "Supporting craftsmen",
+            "heading": "<strong>Supporting Craftsmen </strong>",
             "size": "medium",
             "show_line": true
           }
@@ -229,7 +243,7 @@
         "text_0047": {
           "type": "text",
           "settings": {
-            "text": "<p>We create meaningful work for skilled craftsmen while preserving traditional craftsmanship.</p>"
+            "text": "<p>Our abayas are brought to life by the skilled craftsmen we hire. </p><p>We strive to create meaningful job opportunities, whilst preserving traditional craftsmanship, and ensuring their skills are celebrated. </p>"
           }
         }
       },
@@ -243,6 +257,7 @@
       "settings": {
         "width": "narrow",
         "alignment": "center",
+        "style": "classic",
         "padding_top": 60,
         "padding_bottom": 60
       },
@@ -250,7 +265,7 @@
         "text_0048": {
           "type": "text",
           "settings": {
-            "text": "<p>This is just the beginning. Together, we shape our future in every choice.</p>"
+            "text": "<p>This is just the beginning of our impact on our world. Together, we shape our future in every choice. </p><p>We make modest fashion meaningful. </p>"
           }
         }
       },

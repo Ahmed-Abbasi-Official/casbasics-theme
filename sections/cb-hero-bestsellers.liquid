@@ -12,7 +12,7 @@
 -%}
 
 <cb-hero-panel
-  class="cb-hero cb-hero--h-{{ section.settings.height }} cb-hero--panel-{{ section.settings.panel_position }} cb-hero--{{ section.settings.panel_style | default: 'light' }}"
+  class="cb-hero cb-hero--h-{{ section.settings.height }} cb-hero--panel-{{ section.settings.panel_position }} cb-hero--{{ section.settings.panel_style | default: 'light' }}{% if section.settings.show_images == false %} cb-hero--no-thumbs{% endif %}"
   data-section-id="{{ section.id }}"
   {% if section.settings.start_collapsed %}
     data-start-collapsed
@@ -94,17 +94,19 @@
             {%- for product in panel_collection.products limit: section.settings.limit -%}
               {%- if section.settings.panel_style == 'glass' -%}
                 <li class="cb-hero__item cb-hero__item--row">
-                  <a class="cb-media cb-hero__thumb" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
-                    {%- if product.featured_media -%}
-                      {{
-                        product.featured_media
-                        | image_url: width: 160
-                        | image_tag: loading: 'lazy', sizes: '56px', widths: '112, 160', alt: product.title
-                      }}
-                    {%- else -%}
-                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                    {%- endif -%}
-                  </a>
+                  {%- if section.settings.show_images != false -%}
+                    <a class="cb-media cb-hero__thumb" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+                      {%- if product.featured_media -%}
+                        {{
+                          product.featured_media
+                          | image_url: width: 160
+                          | image_tag: loading: 'lazy', sizes: '56px', widths: '112, 160', alt: product.title
+                        }}
+                      {%- else -%}
+                        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%}
+                    </a>
+                  {%- endif -%}
                   <div class="cb-hero__item-info">
                     <a class="cb-hero__item-title" href="{{ product.url }}">{{ product.title }}</a>
                     {%- if product.available -%}
@@ -310,6 +312,8 @@
       "label": "Panel position",
       "options": [
         { "value": "right", "label": "Right" },
+        { "value": "right-middle", "label": "Right, middle" },
+        { "value": "center", "label": "Center" },
         { "value": "left", "label": "Left" }
       ],
       "default": "right"
@@ -324,6 +328,7 @@
       ],
       "default": "light"
     },
+    { "type": "checkbox", "id": "show_images", "label": "Show product images", "info": "Dark glass style only", "default": true },
     { "type": "checkbox", "id": "start_collapsed", "label": "Start collapsed", "default": false }
   ],
   "presets": [{ "name": "Hero with best sellers" }]

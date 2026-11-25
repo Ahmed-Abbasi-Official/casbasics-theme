@@ -1,0 +1,519 @@
+{%- doc -%}
+  Product page, like the live store: gallery (3:4 slides with round arrows and thumbnails) next to
+  a 460px column with the "Made to measure" pill, spaced-capital title with the product code,
+  price + "Trusted by" pill, sheila note, rounded size / length buttons with the size guide,
+  the "Made for you" timeline, abaya style / measurements / comments (saved on the order line),
+  add to cart and buy it now, "Speak to a stylist", collapsible rows and "Complete your look".
+  The size guide (and the floating "Size Chart" tab) opens the size chart page in a side drawer.
+{%- enddoc -%}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign size_page = section.settings.size_chart_page
+
+  assign title_words = product.title | split: ' '
+  assign code = ''
+  assign name = product.title
+  if title_words.size > 2 and title_words[0] == 'C'
+    assign code_start = 'C '
+    assign second = title_words[1]
+    if second == 'RTW' and title_words.size > 3
+      assign code_start = 'C RTW '
+      assign second = title_words[2]
+    endif
+    assign no_digits = second | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+    if no_digits.size < second.size
+      assign code = code_start | append: second
+      assign name = product.title | remove_first: code | strip
+    endif
+  endif
+
+  assign ready_to_wear = false
+  assign tag_list = product.tags | join: ',' | downcase | prepend: ',' | append: ','
+  if tag_list contains ',ready to wear,' or tag_list contains ',ready-to-wear,' or title_words contains 'RTW'
+    assign ready_to_wear = true
+  endif
+
+  assign show_sheila = false
+  if section.settings.sheila_text != blank
+    if section.settings.sheila_type == blank or product.type == section.settings.sheila_type
+      assign show_sheila = true
+    endif
+  endif
+
+  assign show_fields = false
+  if section.settings.show_fields and ready_to_wear == false
+    if section.settings.fields_type == blank or product.type == section.settings.fields_type
+      assign show_fields = true
+    endif
+  endif
+
+  assign media_count = product.media.size
+  assign first_media = product.featured_media
+  assign ratio = 0.75
+  if first_media != blank
+    assign ratio = first_media.aspect_ratio | default: 0.75
+  endif
+-%}
+
+<div
+  class="cb-section cb-pdp"
+  style="{% render 'cb-section-style', settings: section.settings %}"
+>
+  <cb-product class="cb-container cb-pdp__container" data-url="{{ product.url }}">
+    <script type="application/json" data-cb-variants>
+      [
+        {%- for variant in product.variants -%}
+          {
+            "id": {{ variant.id }},
+            "options": {{ variant.options | json }},
+            "available": {{ variant.available | json }},
+            "price": {{ variant.price | money | json }},
+            "compare": {% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | json }}{% else %}null{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    </script>
+
+    <div class="cb-pdp__grid">
+      {%- comment -%} Gallery {%- endcomment -%}
+      <div class="cb-pdp__gallery">
+        <div class="cb-pdp__slider" style="--cb-pdp-ratio: {{ 1.0 | divided_by: ratio | times: 100 }}%;">
+          <div class="cb-pdp__track" data-gallery-track>
+            {%- for media in product.media -%}
+              <div class="cb-pdp__slide" data-gallery-slide>
+                {%- assign media_alt = media.alt | default: product.title -%}
+                {%- if media.preview_image -%}
+                  {{
+                    media.preview_image
+                    | image_url: width: 1600
+                    | image_tag: loading: 'eager', sizes: '(min-width: 1440px) 783px, (min-width: 768px) 55vw, 100vw', widths: '600, 800, 1000, 1200, 1600', alt: media_alt, class: 'cb-pdp__image'
+                  }}
+                {%- endif -%}
+              </div>
+            {%- else -%}
+              <div class="cb-pdp__slide" data-gallery-slide>
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg cb-pdp__image' }}
+              </div>
+            {%- endfor -%}
+          </div>
+          {%- if media_count > 1 -%}
+            <button type="button" class="cb-pdp__arrow cb-pdp__arrow--prev" aria-label="Previous image" data-gallery-prev>
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M12.5 4 6.5 10l6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+            </button>
+            <button type="button" class="cb-pdp__arrow cb-pdp__arrow--next" aria-label="Next image" data-gallery-next>
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m7.5 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+            </button>
+          {%- endif -%}
+        </div>
+
+        {%- if media_count > 1 -%}
+          <div class="cb-pdp__thumbs">
+            {%- for media in product.media -%}
+              <button
+                type="button"
+                class="cb-pdp__thumb{% if forloop.first %} is-active{% endif %}"
+                data-gallery-thumb="{{ forloop.index0 }}"
+                aria-label="Show image {{ forloop.index }}"
+              >
+                {%- if media.preview_image -%}
+                  {{ media.preview_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '' }}
+                {%- endif -%}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Details {%- endcomment -%}
+      <div class="cb-pdp__details">
+        <div class="cb-pdp__info">
+          <div class="cb-pdp__block cb-pdp__block--type">
+            <span class="cb-pdp__type">
+              {%- if ready_to_wear -%}{{ section.settings.badge_ready }}{%- else -%}{{ section.settings.badge_made }}{%- endif -%}
+            </span>
+          </div>
+
+          <div class="cb-pdp__block cb-pdp__block--title">
+            <div class="cb-pdp__title-line">
+              <h1 class="cb-pdp__title">{{ name }}</h1>
+              {%- if code != blank -%}
+                <span class="cb-pdp__code">{{ code }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <div class="cb-pdp__block cb-pdp__block--price">
+            <div class="cb-pdp__price">
+              <span class="cb-pdp__price-regular" data-price>{{ current_variant.price | money }}</span>
+              <s class="cb-pdp__price-compare" data-compare-price{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>
+                {{- current_variant.compare_at_price | money -}}
+              </s>
+              {%- if section.settings.trust_text != blank -%}
+                <a class="cb-pdp__trust" href="{{ section.settings.trust_link | default: '#' }}">
+                  <span class="cb-pdp__trust-stars" aria-hidden="true">★★★★★</span>
+                  <span>{{ section.settings.trust_text }}</span>
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- if show_sheila -%}
+            <div class="cb-pdp__block cb-pdp__block--sheila">
+              <p class="cb-pdp__sheila">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M12 9v12M3 13h18M12 9C10 5 6 5 6 7.5S9 9 12 9Zm0 0c2-4 6-4 6-1.5S15 9 12 9Z"/></svg>
+                <span>{{ section.settings.sheila_text }}</span>
+              </p>
+            </div>
+          {%- endif -%}
+
+          <div class="cb-pdp__block cb-pdp__block--spacer" aria-hidden="true"></div>
+
+          {%- comment -%} "C 2555-02 Dark Orange …" is shown as the name with the code "C 2555-02" beside it {%- endcomment -%}
+          {%- form 'product', product, class: 'cb-pdp__form' -%}
+            <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+            {%- unless product.has_only_default_variant -%}
+              <div class="cb-pdp__options">
+                {%- for option in product.options_with_values -%}
+                  {%- assign option_index = forloop.index0 -%}
+                  <div class="cb-pdp__option" role="radiogroup" aria-labelledby="CbOption-{{ section.id }}-{{ forloop.index0 }}" data-option-index="{{ forloop.index0 }}">
+                    <div class="cb-pdp__option-head{% if forloop.first %} cb-pdp__option-head--first{% endif %}">
+                      <span class="cb-pdp__option-name" id="CbOption-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</span>
+                      {%- if forloop.first and size_page != blank -%}
+                        <button type="button" class="cb-pdp__size-guide" data-size-chart-open aria-controls="CbSizeChart-{{ section.id }}">
+                          <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><rect x="26.2" y="82.7" width="203.6" height="90.5" rx="8" transform="rotate(-45 128 128)" fill="none" stroke="currentColor" stroke-width="16"/><path d="m132 60 32 32M96 96l32 32M60 132l32 32" stroke="currentColor" stroke-width="16"/></svg>
+                          <span>{{ section.settings.size_guide_label }}</span>
+                        </button>
+                      {%- endif -%}
+                    </div>
+                    <div class="cb-pdp__values">
+                      {%- for value in option.values -%}
+                        {%- assign input_id = section.id | append: '-' | append: option_index | append: '-' | append: forloop.index0 -%}
+                        <input
+                          class="cb-pdp__value-input visually-hidden"
+                          type="radio"
+                          id="{{ input_id }}"
+                          name="cb-option-{{ section.id }}-{{ option_index }}"
+                          value="{{ value | escape }}"
+                          {% if option.selected_value == value %}
+                            checked
+                          {% endif %}
+                          data-option-value
+                        >
+                        <label class="cb-pdp__value" for="{{ input_id }}">{{ value }}</label>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endunless -%}
+
+            <div class="cb-pdp__form-body">
+              {%- if ready_to_wear -%}
+                {%- if section.settings.rtw_title != blank -%}
+                  <div class="cb-pdp__delivery cb-pdp__delivery--rtw">
+                    <div class="cb-pdp__delivery-head">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg>
+                      <span>{{ section.settings.rtw_title }}</span>
+                    </div>
+                    {%- if section.settings.rtw_text != blank -%}
+                      <p class="cb-pdp__delivery-sub">{{ section.settings.rtw_text }}</p>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- else -%}
+                {%- if section.settings.delivery_title != blank -%}
+                  <div class="cb-pdp__delivery">
+                    <div class="cb-pdp__delivery-head">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M4 20 20 4M7 4l13 13M4 7l3-3"/></svg>
+                      <span>{{ section.settings.delivery_title }}</span>
+                    </div>
+                    <ol class="cb-pdp__timeline">
+                      {%- assign steps = section.settings.delivery_steps | newline_to_br | split: '<br />' -%}
+                      {%- for step in steps -%}
+                        {%- assign step_text = step | strip -%}
+                        {%- if step_text != blank -%}
+                          <li class="cb-pdp__step{% if forloop.first %} is-current{% endif %}">
+                            <span class="cb-pdp__step-dot" aria-hidden="true"></span>
+                            <span class="cb-pdp__step-label">{{ step_text | escape | replace: '|', '<br>' }}</span>
+                          </li>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </ol>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+
+              {%- if show_fields -%}
+                <div class="cb-pdp__fields">
+                  {%- if section.settings.style_label != blank -%}
+                    <div class="cb-pdp__field">
+                      <label class="cb-pdp__field-label" for="CbStyle-{{ section.id }}">{{ section.settings.style_label }}</label>
+                      <div class="cb-pdp__select">
+                        <select id="CbStyle-{{ section.id }}" name="properties[{{ section.settings.style_label }}]">
+                          <option value="">{{ section.settings.style_placeholder }}</option>
+                          {%- assign style_options = section.settings.style_options | newline_to_br | split: '<br />' -%}
+                          {%- for style_option in style_options -%}
+                            {%- assign style_value = style_option | strip -%}
+                            {%- if style_value != blank -%}
+                              <option value="{{ style_value | escape }}">{{ style_value }}</option>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </select>
+                        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+                      </div>
+                    </div>
+                  {%- endif -%}
+
+                  {%- if section.settings.upload_label != blank -%}
+                    <div class="cb-pdp__field">
+                      <span class="cb-pdp__field-label">{{ section.settings.upload_label }}</span>
+                      <label class="cb-pdp__upload" for="CbUpload-{{ section.id }}">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M4 14v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+                        <span data-upload-name>{{ section.settings.upload_button }}</span>
+                      </label>
+                      <input
+                        class="cb-pdp__upload-input visually-hidden"
+                        id="CbUpload-{{ section.id }}"
+                        type="file"
+                        accept="image/*,.pdf"
+                        name="properties[{{ section.settings.upload_label }}]"
+                        data-upload-input
+                      >
+                      {%- if section.settings.upload_help != blank -%}
+                        <div class="cb-pdp__field-help">{{ section.settings.upload_help }}</div>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if section.settings.comments_label != blank -%}
+                    <div class="cb-pdp__field">
+                      <label class="cb-pdp__field-label" for="CbComments-{{ section.id }}">{{ section.settings.comments_label }}</label>
+                      <input class="cb-pdp__input" id="CbComments-{{ section.id }}" type="text" name="properties[{{ section.settings.comments_label }}]">
+                      {%- if section.settings.comments_help != blank -%}
+                        <div class="cb-pdp__field-help">{{ section.settings.comments_help }}</div>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              <div class="cb-pdp__buttons">
+                <button
+                  type="submit"
+                  name="add"
+                  class="cb-pdp__add"
+                  data-add-button
+                  {% unless current_variant.available %}
+                    disabled
+                  {% endunless %}
+                >
+                  <span data-add-label>
+                    {%- if current_variant.available -%}{{ 'products.product.add_to_cart' | t | default: 'Add to cart' }}{%- else -%}{{ 'products.product.sold_out' | t | default: 'Sold out' }}{%- endif -%}
+                  </span>
+                </button>
+                {%- if section.settings.buy_now_label != blank -%}
+                  <button type="button" class="cb-pdp__buy-now" data-buy-now{% unless current_variant.available %} disabled{% endunless %}>
+                    {{- section.settings.buy_now_label -}}
+                  </button>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endform -%}
+
+          {%- if section.settings.stylist_label != blank -%}
+            <div class="cb-pdp__block cb-pdp__block--stylist">
+              <a class="cb-pdp__stylist" href="{{ section.settings.stylist_link | default: '#' }}" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12Z"/></svg>
+                <span>{{ section.settings.stylist_label }}</span>
+              </a>
+            </div>
+          {%- endif -%}
+
+          {%- if section.blocks.size > 0 -%}
+            <div class="cb-pdp__block cb-pdp__block--accordions">
+              {%- for block in section.blocks -%}
+                {%- liquid
+                  assign body = ''
+                  case block.settings.source
+                    when 'description'
+                      assign body = product.description
+                    when 'size_chart'
+                      if size_page != blank
+                        assign body = size_page.content
+                      endif
+                    else
+                      assign body = block.settings.content
+                  endcase
+                -%}
+                {%- if body != blank -%}
+                  <details class="cb-pdp__accordion" {{ block.shopify_attributes }}>
+                    <summary class="cb-pdp__accordion-title">
+                      <span>{{ block.settings.title }}</span>
+                      <svg class="cb-pdp__accordion-icon" viewBox="0 0 192 192" aria-hidden="true" focusable="false"><path class="cb-pdp__accordion-v" d="M96 30v132" stroke="currentColor" stroke-width="10" stroke-linecap="round"/><path d="M30 96h132" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>
+                    </summary>
+                    <div class="cb-pdp__accordion-body cb-pdp-rte">{{ body }}</div>
+                  </details>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          {%- assign upsell = section.settings.upsell_products -%}
+          {%- if upsell.size > 0 -%}
+            <div class="cb-pdp__block cb-pdp__block--upsell">
+              <div class="cb-pdp__upsell-track" data-upsell-track>
+                {%- for item in upsell -%}
+                  {%- assign item_variant = item.selected_or_first_available_variant -%}
+                  <div class="cb-pdp__upsell" data-upsell-slide>
+                    <div class="cb-pdp__upsell-inner">
+                      <a class="cb-pdp__upsell-image" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
+                        {%- if item.featured_image -%}
+                          {{ item.featured_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: '' }}
+                        {%- else -%}
+                          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {%- endif -%}
+                      </a>
+                      <div class="cb-pdp__upsell-content">
+                        {%- if section.settings.upsell_heading != blank -%}
+                          <p class="cb-pdp__upsell-subtitle">{{ section.settings.upsell_heading }}</p>
+                        {%- endif -%}
+                        <div class="cb-pdp__upsell-row">
+                          <a class="cb-pdp__upsell-title" href="{{ item.url }}">{{ item.title }}</a>
+                          <p class="cb-pdp__upsell-price">{{ item_variant.price | money }}</p>
+                        </div>
+                        <button
+                          type="button"
+                          class="cb-pdp__upsell-button"
+                          data-quick-buy="{{ item_variant.id }}"
+                          {% unless item_variant.available %}
+                            disabled
+                          {% endunless %}
+                        >
+                          <span class="cb-pdp__upsell-button-text">{{ section.settings.quick_buy_label }}</span>
+                          <svg class="cb-pdp__upsell-check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m3 8.5 3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+              {%- if upsell.size > 1 -%}
+                <div class="cb-pdp__dots" role="tablist">
+                  {%- for item in upsell -%}
+                    <button type="button" class="cb-pdp__dot{% if forloop.first %} is-active{% endif %}" data-upsell-dot="{{ forloop.index0 }}" aria-label="Show {{ forloop.index }}"></button>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- if size_page != blank -%}
+      <div class="cb-pdp-drawer" id="CbSizeChart-{{ section.id }}" data-size-chart hidden>
+        <div class="cb-pdp-drawer__underlay" data-size-chart-close></div>
+        <div class="cb-pdp-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ size_page.title | escape }}" tabindex="-1">
+          <button type="button" class="cb-pdp-drawer__close" data-size-chart-close aria-label="Close">
+            <svg viewBox="0 0 192 192" aria-hidden="true" focusable="false"><path d="M150 42 42 150M150 150 42 42" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>
+          </button>
+          <div class="cb-pdp-drawer__inner">
+            <div class="cb-pdp-drawer__content cb-pdp-rte">{{ size_page.content }}</div>
+          </div>
+        </div>
+      </div>
+
+      {%- if section.settings.floating_label != blank -%}
+        <button type="button" class="cb-pdp-float" data-size-chart-open aria-controls="CbSizeChart-{{ section.id }}">
+          {{- section.settings.floating_label -}}
+        </button>
+      {%- endif -%}
+    {%- endif -%}
+  </cb-product>
+</div>
+
+{% schema %}
+{
+  "name": "Product page",
+  "tag": "section",
+  "class": "cb-section-wrapper",
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Collapsible row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "The piece" },
+        {
+          "type": "select",
+          "id": "source",
+          "label": "Content",
+          "options": [
+            { "value": "description", "label": "Product description" },
+            { "value": "size_chart", "label": "Size chart page" },
+            { "value": "custom", "label": "Text below" }
+          ],
+          "default": "custom"
+        },
+        { "type": "richtext", "id": "content", "label": "Text" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "header", "content": "Labels" },
+    { "type": "text", "id": "badge_made", "label": "Made to measure label", "default": "Made to measure" },
+    { "type": "text", "id": "badge_ready", "label": "Ready to wear label", "info": "Used for products tagged \"ready to wear\" or with RTW in the title", "default": "Ready to wear" },
+    { "type": "text", "id": "trust_text", "label": "Trust pill", "default": "Trusted by 6000+ Women!" },
+    { "type": "url", "id": "trust_link", "label": "Trust pill link" },
+    { "type": "text", "id": "sheila_text", "label": "Sheila note", "default": "Paired with its sheila." },
+    { "type": "text", "id": "sheila_type", "label": "Show sheila note for product type", "info": "Leave empty to show it on every product", "default": "" },
+    { "type": "header", "content": "Size guide" },
+    { "type": "page", "id": "size_chart_page", "label": "Size chart page" },
+    { "type": "text", "id": "size_guide_label", "label": "Size guide link", "default": "Size guide" },
+    { "type": "text", "id": "floating_label", "label": "Floating tab", "info": "Fixed on the right edge, opens the size chart. Leave empty to hide", "default": "📏 Size Chart" },
+    { "type": "header", "content": "Made for you" },
+    { "type": "text", "id": "delivery_title", "label": "Heading", "info": "Shown for made-to-measure pieces", "default": "Made for you after you order" },
+    {
+      "type": "textarea",
+      "id": "delivery_steps",
+      "label": "Steps",
+      "info": "One per line; | starts a new line in the label",
+      "default": "You|order\nCut to|your size\nSewn &|finished\nDelivered|to you"
+    },
+    { "type": "text", "id": "rtw_title", "label": "Ready to wear heading", "default": "Ready to wear" },
+    { "type": "text", "id": "rtw_text", "label": "Ready to wear text", "default": "Already made, and sent to you once you order" },
+    { "type": "header", "content": "Order notes" },
+    { "type": "checkbox", "id": "show_fields", "label": "Show order fields", "info": "Shown on made-to-measure pieces", "default": true },
+    { "type": "text", "id": "fields_type", "label": "Only for product type", "info": "Leave empty for every product type", "default": "Abaya" },
+    { "type": "text", "id": "style_label", "label": "Style list heading", "default": "Abaya Style" },
+    { "type": "text", "id": "style_placeholder", "label": "Style list placeholder", "default": "-- Please Select --" },
+    {
+      "type": "textarea",
+      "id": "style_options",
+      "label": "Style choices",
+      "info": "One per line",
+      "default": "Open Front (As Seen On Model)\nClosed Front (With buttons)\nHalf Closed Front (3-4 Buttons from top)\nCompletely Closed (To wear from top)"
+    },
+    { "type": "text", "id": "upload_label", "label": "Upload heading", "default": "Customized Measurements (Optional)" },
+    { "type": "text", "id": "upload_button", "label": "Upload button", "default": "Upload a photo" },
+    { "type": "textarea", "id": "upload_help", "label": "Upload help", "default": "Please upload a clear photo of your measurements (written measurements or sketch from tailor) if you require a customized product." },
+    { "type": "text", "id": "comments_label", "label": "Comments heading", "default": "Comments" },
+    { "type": "textarea", "id": "comments_help", "label": "Comments help", "default": "Any extra requirements (free of charge) such as: sleeve length, extra buttons, extra fabric behind buttons, buttons on dress for breastfeeding etc..." },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "buy_now_label", "label": "Buy now button", "info": "Adds to cart and goes to checkout. Leave empty to hide", "default": "Buy It Now" },
+    { "type": "text", "id": "stylist_label", "label": "Stylist link", "default": "Speak to a stylist" },
+    { "type": "url", "id": "stylist_link", "label": "Stylist link URL" },
+    { "type": "header", "content": "Complete your look" },
+    { "type": "text", "id": "upsell_heading", "label": "Label", "default": "Complete Your Look" },
+    { "type": "product_list", "id": "upsell_products", "label": "Products", "limit": 6 },
+    { "type": "text", "id": "quick_buy_label", "label": "Button", "default": "Quick Buy" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 60 }
+  ]
+}
+{% endschema %}

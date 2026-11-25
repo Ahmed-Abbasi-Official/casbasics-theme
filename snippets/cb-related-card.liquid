@@ -1,0 +1,40 @@
+{%- doc -%}
+  Product card for the product page's "You may also like" grid, as on the live store:
+  2:3 picture area with the product picture centred in it (8px corners, second picture on hover),
+  a quick-buy bag on hover, then the centred title (12.96px, 500) and price (10.08px).
+
+  @param {object} product - The product
+{%- enddoc -%}
+
+{%- assign second_image = product.media[1].preview_image -%}
+<div class="cb-related-card">
+  <div class="cb-related-card__image">
+    <div class="cb-related-card__frame">
+    <a class="cb-related-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      {%- if product.featured_image -%}
+        {{
+          product.featured_image
+          | image_url: width: 700
+          | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '300, 450, 600, 700', alt: product.title, class: 'cb-related-card__img'
+        }}
+        {%- if second_image -%}
+          {{
+            second_image
+            | image_url: width: 700
+            | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '300, 450, 600, 700', alt: '', class: 'cb-related-card__img cb-related-card__img--hover'
+          }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg cb-related-card__img' }}
+      {%- endif -%}
+    </a>
+    <a class="cb-related-card__quick" href="{{ product.url }}" aria-label="Quick buy: {{ product.title | escape }}">
+      <svg viewBox="0 0 192 192" fill="none" aria-hidden="true" focusable="false"><path d="M156.6 162H35.4a6 6 0 0 1-6-5.3l-10.6-96A6 6 0 0 1 24.7 54h142.6a6 6 0 0 1 5.9 6.7l-10.6 96a6 6 0 0 1-6 5.3Z" stroke="currentColor" stroke-width="10" stroke-linejoin="round"/><path d="M66 78V54a30 30 0 1 1 60 0v24" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>
+    </a>
+    </div>
+  </div>
+  <div class="cb-related-card__info">
+    <a class="cb-related-card__title" href="{{ product.url }}">{{ product.title }}</a>
+    <a class="cb-related-card__price" href="{{ product.url }}">{{ product.price | money }}</a>
+  </div>
+</div>

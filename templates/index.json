@@ -29,9 +29,10 @@
         "collection": "best-seller-abaya",
         "limit": 8,
         "panel_link_label": "View all",
-        "panel_position": "right",
+        "panel_position": "right-middle",
         "panel_style": "glass",
-        "start_collapsed": false
+        "show_images": false,
+        "start_collapsed": true
       }
     },
     "featured_seasonal": {
@@ -1516,9 +1517,10 @@
       "settings": {
         "width": "narrow",
         "alignment": "center",
+        "style": "classic",
         "background_color": "",
         "text_color": "",
-        "padding_top": 100,
+        "padding_top": 76,
         "padding_bottom": 60
       }
     },
@@ -1602,15 +1604,15 @@
         "item_why_1": {
           "type": "item",
           "settings": {
-            "icon": "tag",
+            "icon": "prices.png",
             "title": "Affordable Prices",
-            "text": "<p>We offer abayas starting at AED 250 up to AED 800. We believe our abaya designs should be available to everyone regardless of one's budget.</p>"
+            "text": "<p>We offer abayas starting at AED 250 up to AED 800. We believe our abaya designs should be available to everyone regardless of one’s budget.</p>"
           }
         },
         "item_why_2": {
           "type": "item",
           "settings": {
-            "icon": "sparkle",
+            "icon": "styles.png",
             "title": "Variety of Styles",
             "text": "<p>Beadwork, embroidery, lacework, lasercut, coat style, bisht, kloosh. You name it, we have it.</p>"
           }
@@ -1618,7 +1620,7 @@
         "item_why_3": {
           "type": "item",
           "settings": {
-            "icon": "shield",
+            "icon": "fabrics.png",
             "title": "Premium Quality Fabrics",
             "text": "<p>We use high-quality abaya fabrics, such as silk, linen, organza, jacquard, crepe, and more. Our premium fabrics are sourced carefully to ensure durability and comfort.</p>"
           }
@@ -1626,7 +1628,7 @@
         "item_why_4": {
           "type": "item",
           "settings": {
-            "icon": "truck",
+            "icon": "shipping.png",
             "title": "Free Shipping",
             "text": "<p>We offer free shipping for all abaya UAE orders above AED 999 (UAE only).</p>"
           }
@@ -1634,15 +1636,15 @@
         "item_why_5": {
           "type": "item",
           "settings": {
-            "icon": "return",
+            "icon": "exchange.png",
             "title": "Exchange Policy",
-            "text": "<p>We don't offer any refunds or returns. Head over to the CAS <a href=\"/policies/refund-policy\">refund policy</a>.</p>"
+            "text": "<p>We don’t offer any refunds or returns. Head over to the CAS <a href=\"/policies/refund-policy\">refund policy</a>.</p>"
           }
         },
         "item_why_6": {
           "type": "item",
           "settings": {
-            "icon": "chat",
+            "icon": "support.png",
             "title": "Online Support",
             "text": "<p>For your convenience, we offer online support. Please click on the WhatsApp icon on the website to get in contact with any of our experienced support agents. We are also available on instagram as well as tiktok to answer your queries. An urgent matter? Call us on +971 6 551 8372.</p>"
           }
@@ -1650,23 +1652,23 @@
         "item_why_7": {
           "type": "item",
           "settings": {
-            "icon": "card",
+            "icon": "payment.png",
             "title": "Flexible Payment",
-            "text": "<p>CAS accepts Visa, American Express, and Mastercard for online payments. We accept Tabby payments as well, an easy installment plan for you. Cash on Delivery option is available for UAE residents.</p>"
+            "text": "<p>CAS accepts Visa, American Express, and Mastercard for online payments. We accept Tabby payments as well, an easy installment plan for you. Cash on Delivery option is available only for UAE residents.</p>"
           }
         },
         "item_why_8": {
           "type": "item",
           "settings": {
-            "icon": "leaf",
+            "icon": "sustainability.png",
             "title": "Committed to sustainability",
-            "text": "<p>We operate on a pre-order basis, which means we only use as many resources as we need according to the number of orders we receive.</p>"
+            "text": "<p>We operate on a pre-order basis, which means we only use as many resources as we need according to the number of orders we receive.</p><p>From eco-friendly materials to thoughtful packaging, we always make sure that we leave a lighter carbon footprint on our planet.</p>"
           }
         },
         "item_why_9": {
           "type": "item",
           "settings": {
-            "icon": "heart",
+            "icon": "donation.png",
             "title": "AED 10 donation every month",
             "text": "<p>Every abaya sold helps fuel a meaningful AED 10 donation to Red Crescent every month! #CASWearHope</p>"
           }
@@ -1686,11 +1688,12 @@
       "settings": {
         "heading": "Why Choose CAS Abaya?",
         "text": "<p>If you are confused regarding your size, please head over to our size chart and easily choose your abaya dress size and length according to your body measurements and height. If you are still unsure and require further help, please do not hesitate to contact us. We are just a call or WhatsApp away.</p>",
-        "style": "borders",
+        "style": "grid",
+        "border_top": true,
         "layout": "center",
         "columns": 3,
-        "mobile_two_columns": false,
-        "icon_size": 44,
+        "mobile_two_columns": true,
+        "icon_size": 45,
         "show_numbers": false,
         "box_color": "",
         "background_color": "#e7e4e1",
@@ -1769,7 +1772,7 @@
         "text_000y": {
           "type": "text",
           "settings": {
-            "text": "<p>At CAS Abaya, you can shop high-quality <strong>designer abayas online</strong> with <strong>worldwide delivery</strong>. Our abayas are crafted with premium fabrics like Turkish Cupro and Crepe, offering elegant designs that blend modern style with modest fashion.<br/>You can explore and order your favorite abaya directly from our online store — <a href=\"/\">CASBasics.com</a> — and enjoy secure international shipping.<br/>Whether you're shopping online or visiting in person, CAS Basics ensures a luxury abaya experience — trusted by modest fashion lovers around the world.</p>"
+            "text": "<p>At <strong>CAS Abaya</strong>, you can shop high-quality <strong>designer abayas online</strong> with <strong>worldwide delivery</strong>. Our abayas are crafted with premium fabrics like Turkish Cupro and Crepe, offering elegant designs that blend modern style with modest fashion.</p><p>You can explore and order your favorite abaya directly from our online store — <a href=\"/\"><strong>CASBasics.com</strong></a> — and enjoy secure international shipping.</p><p>Whether you’re shopping online or visiting in person, CAS Basics ensures a luxury abaya experience — trusted by modest fashion lovers around the world.</p>"
           }
         }
       },
@@ -1781,10 +1784,11 @@
       "settings": {
         "width": "full",
         "alignment": "center",
+        "style": "classic",
         "background_color": "",
         "text_color": "",
         "padding_top": 60,
-        "padding_bottom": 20
+        "padding_bottom": 60
       }
     },
     "locations": {
@@ -1821,7 +1825,7 @@
         "layout": "slider",
         "background_color": "",
         "text_color": "",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 60
       }
     },
@@ -1848,7 +1852,7 @@
             "label": "WhatsApp CAS Office: +971585959872",
             "link": "https://wa.me/971585959872",
             "style": "outline",
-            "size": "medium",
+            "size": "large",
             "shape": "rounded",
             "icon": "none"
           }
@@ -1862,9 +1866,10 @@
       "settings": {
         "width": "full",
         "alignment": "center",
+        "style": "classic",
         "background_color": "",
         "text_color": "",
-        "padding_top": 80,
+        "padding_top": 60,
         "padding_bottom": 60
       }
     },
@@ -1886,21 +1891,309 @@
       "settings": {
         "width": "narrow",
         "alignment": "center",
+        "style": "classic",
         "background_color": "",
         "text_color": "",
-        "padding_top": 40,
-        "padding_bottom": 8
+        "padding_top": 46,
+        "padding_bottom": 28
       }
     },
-    "apps_reviews": {
-      "type": "cb-apps",
+    "video_reviews": {
+      "type": "cb-video-reviews",
+      "blocks": {
+        "reel_01": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/01699c1070a950097e03dff824d3eadf/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/23/01699c1070a950097e03dff824d3eadf_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/23/5kXv0HJg9_HPR-IDLWPL_orig_thumb.jpg",
+            "name": "Hessa A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a8a8a8",
+            "alt": "Customer video review of C 2096-01 Ice Blue Amira Abaya"
+          }
+        },
+        "reel_02": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/45048632edba0e8788e74004b8317157/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/16/45048632edba0e8788e74004b8317157_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/16/w9lNKBfxqd_v44KHgAMTD_orig_thumb.jpg",
+            "name": "Sarah S.",
+            "verified": true,
+            "rating": 5,
+            "color": "#a87898",
+            "alt": "Customer video review of C 2324-02 Violet Dantel Abaya"
+          }
+        },
+        "reel_03": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/c9c97ec145503fcec43310ff7bbb8cf7/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/15/c9c97ec145503fcec43310ff7bbb8cf7_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/15/0LoicijY7_Wf4UBu1Jsx_orig_thumb.jpg",
+            "name": "Maha O.",
+            "verified": true,
+            "rating": 5,
+            "color": "#282828",
+            "alt": "Customer video review of C 2755 Black Floral Crystal Lace Abaya"
+          }
+        },
+        "reel_04": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/ea8ccf0ae9d261eba8ba456a2531214c/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/13/ea8ccf0ae9d261eba8ba456a2531214c_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/13/2z3DlTOjp_67lXJB1WqP_orig_thumb.jpg",
+            "name": "Analyn R.",
+            "verified": true,
+            "rating": 5,
+            "color": "#b8a898",
+            "alt": "Customer video review of C 1446 Grape Lace Abaya"
+          }
+        },
+        "reel_05": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/1b3ed6b1a15fef1d1e0f76ed8beaf4e5/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/5/1b3ed6b1a15fef1d1e0f76ed8beaf4e5_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/5/VFx1-6iuW_xv5mvjw3Mx_orig_thumb.jpg",
+            "name": "Aylin C.",
+            "verified": true,
+            "rating": 5,
+            "color": "#181818",
+            "alt": "Customer video review of C 2758 Black Beaded Lace Abaya"
+          }
+        },
+        "reel_06": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/d19eda38a1600b8da168ae15d1df968a/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/4/d19eda38a1600b8da168ae15d1df968a_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/4/4M7vc8kbL_u24URUBFDu_orig_thumb.jpg",
+            "name": "Farwa F.",
+            "verified": true,
+            "rating": 5,
+            "color": "#282828",
+            "alt": "Customer video review of C 2139 Black Work Abaya"
+          }
+        },
+        "reel_07": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/b5eddbc3f6d5c89a2679e29d1fe003b1/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/4/b5eddbc3f6d5c89a2679e29d1fe003b1_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/4/JHtA5-p07__3KY0u_JHS_orig_thumb.jpg",
+            "name": "Fatema A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#383838",
+            "alt": "Customer video review of C Pleated Green Abaya Coat"
+          }
+        },
+        "reel_08": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/d7df63a3bfa22183d553ee03b4729114/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/3/d7df63a3bfa22183d553ee03b4729114_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/3/_8AyP3rGt_C-QocZsxq1_orig_thumb.jpg",
+            "name": "Hafsah U.",
+            "verified": true,
+            "rating": 5,
+            "color": "#181818",
+            "alt": "Customer video review of C 008 Premium Black Under Abaya Dress"
+          }
+        },
+        "reel_09": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/15fcdd2a1a0f30f988ad193d8291fd9d/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/11/1/15fcdd2a1a0f30f988ad193d8291fd9d_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/11/1/gEVzjJXip_rcaCNySRTO_orig_thumb.jpg",
+            "name": "Afroze Faisal S.",
+            "verified": true,
+            "rating": 5,
+            "color": "#4898b8",
+            "alt": "Customer video review of C 2711 Sapphire Blue Beaded Abaya"
+          }
+        },
+        "reel_10": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/2845fda588c5ed0e64e6aa2c2a806d51/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/30/2845fda588c5ed0e64e6aa2c2a806d51_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/30/8LUb9dn8z_ARWuymcU8_orig_thumb.jpg",
+            "name": "Aisha A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#080808",
+            "alt": "Customer video review of C 2494 Black Crystal Lace Abaya"
+          }
+        },
+        "reel_11": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/42830240c1f7ea2dafc8c60965cb8a1e/downloads/default.mp4",
+            "preview_url": "",
+            "poster_url": "https://images.loox.io/uploads/2026/10/29/BW_saD_W__eSCXobKD6_orig_thumb.jpg",
+            "name": "Azeema A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#282828",
+            "alt": "Customer video review of C 0181 Black Abaya"
+          }
+        },
+        "reel_12": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/fd3c001c015946920270576990f16729/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/26/fd3c001c015946920270576990f16729_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/26/XMV8xkFt3_ssSyaXUCi_orig_thumb.jpg",
+            "name": "Aysha A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#181818",
+            "alt": "Customer video review of C 1973-01 Dark Purple Beaded Abaya"
+          }
+        },
+        "reel_13": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/e111a12b102a97913ebf843de5cf0105/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/25/e111a12b102a97913ebf843de5cf0105_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/25/9gThMzzzG_feZirAeHXJ_orig_thumb.jpg",
+            "name": "Amal A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#181818",
+            "alt": "Customer video review of C 2081 Black Floral Printed Abaya"
+          }
+        },
+        "reel_14": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/36850e85cd0fb595212e7512da87c40d/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/25/36850e85cd0fb595212e7512da87c40d_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/26/Xug_srvPP_inlcZDj4ff_orig_thumb.jpg",
+            "name": "Shaikha A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#080808",
+            "alt": "Customer video review of C 2686 Black Crystal Lace Abaya"
+          }
+        },
+        "reel_15": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/43d03a59996749f137dba5735444f4f7/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/24/43d03a59996749f137dba5735444f4f7_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/24/GIhf0aFue_pV3MfnU3i_orig_thumb.jpg",
+            "name": "Maha O.",
+            "verified": true,
+            "rating": 5,
+            "color": "#584838",
+            "alt": "Customer video review of C 2614 Rose Crimson Printed Abaya"
+          }
+        },
+        "reel_16": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/2ca8593c0b5d30e65eb483925a134906/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/22/2ca8593c0b5d30e65eb483925a134906_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/22/dV1yExlUi_-yXXEcY9l_orig_thumb.jpg",
+            "name": "Faheema P.",
+            "verified": true,
+            "rating": 5,
+            "color": "#b8b8a8",
+            "alt": "Customer video review of C 008 Premium Black Under Abaya Dress"
+          }
+        },
+        "reel_17": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/455ad22b4dde1e30b020f036588bc467/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/21/455ad22b4dde1e30b020f036588bc467_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/21/SUpq_dSA6_r9LjVoABn_orig_thumb.jpg",
+            "name": "Rakshana M.",
+            "verified": true,
+            "rating": 5,
+            "color": "#282828",
+            "alt": "Customer video review of C 2689 Black Lace Abaya"
+          }
+        },
+        "reel_18": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/084326292727d5b5eadcf71ab71acf42/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/18/084326292727d5b5eadcf71ab71acf42_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/18/G1QVc6B9P_AZrrCbLk0_orig_thumb.jpg",
+            "name": "Fatima A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#181818",
+            "alt": "Customer video review of C 2665-01 Black White Floral Lace Abaya"
+          }
+        },
+        "reel_19": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/49ca4832c68fd107a7dcb70d1f1ab354/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/15/49ca4832c68fd107a7dcb70d1f1ab354_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/15/TWLwF82UK_voETmhCgH_orig_thumb.jpg",
+            "name": "Hessa A.",
+            "verified": true,
+            "rating": 5,
+            "color": "#787878",
+            "alt": "Customer video review of C 0882 Dark Purple Abaya"
+          }
+        },
+        "reel_20": {
+          "type": "reel",
+          "settings": {
+            "video_url": "https://customer-1tlorv0cm1pl7e9c.cloudflarestream.com/32be498f77033c0817266df462ba883d/downloads/default.mp4",
+            "preview_url": "https://images.loox.io/uploads/video-preview/2026/10/13/32be498f77033c0817266df462ba883d_mid.mp4",
+            "poster_url": "https://images.loox.io/uploads/2026/10/13/Gv4PdkKXM_OwukRMzAQ_orig_thumb.jpg",
+            "name": "Jiwon P.",
+            "verified": true,
+            "rating": 5,
+            "color": "#282828",
+            "alt": "Customer video review of C-Black-Work-Abaya-58"
+          }
+        }
+      },
+      "block_order": [
+        "reel_01",
+        "reel_02",
+        "reel_03",
+        "reel_04",
+        "reel_05",
+        "reel_06",
+        "reel_07",
+        "reel_08",
+        "reel_09",
+        "reel_10",
+        "reel_11",
+        "reel_12",
+        "reel_13",
+        "reel_14",
+        "reel_15",
+        "reel_16",
+        "reel_17",
+        "reel_18",
+        "reel_19",
+        "reel_20"
+      ],
       "settings": {
-        "heading": "",
-        "full_width": false,
+        "autoplay": true,
+        "show_name": true,
+        "show_rating": true,
+        "show_arrows_mobile": false,
+        "radius": 16,
         "background_color": "",
         "text_color": "",
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 2,
+        "padding_bottom": 0
       }
     },
     "faq": {
@@ -1910,92 +2203,92 @@
           "type": "item",
           "settings": {
             "question": "How can I track my order?",
-            "answer": "<p>Email us your order number or message us on chat and we will update you.</p>"
+            "answer": "<p>To see your order status, please email your order details to info@casbasics.com or provide these details into Quick Chat icon on bottom left.</p>"
           }
         },
         "item_faq_2": {
           "type": "item",
           "settings": {
             "question": "Can I make adjustments to an abaya?",
-            "answer": "<p>Yes. Custom orders can be made in your preferred size and design at no extra cost — sizes XXS to 6XL and lengths from 49 to 62 inches, with pockets, side zippers and breastfeeding buttons added free of charge.</p>"
+            "answer": "<p>Yes, it is possible to make adjustments to an abaya. Please contact our team through <a href=\"https://api.whatsapp.com/send/?phone=971585959872&text&type=phone_number&app_absent=0\" target=\"_blank\" title=\"https://api.whatsapp.com/send/?phone=971585959872&text&type=phone_number&app_absent=0\">WhatsApp</a> to discuss the details and place your order.</p>"
           }
         },
         "item_faq_3": {
           "type": "item",
           "settings": {
             "question": "Can I receive a ready-to-wear abaya within 1-2 days?",
-            "answer": "<p>Yes. Ready-to-wear abayas are delivered within 1-2 business days.</p>"
+            "answer": "<p>Yes, ready-to-wear abayas are processed within 1-2 days. Please note ready-to-wear products are under the READY TO WEAR (RTW) tab on the website and are labelled with \"C-RTW\" in their product names.</p>"
           }
         },
         "item_faq_4": {
           "type": "item",
           "settings": {
             "question": "What is CAS Exchange or Refund Policy?",
-            "answer": "<p>We don't offer any refunds or returns. Please see the <a href=\"/policies/refund-policy\">refund policy</a> for exchanges.</p>"
+            "answer": "<p>Our Exchange Policy lasts 7 days (Terms and Conditions apply). After 7 days we cannot offer you an exchange.<br/>To be eligible for an exchange, your item must be unused and in the same condition you received it. For more info please go through our <a href=\"https://casbasics.com/pages/exchange-refund-policy\" target=\"_blank\" title=\"Exchange Policy\">exchange policy here.</a></p>"
           }
         },
         "item_faq_5": {
           "type": "item",
           "settings": {
             "question": "How long will it take to deliver my order?",
-            "answer": "<p>Custom orders are delivered within 10-12 days. Ready-to-wear abayas arrive within 1-2 business days.</p>"
+            "answer": "<p>Custom orders require 10–12 BUSINESS days (Saturdays and Sundays are not included in duration).<br/><br/>If 12 business days have passed and you haven't received your order yet please send us a WhatsApp or drop us an email at info@casbasics.com with your Full Name and Contact Number.<br/><br/>Our team members will reach out within 24 hours.</p>"
           }
         },
         "item_faq_6": {
           "type": "item",
           "settings": {
             "question": "Do you ship internationally?",
-            "answer": "<p>Yes, we ship worldwide. Shipping costs are calculated at checkout.</p>"
+            "answer": "<p>Yes, we ship our products worldwide!</p><p><strong>Please note that free shipping does not apply to international orders</strong>, and shipping rates may vary depending on your region.</p><p>We use <strong>DHL </strong>for reliable and efficient international shipping.</p>"
           }
         },
         "item_faq_7": {
           "type": "item",
           "settings": {
             "question": "What is the price of an abaya in UAE?",
-            "answer": "<p>Our abayas start at AED 250 and go up to AED 800.</p>"
+            "answer": "<p>Abaya prices in the UAE vary depending on fabric, design, and customization. At CAS Abaya, prices reflect premium fabrics, tailored sizing, and handcrafted details. We offer both customized and ready-to-wear options to suit different preferences and budgets.</p>"
           }
         },
         "item_faq_8": {
           "type": "item",
           "settings": {
             "question": "Do you sell authentic Emirati abayas?",
-            "answer": "<p>Yes. CAS Abaya is an Emirati abaya brand based in the UAE.</p>"
+            "answer": "<p>Yes. CAS Abaya is a Dubai-based brand offering elegant Emirati abayas that blend tradition with modern tailoring. Our designs reflect classic modest silhouettes with refined fabrics and contemporary detailing.</p>"
           }
         },
         "item_faq_9": {
           "type": "item",
           "settings": {
             "question": "Do you have lace abayas?",
-            "answer": "<p>Yes — browse our <a href=\"/collections/lace-abaya\">lace abayas</a>.</p>"
+            "answer": "<p>Yes. CAS offers <a href=\"/collections/lace-abaya\" title=\"Lace Abaya\">lace abayas</a> featuring intricate dantel and embroidered lace detailing, perfect for formal events, Eid, and special occasions. Lace styles can also be customized in size and length.</p>"
           }
         },
         "item_faq_10": {
           "type": "item",
           "settings": {
             "question": "What is the best abaya for Umrah?",
-            "answer": "<p>See our <a href=\"/collections/hajj-and-umrah-abayas\">Hajj and Umrah abayas</a>.</p>"
+            "answer": "<p>For Umrah, we recommend lightweight, breathable fabrics such as <a href=\"/collections/nada\" title=\"Nada Abaya\">Nada</a> or Crepe in simple, modest designs. Black abayas with minimal embellishment are popular for comfort and practicality during travel and worship. Check our dedicated <a href=\"/collections/hajj-and-umrah-abayas\" title=\"Hajj and Umrah Abayas\">Umrah Abaya Collection</a></p>"
           }
         },
         "item_faq_11": {
           "type": "item",
           "settings": {
             "question": "Do you sell black abaya work abayas?",
-            "answer": "<p>Yes — see our <a href=\"/collections/work-abayas-professional-office-wear\">work abayas</a> and <a href=\"/collections/black-abaya\">black abayas</a>.</p>"
+            "answer": "<p>Yes. <a href=\"/collections/black-abaya\" title=\"Black Abaya\">Black abayas</a> are one of our most popular styles. We offer black work abayas featuring embroidery, handwork, lace details, and elegant finishes suitable for daily wear, formal gatherings, and festive occasions. Check our <a href=\"/collections/work-abayas-professional-office-wear\" title=\"Work Abayas – Professional & Office Wear Styles\">dedicated work Abaya Collection</a></p>"
           }
         }
       },
       "block_order": [
         "item_faq_1",
-        "item_faq_2",
         "item_faq_3",
-        "item_faq_4",
         "item_faq_5",
-        "item_faq_6",
         "item_faq_7",
-        "item_faq_8",
         "item_faq_9",
-        "item_faq_10",
-        "item_faq_11"
+        "item_faq_11",
+        "item_faq_2",
+        "item_faq_4",
+        "item_faq_6",
+        "item_faq_8",
+        "item_faq_10"
       ],
       "settings": {
         "heading": "Frequently Asked Questions",
@@ -2019,7 +2312,7 @@
         "item_0019": {
           "type": "item",
           "settings": {
-            "icon": "truck",
+            "icon": "thin-truck",
             "title": "Free Shipping",
             "text": "<p>on all orders over AED 999 (UAE only)</p>"
           }
@@ -2027,7 +2320,7 @@
         "item_001a": {
           "type": "item",
           "settings": {
-            "icon": "check",
+            "icon": "thin-check",
             "title": "Premium Quality Guarantee",
             "text": "<p>Quality you can feel with every wear.</p>"
           }
@@ -2035,7 +2328,7 @@
         "item_001b": {
           "type": "item",
           "settings": {
-            "icon": "globe",
+            "icon": "thin-eco",
             "title": "Hand-Finished Excellence",
             "text": "<p>High-quality stitching that enhances both style and strength.</p>"
           }
@@ -2049,16 +2342,20 @@
       "settings": {
         "heading": "",
         "text": "",
-        "style": "borders",
+        "style": "grid",
+        "border_top": true,
+        "border_bottom": true,
         "layout": "center",
         "columns": 3,
-        "mobile_two_columns": false,
-        "icon_size": 32,
+        "mobile_two_columns": true,
+        "icon_size": 30,
         "show_numbers": false,
         "box_color": "",
         "background_color": "",
-        "text_color": "",
-        "padding_top": 32,
+        "text_color": "#333333",
+        "description_color": "#666666",
+        "line_color": "#faf7f5",
+        "padding_top": 28,
         "padding_bottom": 32
       }
     },
@@ -2074,9 +2371,106 @@
         "button_label": "Get Discount Link",
         "min_purchase": "Minimum purchase amount: AED 350",
         "terms_text": "<p>By submitting, I acknowledge the <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>",
-        "padding_top": 40,
-        "padding_bottom": 64,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "width": "normal"
+      }
+    },
+    "social_feed": {
+      "type": "cb-social-feed",
+      "blocks": {
+        "post_1": {
+          "type": "post",
+          "settings": {
+            "platform": "instagram",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "post_2": {
+          "type": "post",
+          "settings": {
+            "platform": "tiktok",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "post_3": {
+          "type": "post",
+          "settings": {
+            "platform": "instagram",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "post_4": {
+          "type": "post",
+          "settings": {
+            "platform": "tiktok",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "post_5": {
+          "type": "post",
+          "settings": {
+            "platform": "instagram",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "post_6": {
+          "type": "post",
+          "settings": {
+            "platform": "tiktok",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "post_7": {
+          "type": "post",
+          "settings": {
+            "platform": "instagram",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "post_8": {
+          "type": "post",
+          "settings": {
+            "platform": "tiktok",
+            "link": "",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "post_1",
+        "post_2",
+        "post_3",
+        "post_4",
+        "post_5",
+        "post_6",
+        "post_7",
+        "post_8"
+      ],
+      "settings": {
+        "heading": "From Our Instagram",
+        "full_width": true,
+        "aspect_ratio": "portrait",
+        "video_play": "hover",
+        "show_icon": true,
+        "new_tab": true,
+        "gap": 2,
+        "columns": 8,
+        "rows": 1,
+        "columns_mobile": 2,
+        "rows_mobile": 1,
+        "mobile_carousel": false,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
@@ -2100,9 +2494,10 @@
     "locations",
     "text_help",
     "text_reviews",
-    "apps_reviews",
+    "video_reviews",
     "faq",
     "referral",
-    "icons_promises"
+    "icons_promises",
+    "social_feed"
   ]
 }
