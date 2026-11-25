@@ -74,7 +74,7 @@
         "floating_label": "📏 Size Chart",
         "delivery_title": "Made for you after you order",
         "delivery_steps": "You|order\nCut to|your size\nSewn &|finished\nDelivered|to you",
-        "show_fields": true,
+        "show_fields": false,
         "style_label": "Abaya Style",
         "style_placeholder": "-- Please Select --",
         "style_options": "Open Front (As Seen On Model)\nClosed Front (With buttons)\nHalf Closed Front (3-4 Buttons from top)\nCompletely Closed (To wear from top)",
