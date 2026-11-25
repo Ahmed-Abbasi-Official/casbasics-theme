@@ -1130,6 +1130,7 @@ cb-popup {
 
 .cb-hero--glass .cb-hero__scroll {
   transform: none;
+  margin-left: auto;
 }
 
 .cb-hero--glass .cb-hero__list {

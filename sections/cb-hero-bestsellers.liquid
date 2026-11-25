@@ -244,8 +244,8 @@
 
         {%- if section.settings.panel_style == 'glass' -%}
           <div class="cb-hero__panel-foot cb-hero__panel-foot--row">
-            {%- if panel_collection != blank and section.settings.panel_link_label != blank -%}
-              <a class="cb-hero__view-all" href="{{ panel_collection.url }}">
+            {%- if section.settings.panel_link_label != blank -%}
+              <a class="cb-hero__view-all" href="{{ panel_collection.url | default: routes.all_products_collection_url }}">
                 {{- section.settings.panel_link_label -}}
                 {%- render 'cb-icon', icon: 'arrow-right' -%}
               </a>
