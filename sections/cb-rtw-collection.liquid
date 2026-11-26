@@ -1,0 +1,421 @@
+{{ 'cb-rtw-collection.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cb-rtw-collection.js' | asset_url }}" defer></script>
+
+{%- liquid
+  assign current_sort = collection.sort_by | default: collection.default_sort_by
+  assign opts_limit = section.settings.options_limit | default: 10
+  assign active_colour_param = ''
+  assign active_colour_val = ''
+  assign colour_filter = nil
+
+  for f in collection.filters
+    assign f_down = f.label | downcase | strip
+    if f_down == 'colour' or f_down == 'color'
+      assign colour_filter = f
+      for v in f.values
+        if v.active
+          assign active_colour_param = v.param_name
+          assign active_colour_val = v.value | downcase
+        endif
+      endfor
+    endif
+  endfor
+
+  if active_colour_param == ''
+    assign active_colour_param = 'filter.p.m.custom.colour'
+  endif
+
+  assign active_count = 0
+  for f in collection.filters
+    if f.type == 'price_range'
+      if f.min_value.value != nil or f.max_value.value != nil
+        assign active_count = active_count | plus: 1
+      endif
+    else
+      assign active_count = active_count | plus: f.active_values.size
+    endif
+  endfor
+-%}
+
+<section
+  class="cb-section cb-rtw"
+  data-section-id="{{ section.id }}"
+  style="{% render 'cb-section-style', settings: section.settings %} --cb-rtw-cols: {{ section.settings.columns_desktop }}; --cb-rtw-cols-mobile: {{ section.settings.columns_mobile }};"
+>
+  <div class="cb-rtw__wrap">
+    <div class="cb-rtw__header">
+      <h2 class="cb-rtw__title">{{ section.settings.heading | default: collection.title }}</h2>
+      {%- if collection.description != blank -%}
+        <div class="cb-rtw__desc-wrap">
+          <div class="cb-rtw__desc is-clamped" data-rtw-desc>{{ collection.description }}</div>
+          <button
+            type="button"
+            class="cb-rtw__read-more"
+            data-rtw-read-more
+            data-more-label="{{ section.settings.read_more_label | default: 'Read More' | escape }}"
+            data-less-label="{{ section.settings.read_less_label | default: 'Read Less' | escape }}"
+            aria-expanded="false"
+          >
+            {{ section.settings.read_more_label | default: 'Read More' }}
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_colour_row and section.blocks.size > 0 -%}
+      <div class="cb-rtw__colours">
+        <span class="cb-rtw__colours-label">{{ section.settings.colour_heading | default: 'BY COLOUR' }}</span>
+        <div class="cb-rtw__colours-list" role="list">
+          {%- assign any_colour_active = false -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'colour_chip' -%}
+              {%- liquid
+                assign chip_val = block.settings.value | default: block.settings.label
+                assign chip_down = chip_val | downcase
+                assign is_chip_active = false
+                if active_colour_val == chip_down and chip_down != ''
+                  assign is_chip_active = true
+                  assign any_colour_active = true
+                endif
+                assign chip_url = collection.url | append: '?' | append: active_colour_param | append: '=' | append: chip_val | url_encode
+                if colour_filter != nil
+                  for cv in colour_filter.values
+                    assign cv_down = cv.label | downcase
+                    if cv_down == chip_down
+                      if cv.active
+                        assign chip_url = cv.url_to_remove
+                      else
+                        assign chip_url = cv.url_to_add
+                      endif
+                      break
+                    endif
+                  endfor
+                endif
+              -%}
+              <a
+                class="cb-rtw__chip{% if is_chip_active %} is-active{% endif %}"
+                href="{{ chip_url }}"
+                data-rtw-ajax-link
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.color != blank -%}
+                  <span class="cb-rtw__chip-dot" style="background-color: {{ block.settings.color }};" aria-hidden="true"></span>
+                {%- endif -%}
+                <span>{{ block.settings.label }}</span>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- assign all_url = collection.url -%}
+          {%- if current_sort != blank -%}
+            {%- assign all_url = collection.url | append: '?sort_by=' | append: current_sort -%}
+          {%- endif -%}
+          <a
+            class="cb-rtw__chip{% unless any_colour_active %} is-active{% endunless %}"
+            href="{{ all_url }}"
+            data-rtw-ajax-link
+          >
+            {{ section.settings.all_colours_label | default: 'All colours' }}
+          </a>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="cb-rtw__toolbar">
+      <nav class="cb-rtw__crumbs" aria-label="Breadcrumb">
+        <ol role="list">
+          <li><a href="{{ routes.root_url }}">{{ 'accessibility.link_to_home' | t }}</a></li>
+          <li><a href="{{ routes.collections_url }}">{{ 'content.search_results_resource_collections' | t }}</a></li>
+          <li aria-current="page">{{ collection.title }}</li>
+        </ol>
+      </nav>
+
+      {%- if collection.sort_options.size > 0 -%}
+        <details class="cb-rtw__sort">
+          <summary class="cb-rtw__sort-summary">
+            Sort by
+            <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <ul class="cb-rtw__sort-menu" role="list">
+            {%- for option in collection.sort_options -%}
+              <li>
+                <a
+                  class="cb-rtw__sort-option"
+                  href="{{ collection.url }}?sort_by={{ option.value }}"
+                  data-rtw-ajax-link
+                  {% if option.value == current_sort %}aria-current="true"{% endif %}
+                >
+                  {{ option.name }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </details>
+      {%- endif -%}
+
+      <span class="cb-rtw__count" role="status">{{ collection.products_count }} products</span>
+    </div>
+
+    <div class="cb-rtw__layout{% unless section.settings.show_filters %} is-no-sidebar{% endunless %}">
+      {%- if section.settings.show_filters -%}
+        <aside class="cb-rtw__sidebar" aria-label="Filters">
+          <form class="cb-rtw__form" data-rtw-form>
+            {%- assign ordered_keys = 'size|length (in)|length|price|availability' | split: '|' -%}
+
+            {%- comment -%} 1. Primary ordered facets: SIZE, LENGTH (IN), LENGTH, PRICE, AVAILABILITY {%- endcomment -%}
+            {%- for target_key in ordered_keys -%}
+              {%- for filter in collection.filters -%}
+                {%- assign f_key = filter.label | downcase | strip -%}
+                {%- if f_key == target_key -%}
+                  {%- assign is_open = false -%}
+                  {%- if f_key == 'size' -%}{%- assign is_open = true -%}{%- endif -%}
+                  <div class="cb-rtw__accordion">
+                    <button
+                      type="button"
+                      class="cb-rtw__acc-btn"
+                      data-rtw-acc-btn
+                      data-filter-key="{{ f_key | handleize }}"
+                      aria-expanded="{{ is_open }}"
+                    >
+                      <span>{{ filter.label }}</span>
+                      <span class="cb-rtw__acc-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="cb-rtw__acc-panel" {% unless is_open %}hidden{% endunless %}>
+                      {%- if filter.type == 'price_range' -%}
+                        <div class="cb-rtw__price-row">
+                          <label class="cb-rtw__price-field">
+                            <span>Min ({{ cart.currency.iso_code }})</span>
+                            <span class="cb-rtw__price-input-wrap">
+                              <input
+                                class="cb-rtw__price-input"
+                                type="number"
+                                name="{{ filter.min_value.param_name }}"
+                                min="0"
+                                max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                placeholder="0"
+                                {% if filter.min_value.value %}
+                                  value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                                {% endif %}
+                              >
+                            </span>
+                          </label>
+                          <label class="cb-rtw__price-field">
+                            <span>Max ({{ cart.currency.iso_code }})</span>
+                            <span class="cb-rtw__price-input-wrap">
+                              <input
+                                class="cb-rtw__price-input"
+                                type="number"
+                                name="{{ filter.max_value.param_name }}"
+                                min="0"
+                                max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                                {% if filter.max_value.value %}
+                                  value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                                {% endif %}
+                              >
+                            </span>
+                          </label>
+                        </div>
+                      {%- else -%}
+                        <ul class="cb-rtw__options" role="list">
+                          {%- for value in filter.values -%}
+                            <li class="cb-rtw__option{% if forloop.index > opts_limit %} is-extra{% endif %}">
+                              <label class="cb-rtw__check-label{% if value.count == 0 and value.active == false %} is-disabled{% endif %}">
+                                <input
+                                  type="checkbox"
+                                  class="cb-rtw__checkbox"
+                                  name="{{ value.param_name }}"
+                                  value="{{ value.value }}"
+                                  {% if value.active %}checked{% endif %}
+                                  {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                                >
+                                <span>{{ value.label }}</span>
+                              </label>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                        {%- if filter.values.size > opts_limit -%}
+                          <button type="button" class="cb-rtw__show-more" data-rtw-show-more>SHOW MORE</button>
+                        {%- endif -%}
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endfor -%}
+
+            {%- comment -%} 2. Remaining filters grouped under MORE FILTERS {%- endcomment -%}
+            {%- capture more_items_html -%}
+              {%- assign more_count = 0 -%}
+              {%- for filter in collection.filters -%}
+                {%- assign f_key = filter.label | downcase | strip -%}
+                {%- unless f_key == 'size' or f_key == 'length (in)' or f_key == 'length' or f_key == 'price' or f_key == 'availability' or f_key == 'colour' or f_key == 'color' -%}
+                  {%- for value in filter.values -%}
+                    {%- assign more_count = more_count | plus: 1 -%}
+                    <li class="cb-rtw__option{% if more_count > opts_limit %} is-extra{% endif %}">
+                      <label class="cb-rtw__check-label{% if value.count == 0 and value.active == false %} is-disabled{% endif %}">
+                        <input
+                          type="checkbox"
+                          class="cb-rtw__checkbox"
+                          name="{{ value.param_name }}"
+                          value="{{ value.value }}"
+                          {% if value.active %}checked{% endif %}
+                          {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                        >
+                        <span>{{ value.label }}</span>
+                      </label>
+                    </li>
+                  {%- endfor -%}
+                {%- endunless -%}
+              {%- endfor -%}
+            {%- endcapture -%}
+
+            {%- if more_count > 0 -%}
+              <div class="cb-rtw__accordion">
+                <button
+                  type="button"
+                  class="cb-rtw__acc-btn"
+                  data-rtw-acc-btn
+                  data-filter-key="more-filters"
+                  aria-expanded="false"
+                >
+                  <span>MORE FILTERS</span>
+                  <span class="cb-rtw__acc-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cb-rtw__acc-panel" hidden>
+                  <ul class="cb-rtw__options" role="list">
+                    {{ more_items_html }}
+                  </ul>
+                  {%- if more_count > opts_limit -%}
+                    <button type="button" class="cb-rtw__show-more" data-rtw-show-more>SHOW MORE</button>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </form>
+        </aside>
+      {%- endif -%}
+
+      <div class="cb-rtw__grid-area" data-rtw-grid-area>
+        {%- if active_count > 0 -%}
+          <div class="cb-rtw__active">
+            {%- for f in collection.filters -%}
+              {%- if f.type == 'price_range' -%}
+                {%- if f.min_value.value != nil or f.max_value.value != nil -%}
+                  <a class="cb-rtw__active-chip" href="{{ f.url_to_remove }}" data-rtw-ajax-link>
+                    <span>
+                      {{ f.min_value.value | default: 0 | money }} – {{ f.max_value.value | default: f.range_max | money }}
+                    </span>
+                    <span aria-hidden="true">×</span>
+                  </a>
+                {%- endif -%}
+              {%- else -%}
+                {%- for v in f.active_values -%}
+                  <a class="cb-rtw__active-chip" href="{{ v.url_to_remove }}" data-rtw-ajax-link>
+                    <span>{{ f.label }}: {{ v.label }}</span>
+                    <span aria-hidden="true">×</span>
+                  </a>
+                {%- endfor -%}
+              {%- endif -%}
+            {%- endfor -%}
+            <a class="cb-rtw__clear-all" href="{{ collection.url }}" data-rtw-ajax-link>Clear all</a>
+          </div>
+        {%- endif -%}
+
+        {%- paginate collection.products by section.settings.products_per_page -%}
+          {%- if collection.products.size > 0 -%}
+            <ul class="cb-rtw__grid" role="list">
+              {%- for product in collection.products -%}
+                <li class="cb-rtw__card">
+                  <div class="cb-rtw__card-media">
+                    <a class="cb-rtw__card-link" href="{{ product.url | within: collection }}">
+                      {%- if product.featured_media != blank -%}
+                        {{
+                          product.featured_media
+                          | image_url: width: 900
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '360, 540, 720, 900',
+                            sizes: '(max-width: 767px) 46vw, 22vw',
+                            alt: product.featured_media.alt | default: product.title
+                        }}
+                      {%- else -%}
+                        {%- assign ph_idx = forloop.index0 | modulo: 4 | plus: 1 -%}
+                        {{ 'product-apparel-' | append: ph_idx | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%}
+                    </a>
+                    {% render 'quick-add', product: product, section_id: section.id %}
+                  </div>
+                  <h3 class="cb-rtw__card-title">
+                    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                  </h3>
+                  <div class="cb-rtw__card-price">{{ product.price | money }}</div>
+                </li>
+              {%- endfor -%}
+            </ul>
+
+            {%- if paginate.pages > 1 -%}
+              <nav class="cb-rtw__pagination" aria-label="Pagination">
+                {%- for part in paginate.parts -%}
+                  {%- if part.is_link -%}
+                    <a class="cb-rtw__page-link" href="{{ part.url }}" data-rtw-ajax-link>{{ part.title }}</a>
+                  {%- else -%}
+                    <span class="cb-rtw__page-link{% if part.title == paginate.current_page %} is-current{% endif %}">{{ part.title }}</span>
+                  {%- endif -%}
+                {%- endfor -%}
+              </nav>
+            {%- endif -%}
+          {%- else -%}
+            <div class="cb-rtw__empty">
+              No products match these filters.
+              <a class="cb-rtw__clear-all" href="{{ collection.url }}" data-rtw-ajax-link>Clear all</a>
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RTW Collection Grid",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "colour_chip",
+      "name": "Colour chip",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Black" },
+        { "type": "text", "id": "value", "label": "Filter value (optional)", "info": "Defaults to Label if blank" },
+        { "type": "color", "id": "color", "label": "Dot color", "default": "#000000" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading override", "info": "Leave blank to use collection title" },
+    { "type": "text", "id": "read_more_label", "label": "Read more label", "default": "Read More" },
+    { "type": "text", "id": "read_less_label", "label": "Read less label", "default": "Read Less" },
+    { "type": "header", "content": "BY COLOUR row" },
+    { "type": "checkbox", "id": "show_colour_row", "label": "Show BY COLOUR row", "default": true },
+    { "type": "text", "id": "colour_heading", "label": "Colour row label", "default": "BY COLOUR" },
+    { "type": "text", "id": "all_colours_label", "label": "All colours label", "default": "All colours" },
+    { "type": "header", "content": "Filters & Grid" },
+    { "type": "checkbox", "id": "show_filters", "label": "Show sidebar filters", "default": true },
+    { "type": "range", "id": "options_limit", "label": "Options before Show more", "min": 4, "max": 24, "step": 1, "default": 10 },
+    { "type": "range", "id": "columns_desktop", "label": "Desktop columns", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "select", "id": "columns_mobile", "label": "Mobile columns", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "2" },
+    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 },
+    { "type": "header", "content": "Colors & Padding" },
+    { "type": "color", "id": "background_color", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 64 }
+  ],
+  "presets": [
+    {
+      "name": "RTW Collection Grid"
+    }
+  ]
+}
+{% endschema %}
