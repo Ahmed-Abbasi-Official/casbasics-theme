@@ -10,6 +10,9 @@
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
   assign size_page = section.settings.size_chart_page
+  if size_page == blank
+    assign size_page = pages['size-chart']
+  endif
 
   assign title_words = product.title | split: ' '
   assign code = ''
@@ -180,7 +183,7 @@
                   <div class="cb-pdp__option" role="radiogroup" aria-labelledby="CbOption-{{ section.id }}-{{ forloop.index0 }}" data-option-index="{{ forloop.index0 }}">
                     <div class="cb-pdp__option-head{% if forloop.first %} cb-pdp__option-head--first{% endif %}">
                       <span class="cb-pdp__option-name" id="CbOption-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</span>
-                      {%- if forloop.first and size_page != blank -%}
+                      {%- if forloop.first and section.settings.size_guide_label != blank -%}
                         <button type="button" class="cb-pdp__size-guide" data-size-chart-open aria-controls="CbSizeChart-{{ section.id }}">
                           <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><rect x="26.2" y="82.7" width="203.6" height="90.5" rx="8" transform="rotate(-45 128 128)" fill="none" stroke="currentColor" stroke-width="16"/><path d="m132 60 32 32M96 96l32 32M60 132l32 32" stroke="currentColor" stroke-width="16"/></svg>
                           <span>{{ section.settings.size_guide_label }}</span>
@@ -412,15 +415,51 @@
       </div>
     </div>
 
-    {%- if size_page != blank -%}
+    {%- if section.settings.floating_label != blank or section.settings.size_guide_label != blank -%}
       <div class="cb-pdp-drawer" id="CbSizeChart-{{ section.id }}" data-size-chart hidden>
         <div class="cb-pdp-drawer__underlay" data-size-chart-close></div>
-        <div class="cb-pdp-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ size_page.title | escape }}" tabindex="-1">
+        <div class="cb-pdp-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ size_page.title | default: 'Size Chart' | escape }}" tabindex="-1">
           <button type="button" class="cb-pdp-drawer__close" data-size-chart-close aria-label="Close">
             <svg viewBox="0 0 192 192" aria-hidden="true" focusable="false"><path d="M150 42 42 150M150 150 42 42" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>
           </button>
           <div class="cb-pdp-drawer__inner">
-            <div class="cb-pdp-drawer__content cb-pdp-rte">{{ size_page.content }}</div>
+            <div class="cb-pdp-drawer__content cb-pdp-rte">
+              {%- if size_page != blank and size_page.content != blank -%}
+                {{ size_page.content }}
+              {%- else -%}
+                <h2>Abaya Size Chart</h2>
+                <p><strong>Size</strong></p>
+                <table>
+                  <thead><tr><th>Size</th><th>Chest (in)</th><th>Hip (in)</th></tr></thead>
+                  <tbody>
+                    <tr><td>XS</td><td>31″ – 33″</td><td>32″ – 34″</td></tr>
+                    <tr><td>S</td><td>34″ – 36″</td><td>36″ – 38″</td></tr>
+                    <tr><td>M</td><td>39″ – 41″</td><td>40″ – 42″</td></tr>
+                    <tr><td>L</td><td>42″ – 44″</td><td>44″ – 46″</td></tr>
+                    <tr><td>XL</td><td>45″ – 47″</td><td>48″ – 50″</td></tr>
+                    <tr><td>2XL</td><td>48″ – 50″</td><td>52″ – 54″</td></tr>
+                    <tr><td>3XL</td><td>51″ – 52″</td><td>56″ – 58″</td></tr>
+                  </tbody>
+                </table>
+                <p><strong>Length</strong></p>
+                <table>
+                  <thead><tr><th>Length (in)</th><th>Your Height (cm)</th><th>Sleeve (from neck)</th></tr></thead>
+                  <tbody>
+                    <tr><td>50″</td><td>146</td><td>25″</td></tr>
+                    <tr><td>51″</td><td>150</td><td>25.5″</td></tr>
+                    <tr><td>52″</td><td>153</td><td>26″</td></tr>
+                    <tr><td>53″</td><td>156</td><td>26.5″</td></tr>
+                    <tr><td>54″</td><td>159</td><td>27″</td></tr>
+                    <tr><td>55″</td><td>162</td><td>27.5″</td></tr>
+                    <tr><td>56″</td><td>165</td><td>28″</td></tr>
+                    <tr><td>57″</td><td>168</td><td>28.5″</td></tr>
+                    <tr><td>58″</td><td>171</td><td>29″</td></tr>
+                    <tr><td>59″</td><td>174</td><td>29.5″</td></tr>
+                    <tr><td>60″</td><td>177</td><td>30″</td></tr>
+                  </tbody>
+                </table>
+              {%- endif -%}
+            </div>
           </div>
         </div>
       </div>
