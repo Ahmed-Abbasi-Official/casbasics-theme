@@ -11,37 +11,32 @@
   "sections": {
     "hero": {
       "type": "cb-shop-all-hero",
-      "settings": {
-        "show_breadcrumbs": true,
-        "home_label": "Home",
-        "heading": "Shop all abayas",
-        "text": "<p>Browse by colour, fabric or style.</p>",
-        "layout": "split",
-        "alignment": "left",
-        "show_divider": true,
-        "padding_top": 48,
-        "padding_bottom": 0
-      },
       "blocks": {
         "link_0052": {
           "type": "link",
           "settings": {
             "label": "Colour",
-            "link": "#colour"
+            "link": "#colour",
+            "highlight": false,
+            "show_arrow": false
           }
         },
         "link_0053": {
           "type": "link",
           "settings": {
             "label": "Fabric",
-            "link": "#fabric"
+            "link": "#fabric",
+            "highlight": false,
+            "show_arrow": false
           }
         },
         "link_0054": {
           "type": "link",
           "settings": {
             "label": "Style",
-            "link": "#style"
+            "link": "#style",
+            "highlight": false,
+            "show_arrow": false
           }
         },
         "link_0055": {
@@ -59,51 +54,61 @@
         "link_0053",
         "link_0054",
         "link_0055"
-      ]
+      ],
+      "settings": {
+        "show_breadcrumbs": true,
+        "home_label": "Home",
+        "heading": "Shop all abayas",
+        "text": "<p>Browse by colour, fabric or style.</p>",
+        "layout": "split",
+        "alignment": "left",
+        "show_divider": true,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 48,
+        "padding_bottom": 0
+      }
     },
     "featured": {
       "type": "cb-collection-banners",
-      "settings": {
-        "width": "compact",
-        "gap": 24,
-        "anchor": "",
-        "panel_color": "#e8e0d4",
-        "accent_color": "#6c0013",
-        "padding_top": 56,
-        "padding_bottom": 0
-      },
       "blocks": {
         "banner_0056": {
           "type": "banner",
           "settings": {
             "collection": "روح-الاتحاد",
+            "image": "shopify://shop_images/website_banner_-_EMIRATI_1_66d42ef0-d6a5-4f03-ae3f-51eeac821eda.webp",
             "width": "full",
             "eyebrow": "Featured collection",
             "accent_text": "",
             "heading": "",
-            "link_label": "Shop the collection"
+            "link_label": "Shop the collection",
+            "link": ""
           }
         },
         "banner_0057": {
           "type": "banner",
           "settings": {
             "collection": "winter-nights",
+            "image": "shopify://shop_images/Gemini_Generated_Image_fddat8fddat8fdda.jpg",
             "width": "half",
             "eyebrow": "Featured collection",
             "accent_text": "يلسات شتوية",
             "heading": "Winter Nights",
-            "link_label": "Shop the collection"
+            "link_label": "Shop the collection",
+            "link": ""
           }
         },
         "banner_0058": {
           "type": "banner",
           "settings": {
             "collection": "turkish-cupro",
+            "image": "shopify://shop_images/c-2919-2.jpg",
             "width": "half",
             "eyebrow": "Featured collection",
             "accent_text": "",
             "heading": "Turkish Cupro",
-            "link_label": "Shop the collection"
+            "link_label": "Shop the collection",
+            "link": ""
           }
         }
       },
@@ -111,91 +116,92 @@
         "banner_0056",
         "banner_0057",
         "banner_0058"
-      ]
+      ],
+      "settings": {
+        "width": "compact",
+        "gap": 24,
+        "anchor": "",
+        "panel_color": "#e8e0d4",
+        "accent_color": "#6c0013",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 56,
+        "padding_bottom": 0
+      }
     },
     "colour": {
       "type": "cb-collection-tiles",
-      "settings": {
-        "heading": "Shop by colour",
-        "heading_size": "large",
-        "heading_alignment": "left",
-        "columns": 4,
-        "mobile_layout": "two",
-        "image_ratio": "swatch",
-        "title_position": "below",
-        "title_style": "plain",
-        "corner_radius": 0,
-        "gap": 16,
-        "full_width": false,
-        "max_width": "compact",
-        "anchor": "colour",
-        "limit": 12,
-        "padding_top": 92,
-        "padding_bottom": 0
-      },
       "blocks": {
         "collection_0059": {
           "type": "collection",
           "settings": {
             "collection": "black-abaya",
+            "swatch": "#141213",
             "title": "Black",
-            "swatch": "#141213"
+            "link": ""
           }
         },
         "collection_005a": {
           "type": "collection",
           "settings": {
             "collection": "beige-abaya",
+            "swatch": "#d8c8ae",
             "title": "Beige",
-            "swatch": "#d8c8ae"
+            "link": ""
           }
         },
         "collection_005b": {
           "type": "collection",
           "settings": {
             "collection": "maroon-abaya",
+            "swatch": "#690e1e",
             "title": "Burgundy",
-            "swatch": "#690e1e"
+            "link": ""
           }
         },
         "collection_005c": {
           "type": "collection",
           "settings": {
             "collection": "blue-abayas",
+            "swatch": "#1e2a44",
             "title": "Navy",
-            "swatch": "#1e2a44"
+            "link": ""
           }
         },
         "collection_005d": {
           "type": "collection",
           "settings": {
             "collection": "green-abaya",
+            "swatch": "#6e6b3a",
             "title": "Green",
-            "swatch": "#6e6b3a"
+            "link": ""
           }
         },
         "collection_005e": {
           "type": "collection",
           "settings": {
             "collection": "brown-abaya",
+            "swatch": "#4a3026",
             "title": "Brown",
-            "swatch": "#4a3026"
+            "link": ""
           }
         },
         "collection_005f": {
           "type": "collection",
           "settings": {
             "collection": "grey-abaya",
+            "swatch": "#888583",
             "title": "Grey",
-            "swatch": "#888583"
+            "link": ""
           }
         },
         "collection_005g": {
           "type": "collection",
           "settings": {
             "collection": "purple-abaya",
+            "swatch": "#5b2a55",
             "title": "Purple",
-            "swatch": "#5b2a55"
+            "link": ""
           }
         }
       },
@@ -208,69 +214,92 @@
         "collection_005e",
         "collection_005f",
         "collection_005g"
-      ]
-    },
-    "fabric": {
-      "type": "cb-collection-tiles",
+      ],
       "settings": {
-        "heading": "Shop by fabric",
+        "heading": "Shop by colour",
         "heading_size": "large",
         "heading_alignment": "left",
-        "columns": 6,
-        "mobile_layout": "carousel",
-        "image_ratio": "square",
+        "show_line": false,
+        "limit": 12,
+        "columns": 4,
+        "mobile_layout": "two",
+        "image_ratio": "swatch",
         "title_position": "below",
+        "overlay_opacity": 30,
         "title_style": "plain",
+        "link_text": "Shop",
         "corner_radius": 0,
         "gap": 16,
         "full_width": false,
         "max_width": "compact",
-        "anchor": "fabric",
-        "limit": 12,
+        "anchor": "colour",
+        "background_color": "",
+        "text_color": "",
         "padding_top": 92,
         "padding_bottom": 0
-      },
+      }
+    },
+    "fabric": {
+      "type": "cb-collection-tiles",
       "blocks": {
         "collection_005h": {
           "type": "collection",
           "settings": {
             "collection": "nada",
-            "title": "Nada"
+            "image": "shopify://shop_images/crepe_7dc441e8-f699-46b7-8fd8-88e9f5aefcfb.webp",
+            "swatch": "",
+            "title": "Nada",
+            "link": "shopify://collections/nada-abaya"
           }
         },
         "collection_005i": {
           "type": "collection",
           "settings": {
             "collection": "crepe-abaya",
-            "title": "Crepe"
+            "image": "shopify://shop_images/crepe_7dc441e8-f699-46b7-8fd8-88e9f5aefcfb.webp",
+            "swatch": "",
+            "title": "Crepe",
+            "link": "shopify://collections/crepe-abaya"
           }
         },
         "collection_005j": {
           "type": "collection",
           "settings": {
             "collection": "jacquard-abaya",
-            "title": "Jacquard"
+            "image": "shopify://shop_images/jacquard_36061810-c98b-4865-b4d7-3c0ae4ec1d9c.webp",
+            "swatch": "",
+            "title": "Jacquard",
+            "link": "shopify://collections/jacquard-abaya"
           }
         },
         "collection_005k": {
           "type": "collection",
           "settings": {
             "collection": "dantel-abaya",
-            "title": "Dantel lace"
+            "image": "shopify://shop_images/DANTEL_1.jpg",
+            "swatch": "",
+            "title": "Dantel lace",
+            "link": "shopify://collections/dental-abaya"
           }
         },
         "collection_005m": {
           "type": "collection",
           "settings": {
             "collection": "turkish-cupro",
-            "title": "Turkish Cupro"
+            "image": "shopify://shop_images/turkish_cupro_f90b219c-3363-4479-94e5-2d4dda5cb885.jpg",
+            "swatch": "",
+            "title": "Turkish Cupro",
+            "link": "shopify://collections/turkish-cupro-abaya"
           }
         },
         "collection_005l": {
           "type": "collection",
           "settings": {
             "collection": "tweed-abaya",
-            "title": "Tweed"
+            "image": "shopify://shop_images/TWEED_9ceae4b6-64f0-415a-b77b-f19c042cd38b.jpg",
+            "swatch": "",
+            "title": "Tweed",
+            "link": "shopify://collections/tweed-abaya"
           }
         }
       },
@@ -281,98 +310,132 @@
         "collection_005k",
         "collection_005m",
         "collection_005l"
-      ]
-    },
-    "style": {
-      "type": "cb-collection-tiles",
+      ],
       "settings": {
-        "heading": "Shop by style",
+        "heading": "Shop by fabric",
         "heading_size": "large",
         "heading_alignment": "left",
-        "columns": 5,
-        "mobile_layout": "two",
-        "image_ratio": "portrait",
+        "show_line": false,
+        "limit": 12,
+        "columns": 6,
+        "mobile_layout": "carousel",
+        "image_ratio": "square",
         "title_position": "below",
-        "title_style": "plain_link",
+        "overlay_opacity": 30,
+        "title_style": "plain",
         "link_text": "Shop",
         "corner_radius": 0,
         "gap": 16,
         "full_width": false,
         "max_width": "compact",
-        "anchor": "style",
-        "limit": 12,
+        "anchor": "fabric",
+        "background_color": "",
+        "text_color": "",
         "padding_top": 92,
         "padding_bottom": 0
-      },
+      }
+    },
+    "style": {
+      "type": "cb-collection-tiles",
       "blocks": {
         "collection_005n": {
           "type": "collection",
           "settings": {
             "collection": "premium-abaya",
-            "title": "Premium"
+            "image": "shopify://shop_images/premium.webp",
+            "swatch": "",
+            "title": "Premium",
+            "link": "shopify://collections/premium-abaya"
           }
         },
         "collection_005o": {
           "type": "collection",
           "settings": {
             "collection": "printed-abaya",
-            "title": "Printed"
+            "image": "shopify://shop_images/printed_2.webp",
+            "swatch": "",
+            "title": "Printed",
+            "link": "shopify://collections/printed-abaya"
           }
         },
         "collection_005v": {
           "type": "collection",
           "settings": {
             "collection": "winter-abaya",
-            "title": "Winter"
+            "image": "shopify://shop_images/winter.webp",
+            "swatch": "",
+            "title": "Winter",
+            "link": "shopify://collections/winter-abaya"
           }
         },
         "collection_005p": {
           "type": "collection",
           "settings": {
             "collection": "lace-abaya",
-            "title": "Lace"
+            "image": "shopify://shop_images/lace_2.webp",
+            "swatch": "",
+            "title": "Lace",
+            "link": "shopify://collections/lace-abaya"
           }
         },
         "collection_005q": {
           "type": "collection",
           "settings": {
             "collection": "ready-to-wear-abayas",
-            "title": "Ready to Wear"
+            "image": "shopify://shop_images/rtw.webp",
+            "swatch": "",
+            "title": "Ready to Wear",
+            "link": "shopify://collections/work-abayas-professional-office-wear-styles"
           }
         },
         "collection_005r": {
           "type": "collection",
           "settings": {
             "collection": "work-abayas-professional-office-wear",
-            "title": "Work"
+            "image": "shopify://shop_images/work.webp",
+            "swatch": "",
+            "title": "Work",
+            "link": "shopify://collections/work-abayas-professional-office-wear-styles"
           }
         },
         "collection_005s": {
           "type": "collection",
           "settings": {
             "collection": "hajj-and-umrah-abayas",
-            "title": "Umrah"
+            "image": "shopify://shop_images/umrah.webp",
+            "swatch": "",
+            "title": "Umrah",
+            "link": "shopify://collections/hajj-and-umrah-abayas"
           }
         },
         "collection_005t": {
           "type": "collection",
           "settings": {
             "collection": "pleated-abayas",
-            "title": "Pleated"
+            "image": "shopify://shop_images/pleated.webp",
+            "swatch": "",
+            "title": "Pleated",
+            "link": "shopify://collections/pleated-abaya"
           }
         },
         "collection_005u": {
           "type": "collection",
           "settings": {
             "collection": "embroidered-abaya",
-            "title": "Embroidered"
+            "image": "shopify://shop_images/embroidered_b39ae92f-989c-4da2-b5a4-7b139877eea0.webp",
+            "swatch": "",
+            "title": "Embroidered",
+            "link": "shopify://collections/embroidered-abaya"
           }
         },
         "collection_005w": {
           "type": "collection",
           "settings": {
             "collection": "under-abaya-dress",
-            "title": "Under Abaya Dress"
+            "image": "shopify://shop_images/dresses.webp",
+            "swatch": "",
+            "title": "Under Abaya Dress",
+            "link": "shopify://collections/under-abaya-dress"
           }
         }
       },
@@ -387,16 +450,33 @@
         "collection_005t",
         "collection_005u",
         "collection_005w"
-      ]
+      ],
+      "settings": {
+        "heading": "Shop by style",
+        "heading_size": "large",
+        "heading_alignment": "left",
+        "show_line": false,
+        "limit": 12,
+        "columns": 5,
+        "mobile_layout": "two",
+        "image_ratio": "portrait",
+        "title_position": "below",
+        "overlay_opacity": 30,
+        "title_style": "plain_link",
+        "link_text": "Shop",
+        "corner_radius": 0,
+        "gap": 16,
+        "full_width": false,
+        "max_width": "compact",
+        "anchor": "style",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 92,
+        "padding_bottom": 0
+      }
     },
     "see_all": {
       "type": "cb-text",
-      "settings": {
-        "width": "narrow",
-        "alignment": "center",
-        "padding_top": 108,
-        "padding_bottom": 100
-      },
       "blocks": {
         "heading_005x": {
           "type": "heading",
@@ -412,14 +492,25 @@
             "label": "Shop all abaya",
             "link": "/collections/all",
             "style": "solid",
-            "size": "large"
+            "size": "large",
+            "shape": "square",
+            "icon": "none"
           }
         }
       },
       "block_order": [
         "heading_005x",
         "button_005y"
-      ]
+      ],
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "style": "default",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 108,
+        "padding_bottom": 100
+      }
     }
   },
   "order": [
