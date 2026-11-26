@@ -7730,6 +7730,15 @@ html.cb-loader-on:not(.page-loading) .cb-loader {
 }
 
 #quick-add-dialog .quick-add-modal__content {
+  --color-selected-variant-background: transparent;
+  --color-selected-variant-text: #0b0b0b;
+  --color-selected-variant-border: #0b0b0b;
+  --color-variant-background: transparent;
+  --color-variant-text: #0b0b0b;
+  --color-variant-border: #d5d1ca;
+  --color-variant-hover-background: transparent;
+  --color-variant-hover-text: #0b0b0b;
+  --color-variant-hover-border: #0b0b0b;
   display: flex;
   flex-direction: column;
   grid-template-columns: none;
@@ -7737,12 +7746,13 @@ html.cb-loader-on:not(.page-loading) .cb-loader {
   height: 100%;
   max-height: 100dvh;
   overflow-y: auto;
-  padding: 20px 24px 28px;
+  padding: 28px 24px 32px;
   gap: 16px;
 }
 
 #quick-add-dialog .quick-add-modal__content .product-information__media {
   flex: 0 0 auto;
+  position: relative !important;
   display: block;
   width: 100%;
   height: 290px;
@@ -7750,6 +7760,12 @@ html.cb-loader-on:not(.page-loading) .cb-loader {
   max-height: 290px;
   overflow: hidden;
   border-radius: 4px;
+}
+
+#quick-add-dialog .quick-add-modal__content .product-information__media media-gallery {
+  position: relative !important;
+  inset: auto !important;
+  pointer-events: auto;
 }
 
 #quick-add-dialog .quick-add-modal__content .product-information__media media-gallery,
@@ -7827,6 +7843,7 @@ html.cb-loader-on:not(.page-loading) .cb-loader {
 #quick-add-dialog .quick-add-modal__content .variant-option__button-label:has(:checked),
 #quick-add-dialog .quick-add-modal__content input:checked + .variant-option__button-label {
   background: transparent !important;
+  background-color: transparent !important;
   color: #0b0b0b !important;
   border: 1px solid #0b0b0b !important;
 }
