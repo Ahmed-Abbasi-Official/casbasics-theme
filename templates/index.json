@@ -1493,8 +1493,7 @@
         "text_000i": {
           "type": "text",
           "settings": {
-            "text": "<p>At Crystal Abaya Studio(CAS Abaya), we offer a stunning collection of abayas for all styles and occasions. Whether you're searching for an elegant <a href=\"/collections/black-abaya\">black abaya</a> or an exclusive <a href=\"/collections/eid-abaya\">Eid abaya</a>, we have something for everyone. To complete your abaya look we provide the option of adding dresses in different colors and styles to your abayas. All abayas are sold with matching sheilas as a set of two. However, if you are looking for a specific shade of sheila to match with an existing outfit, you can head over to our detailed collection of sheila boxes.</p>",
-            "size": "normal"
+            "text": "<p>At Crystal Abaya Studio(CAS Abaya), we offer a stunning collection of abayas for all styles and occasions. Whether you're searching for an elegant <a href=\"/collections/black-abaya\">black abaya</a> or an exclusive <a href=\"/collections/eid-abaya\">Eid abaya</a>, we have something for everyone. To complete your abaya look we provide the option of adding dresses in different colors and styles to your abayas. All abayas are sold with matching sheilas as a set of two. However, if you are looking for a specific shade of sheila to match with an existing outfit, you can head over to our detailed collection of sheila boxes.</p>"
           }
         },
         "button_000j": {
@@ -1691,7 +1690,6 @@
         "text": "<p>If you are confused regarding your size, please head over to our size chart and easily choose your abaya dress size and length according to your body measurements and height. If you are still unsure and require further help, please do not hesitate to contact us. We are just a call or WhatsApp away.</p>",
         "style": "grid",
         "border_top": true,
-        "border_bottom": false,
         "layout": "center",
         "columns": 3,
         "mobile_two_columns": true,
@@ -1700,8 +1698,6 @@
         "box_color": "",
         "background_color": "#e7e4e1",
         "text_color": "",
-        "description_color": "",
-        "line_color": "",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -1744,8 +1740,6 @@
         "heading": "",
         "text": "",
         "style": "plain",
-        "border_top": false,
-        "border_bottom": false,
         "layout": "center",
         "columns": 3,
         "mobile_two_columns": false,
@@ -1754,8 +1748,6 @@
         "box_color": "",
         "background_color": "",
         "text_color": "",
-        "description_color": "",
-        "line_color": "",
         "padding_top": 48,
         "padding_bottom": 48
       }
@@ -1780,8 +1772,7 @@
         "text_000y": {
           "type": "text",
           "settings": {
-            "text": "<p>At <strong>CAS Abaya</strong>, you can shop high-quality <strong>designer abayas online</strong> with <strong>worldwide delivery</strong>. Our abayas are crafted with premium fabrics like Turkish Cupro and Crepe, offering elegant designs that blend modern style with modest fashion.</p><p>You can explore and order your favorite abaya directly from our online store — <a href=\"/\"><strong>CASBasics.com</strong></a> — and enjoy secure international shipping.</p><p>Whether you’re shopping online or visiting in person, CAS Basics ensures a luxury abaya experience — trusted by modest fashion lovers around the world.</p>",
-            "size": "normal"
+            "text": "<p>At <strong>CAS Abaya</strong>, you can shop high-quality <strong>designer abayas online</strong> with <strong>worldwide delivery</strong>. Our abayas are crafted with premium fabrics like Turkish Cupro and Crepe, offering elegant designs that blend modern style with modest fashion.</p><p>You can explore and order your favorite abaya directly from our online store — <a href=\"/\"><strong>CASBasics.com</strong></a> — and enjoy secure international shipping.</p><p>Whether you’re shopping online or visiting in person, CAS Basics ensures a luxury abaya experience — trusted by modest fashion lovers around the world.</p>"
           }
         }
       },
@@ -1852,14 +1843,13 @@
         "text_0012": {
           "type": "text",
           "settings": {
-            "text": "<p>Not sure how to order? Our team is here to help! Reach out to us for guidance or visit our abaya stores to explore our collection in person.</p>",
-            "size": "normal"
+            "text": "<p>Not sure how to order? Our team is here to help! Reach out to us for guidance or visit our abaya stores to explore our collection in person.</p>"
           }
         },
         "button_0013": {
           "type": "button",
           "settings": {
-            "label": "WhatsApp CAS Office: +92 305 3449848",
+            "label": "WhatsApp CAS Office: +971585959872",
             "link": "https://wa.me/971585959872",
             "style": "outline",
             "size": "large",
@@ -2216,46 +2206,18 @@
             "answer": "<p>To see your order status, please email your order details to info@casbasics.com or provide these details into Quick Chat icon on bottom left.</p>"
           }
         },
-        "item_faq_3": {
-          "type": "item",
-          "settings": {
-            "question": "Can I receive a ready-to-wear abaya within 1-2 days?",
-            "answer": "<p>Yes, ready-to-wear abayas are processed within 1-2 days. Please note ready-to-wear products are under the READY TO WEAR (RTW) tab on the website and are labelled with \"C-RTW\" in their product names.</p>"
-          }
-        },
-        "item_faq_5": {
-          "type": "item",
-          "settings": {
-            "question": "How long will it take to deliver my order?",
-            "answer": "<p>Custom orders require 10–12 BUSINESS days (Saturdays and Sundays are not included in duration).<br/><br/>If 12 business days have passed and you haven't received your order yet please send us a WhatsApp or drop us an email at info@casbasics.com with your Full Name and Contact Number.<br/><br/>Our team members will reach out within 24 hours.</p>"
-          }
-        },
-        "item_faq_7": {
-          "type": "item",
-          "settings": {
-            "question": "What is the price of an abaya in UAE?",
-            "answer": "<p>Abaya prices in the UAE vary depending on fabric, design, and customization. At CAS Abaya, prices reflect premium fabrics, tailored sizing, and handcrafted details. We offer both customized and ready-to-wear options to suit different preferences and budgets.</p>"
-          }
-        },
-        "item_faq_9": {
-          "type": "item",
-          "settings": {
-            "question": "Do you have lace abayas?",
-            "answer": "<p>Yes. CAS offers <a href=\"/collections/lace-abaya\" title=\"Lace Abaya\">lace abayas</a> featuring intricate dantel and embroidered lace detailing, perfect for formal events, Eid, and special occasions. Lace styles can also be customized in size and length.</p>"
-          }
-        },
-        "item_faq_11": {
-          "type": "item",
-          "settings": {
-            "question": "Do you sell black abaya work abayas?",
-            "answer": "<p>Yes. <a href=\"/collections/black-abaya\" title=\"Black Abaya\">Black abayas</a> are one of our most popular styles. We offer black work abayas featuring embroidery, handwork, lace details, and elegant finishes suitable for daily wear, formal gatherings, and festive occasions. Check our <a href=\"/collections/work-abayas-professional-office-wear\" title=\"Work Abayas – Professional & Office Wear Styles\">dedicated work Abaya Collection</a></p>"
-          }
-        },
         "item_faq_2": {
           "type": "item",
           "settings": {
             "question": "Can I make adjustments to an abaya?",
             "answer": "<p>Yes, it is possible to make adjustments to an abaya. Please contact our team through <a href=\"https://api.whatsapp.com/send/?phone=971585959872&text&type=phone_number&app_absent=0\" target=\"_blank\" title=\"https://api.whatsapp.com/send/?phone=971585959872&text&type=phone_number&app_absent=0\">WhatsApp</a> to discuss the details and place your order.</p>"
+          }
+        },
+        "item_faq_3": {
+          "type": "item",
+          "settings": {
+            "question": "Can I receive a ready-to-wear abaya within 1-2 days?",
+            "answer": "<p>Yes, ready-to-wear abayas are processed within 1-2 days. Please note ready-to-wear products are under the READY TO WEAR (RTW) tab on the website and are labelled with \"C-RTW\" in their product names.</p>"
           }
         },
         "item_faq_4": {
@@ -2265,11 +2227,25 @@
             "answer": "<p>Our Exchange Policy lasts 7 days (Terms and Conditions apply). After 7 days we cannot offer you an exchange.<br/>To be eligible for an exchange, your item must be unused and in the same condition you received it. For more info please go through our <a href=\"https://casbasics.com/pages/exchange-refund-policy\" target=\"_blank\" title=\"Exchange Policy\">exchange policy here.</a></p>"
           }
         },
+        "item_faq_5": {
+          "type": "item",
+          "settings": {
+            "question": "How long will it take to deliver my order?",
+            "answer": "<p>Custom orders require 10–12 BUSINESS days (Saturdays and Sundays are not included in duration).<br/><br/>If 12 business days have passed and you haven't received your order yet please send us a WhatsApp or drop us an email at info@casbasics.com with your Full Name and Contact Number.<br/><br/>Our team members will reach out within 24 hours.</p>"
+          }
+        },
         "item_faq_6": {
           "type": "item",
           "settings": {
             "question": "Do you ship internationally?",
             "answer": "<p>Yes, we ship our products worldwide!</p><p><strong>Please note that free shipping does not apply to international orders</strong>, and shipping rates may vary depending on your region.</p><p>We use <strong>DHL </strong>for reliable and efficient international shipping.</p>"
+          }
+        },
+        "item_faq_7": {
+          "type": "item",
+          "settings": {
+            "question": "What is the price of an abaya in UAE?",
+            "answer": "<p>Abaya prices in the UAE vary depending on fabric, design, and customization. At CAS Abaya, prices reflect premium fabrics, tailored sizing, and handcrafted details. We offer both customized and ready-to-wear options to suit different preferences and budgets.</p>"
           }
         },
         "item_faq_8": {
@@ -2279,11 +2255,25 @@
             "answer": "<p>Yes. CAS Abaya is a Dubai-based brand offering elegant Emirati abayas that blend tradition with modern tailoring. Our designs reflect classic modest silhouettes with refined fabrics and contemporary detailing.</p>"
           }
         },
+        "item_faq_9": {
+          "type": "item",
+          "settings": {
+            "question": "Do you have lace abayas?",
+            "answer": "<p>Yes. CAS offers <a href=\"/collections/lace-abaya\" title=\"Lace Abaya\">lace abayas</a> featuring intricate dantel and embroidered lace detailing, perfect for formal events, Eid, and special occasions. Lace styles can also be customized in size and length.</p>"
+          }
+        },
         "item_faq_10": {
           "type": "item",
           "settings": {
             "question": "What is the best abaya for Umrah?",
             "answer": "<p>For Umrah, we recommend lightweight, breathable fabrics such as <a href=\"/collections/nada\" title=\"Nada Abaya\">Nada</a> or Crepe in simple, modest designs. Black abayas with minimal embellishment are popular for comfort and practicality during travel and worship. Check our dedicated <a href=\"/collections/hajj-and-umrah-abayas\" title=\"Hajj and Umrah Abayas\">Umrah Abaya Collection</a></p>"
+          }
+        },
+        "item_faq_11": {
+          "type": "item",
+          "settings": {
+            "question": "Do you sell black abaya work abayas?",
+            "answer": "<p>Yes. <a href=\"/collections/black-abaya\" title=\"Black Abaya\">Black abayas</a> are one of our most popular styles. We offer black work abayas featuring embroidery, handwork, lace details, and elegant finishes suitable for daily wear, formal gatherings, and festive occasions. Check our <a href=\"/collections/work-abayas-professional-office-wear\" title=\"Work Abayas – Professional & Office Wear Styles\">dedicated work Abaya Collection</a></p>"
           }
         }
       },
@@ -2310,25 +2300,6 @@
         "heading_style": "default",
         "open_first": false,
         "faq_schema": true,
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "referral": {
-      "type": "cb-referral",
-      "settings": {
-        "width": "normal",
-        "heading": "Give 10%, Get AED 30",
-        "subtext": "Share a 10% discount link with your friends and family, and earn AED 30 for every purchase they make.",
-        "email_label": "Email",
-        "email_placeholder": "Your email",
-        "name_label": "Name",
-        "name_placeholder": "Your name",
-        "button_label": "Get Discount Link",
-        "min_purchase": "Minimum purchase amount: AED 350",
-        "terms_text": "<p>By submitting, I acknowledge the <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>",
         "background_color": "",
         "text_color": "",
         "padding_top": 60,
@@ -2386,6 +2357,23 @@
         "line_color": "#faf7f5",
         "padding_top": 28,
         "padding_bottom": 32
+      }
+    },
+    "referral": {
+      "type": "cb-referral",
+      "settings": {
+        "heading": "Give 10%, Get AED 30",
+        "subtext": "Share a 10% discount link with your friends and family, and earn AED 30 for every purchase they make.",
+        "email_label": "Email",
+        "email_placeholder": "Your email",
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "button_label": "Get Discount Link",
+        "min_purchase": "Minimum purchase amount: AED 350",
+        "terms_text": "<p>By submitting, I acknowledge the <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "width": "normal"
       }
     },
     "social_feed": {

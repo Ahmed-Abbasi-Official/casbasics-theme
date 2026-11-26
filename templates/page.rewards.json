@@ -20,10 +20,250 @@
         "padding_bottom": 60
       }
     },
+    "tiers_intro": {
+      "type": "cb-text",
+      "blocks": {
+        "heading_tiers": {
+          "type": "heading",
+          "settings": {
+            "heading": "Loyalty Tiers",
+            "size": "compact",
+            "show_line": true
+          }
+        },
+        "text_tiers": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>CAS Abaya Rewards</strong> follows a simple points-based tier system designed to reward you as you shop more. Earn points on every purchase and redeem them on future orders. As your spending grows, you move up through higher tiers, unlocking enhanced benefits and exclusive rewards.</p>"
+          }
+        },
+        "heading_point": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>1 POINT = AED 2</strong>",
+            "size": "xsmall",
+            "show_line": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_tiers",
+        "text_tiers",
+        "heading_point"
+      ],
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "style": "classic",
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 30,
+        "padding_bottom": 0
+      }
+    },
+    "tier_1": {
+      "type": "cb-image-with-text",
+      "blocks": {
+        "tier_1_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Membership Tier"
+          }
+        },
+        "tier_1_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Princess",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "tier_1_text": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>1.25</strong> Points multiplier</li><li>Surprise Discount Vouchers</li></ul>"
+          }
+        },
+        "tier_1_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 1500",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "tier_1_sub",
+        "tier_1_heading",
+        "tier_1_text",
+        "tier_1_points"
+      ],
+      "settings": {
+        "image_position": "left",
+        "image_width": "50",
+        "image_height": "350",
+        "boxed": false,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
+    },
+    "tier_2": {
+      "type": "cb-image-with-text",
+      "blocks": {
+        "tier_2_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Membership Tier"
+          }
+        },
+        "tier_2_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Queen",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "tier_2_text": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>2x</strong> Points multiplier</li><li>Priority Customer Support</li></ul>"
+          }
+        },
+        "tier_2_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 7000",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "tier_2_sub",
+        "tier_2_heading",
+        "tier_2_text",
+        "tier_2_points"
+      ],
+      "settings": {
+        "image_position": "right",
+        "image_width": "50",
+        "image_height": "350",
+        "boxed": false,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
+    },
+    "tier_3": {
+      "type": "cb-image-with-text",
+      "blocks": {
+        "tier_3_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Membership Tier"
+          }
+        },
+        "tier_3_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Empress",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "tier_3_text": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>2.5x</strong> Points multiplier</li><li>Priority Customer Support</li></ul>"
+          }
+        },
+        "tier_3_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 12000",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "tier_3_sub",
+        "tier_3_heading",
+        "tier_3_text",
+        "tier_3_points"
+      ],
+      "settings": {
+        "image_position": "left",
+        "image_width": "50",
+        "image_height": "350",
+        "boxed": false,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
+    },
+    "tier_4": {
+      "type": "cb-image-with-text",
+      "blocks": {
+        "tier_4_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Membership Tier"
+          }
+        },
+        "tier_4_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "CAS Elite",
+            "size": "medium",
+            "show_line": true
+          }
+        },
+        "tier_4_text": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>2.5x</strong> Points multiplier</li><li>Dedicated VIP Quick Customer Service</li></ul>"
+          }
+        },
+        "tier_4_points": {
+          "type": "accordion",
+          "settings": {
+            "title": "Points needed to achieve this tier: 20000",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "tier_4_sub",
+        "tier_4_heading",
+        "tier_4_text",
+        "tier_4_points"
+      ],
+      "settings": {
+        "image_position": "right",
+        "image_width": "50",
+        "image_height": "350",
+        "boxed": false,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "250"
+      }
+    },
     "hero": {
       "type": "cb-loyalty-hero",
       "settings": {
-        "image": "shopify://shop_images/Untitled_design_18.webp",
         "height": 500,
         "height_mobile": 300,
         "heading": "Join CAS Rewards Program",
@@ -83,272 +323,6 @@
         "text_color": "",
         "padding_top": 60,
         "padding_bottom": 20
-      }
-    },
-    "tiers_intro": {
-      "type": "cb-text",
-      "blocks": {
-        "heading_tiers": {
-          "type": "heading",
-          "settings": {
-            "heading": "Loyalty Tiers",
-            "size": "compact",
-            "show_line": true
-          }
-        },
-        "text_tiers": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>CAS Abaya Rewards</strong> follows a simple points-based tier system designed to reward you as you shop more. Earn points on every purchase and redeem them on future orders. As your spending grows, you move up through higher tiers, unlocking enhanced benefits and exclusive rewards.</p>",
-            "size": "normal"
-          }
-        },
-        "heading_point": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>1 POINT = AED 2</strong>",
-            "size": "xsmall",
-            "show_line": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_tiers",
-        "text_tiers",
-        "heading_point"
-      ],
-      "settings": {
-        "width": "narrow",
-        "alignment": "center",
-        "style": "classic",
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 30,
-        "padding_bottom": 0
-      }
-    },
-    "tier_1": {
-      "type": "cb-image-with-text",
-      "blocks": {
-        "tier_1_sub": {
-          "type": "subheading",
-          "settings": {
-            "text": "Membership Tier"
-          }
-        },
-        "tier_1_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Princess",
-            "size": "medium",
-            "show_line": true
-          }
-        },
-        "tier_1_text": {
-          "type": "text",
-          "settings": {
-            "text": "<ul><li><strong>1.25</strong> Points multiplier</li><li>Surprise Discount Vouchers</li></ul>",
-            "size": "normal"
-          }
-        },
-        "tier_1_points": {
-          "type": "accordion",
-          "settings": {
-            "title": "Points needed to achieve this tier: 1500",
-            "content": ""
-          }
-        }
-      },
-      "block_order": [
-        "tier_1_sub",
-        "tier_1_heading",
-        "tier_1_text",
-        "tier_1_points"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/cas-membership_card-princess.webp",
-        "image_position": "left",
-        "image_width": "50",
-        "image_height": "350",
-        "image_height_mobile": "250",
-        "boxed": false,
-        "classic": true,
-        "compact_text": false,
-        "text_alignment": "left",
-        "vertical_alignment": "center",
-        "accent_color": "",
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 20,
-        "padding_bottom": 60
-      }
-    },
-    "tier_2": {
-      "type": "cb-image-with-text",
-      "blocks": {
-        "tier_2_sub": {
-          "type": "subheading",
-          "settings": {
-            "text": "Membership Tier"
-          }
-        },
-        "tier_2_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Queen",
-            "size": "medium",
-            "show_line": true
-          }
-        },
-        "tier_2_text": {
-          "type": "text",
-          "settings": {
-            "text": "<ul><li><strong>2x</strong> Points multiplier</li><li>Priority Customer Support</li></ul>",
-            "size": "normal"
-          }
-        },
-        "tier_2_points": {
-          "type": "accordion",
-          "settings": {
-            "title": "Points needed to achieve this tier: 7000",
-            "content": ""
-          }
-        }
-      },
-      "block_order": [
-        "tier_2_sub",
-        "tier_2_heading",
-        "tier_2_text",
-        "tier_2_points"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/CAS-Rewards-Queen-card.webp",
-        "image_position": "right",
-        "image_width": "50",
-        "image_height": "350",
-        "image_height_mobile": "250",
-        "boxed": false,
-        "classic": true,
-        "compact_text": false,
-        "text_alignment": "left",
-        "vertical_alignment": "center",
-        "accent_color": "",
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 20,
-        "padding_bottom": 60
-      }
-    },
-    "tier_3": {
-      "type": "cb-image-with-text",
-      "blocks": {
-        "tier_3_sub": {
-          "type": "subheading",
-          "settings": {
-            "text": "Membership Tier"
-          }
-        },
-        "tier_3_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Empress",
-            "size": "medium",
-            "show_line": true
-          }
-        },
-        "tier_3_text": {
-          "type": "text",
-          "settings": {
-            "text": "<ul><li><strong>2.5x</strong> Points multiplier</li><li>Priority Customer Support</li></ul>",
-            "size": "normal"
-          }
-        },
-        "tier_3_points": {
-          "type": "accordion",
-          "settings": {
-            "title": "Points needed to achieve this tier: 12000",
-            "content": ""
-          }
-        }
-      },
-      "block_order": [
-        "tier_3_sub",
-        "tier_3_heading",
-        "tier_3_text",
-        "tier_3_points"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/cas-membership_card-empress.webp",
-        "image_position": "left",
-        "image_width": "50",
-        "image_height": "350",
-        "image_height_mobile": "250",
-        "boxed": false,
-        "classic": true,
-        "compact_text": false,
-        "text_alignment": "left",
-        "vertical_alignment": "center",
-        "accent_color": "",
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 20,
-        "padding_bottom": 60
-      }
-    },
-    "tier_4": {
-      "type": "cb-image-with-text",
-      "blocks": {
-        "tier_4_sub": {
-          "type": "subheading",
-          "settings": {
-            "text": "Membership Tier"
-          }
-        },
-        "tier_4_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "CAS Elite",
-            "size": "medium",
-            "show_line": true
-          }
-        },
-        "tier_4_text": {
-          "type": "text",
-          "settings": {
-            "text": "<ul><li><strong>2.5x</strong> Points multiplier</li><li>Dedicated VIP Quick Customer Service</li></ul>",
-            "size": "normal"
-          }
-        },
-        "tier_4_points": {
-          "type": "accordion",
-          "settings": {
-            "title": "Points needed to achieve this tier: 20000",
-            "content": ""
-          }
-        }
-      },
-      "block_order": [
-        "tier_4_sub",
-        "tier_4_heading",
-        "tier_4_text",
-        "tier_4_points"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/cas-membership_card-elite.webp",
-        "image_position": "right",
-        "image_width": "50",
-        "image_height": "350",
-        "image_height_mobile": "250",
-        "boxed": false,
-        "classic": true,
-        "compact_text": false,
-        "text_alignment": "left",
-        "vertical_alignment": "center",
-        "accent_color": "",
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 20,
-        "padding_bottom": 60
       }
     },
     "ways_to_earn": {

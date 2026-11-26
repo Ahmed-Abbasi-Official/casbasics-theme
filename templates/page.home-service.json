@@ -11,6 +11,18 @@
   "sections": {
     "hero": {
       "type": "cb-image-with-text",
+      "settings": {
+        "image_position": "left",
+        "image_width": "52",
+        "image_height": "560",
+        "boxed": false,
+        "compact_text": true,
+        "text_alignment": "left",
+        "vertical_alignment": "center",
+        "accent_color": "#6c0013",
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
       "blocks": {
         "subheading_hs1": {
           "type": "subheading",
@@ -57,27 +69,19 @@
         "text_hs1",
         "button_hs1",
         "text_hs2"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/bc1458e1-1a6b-4f86-8c14-f11bd5792514.webp",
-        "image_position": "left",
-        "image_width": "52",
-        "image_height": "560",
-        "image_height_mobile": "default",
-        "boxed": false,
-        "classic": false,
-        "compact_text": true,
-        "text_alignment": "left",
-        "vertical_alignment": "center",
-        "accent_color": "#6c0013",
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+      ]
     },
     "visit": {
       "type": "cb-feature-list",
+      "settings": {
+        "heading": "The visit",
+        "layout": "list",
+        "columns": 3,
+        "gap": 40,
+        "accent_color": "#6c0013",
+        "padding_top": 80,
+        "padding_bottom": 56
+      },
       "blocks": {
         "item_visit_1": {
           "type": "item",
@@ -135,21 +139,20 @@
         "item_visit_4",
         "item_visit_5",
         "item_visit_6"
-      ],
-      "settings": {
-        "heading": "The visit",
-        "layout": "list",
-        "columns": 3,
-        "gap": 40,
-        "accent_color": "#6c0013",
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 80,
-        "padding_bottom": 56
-      }
+      ]
     },
     "how": {
       "type": "cb-feature-list",
+      "settings": {
+        "heading": "How it works",
+        "layout": "steps",
+        "columns": 4,
+        "gap": 26,
+        "accent_color": "#6c0013",
+        "background_color": "#e7e4e1",
+        "padding_top": 64,
+        "padding_bottom": 48
+      },
       "blocks": {
         "item_step_1": {
           "type": "item",
@@ -189,18 +192,7 @@
         "item_step_2",
         "item_step_3",
         "item_step_4"
-      ],
-      "settings": {
-        "heading": "How it works",
-        "layout": "steps",
-        "columns": 4,
-        "gap": 26,
-        "accent_color": "#6c0013",
-        "background_color": "#e7e4e1",
-        "text_color": "",
-        "padding_top": 64,
-        "padding_bottom": 48
-      }
+      ]
     },
     "family": {
       "type": "cb-callout",
@@ -210,14 +202,25 @@
         "text": "Family & Friends to join. Each of them chooses her own pieces and is measured too.",
         "box_color": "#f8f7f5",
         "accent_color": "#6c0013",
-        "background_color": "",
-        "text_color": "",
         "padding_top": 80,
         "padding_bottom": 40
       }
     },
     "faq": {
       "type": "cb-accordions",
+      "settings": {
+        "heading": "Questions",
+        "text": "",
+        "layout": "stacked",
+        "heading_alignment": "left",
+        "width": "slim",
+        "icon": "chevron",
+        "heading_style": "caps",
+        "open_first": false,
+        "faq_schema": true,
+        "padding_top": 40,
+        "padding_bottom": 80
+      },
       "blocks": {
         "item_hsq_1": {
           "type": "item",
@@ -261,25 +264,18 @@
         "item_hsq_3",
         "item_hsq_4",
         "item_hsq_5"
-      ],
-      "settings": {
-        "heading": "Questions",
-        "text": "",
-        "layout": "stacked",
-        "heading_alignment": "left",
-        "width": "slim",
-        "icon": "chevron",
-        "heading_style": "caps",
-        "open_first": false,
-        "faq_schema": true,
-        "background_color": "",
-        "text_color": "",
-        "padding_top": 40,
-        "padding_bottom": 80
-      }
+      ]
     },
     "cta": {
       "type": "cb-text",
+      "settings": {
+        "width": "narrow",
+        "alignment": "center",
+        "background_color": "#0b0b0b",
+        "text_color": "#ffffff",
+        "padding_top": 76,
+        "padding_bottom": 72
+      },
       "blocks": {
         "subheading_cta": {
           "type": "subheading",
@@ -311,16 +307,7 @@
         "subheading_cta",
         "heading_cta",
         "button_cta"
-      ],
-      "settings": {
-        "width": "narrow",
-        "alignment": "center",
-        "style": "default",
-        "background_color": "#0b0b0b",
-        "text_color": "#ffffff",
-        "padding_top": 76,
-        "padding_bottom": 72
-      }
+      ]
     }
   },
   "order": [
