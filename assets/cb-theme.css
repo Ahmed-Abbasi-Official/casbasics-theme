@@ -7675,3 +7675,106 @@ html.cb-loader-on:not(.page-loading) .cb-loader {
     transition-delay: 0s;
   }
 }
+
+/* --- Quick Buy right-side drawer (matches live store's full-height right drawer) --- */
+@keyframes cbQuickDrawerIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes cbQuickDrawerOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+#quick-add-dialog .quick-add-modal {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: min(440px, 100vw);
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  border: 0;
+  border-radius: 0;
+  background: #f0eee9;
+  color: #0b0b0b;
+  box-shadow: -8px 0 32px rgb(0 0 0 / 0.18);
+  padding: 0;
+}
+
+#quick-add-dialog .quick-add-modal[open] {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  animation: cbQuickDrawerIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+#quick-add-dialog .quick-add-modal.dialog-closing {
+  animation: cbQuickDrawerOut 0.22s ease forwards;
+}
+
+#quick-add-dialog .quick-add-modal__close {
+  top: 14px;
+  inset-inline-end: 16px;
+  color: #0b0b0b;
+  background: transparent;
+}
+
+#quick-add-dialog .quick-add-modal__content {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: none;
+  grid-template-rows: none;
+  height: 100%;
+  max-height: 100dvh;
+  overflow-y: auto;
+  padding: 24px 24px 32px;
+  gap: 16px;
+}
+
+#quick-add-dialog .quick-add-modal__content .product-information__media {
+  width: 100%;
+  max-height: 270px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+#quick-add-dialog .quick-add-modal__content .product-information__media img {
+  max-height: 270px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#quick-add-dialog .quick-add-modal__content .product-details {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow: visible;
+  padding: 0;
+  mask-image: none;
+  animation: none;
+}
+
+#quick-add-dialog .quick-add-modal__content .variant-option__button-label {
+  border-radius: 6px;
+}
+
+#quick-add-dialog .quick-add-modal__content .view-more-details__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+#quick-add-dialog .quick-add-modal__content .view-more-details {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
