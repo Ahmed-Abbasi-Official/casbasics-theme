@@ -289,7 +289,7 @@ export class QuickAddComponent extends Component {
 
     if (!productGrid || !modalContent) return;
 
-    if (isMobileBreakpoint()) {
+    if (isMobileBreakpoint() && !productGrid.classList.contains('cb-qd')) {
       const productDetails = productGrid.querySelector('.product-details');
       const productFormComponent = productGrid.querySelector('product-form-component');
       const variantPicker = productGrid.querySelector('variant-picker');
@@ -334,6 +334,24 @@ export class QuickAddComponent extends Component {
     morph(modalContent, productGrid);
 
     this.#syncVariantSelection(modalContent);
+    this.#setupGalleryArrows(modalContent);
+  }
+
+  /**
+   * Wires previous/next circular arrow buttons for the Quick Buy horizontal image strip.
+   * @param {Element} modalContent
+   */
+  #setupGalleryArrows(modalContent) {
+    const track = modalContent.querySelector('[data-qd-track]');
+    if (!track) return;
+    const prev = modalContent.querySelector('[data-qd-prev]');
+    const next = modalContent.querySelector('[data-qd-next]');
+    const step = () => {
+      const slide = track.querySelector('.cb-qd__slide');
+      return slide ? slide.getBoundingClientRect().width + 10 : track.clientWidth * 0.85;
+    };
+    prev?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
   }
 
   /**
