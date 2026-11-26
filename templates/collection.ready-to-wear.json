@@ -23,7 +23,7 @@
         "right_image_3": "shopify://shop_images/embroidered.webp",
         "padding_top": 0,
         "padding_bottom": 0,
-        "use_collection_text": true,
+        "use_collection_text": false,
         "use_collection_image": true,
         "height": 450
       }
