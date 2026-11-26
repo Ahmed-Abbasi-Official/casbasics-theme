@@ -13,7 +13,7 @@
       "type": "cb-rtw-hero",
       "settings": {
         "heading": "Ready to Wear Abayas",
-        "text": "<p>Delivery in 1-2 Business Days</p><p>Fast Delivery | No customizations | No alterations | No refunds | No exchanges</p><p><strong>NO REFUNDS OR EXCHANGES ON READY TO WEAR ABAYAS AT CAS ABAYA OUTLET</strong></p><p>Use code <strong>RTW40</strong> for 40% Off</p>",
+        "text": "<p><strong>Delivery in 1-2 Business Days</strong></p><p>Fast Delivery | No customizations | No alterations | No refunds | No exchanges</p><p><strong>NO REFUNDS OR EXCHANGES ON READY TO WEAR ABAYAS AT CAS ABAYA OUTLET</strong></p><p>Use code <strong>RTW40</strong> for 40% Off</p>",
         "background_color": "#fcfaf6",
         "left_image_1": "shopify://shop_images/rtw.webp",
         "left_image_2": "shopify://shop_images/dresses.webp",
@@ -21,8 +21,11 @@
         "right_image_1": "shopify://shop_images/winter.webp",
         "right_image_2": "shopify://shop_images/lace_2.webp",
         "right_image_3": "shopify://shop_images/embroidered.webp",
-        "padding_top": 24,
-        "padding_bottom": 24
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "use_collection_text": true,
+        "use_collection_image": true,
+        "height": 450
       }
     },
     "main": {
@@ -41,7 +44,7 @@
           "settings": {
             "label": "White",
             "value": "White",
-            "color": "#ffffff"
+            "color": "#f4f1ea"
           }
         },
         "colour_beige": {
@@ -49,7 +52,7 @@
           "settings": {
             "label": "Beige",
             "value": "Beige",
-            "color": "#d8ccb8"
+            "color": "#d6c2a8"
           }
         },
         "colour_brown": {
@@ -57,7 +60,7 @@
           "settings": {
             "label": "Brown",
             "value": "Brown",
-            "color": "#6b4c3b"
+            "color": "#7a5c48"
           }
         },
         "colour_grey": {
@@ -73,7 +76,7 @@
           "settings": {
             "label": "Blue",
             "value": "Blue",
-            "color": "#26466d"
+            "color": "#1f3a5f"
           }
         },
         "colour_green": {
@@ -81,7 +84,7 @@
           "settings": {
             "label": "Green",
             "value": "Green",
-            "color": "#2f4f3e"
+            "color": "#4f5b3a"
           }
         },
         "colour_pink": {
@@ -89,7 +92,7 @@
           "settings": {
             "label": "Pink",
             "value": "Pink",
-            "color": "#d6a5b2"
+            "color": "#d9a5ae"
           }
         },
         "colour_purple": {
@@ -97,7 +100,7 @@
           "settings": {
             "label": "Purple",
             "value": "Purple",
-            "color": "#5e3c6d"
+            "color": "#5e3b5c"
           }
         }
       },
@@ -117,17 +120,18 @@
         "read_more_label": "Read More",
         "read_less_label": "Read Less",
         "show_colour_row": true,
-        "colour_heading": "BY COLOUR",
+        "colour_heading": "By colour",
         "all_colours_label": "All colours",
         "show_filters": true,
         "options_limit": 10,
         "columns_desktop": 4,
+        "columns_tablet": 3,
         "columns_mobile": "2",
-        "products_per_page": 24,
+        "products_per_page": 20,
         "background_color": "",
         "text_color": "",
-        "padding_top": 48,
-        "padding_bottom": 64
+        "padding_top": 30,
+        "padding_bottom": 30
       }
     }
   },

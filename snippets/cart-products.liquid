@@ -72,6 +72,10 @@
         {{ 'actions.continue_shopping' | t }}
       </span>
     </a>
+    {%- if context == 'drawer' and settings.cb_free_shipping_enable and settings.cb_free_shipping_threshold > 0 -%}
+      {%- assign cb_threshold_cents = settings.cb_free_shipping_threshold | times: 100 -%}
+      <p class="cb-cart-empty-note">UAE free shipping on orders over {{ cb_threshold_cents | money }} AED.</p>
+    {%- endif -%}
   {%- else -%}
     <span
       class="visually-hidden"

@@ -3028,7 +3028,8 @@ span.cb-hero__cart:hover {
 .cb-banner__overlay {
   position: absolute;
   inset: 0;
-  background: rgb(0 0 0 / var(--cb-overlay, 0.3));
+  background: var(--cb-overlay-color, #000);
+  opacity: var(--cb-overlay, 0.3);
 }
 
 .cb-banner__content {
@@ -8035,4 +8036,3192 @@ html.cb-loader-on:not(.page-loading) .cb-loader {
   color: #0b0b0b;
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+/* =====================================================================
+   Mobile menu drawer (snippets/cb-menu-drawer.liquid inside header-drawer.liquid)
+   Sizes from the live store: full width on phones, 400px from 400px up,
+   17px links, 16px sub-links, slides in from the left over 0.4s
+   ===================================================================== */
+.menu-drawer.cb-mdrawer {
+  display: block;
+  width: min(100vw, 400px);
+  max-width: none;
+  padding: var(--safe-area-inset-top, 0px) 0 calc(20px + var(--safe-area-inset-bottom, 0px));
+  border: 0;
+  background: #f0eee9;
+  color: #000;
+  font-family: var(--font-body--family);
+  transition: transform 0.4s cubic-bezier(0.46, 0.01, 0.32, 1), visibility 0.4s linear;
+}
+
+.menu-open > .menu-drawer.cb-mdrawer {
+  display: block;
+}
+
+.cb-mdrawer + .menu-drawer__backdrop {
+  background: rgb(0 0 0 / 0.3);
+  backdrop-filter: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.cb-mdrawer__head {
+  position: relative;
+  padding: 20px;
+}
+
+.cb-mdrawer__logo {
+  display: inline-block;
+  vertical-align: top;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cb-mdrawer__logo img {
+  display: block;
+  height: auto;
+}
+
+.cb-mdrawer__logo-text {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 31.3px;
+}
+
+.cb-mdrawer__close {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  width: 54px;
+  height: 54px;
+  padding: 18px;
+  border: 0;
+  background: none;
+  color: inherit;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.menu-drawer.cb-mdrawer .cb-mdrawer__close svg,
+.menu-drawer.cb-mdrawer .cb-mdrawer__toggle svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.menu-drawer.cb-mdrawer .cb-mdrawer__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cb-mdrawer__list,
+.cb-mdrawer__sublist,
+.cb-mdrawer__extra {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cb-mdrawer__list {
+  margin-top: 10px;
+}
+
+.cb-mdrawer__row {
+  display: flex;
+  align-items: stretch;
+}
+
+.cb-mdrawer__link {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 8px 20px;
+  color: inherit;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.cb-mdrawer__link.is-highlight {
+  color: var(--cb-mdrawer-highlight, #6c0013);
+}
+
+/* + / − on items with a sub-menu */
+.cb-mdrawer__toggle {
+  position: relative;
+  flex: none;
+  width: 52px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.menu-drawer.cb-mdrawer .cb-mdrawer__toggle svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+}
+
+.cb-mdrawer__minus,
+.cb-mdrawer__toggle[aria-expanded='true'] .cb-mdrawer__plus {
+  opacity: 0;
+}
+
+.cb-mdrawer__toggle[aria-expanded='true'] .cb-mdrawer__minus {
+  opacity: 1;
+}
+
+/* Sub-menus open to their full height (0.5s) and fade in (1s) */
+.cb-mdrawer__sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 0.5s ease, opacity 1s ease, visibility 0s linear 0.5s;
+}
+
+.cb-mdrawer__sub.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.cb-mdrawer__sub-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.cb-mdrawer__sub-inner > .cb-mdrawer__sublist {
+  padding: 5px 0;
+}
+
+.cb-mdrawer__sublink {
+  display: block;
+  padding: 5px 5px 5px 20px;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.cb-mdrawer__sublist--deep .cb-mdrawer__sublink {
+  padding-left: 35px;
+  font-size: 15px;
+}
+
+.cb-mdrawer__extra {
+  margin-top: 20px;
+}
+
+/* =====================================================================
+   Header on phones, as on the live store: ☰ on the left (44px button, 28px icon),
+   logo in the middle, search and bag on the right (42px buttons, 26px icons),
+   no account icon; a full bag shows a dot inside the icon instead of a number
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  html #header-component .header__columns {
+    --header-template-columns: 44px 40px minmax(0, 1fr) 42px 42px;
+    padding-inline: 8px;
+  }
+
+  html #header-component .header__columns .search-action {
+    grid-area: rightA;
+  }
+
+  html #header-component .header__columns header-actions {
+    grid-area: rightB;
+  }
+
+  html #header-component .account-button {
+    display: none;
+  }
+
+  html #header-component .header__icon--menu {
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    justify-content: center;
+  }
+
+  html #header-component .header__icon--menu .svg-wrapper,
+  html #header-component .header__icon--menu svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  html #header-component .search-action .header-actions__action,
+  html #header-component header-actions .header-actions__action {
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+  }
+
+  html #header-component .search-action .svg-wrapper,
+  html #header-component .search-action svg,
+  html #header-component .header-actions__cart-icon .svg-wrapper,
+  html #header-component .header-actions__cart-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  html #header-component .header-actions__cart-icon {
+    position: relative;
+    width: 26px;
+    height: 26px;
+  }
+
+  html #header-component .header-logo img {
+    width: auto;
+    height: 31px;
+  }
+
+  /* Bag with items: a small dot in the bag (no number) */
+  html #header-component .header-actions__cart-icon .cart-bubble {
+    position: absolute;
+    top: 52.5%;
+    left: 50%;
+    width: 4.2px;
+    height: 4.2px;
+    min-width: 0;
+    padding: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  html #header-component .header-actions__cart-icon .cart-bubble .cart-bubble__background {
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* No cut-out in the bag for the number bubble */
+  html #header-component .header-actions__cart-icon svg {
+    -webkit-mask: none;
+    mask: none;
+  }
+
+  html #header-component .header-actions__cart-icon .cart-bubble__text {
+    display: none;
+  }
+}
+
+/* Hero progress line: only on phones */
+.cb-hero__rail {
+  display: none;
+}
+
+/* =====================================================================
+   Home hero on phones, as on the live store: 638px tall under the header, the
+   "Best sellers" card along the bottom with one product at a time sliding sideways
+   (76px picture, 14px name, 13px price, 42px bag button), a progress line and "View all"
+   ===================================================================== */
+@media screen and (max-width: 767px) {
+  .cb-hero--glass {
+    --cb-hero-height: 638px;
+    min-height: 638px;
+  }
+
+  .cb-hero--glass .cb-hero__inner {
+    padding: 72px 20px 8px;
+  }
+
+  .cb-hero--glass .cb-hero__panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    flex: none;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border-color: rgb(255 255 255 / 0.5);
+    border-radius: 20px;
+    box-shadow: 0 40px 90px -40px rgb(0 0 0 / 0.75);
+  }
+
+  .cb-hero--glass .cb-hero__panel-head {
+    padding: 20px 18px 14px;
+  }
+
+  .cb-hero--glass .cb-hero__panel-title {
+    margin-top: 0;
+    font-size: 11px;
+    line-height: 1.25;
+    letter-spacing: 0.3em;
+  }
+
+  .cb-hero--glass .cb-hero__list {
+    display: flex;
+    flex: none;
+    height: 80px;
+    padding: 4px 18px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .cb-hero--glass .cb-hero__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cb-hero--glass .cb-hero__item--row,
+  .cb-hero--glass.cb-hero--no-thumbs .cb-hero__item--row {
+    flex: 0 0 100%;
+    grid-template-columns: 76px minmax(0, 1fr) 42px;
+    gap: 18px;
+    height: 76px;
+    padding: 0;
+    border: 0;
+    scroll-snap-align: center;
+  }
+
+  .cb-hero--glass.cb-hero--no-thumbs .cb-hero__item--row {
+    grid-template-columns: minmax(0, 1fr) 42px;
+  }
+
+  .cb-hero--glass .cb-hero__item--row .cb-hero__thumb {
+    width: 76px;
+    height: 76px;
+    border-radius: 10px;
+    background: rgb(255 255 255 / 0.04);
+  }
+
+  .cb-hero--glass .cb-hero__item--row .cb-hero__item-title {
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.005em;
+  }
+
+  .cb-hero--glass .cb-hero__item--row .cb-hero__item-price {
+    margin-top: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5625;
+    letter-spacing: 0.05em;
+  }
+
+  .cb-hero--glass .cb-hero__cart {
+    width: 42px;
+    height: 42px;
+  }
+
+  .cb-hero--glass .cb-hero__panel[data-collapsed] .cb-hero__rail {
+    display: none;
+  }
+
+  .cb-hero--glass .cb-hero__rail {
+    position: relative;
+    display: block;
+    height: 2px;
+    margin: 4px 16px;
+    border-radius: 2px;
+    background: rgb(255 255 255 / 0.12);
+  }
+
+  .cb-hero--glass .cb-hero__rail span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 12%;
+    border-radius: 2px;
+    background: rgb(217 185 140);
+  }
+
+  .cb-hero--glass .cb-hero__panel-foot--row,
+  .cb-hero--glass .cb-hero__panel[data-collapsed] .cb-hero__panel-foot--row {
+    height: 47px;
+    margin: 0;
+    padding: 0 18px 10px;
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+  }
+
+  .cb-hero--glass .cb-hero__view-all {
+    font-size: 11px;
+    line-height: 1.5625;
+    letter-spacing: 0.2em;
+  }
+
+  .cb-hero--glass .cb-hero__toggle {
+    border-color: rgb(255 255 255 / 0.12);
+  }
+}
+
+/* =====================================================================
+   Phones (live store): 20px page gutter everywhere
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .page-width-wide,
+  .page-width-normal,
+  .page-width-narrow,
+  .page-width-content {
+    --page-margin: max(20px, var(--safe-area-inset-left, 0px), var(--safe-area-inset-right, 0px));
+  }
+}
+
+/* =====================================================================
+   Product lists on phones (New In, Premium… on the home page), as on the live store:
+   36px above and below, a 21px title with a 75px line under it, then (30px down)
+   two columns of cards 20px / 35px apart — or a row of 146.5px cards that scrolls
+   sideways — and the "Shop now" link centred 30px under the products.
+   Cards: 2:3 picture, 15px gap, 15.84px name, 12.32px price, 9px apart.
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .section-resource-list.section {
+    row-gap: 30px;
+    padding-block: 36px;
+  }
+
+  .section-resource-list__header,
+  .section-resource-list__header > .group-block,
+  .section-resource-list__header .group-block-content {
+    display: contents;
+  }
+
+  .section-resource-list__header .group-block__media-wrapper {
+    display: none;
+  }
+
+  .section-resource-list__header .text-block {
+    grid-column: 2;
+    order: 0;
+  }
+
+  .section-resource-list > .resource-list,
+  .section-resource-list > [class*='resource-list'] {
+    order: 1;
+  }
+
+  .section-resource-list__header a.button-unstyled {
+    grid-column: 2;
+    order: 2;
+    justify-self: center;
+    font-size: 14.4px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.075em;
+    color: #000;
+    text-underline-offset: 4px;
+  }
+
+  .section-resource-list__header h2,
+  .section-resource-list__header h2 a {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .section-resource-list__header h2 strong {
+    font-weight: inherit;
+  }
+
+  .section-resource-list__header h2::after {
+    margin-top: 14.5px;
+  }
+
+  .section-resource-list .resource-list--grid {
+    column-gap: 20px;
+    row-gap: 35px;
+  }
+
+  /* Sideways row: 146.5px cards 20px apart, no arrows */
+  .section-resource-list .resource-list__carousel slideshow-arrows {
+    display: none;
+  }
+
+  .section-resource-list .resource-list__carousel .resource-list__slide {
+    flex: 0 0 37.56vw;
+    width: 37.56vw;
+  }
+
+  .section-resource-list .resource-list__carousel slideshow-slides {
+    gap: 20px;
+  }
+
+  .resource-list .product-card .card-gallery {
+    padding-bottom: 11px;
+  }
+
+  .resource-list .product-card product-price {
+    margin-top: 5px;
+  }
+
+  .resource-list .product-card [class*='text-block--product_title'],
+  .resource-list .product-card [class*='text-block--product_title'] p {
+    font-size: 15.84px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .resource-list .product-card product-price,
+  .resource-list .product-card product-price .price {
+    font-size: 12.32px;
+    font-weight: 400;
+    line-height: 1;
+  }
+}
+
+/* =====================================================================
+   Collection circles on phones (home page), as on the live store: 33.6px above, 19.2px
+   below, a 21px title (500) with a 75px line 14.5px under it and 70px to the circles,
+   165px circles 20px apart, 18px names
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-tiles:has(.cb-ratio-circle) {
+    padding-block: 33.6px 19.2px;
+  }
+
+  .cb-tiles:has(.cb-ratio-circle) .cb-header {
+    margin-bottom: 70px;
+  }
+
+  .cb-tiles:has(.cb-ratio-circle) .cb-heading {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .cb-tiles:has(.cb-ratio-circle) .cb-heading-line {
+    margin-top: 14.5px;
+  }
+
+  .cb-tiles:has(.cb-ratio-circle) .cb-grid {
+    gap: 20px;
+  }
+
+  .cb-tiles:has(.cb-ratio-circle) .cb-tiles__name {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: normal;
+  }
+}
+
+/* Press: arrow after "Read more"; dots only on phones */
+.cb-press__arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.cb-press__dots {
+  display: none;
+}
+
+/* =====================================================================
+   Press on phones, as on the live store: 36px above and below, "FEATURED IN" 30px,
+   the quote 20px across the full width with a large faint quote mark, "Read more →",
+   then one 200px logo at a time in the middle with dots under it
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-section.cb-press--band {
+    padding-block: 36px;
+    overflow: hidden;
+  }
+
+  .cb-press--band .cb-subheading {
+    display: block;
+    margin-bottom: 0;
+    font-size: 30px;
+    line-height: 1.25;
+    letter-spacing: 0.1em;
+  }
+
+  .cb-press--band .cb-press__slides {
+    padding-top: 53.4px;
+  }
+
+  .cb-press--band .cb-press__quote {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .cb-press--band .cb-press__quote::before {
+    top: -48px;
+    left: -6px;
+    font-family: var(--font-body--family);
+    font-size: 216px;
+    color: rgb(0 0 0 / 0.1);
+  }
+
+  .cb-press--band .cb-press__slide {
+    margin: 0;
+  }
+
+  .cb-press--band .cb-press__more {
+    margin-top: 20px;
+    line-height: 1.2;
+  }
+
+  .cb-press--band .cb-press__more .cb-text-link {
+    font-size: 14.4px;
+    line-height: 1.2;
+  }
+
+  .cb-press--band .cb-press__logos {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0;
+    width: 100vw;
+    margin: 41.6px 0 0 -20px;
+    transform: translateX(calc(50vw - 100px - var(--cb-press-index, 0) * 200px));
+    transition: transform 0.4s ease;
+  }
+
+  .cb-press--band .cb-press__logos > li {
+    display: flex;
+    flex: 0 0 200px;
+    align-items: center;
+    justify-content: center;
+    height: 38.7px;
+    padding: 0 10px;
+  }
+
+  .cb-press--band .cb-press__logo img {
+    max-width: 180px;
+    max-height: 38.7px;
+  }
+
+  .cb-press__dots {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 27px 0 13px;
+  }
+
+  .cb-press__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transition: width 0.3s ease;
+  }
+
+  .cb-press__dot[aria-current='true'] {
+    width: 25px;
+  }
+}
+
+/* =====================================================================
+   Home page on phones: section-by-section spacing that differs from the 0.6 rule
+   (measured on the live store at 390px)
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  [id$='__text_story'] .cb-section {
+    padding-top: 36px;
+  }
+
+  /* Promise icons (free shipping…): no padding, just the line on top */
+  [id$='__icons_promises'] .cb-section {
+    padding-block: 0;
+  }
+
+
+}
+
+/* =====================================================================
+   Overlapping images on phones, as on the live store: 36px above and below, two 195px
+   pictures 30px in from the screen edges (the right one at the top, the left one 60px
+   lower), square corners, then 30px down a 27px title (500), a line 15px under it and the
+   15.84px text
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-section.cb-overlapping {
+    padding-block: 36px;
+  }
+
+  .cb-overlapping .cb-overlap {
+    gap: 30px;
+  }
+
+  .cb-overlapping .cb-overlap__images {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0 -20px;
+    aspect-ratio: 390 / 303.75;
+  }
+
+  .cb-overlapping .cb-overlap__primary,
+  .cb-overlapping .cb-overlap__secondary {
+    position: absolute;
+    width: 50%;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+    transform: none;
+  }
+
+  .cb-overlapping .cb-overlap__primary {
+    top: 19.75%;
+    left: 7.69%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .cb-overlapping .cb-overlap__secondary {
+    top: 0;
+    right: 7.69%;
+    left: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .cb-overlapping .cb-overlap__content {
+    margin-bottom: -15px;
+  }
+
+  .cb-overlapping .cb-heading {
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .cb-overlapping .cb-heading-line {
+    margin-top: 15px;
+  }
+
+  .cb-overlapping .cb-overlap__content .cb-rte {
+    margin-top: 15.84px;
+    font-size: 15.84px;
+    line-height: 1.5625;
+  }
+}
+
+/* =====================================================================
+   Columns (picture, title, text, link) on phones, as on the live store: 36px above and
+   below, items 30px apart, 30px from the picture to a 12.6px title (500), 14.4px text,
+   then the 14.4px link (500, 0.075em) 10px under it
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-section.cb-columns {
+    padding-block: 36px;
+  }
+
+  .cb-columns .cb-grid {
+    row-gap: 30px;
+  }
+
+  .cb-columns .cb-columns__media {
+    margin-bottom: 0;
+  }
+
+  .cb-columns .cb-columns__item .cb-columns__title {
+    margin: 30px 0 3.15px;
+    font-size: 12.6px;
+    line-height: 1.25;
+    letter-spacing: normal;
+  }
+
+  .cb-columns .cb-columns__item .cb-rte {
+    font-size: 14.4px;
+    line-height: 1.5625;
+  }
+
+  .cb-columns .cb-columns__item .cb-text-link {
+    margin-top: 10px;
+    padding: 0;
+    color: #000;
+    font-size: 14.4px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.075em;
+  }
+
+  .cb-columns .cb-columns__item > .cb-text-link:last-child {
+    margin-bottom: 3px;
+  }
+}
+
+/* Icons on phones: items from the full-width one onward start 30px down (live store) */
+@media screen and (max-width: 749px) {
+  .cb-icons--grid .cb-icons__item--m-tail {
+    padding-top: 30px;
+  }
+}
+
+/* =====================================================================
+   Locations on phones, as on the live store: text 290px wide (60px kept clear on the
+   right), the line 5px under the heading, arrows 100px under the top of the store, pictures straight
+   after (no gap), 36px below the section
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-section.cb-locations-section {
+    padding-bottom: 36px;
+  }
+
+  .cb-locations-section .cb-locations {
+    gap: 0;
+  }
+
+  .cb-locations-section .cb-locations__info {
+    padding-right: 60px;
+  }
+
+  .cb-locations-section .cb-locations__info .cb-heading-line {
+    margin-top: 5px;
+  }
+
+  .cb-locations-section .cb-locations__arrows {
+    margin: 10px 0 50px;
+  }
+}
+
+/* FAQ accordions on phones: 0.6 × the section padding (36px), like the live store */
+@media screen and (max-width: 749px) {
+  .cb-section.cb-accordions-section {
+    padding-block: calc(var(--cb-pt, 60px) * 0.6) calc(var(--cb-pb, 60px) * 0.6);
+  }
+}
+
+/* Referral card on phones: 0.6 × the section padding (36px), like the live store */
+@media screen and (max-width: 749px) {
+  .cb-section.cb-referral-section {
+    padding-block: calc(var(--cb-pt, 60px) * 0.6) calc(var(--cb-pb, 60px) * 0.6);
+  }
+}
+
+/* =====================================================================
+   Footer on phones, as on the live store: 36px above, 12px headings (500) — the menus as
+   25px-tall toggles — blocks 40px apart, 40px under the email field, then the social icons
+   (16px apart), country / language, copyright, links and payment icons, all on the left,
+   with 36px below
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  footer .footer-content {
+    padding-top: 36px;
+    padding-bottom: 40px;
+  }
+
+  footer .footer-content .menu__heading,
+  footer .footer-content summary.menu__heading {
+    height: 25px;
+    min-height: 0;
+    padding-block: 0;
+    align-items: center;
+    font-size: 12px !important;
+    line-height: 15px !important;
+  }
+
+  footer .footer-content h2,
+  footer .footer-content h3,
+  footer .footer-content .text-block h2,
+  footer .footer-content .text-block h3 {
+    font-size: 12px !important;
+    line-height: 15px !important;
+  }
+
+  .cb-section.cb-footer-bottom {
+    padding-top: 0;
+    padding-bottom: 36px;
+  }
+
+  .cb-footer-bottom .cb-footer-bottom__social {
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .cb-footer-bottom .cb-footer-bottom__center,
+  .cb-footer-bottom .cb-footer-bottom__copyright {
+    text-align: left;
+  }
+
+  .cb-footer-bottom .cb-footer-bottom__localization,
+  .cb-footer-bottom .cb-footer-bottom__menu {
+    justify-content: flex-start;
+  }
+
+  .cb-footer-bottom .cb-footer-bottom__menu {
+    column-gap: 10px;
+  }
+
+  .cb-footer-bottom .cb-footer-bottom__select {
+    min-height: 35px;
+    font-size: 10.8px;
+  }
+
+  .cb-footer-bottom .cb-footer-bottom__payment-list {
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* Quick buy on product cards: the 21px shopping bag (live store) */
+.quick-add__button .add-to-cart-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* Phones: headings break like the live store (no balancing of the lines) */
+@media screen and (max-width: 749px) {
+  .cb-heading {
+    text-wrap: wrap;
+  }
+}
+
+/* Phones: quick buy sits 15px inside the picture itself (plus the 11px gap under the gallery), which is centred in the 2:3 box
+   (about 5.56% of the box above and below for the usual 3:4 product photos), like the live store */
+@media screen and (max-width: 749px) {
+  .resource-list .product-card .quick-add__button {
+    inset-block-end: calc(26px + 5.56%);
+  }
+}
+
+/* Footer menu toggles on phones: 12px (500) titles and a thin 16px plus, like the live store */
+@media screen and (max-width: 749px) {
+  footer .footer-content .menu__heading__default,
+  footer .menu__heading__accordion,
+  footer .menu__heading__accordion * {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 15px !important;
+  }
+
+  footer .menu__heading .menu__heading__toggle.svg-wrapper,
+  footer .menu__heading .menu__heading__toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  footer .menu__heading__toggle svg path {
+    stroke-width: 0.9;
+  }
+}
+
+/* Collection banners: the Arabic accent line in Reem Kufi (live store) */
+.cb-banners__accent {
+  font-family: 'Reem Kufi', var(--font-body--family), sans-serif;
+  font-weight: 400;
+}
+
+/* =====================================================================
+   Shop All page on phones, as on the live store: 16px page gutter;
+   hero 28px / 24px with a line under it — 10px crumbs, 34px title, 13px intro,
+   a sideways row of 41.6px buttons; featured cards with the text (58%) beside the
+   picture (42%), 12px apart, the first one 16:10 and the others at least 200px;
+   "Shop by" groups 48px apart with 26px titles — colours 4 across (82px circles,
+   11px names), fabrics 3 across (squares, 14px names), styles 2 across (3:4, 14px names);
+   then "Prefer to see everything?" (20px) over a full-width dark button
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-shop-hero .cb-container,
+  .cb-banners .cb-container,
+  .cb-tiles--below .cb-container,
+  [id$='__see_all'] .cb-container {
+    padding-inline: 16px;
+  }
+
+  /* Hero */
+  .cb-section.cb-shop-hero {
+    padding-top: 28px;
+  }
+
+  .cb-shop-hero .cb-shop-hero__inner--divider {
+    padding-bottom: 24px;
+  }
+
+  .cb-shop-hero .cb-crumbs {
+    margin-bottom: 10px;
+    font-size: 10px;
+    line-height: 1.5625;
+    letter-spacing: 0.14em;
+    color: rgb(11 11 11 / 0.62);
+  }
+
+  .cb-shop-hero .cb-crumbs a {
+    color: inherit;
+  }
+
+  .cb-shop-hero .cb-shop-hero__heading {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.05;
+  }
+
+  .cb-shop-hero .cb-shop-hero__subtext {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgb(11 11 11 / 0.62);
+  }
+
+  .cb-shop-hero .cb-jump {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin: 22px -16px 0;
+    padding: 0 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .cb-shop-hero .cb-jump::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cb-shop-hero .cb-jump .cb-btn {
+    flex: none;
+    min-height: 0;
+    padding: 12px 18px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.5625;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+  }
+
+  /* Featured cards */
+  .cb-section.cb-banners {
+    padding-top: 28px;
+  }
+
+  .cb-banners .cb-banners__grid {
+    gap: 12px;
+  }
+
+  .cb-banners .cb-banners__item {
+    grid-template-columns: 58fr 42fr;
+    background: var(--cb-banner-panel, #e8e0d4);
+  }
+
+  .cb-banners .cb-banners__item--full {
+    aspect-ratio: 16 / 10;
+  }
+
+  .cb-banners .cb-banners__item--half {
+    min-height: 200px;
+  }
+
+  .cb-banners .cb-banners__media {
+    order: 0;
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .cb-banners .cb-banners__media img,
+  .cb-banners .cb-banners__media .placeholder-svg {
+    position: static;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cb-banners .cb-banners__panel {
+    gap: 6px;
+    padding: 20px;
+  }
+
+  .cb-banners .cb-banners__eyebrow {
+    margin: 0;
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 1.5625;
+  }
+
+  .cb-banners .cb-banners__accent {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .cb-banners .cb-banners__heading {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .cb-banners .cb-banners__link {
+    display: none;
+  }
+
+  /* "Shop by" groups */
+  .cb-section.cb-tiles--below {
+    padding-top: 48px;
+  }
+
+  .cb-tiles--below .cb-header {
+    margin-bottom: 18px;
+  }
+
+  .cb-tiles--below .cb-heading {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .cb-tiles--below .cb-grid,
+  .cb-tiles--below .cb-grid.cb-grid--carousel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 10px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .cb-tiles--below .cb-grid:has(.cb-ratio-swatch) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 10px;
+  }
+
+  .cb-tiles--below .cb-grid:has(.cb-ratio-square) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 10px;
+  }
+
+  .cb-tiles--below .cb-grid > .cb-tiles__card {
+    width: auto;
+  }
+
+  .cb-tiles--below .cb-ratio-swatch {
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+
+  .cb-tiles--below .cb-ratio-portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  .cb-tiles--below .cb-tiles__card .cb-tiles__title {
+    margin-top: 8px;
+    padding-bottom: 0;
+  }
+
+  .cb-tiles--below .cb-tiles__name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5625;
+    letter-spacing: normal;
+  }
+
+  .cb-tiles--below .cb-grid:has(.cb-ratio-swatch) .cb-tiles__title {
+    justify-content: center;
+  }
+
+  .cb-tiles--below .cb-grid:has(.cb-ratio-swatch) .cb-tiles__name {
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .cb-tiles--below .cb-grid:has(.cb-ratio-portrait) .cb-tiles__card .cb-tiles__title {
+    padding-bottom: 8px;
+  }
+
+  .cb-tiles--below .cb-tiles__cta {
+    display: none;
+  }
+
+  /* "Prefer to see everything?" */
+  [id$='__see_all'] .cb-section {
+    padding-block: 48px 64px;
+  }
+
+  [id$='__see_all'] .cb-heading {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5625;
+  }
+
+  [id$='__see_all'] .cb-text__block--button {
+    margin-top: 14px;
+  }
+
+  [id$='__see_all'] .cb-btn {
+    width: 100%;
+    min-height: 0;
+    padding: 16px 40px;
+    border: 1px solid #0b0b0b;
+    background: #0b0b0b;
+    color: #f0eee9;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5625;
+    letter-spacing: 0.18em;
+  }
+}
+
+/* Product options on phones: five 44px pills per row (8px apart), 13px (500) text, like the live store */
+@media screen and (max-width: 749px) {
+  .cb-pdp__values {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .cb-pdp__value {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+}
+
+/* =====================================================================
+   Newsletter popup on phones, sized like the live store's popup card: as wide as the screen
+   less 16px each side (420px at most), white with 18px corners, 44 / 24 / 28px inside,
+   an 11px label, 22px title (600), 13px text, a light 34px close button 14px in from the
+   corner, and the email field over the button so nothing runs off the screen
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-popup > form,
+  .cb-popup .cb-popup__dialog {
+    width: min(420px, calc(100vw - 32px));
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .cb-popup .cb-popup__dialog {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .cb-popup .cb-popup__body {
+    padding: 44px 24px 28px;
+    text-align: center;
+  }
+
+  .cb-popup .cb-popup__close {
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #9b958d;
+  }
+
+  .cb-popup .cb-subheading {
+    margin-bottom: 14px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.18em;
+  }
+
+  .cb-popup .cb-heading {
+    margin-bottom: 12px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .cb-popup .cb-rte {
+    max-width: 280px;
+    margin: 0 auto 20px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #7a746b;
+  }
+
+  .cb-popup .cb-form-row {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .cb-popup .cb-form-row > * {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .cb-popup .cb-form-row .cb-input {
+    flex: none;
+    height: 48px;
+  }
+}
+
+/* =====================================================================
+   Collection grid with filters turned off (e.g. New In), as on the live store:
+   no filter column on larger screens — the breadcrumbs on their own line, then sort on
+   the left and the product count on the right, the products across the full width.
+   Phones keep the filter icon, which opens just the sorting.
+   ===================================================================== */
+@media screen and (min-width: 768px) {
+  .cb-rtw--no-filters .cb-rtw__sidebar {
+    display: none;
+  }
+
+  .cb-rtw--no-filters .cb-rtw__bar,
+  .cb-rtw--no-filters .cb-rtw__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .cb-rtw--no-filters .cb-rtw__bar {
+    column-gap: 0;
+    min-height: 72px;
+  }
+
+  .cb-rtw--no-filters .cb-rtw__crumbs {
+    grid-column: 1 / -1;
+    margin: 20px 30px 0 0;
+  }
+
+  .cb-rtw--no-filters .cb-rtw__sort {
+    justify-self: start;
+  }
+
+  .cb-rtw--no-filters .cb-rtw__sort-toggle {
+    padding-block: 4px;
+  }
+
+  .cb-rtw--no-filters .cb-rtw__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* =====================================================================
+   Cart drawer, as on the live store: sand background; "Cart" (24px, 600) with
+   "(1 item)" next to it and a 54px close button over a 1px line; the free shipping
+   message and bar first; products with a 100px picture, 11.7px bold name, 10.8px
+   options, the price on the right, an 80 x 27 quantity box and a "Remove" link;
+   then "Discounts" and "Add order notes"; at the bottom, always in view, the
+   "Checkout - total" button with "Shipping & taxes calculated at checkout" under it.
+   Empty: the message at the top, "Continue shopping" and the free shipping line at the bottom.
+   ===================================================================== */
+#cart-drawer .theme-drawer__dialog,
+#cart-drawer .cart-drawer__inner,
+#cart-drawer .cart-drawer__content {
+  background: #f0eee9;
+  color: #0b0b0b;
+}
+
+#cart-drawer .cart-drawer__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+#cart-drawer .theme-drawer__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: none;
+  min-height: 51px;
+  margin: 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid #0b0b0b;
+}
+
+#cart-drawer .theme-drawer__header .theme-drawer__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-family: var(--font-body--family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+#cart-drawer .cb-cart-count {
+  font-size: 9.78px;
+  font-weight: 600;
+  line-height: 12.225px;
+}
+
+#cart-drawer .theme-drawer__close-button {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  padding: 15px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #0b0b0b;
+  box-shadow: none;
+}
+
+#cart-drawer .theme-drawer__close-button .svg-wrapper,
+#cart-drawer .theme-drawer__close-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Scrolling content with the checkout area pinned to the bottom */
+#cart-drawer .cart-items-component {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#cart-drawer .cart-drawer__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  padding: 0;
+  overflow-y: auto;
+}
+
+#cart-drawer .cart-drawer__summary {
+  display: contents;
+}
+
+/* Free shipping message and bar */
+#cart-drawer .cb-free-shipping {
+  flex: none;
+  margin: 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid #0b0b0b;
+}
+
+#cart-drawer .cb-free-shipping__message {
+  margin: 0 0 2px;
+  font-size: 11.736px;
+  line-height: 18.3375px;
+  text-align: left;
+}
+
+#cart-drawer .cb-free-shipping__track {
+  height: 7px;
+  margin: 6px 0 5.65px;
+  border-radius: 6px;
+  background: rgb(11 11 11 / 0.1);
+}
+
+#cart-drawer .cb-free-shipping__fill {
+  border-radius: 6px;
+  background: rgb(11 11 11 / 0.2);
+}
+
+/* Products */
+#cart-drawer .cart-drawer__items {
+  flex: none;
+  margin: 0;
+  padding: 0;
+}
+
+#cart-drawer .cart-items__table-row,
+#cart-drawer .cart-items__table-row--full-width-variants {
+  grid-template-columns: 100px minmax(0, 1fr) auto;
+  column-gap: 20px;
+  margin: 0;
+  padding: 20px;
+  border: 0;
+}
+
+#cart-drawer .cart-items__media,
+#cart-drawer .cart-items__media-container,
+#cart-drawer .cart-items__media-image {
+  width: 100px;
+  height: 100px;
+}
+
+#cart-drawer .cart-items__media-image {
+  object-fit: cover;
+  border-radius: 0;
+}
+
+#cart-drawer .cart-items__title {
+  color: #0b0b0b;
+  font-size: 11.736px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+#cart-drawer .cart-items__variants,
+#cart-drawer .cart-items__properties,
+#cart-drawer .cart-items__variant {
+  margin: 0;
+  color: #0b0b0b;
+  font-size: 10.8px;
+  line-height: 16.875px;
+}
+
+#cart-drawer .cart-items__variants-wrapper {
+  margin: 8px 0 0;
+}
+
+#cart-drawer .cart-items__unit-price-wrapper {
+  display: none;
+}
+
+#cart-drawer .cart-items__price,
+#cart-drawer .cart-items__price * {
+  color: #0b0b0b;
+  font-size: 11.736px;
+  font-weight: 400;
+  line-height: 14.67px;
+}
+
+#cart-drawer .cart-items__quantity {
+  margin-top: 10px;
+}
+
+#cart-drawer .cart-items__quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#cart-drawer .cart-items__quantity .quantity-selector {
+  width: 80px;
+  height: 27px;
+  min-height: 0;
+  border: 1px solid rgb(0 0 0 / 0.5);
+  border-radius: 1px;
+  background: #f0eee9;
+}
+
+#cart-drawer .cart-items__quantity .quantity-selector button {
+  width: 20px;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  color: rgb(11 11 11 / 0.5);
+}
+
+#cart-drawer .cart-items__quantity .quantity-selector button svg {
+  width: 8px;
+  height: 8px;
+}
+
+#cart-drawer .cart-items__quantity .quantity-selector input {
+  min-width: 0;
+  padding: 0;
+  font-size: 10.8px;
+}
+
+/* "Remove" as a small underlined word instead of the bin icon */
+#cart-drawer .cart-items__remove {
+  width: auto;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #0b0b0b;
+  font-size: 10.8px;
+  line-height: 16.875px;
+  text-decoration: underline;
+}
+
+#cart-drawer .cart-items__remove svg {
+  display: none;
+}
+
+#cart-drawer .cart-items__remove .visually-hidden {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: nowrap;
+}
+
+/* Discounts and order notes */
+#cart-drawer .cart-totals {
+  flex: none;
+  margin: 0;
+  padding: 20px;
+  border-top: 1px solid #0b0b0b;
+}
+
+#cart-drawer .cart-totals__container {
+  display: none;
+}
+
+#cart-drawer .cart-note__summary,
+#cart-drawer .cart-discount__summary {
+  padding: 10px 0;
+}
+
+#cart-drawer .cart-note__label,
+#cart-drawer .cart-discount__label {
+  font-size: 11.736px;
+  font-weight: 400;
+  line-height: 13.6138px;
+}
+
+#cart-drawer .cart-totals__icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Checkout, always at the bottom */
+#cart-drawer .cart__ctas {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  display: block;
+  flex: none;
+  margin-top: auto;
+  padding: 20px;
+  border-top: 1px solid #0b0b0b;
+  background: #f0eee9;
+}
+
+#cart-drawer .cart__checkout-button {
+  width: 100%;
+  height: 48px;
+  min-height: 0;
+  padding: 12px 18px;
+  border: 1px solid #0b0b0b;
+  border-radius: 8px;
+  background: #0b0b0b;
+  color: #fff;
+  font-size: 14.4px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+#cart-drawer .cb-checkout-note {
+  margin: 7px 0 0;
+  font-size: 11.736px;
+  line-height: 1.36;
+  text-align: center;
+}
+
+/* Empty cart */
+#cart-drawer .cart-drawer--empty .cart-drawer__content > .theme-drawer__title {
+  margin: 0;
+  padding: 20px 20px 0;
+  font-family: var(--font-body--family);
+  font-size: 14.4px;
+  font-weight: 400;
+  line-height: 22.5px;
+  letter-spacing: normal;
+  text-align: center;
+  text-transform: none;
+}
+
+#cart-drawer .cart-drawer--empty .cart-drawer__items {
+  margin-top: auto;
+  padding: 20px;
+  border-top: 1px solid #0b0b0b;
+}
+
+#cart-drawer .cart-items__wrapper--drawer-empty {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#cart-drawer .cart-items__wrapper--drawer-empty > p:not(.cb-cart-empty-note) {
+  display: none;
+}
+
+#cart-drawer .cart-items__empty-button {
+  width: 100%;
+  height: 45.6px;
+  min-height: 0;
+  padding: 10.8px 18px;
+  border-radius: 8px;
+  background: #0b0b0b;
+  color: #fff;
+  font-size: 14.4px;
+  font-weight: 400;
+  letter-spacing: 0.075em;
+}
+
+#cart-drawer .cb-cart-empty-note {
+  margin: 14.4px 0 0;
+  font-size: 14.4px;
+  line-height: 22.5px;
+  letter-spacing: 0.0875em;
+  text-transform: uppercase;
+}
+
+#cart-drawer .cart-items__title-row,
+#cart-drawer .cart-items__product-info {
+  font-size: 11.736px;
+  line-height: 1.3;
+}
+
+#cart-drawer .cart-items__quantity {
+  grid-column: 2 / -1;
+}
+
+#cart-drawer .cart-items__remove,
+#cart-drawer .cart-items__remove .visually-hidden {
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* "Discounts" first, then "Add order notes", without lines between them */
+#cart-drawer .cart-actions {
+  display: flex;
+  flex-direction: column;
+  border: 0;
+}
+
+#cart-drawer .cart-actions > * {
+  border: 0;
+}
+
+#cart-drawer .cart-actions .cart-discount {
+  order: -1;
+}
+
+#cart-drawer .cart-actions__divider {
+  display: none;
+}
+
+#cart-drawer .theme-drawer__dialog {
+  border: 0;
+}
+
+/* Classic text sections on phones (live store): a large heading is 27px (500), and a text-style
+   button is 14.4px (500, 0.075em) with no padding */
+@media screen and (max-width: 749px) {
+  .cb-text--classic .cb-heading--large {
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .cb-text--classic .cb-text__block--button .cb-text-link {
+    padding: 0;
+    color: #000;
+    font-size: 14.4px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.075em;
+  }
+
+  .cb-text--classic .cb-heading--large + .cb-text__block--button,
+  .cb-text--classic .cb-text__block:has(.cb-heading--large) + .cb-text__block--button {
+    margin-top: 12px;
+  }
+}
+
+/* Column carousels on phones (live store): one 330px column at a time (screen less 60px), 20px apart */
+@media screen and (max-width: 749px) {
+  .cb-columns .cb-grid.cb-grid--carousel {
+    gap: 20px;
+  }
+
+  .cb-columns .cb-grid--carousel > .cb-columns__item {
+    flex: 0 0 calc(100vw - 60px);
+    width: calc(100vw - 60px);
+  }
+}
+
+/* About page banner on phones (live store): 650px tall, the text 23.4px over a light veil, a little above the middle */
+@media screen and (max-width: 749px) {
+  .cb-template-page-about .cb-banner {
+    --cb-banner-h: 650px;
+    min-height: 650px;
+  }
+
+  .cb-template-page-about .cb-banner__content {
+    padding: 0;
+  }
+
+  .cb-template-page-about .cb-banner__box {
+    margin-bottom: 30px;
+    padding: 60px 20px;
+  }
+
+  .cb-template-page-about .cb-banner__text {
+    margin: 0 0 10px;
+    font-size: 23.4px;
+    line-height: 1.5625;
+  }
+}
+
+/* Classic image with text on phones (live store): 20px gutter, the text 20px under the picture,
+   a 25.2px heading (500), 14.4px text with 12px under it */
+@media screen and (max-width: 749px) {
+  .cb-image-with-text--classic .cb-iwt__content,
+  .cb-image-with-text--classic .cb-iwt--right .cb-iwt__content {
+    padding: 20px 0 12px;
+  }
+
+  .cb-image-with-text--classic .cb-iwt__content:has(> .cb-rte:last-child) {
+    padding-bottom: 12px;
+  }
+
+  .cb-image-with-text--classic .cb-iwt__content .cb-heading {
+    font-size: 25.2px;
+  }
+
+  /* About page values: 46px rows with one line between them, 10.8px answers */
+  .cb-template-page-about .cb-iwt-accordion summary {
+    padding-block: 10px;
+  }
+
+  .cb-template-page-about .cb-iwt-accordion {
+    border-bottom: 0;
+  }
+
+  .cb-template-page-about .cb-iwt-accordion + .cb-iwt-accordion {
+    border-top: 0;
+  }
+
+  .cb-template-page-about .cb-iwt-accordion__body,
+  .cb-template-page-about .cb-iwt-accordion__body p {
+    font-size: 10.8px;
+    line-height: 16.875px;
+  }
+}
+
+/* =====================================================================
+   Comparison, "two lists in a card" style (live store About page): a 40px spaced-out
+   title and 16px grey subtitle, then a white card (12px corners, soft shadow) with "CAS"
+   and "OTHERS" lists side by side — 28.8px labels over a 2px line, 32px round ticks
+   (black) and crosses (light grey) beside 16px text. Phones stack the lists.
+   ===================================================================== */
+.cb-compare-cards {
+  padding-inline: 20px;
+}
+
+.cb-compare-cards__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cb-compare-cards__head {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.cb-compare-cards__title {
+  margin: 0 0 10px;
+  font-family: var(--font-body--family);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #2c2c2c;
+}
+
+.cb-compare-cards__subtitle,
+.cb-compare-cards__subtitle p {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 25px;
+  color: #666;
+}
+
+.cb-compare-cards__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr);
+  gap: 40px;
+  padding: 50px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 40px rgb(0 0 0 / 0.08);
+}
+
+.cb-compare-cards__divider {
+  background: #e5e5e5;
+}
+
+.cb-compare-cards__label {
+  margin: 0 0 30px;
+  padding: 0 0 15px;
+  border-bottom: 2px solid #000;
+  font-family: var(--font-body--family);
+  font-size: 28.8px;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #2c2c2c;
+}
+
+.cb-compare-cards__col--them .cb-compare-cards__label {
+  color: #888;
+}
+
+.cb-compare-cards__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cb-compare-cards__item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.cb-compare-cards__icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cb-compare-cards__col--them .cb-compare-cards__icon {
+  background: #e0e0e0;
+  color: #999;
+}
+
+.cb-compare-cards__text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.cb-compare-cards__col--them .cb-compare-cards__text {
+  color: #666;
+}
+
+@media screen and (max-width: 767px) {
+  .cb-section.cb-compare-cards {
+    padding: 40px 15px;
+  }
+
+  .cb-compare-cards__title {
+    font-size: 28.8px;
+    line-height: 36px;
+    letter-spacing: 4px;
+  }
+
+  .cb-compare-cards__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    padding: 30px 20px;
+  }
+
+  .cb-compare-cards__divider {
+    display: none;
+  }
+
+  .cb-compare-cards__col--them {
+    padding-top: 30px;
+  }
+
+  .cb-compare-cards__label {
+    font-size: 22.4px;
+    line-height: 28px;
+    letter-spacing: 2px;
+  }
+}
+
+/* Press logos in columns: a wide strip, the logo shown whole */
+.cb-ratio-logo {
+  aspect-ratio: 330 / 71;
+}
+
+.cb-ratio-logo img {
+  object-fit: contain;
+}
+
+/* Columns on phones (live store): 25.2px heading (500) with the line 14.5px under it and
+   30px to the columns; text straight under a picture keeps 30px from it */
+@media screen and (max-width: 749px) {
+  .cb-columns .cb-header {
+    margin-bottom: 30px;
+  }
+
+  .cb-columns .cb-header .cb-heading {
+    font-size: 25.2px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .cb-columns .cb-header .cb-heading-line {
+    margin-top: 14.5px;
+  }
+
+  .cb-columns .cb-columns__item > a:has(> .cb-columns__media) + .cb-rte,
+  .cb-columns .cb-columns__item > .cb-columns__media + .cb-rte {
+    margin-top: 30px;
+  }
+}
+
+/* Phones: the live store has an empty 72px custom HTML section before the footer on every page */
+@media screen and (max-width: 749px) {
+  #MainContent {
+    padding-bottom: 72px;
+  }
+}
+
+/* =====================================================================
+   Home Service page on phones, as on the live store: a 430px picture over centred text
+   (11px burgundy eyebrow, 22px spaced title, 15px intro, 54px pill button); "The visit"
+   as a ruled list with 20px icons; "How it works" as a numbered timeline on a sand band;
+   the family card; the questions; and the black closing band. Spacing 52 / 44px.
+   ===================================================================== */
+@media screen and (max-width: 749px) {
+  .cb-template-page-home-service .cb-image-with-text .cb-iwt__content {
+    align-items: center;
+    padding: 30px 20px 0;
+    text-align: center;
+  }
+
+  .cb-template-page-home-service .cb-image-with-text .cb-subheading {
+    display: block;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.5625;
+    letter-spacing: 0.16em;
+    color: #6c0013;
+  }
+
+  .cb-template-page-home-service .cb-image-with-text .cb-heading,
+  .cb-template-page-home-service .cb-image-with-text .cb-heading--caps {
+    margin: 10px 0 0;
+    font-family: var(--font-body--family);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.14em;
+    color: #0b0b0b;
+  }
+
+  .cb-template-page-home-service .cb-image-with-text .cb-rte {
+    margin: 14px auto 0 !important;
+    max-width: 420px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #34302b;
+  }
+
+  .cb-template-page-home-service .cb-image-with-text .cb-rte--note {
+    margin: 12px 0 0 !important;
+    font-size: 12px;
+    line-height: 1.5625;
+    color: #5e5852;
+  }
+
+  .cb-template-page-home-service .cb-image-with-text .cb-buttons {
+    justify-content: center;
+    margin-top: 22px;
+  }
+
+  .cb-template-page-home-service .cb-btn--pill {
+    width: 100%;
+    max-width: 380px;
+    min-height: 54px;
+    gap: 10px;
+    padding: 0 28px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1.5625;
+  }
+
+  .cb-template-page-home-service .cb-btn--pill .cb-btn__icon,
+  .cb-template-page-home-service .cb-btn--pill .cb-btn__icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Headings of the lists and the questions */
+  .cb-template-page-home-service .cb-features__heading,
+  .cb-template-page-home-service .cb-accordions--heading-caps .cb-heading {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.14em;
+    color: #0b0b0b;
+  }
+
+  .cb-template-page-home-service .cb-features__title,
+  .cb-template-page-home-service .cb-features__text {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
+  /* The visit */
+  .cb-template-page-home-service .cb-section.cb-features--list {
+    padding: 52px 0 44px;
+  }
+
+  .cb-template-page-home-service .cb-features--list .cb-features__grid {
+    margin-top: 10px;
+  }
+
+  .cb-template-page-home-service .cb-features--list .cb-features__item {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 14px;
+    margin: 0;
+    padding: 16px 0;
+    border-bottom: 1px solid #dbd7cb;
+  }
+
+  .cb-template-page-home-service .cb-features--list .cb-features__item:last-child {
+    border-bottom: 0;
+  }
+
+  .cb-template-page-home-service .cb-features--list .cb-features__icon {
+    padding-top: 1px;
+  }
+
+  .cb-template-page-home-service .cb-features--list .cb-features__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cb-template-page-home-service .cb-features--list .cb-features__title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  .cb-template-page-home-service .cb-features--list .cb-features__text {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: #5e5852;
+  }
+
+  /* How it works: number and line on the left, text on the right */
+  .cb-template-page-home-service .cb-section.cb-features--steps {
+    padding: 44px 0 24px;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__grid {
+    margin-top: 26px;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__item::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    left: 15px;
+    width: 1px;
+    background: #c9b9a6;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__item:last-child::before {
+    display: none;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__number {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    background: #f0eee9;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__body {
+    padding: 4px 0 26px;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__item:last-child .cb-features__body {
+    padding-bottom: 0;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5625;
+  }
+
+  .cb-template-page-home-service .cb-features--steps .cb-features__text {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #4f4a44;
+  }
+
+  /* Family card */
+  .cb-template-page-home-service .cb-section.cb-callout-section {
+    padding: 52px 0 0;
+  }
+
+  .cb-template-page-home-service .cb-callout {
+    gap: 16px;
+    border-radius: 14px;
+  }
+
+  .cb-template-page-home-service .cb-callout__icon {
+    width: 46px;
+    height: 46px;
+    background: rgb(108 0 19 / 0.07);
+  }
+
+  .cb-template-page-home-service .cb-callout__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cb-template-page-home-service .cb-callout__title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5625;
+    letter-spacing: normal;
+  }
+
+  .cb-template-page-home-service .cb-callout__text {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.55;
+    letter-spacing: normal;
+    color: #4f4a44;
+    opacity: 1;
+  }
+
+  /* Questions */
+  .cb-template-page-home-service .cb-section.cb-accordions-section {
+    padding: 52px 0;
+  }
+
+  .cb-template-page-home-service .cb-accordions--stacked {
+    row-gap: 14px;
+  }
+
+  .cb-template-page-home-service .cb-accordions--heading-caps .cb-accordions__list {
+    border-top: 1px solid #dbd7cb;
+  }
+
+  .cb-template-page-home-service .cb-accordions--heading-caps .cb-accordion {
+    border-bottom: 1px solid #dbd7cb;
+  }
+
+  .cb-template-page-home-service .cb-accordions--heading-caps .cb-accordion summary {
+    gap: 16px;
+    padding: 18px 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5625;
+    letter-spacing: normal;
+  }
+
+  .cb-template-page-home-service .cb-accordion__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .cb-template-page-home-service .cb-accordions--icon-chevron .cb-accordion__icon::before {
+    top: 3px;
+    left: 5px;
+    width: 6px;
+    height: 6px;
+    border-width: 0 1px 1px 0;
+  }
+
+  .cb-template-page-home-service .cb-accordions--icon-chevron .cb-accordion[open] .cb-accordion__icon::before {
+    top: 6px;
+  }
+
+  .cb-template-page-home-service .cb-accordion__body,
+  .cb-template-page-home-service .cb-accordion__body p {
+    font-size: 14.4px;
+    line-height: 1.6;
+    color: #4f4a44;
+  }
+
+  .cb-template-page-home-service .cb-accordion__body {
+    padding: 0 0 18px;
+  }
+
+  .cb-template-page-home-service .cb-accordion__body p {
+    margin: 0 0 8px;
+  }
+
+  .cb-template-page-home-service .cb-accordion__body p:last-child {
+    margin: 0;
+  }
+
+  /* Closing band */
+  .cb-template-page-home-service .cb-section.cb-text {
+    padding: 48px 0;
+  }
+
+  .cb-template-page-home-service .cb-text .cb-subheading {
+    display: block;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.5625;
+    letter-spacing: 0.16em;
+    color: #d5ccbb;
+  }
+
+  .cb-template-page-home-service .cb-text .cb-heading {
+    max-width: 320px;
+    margin: 12px auto 0;
+    font-family: var(--font-body--family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: normal;
+    color: #fff;
+  }
+
+  .cb-template-page-home-service .cb-text .cb-text__block + .cb-text__block {
+    margin-top: 0;
+  }
+
+  .cb-template-page-home-service .cb-text .cb-text__block--button {
+    margin-top: 24px !important;
+  }
+
+  .cb-template-page-home-service .cb-text .cb-btn--light {
+    background: #f0eee9;
+    color: #0b0b0b;
+  }
+}
+
+/* Booking bar that rises from the bottom of the screen on phones once the first
+   button has scrolled away, and hides again while the closing band is in view. */
+.cb-sticky-cta {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .cb-sticky-cta {
+    position: fixed;
+    right: 10px;
+    bottom: 14px;
+    left: 10px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 70px;
+    padding: 0 8px 0 22px;
+    border-radius: 999px;
+    background: rgb(240 238 233 / 0.97);
+    box-shadow: 0 4px 18px rgb(11 11 11 / 0.12);
+    color: #0b0b0b;
+    transform: translateY(140%);
+    transition: transform 0.3s ease;
+  }
+
+  .cb-sticky-cta.is-visible {
+    transform: translateY(0);
+  }
+
+  .cb-sticky-cta__title {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5625;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .cb-sticky-cta__sub {
+    margin-top: 2px;
+    font-size: 11px;
+    line-height: 1.5625;
+    color: #5e5852;
+  }
+
+  .cb-sticky-cta__text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .cb-sticky-cta .cb-btn.cb-btn--pill {
+    flex: 0 0 auto;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none;
+    min-height: 54px;
+    gap: 10px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: #0b0b0b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  .cb-sticky-cta .cb-btn.cb-btn--pill .cb-btn__icon,
+  .cb-sticky-cta .cb-btn.cb-btn--pill .cb-btn__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-sticky-cta {
+    transition: none;
+  }
+}
+
+/* =====================================================================
+   Footer on product pages and the Home Service page (live store, cas-pdp.css): a darker
+   sand (#e8e4dd) background; 13px spaced capital headings; 13px grey text with dark links;
+   a round email field with a round black button; a line above the bottom row and small
+   (20px) social and payment icons. Phones: the menus become ruled rows (16px above and
+   below the title, the plus at the top right), the text blocks get 28px more room on top.
+   ===================================================================== */
+:is(.cb-template-product, .cb-template-page-home-service) .shopify-section-group-footer-group .section-background,
+:is(.cb-template-product, .cb-template-page-home-service) .cb-section.cb-footer-bottom {
+  background: #e8e4dd;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content h2,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content h3,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .menu__heading,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .menu__heading__default,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .menu__heading__accordion,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .text-block h2,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .text-block h3 {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: #0b0b0b !important;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .rte p,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content p,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .menu__item a {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #4f4a44 !important;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content p a {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .rte p,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content p {
+  margin-bottom: 13px;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .rte p:last-child {
+  margin-bottom: 0;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .rte a,
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content p a {
+  color: #0b0b0b;
+}
+
+/* Round email field and button */
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .email-signup__input-group {
+  display: flex;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .email-signup__input-group .email-signup__input {
+  flex: 1 1 auto;
+  height: 54px;
+  padding: 0 18px;
+  border: 1px solid #cfc8ba;
+  border-radius: 999px;
+  background: #f7f6f4;
+  font-size: 13px;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .email-signup__input::placeholder {
+  color: #757575;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .email-signup__input-group .email-signup__button {
+  flex: 0 0 54px;
+  width: 54px;
+  height: 54px;
+  border: 1px solid #0b0b0b;
+  border-radius: 999px;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+/* Bottom row */
+:is(.cb-template-product, .cb-template-page-home-service) .cb-footer-bottom__inner {
+  border-top: 1px solid #cfc8ba;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .cb-footer-bottom__social-link svg,
+:is(.cb-template-product, .cb-template-page-home-service) .cb-footer-bottom__payment-icon {
+  max-width: 20px;
+}
+
+@media screen and (max-width: 749px) {
+  :is(.cb-template-product, .cb-template-page-home-service) footer .footer-content .menu__heading,
+  :is(.cb-template-product, .cb-template-page-home-service) footer .footer-content summary.menu__heading {
+    position: relative;
+    height: auto;
+    padding: 16px 0;
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) footer .menu__heading__accordion,
+  :is(.cb-template-product, .cb-template-page-home-service) footer .menu__heading__accordion * {
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) footer .menu__heading .menu__heading__toggle.svg-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) footer .menu--accordion .menu__details {
+    border-bottom: 1px solid #cfc8ba;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) footer .footer-content > .menu:first-of-type .menu__details {
+    border-top: 1px solid #cfc8ba;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) footer .menu--accordion .details-content {
+    margin-top: 25px;
+    padding-bottom: 14px;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) footer .footer-content > .group-block,
+  :is(.cb-template-product, .cb-template-page-home-service) footer .footer-content > :not(.menu):not(:first-child) {
+    padding-top: 28px;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) .cb-footer-bottom .cb-footer-bottom__social {
+    margin-bottom: 0;
+  }
+
+  :is(.cb-template-product, .cb-template-page-home-service) .cb-footer-bottom .cb-footer-bottom__social-link {
+    width: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .footer-content .email-signup__input-group .email-signup__input::placeholder {
+  color: #0b0b0b;
+}
+
+:is(.cb-template-product, .cb-template-page-home-service) .cb-footer-bottom .cb-footer-bottom__select {
+  border-radius: 8px;
+  background: #f0eee9;
+}
+
+/* Size chart on phones (live store): 36px above and below, 13.5px under the title,
+   10px cell padding with the text centred in the row height */
+@media screen and (max-width: 767px) {
+  .cb-section.cb-size-chart {
+    padding-block: 36px;
+  }
+
+  .cb-size-chart__title {
+    margin-bottom: 13.5px;
+  }
+
+  .cb-size-chart__diagram + .cb-size-chart__table {
+    margin-top: calc(1.5625em + 6.5px);
+  }
+
+  .cb-size-chart th,
+  .cb-size-chart td {
+    padding: 10px;
+    vertical-align: middle;
+  }
+}
+
+/* Rewards tiers on phones (live store): the tier rows end the text, no space under them */
+@media screen and (max-width: 749px) {
+  .cb-template-page-rewards .cb-image-with-text--classic .cb-iwt__content:has(> .cb-iwt-accordion:last-child) {
+    padding-bottom: 0;
+  }
+}
+
+/* =====================================================================
+   Quick Buy on phones, as on the live store: a sheet rising from the bottom (75% of the
+   screen, 20px top corners, sand) over a light 20% veil. A square picture (162.5px) on the
+   left with the 21.6px name and the price beside it, then the stock line, 13.6px option
+   titles, 60 x 34 option boxes, the FAQ line and the description; "Add to cart" (outlined)
+   stays at the bottom under a black line. The 54px close sits in the top corner.
+   ===================================================================== */
+@keyframes cbQuickSheetIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes cbQuickSheetOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  #quick-add-dialog .quick-add-modal {
+    inset: auto 0 0 0;
+    width: 100vw;
+    height: 75vh;
+    max-height: 75vh;
+    border-radius: 20px 20px 0 0;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  #quick-add-dialog .quick-add-modal[open] {
+    border-radius: 20px 20px 0 0;
+    animation: cbQuickSheetIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  #quick-add-dialog .quick-add-modal.dialog-closing {
+    animation: cbQuickSheetOut 0.22s ease forwards;
+  }
+
+  #quick-add-dialog .quick-add-modal::backdrop {
+    background: rgb(0 0 0 / 0.2);
+  }
+
+  #quick-add-dialog .quick-add-modal__close {
+    top: 0;
+    inset-inline-end: 0;
+    width: 54px;
+    height: 54px;
+    padding: 15px;
+    border-radius: 0;
+  }
+
+  #quick-add-dialog .quick-add-modal__close svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #quick-add-dialog .quick-add-modal__content {
+    max-height: 75vh;
+  }
+
+  #quick-add-dialog .quick-add-modal__content {
+    gap: 0;
+  }
+
+  /* Picture and name side by side, everything else full width */
+  #quick-add-dialog .cb-qd__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-content: start;
+    column-gap: 25px;
+    padding: 25px 20px;
+  }
+
+  #quick-add-dialog .cb-qd__body > * {
+    grid-column: 1 / -1;
+  }
+
+  #quick-add-dialog .cb-qd__gallery {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 0 8px;
+  }
+
+  #quick-add-dialog .cb-qd__head {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0 0 8px;
+    padding: 0;
+  }
+
+  #quick-add-dialog .cb-qd__track {
+    gap: 10px;
+    padding: 0;
+  }
+
+  #quick-add-dialog .cb-qd__slide {
+    flex: 0 0 100%;
+    aspect-ratio: 1;
+  }
+
+  #quick-add-dialog .cb-qd__arrow {
+    display: none;
+  }
+
+  #quick-add-dialog .cb-qd__title {
+    margin: 0 0 8px;
+    padding: 0 12.5px 0 0;
+  }
+
+  #quick-add-dialog .cb-qd__title a {
+    margin: 0;
+    font-size: 21.6px;
+    font-weight: 500;
+    line-height: 27px;
+  }
+
+  #quick-add-dialog .cb-qd__price product-price,
+  #quick-add-dialog .cb-qd__price .price,
+  #quick-add-dialog .cb-qd__price bdi {
+    font-size: 14.4px;
+    line-height: 18px;
+  }
+
+  /* Stock line */
+  #quick-add-dialog .cb-qd__stock {
+    gap: 9px;
+    margin: 0 0 28px;
+    font-size: 10.8px;
+    line-height: 10.8px;
+  }
+
+  /* Options */
+  #quick-add-dialog .cb-qd__variants {
+    margin: 0;
+  }
+
+  #quick-add-dialog .cb-qd__variants variant-picker {
+    padding: 0;
+  }
+
+  #quick-add-dialog .cb-qd__variants variant-picker .variant-picker__form {
+    gap: 20px;
+  }
+
+  #quick-add-dialog .cb-qd__variants variant-picker fieldset {
+    margin: 0;
+  }
+
+  #quick-add-dialog .cb-qd__variants variant-picker fieldset legend {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 13.6px;
+    font-weight: 500;
+    line-height: 14.96px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  #quick-add-dialog .cb-qd__size-guide {
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 14.3px;
+    letter-spacing: 0.05em;
+  }
+
+  #quick-add-dialog .cb-qd__size-guide svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  #quick-add-dialog .cb-qd__variants .variant-option--buttons {
+    gap: 8px;
+  }
+
+  #quick-add-dialog .cb-qd__variants .variant-option__button-label {
+    min-width: 60px;
+    width: 60px;
+    height: 33.88px;
+    min-height: 0;
+    padding: 0 12px;
+    border-radius: 8px;
+    background: #f0eee9;
+    font-size: 10.8px;
+    line-height: 11.88px;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+  }
+
+  #quick-add-dialog .cb-qd__variants .variant-option__button-label__pill {
+    border-radius: 8px;
+  }
+
+  #quick-add-dialog .cb-qd__variants .variant-option__button-label__text {
+    font-size: 10.8px;
+    line-height: 11.88px;
+  }
+
+  /* FAQ line and description */
+  #quick-add-dialog .cb-qd__faq {
+    margin: 25px 0 17px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  #quick-add-dialog .cb-qd__faq a {
+    color: #6c0013;
+  }
+
+  #quick-add-dialog .cb-qd__desc {
+    margin: 14.4px 0;
+    font-size: 14.4px;
+    line-height: 22.5px;
+    color: #0b0b0b;
+  }
+
+  /* Add to cart */
+  #quick-add-dialog .cb-qd__foot {
+    padding: 12.5px 20px 25px;
+    border-top: 1px solid #000;
+  }
+
+  #quick-add-dialog .cb-qd__foot .add-to-cart-button {
+    height: 45.6px;
+    min-height: 0;
+    padding: 10.8px 18px;
+    border-radius: 8px;
+    font-size: 14.4px;
+    line-height: 22px;
+    letter-spacing: 0.075em;
+  }
+
+  #quick-add-dialog .cb-qd__view-all {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  #quick-add-dialog .cb-qd__title a {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    line-clamp: none;
+  }
+}
+
+/* =====================================================================
+   Search on phones, as on the live store: no full-screen page; a 60px sand bar opens under
+   the header with a 44px field (#eae7e0, 26px magnifier on the left, 24px close on the
+   right) and nothing below it until something is typed. Results then drop down in a panel
+   of the same colour, 20px in from the edges: "Suggestions" and "Products" (13.6px capitals
+   over a black line), suggestions as plain 14.4px lines, products as 30px pictures with the
+   name, and "View All Results" under a line at the end.
+   ===================================================================== */
+.cb-ps-suggestions-title {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .search-modal dialog.search-modal__content {
+    inset: 60px 0 auto 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(100dvh - 60px);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .search-modal dialog.search-modal__content::backdrop {
+    background: transparent;
+  }
+
+  .search-modal .predictive-search {
+    display: block;
+    height: auto;
+    max-height: calc(100dvh - 60px);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .search-modal .predictive-search-form {
+    height: auto;
+  }
+
+  /* The bar */
+  .search-modal .predictive-search-form__header {
+    position: relative;
+    height: 60px;
+    padding: 8px 20px;
+    border: 0;
+    background: #f0eee9 !important;
+  }
+
+  .search-modal .predictive-search-form__header-inner {
+    position: relative;
+    flex: 1 1 auto;
+    height: 44px;
+    background: #eae7e0;
+  }
+
+  .search-modal .predictive-search-form__header-inner .search-input {
+    width: 100%;
+    height: 44px;
+    padding: 9px 35px 9px 46px;
+    border: 0;
+    background: transparent;
+    font-size: 16px;
+    line-height: 26px;
+    color: #0b0b0b;
+  }
+
+  .search-modal .predictive-search-form__header-inner .search-input::placeholder {
+    color: transparent;
+  }
+
+  .search-modal .predictive-search__icon {
+    top: 9px;
+    left: 9px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .search-modal .predictive-search__icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .search-modal .predictive-search__reset-button {
+    display: none !important;
+  }
+
+  .search-modal .predictive-search__close-modal-button {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    width: 40px;
+    height: 44px;
+    padding: 0 !important;
+    border: 0;
+    background: transparent;
+    color: #0b0b0b;
+    justify-content: center;
+  }
+
+  .search-modal .predictive-search__close-modal-button .svg-wrapper,
+  .search-modal .predictive-search__close-modal-button svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Nothing under the bar until something is typed */
+  .search-modal .predictive-search:has(.search-input:placeholder-shown) .predictive-search-form__content-wrapper {
+    display: none;
+  }
+
+  /* The results panel */
+  .search-modal .predictive-search-form__content-wrapper {
+    width: auto;
+    max-width: none;
+    margin: -8px 20px 0;
+    padding: 0 20px;
+    background: #eae7e0;
+  }
+
+  .search-modal .predictive-search-form__content {
+    width: 100%;
+    max-height: calc(100dvh - 128px);
+    padding: 0 !important;
+    background: transparent;
+  }
+
+  .search-modal .predictive-search-results__inner {
+    padding: 0;
+  }
+
+  .search-modal .predictive-search-results__products,
+  .search-modal .predictive-search-results__resource-header {
+    padding: 0;
+  }
+
+  .search-modal .cb-ps-suggestions-title,
+  .search-modal .predictive-search-results__title {
+    display: block;
+    margin: 0 0 16px;
+    padding: 24px 0 8px;
+    border-bottom: 1px solid #000;
+    font-size: 13.6px;
+    font-weight: 500;
+    line-height: 21.25px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  /* Suggestions: plain lines */
+  .search-modal .predictive-search-results__wrapper-queries {
+    display: block;
+    margin: 0;
+    padding: 0 !important;
+  }
+
+  .search-modal .predictive-search-results__pill {
+    display: block;
+    margin: 0;
+    padding: 8px 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: #000;
+    font-size: 14.4px;
+    line-height: 17.28px;
+  }
+
+  .search-modal .predictive-search-results__pill mark {
+    background: #d1cbbc;
+    color: inherit;
+  }
+
+  /* Products: 30px picture and the name */
+  .search-modal .predictive-search-results__wrapper-products {
+    display: block;
+    padding: 0;
+  }
+
+  .search-modal .predictive-search-results__card--product {
+    padding: 8px 0;
+  }
+
+  .search-modal .predictive-search-results__card--product .resource-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+
+  .search-modal .predictive-search-results__card--product .resource-card__media {
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .search-modal .predictive-search-results__card--product .resource-card__media :is(img, svg) {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+
+  .search-modal .predictive-search-results__card--product .resource-card__content {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0 0 0 12px;
+  }
+
+  .search-modal .predictive-search-results__card--product .resource-card__title {
+    margin: 0;
+    font-size: 14.4px;
+    line-height: 17.28px;
+    color: #000;
+  }
+
+  .search-modal .predictive-search-results__card--product .resource-card__content > :not(.resource-card__title) {
+    display: none;
+  }
+
+  /* No collection carousel (the live store lists suggestions and products only) */
+  .search-modal slideshow-component.predictive-search-results__list {
+    display: none;
+  }
+
+  /* "View All Results" */
+  .search-modal .predictive-search-form__footer {
+    position: static;
+    margin: 24px 0 0;
+    padding: 16px 0 !important;
+    border-top: 1px solid #000;
+    background: transparent;
+  }
+
+  .search-modal .predictive-search__search-button {
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    color: #000;
+    font-size: 14.4px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .search-modal .predictive-search-form__content-wrapper {
+    box-sizing: border-box;
+    width: calc(100% - 40px) !important;
+  }
+
+  .search-modal .predictive-search__close-modal-button {
+    border: 0 !important;
+  }
+
+  .search-modal .predictive-search-results__wrapper-queries,
+  .search-modal .predictive-search-results__wrapper-products {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .search-modal .predictive-search-form__footer {
+    margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .search-modal .predictive-search-form__header {
+    border: 0 !important;
+  }
+}
+
+/* Phones: no divider line before the close button while the field has text */
+@media screen and (max-width: 749px) {
+  .search-modal .dialog-modal .predictive-search-form__header::before {
+    content: none !important;
+  }
 }

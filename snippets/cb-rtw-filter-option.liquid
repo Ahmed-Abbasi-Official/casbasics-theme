@@ -1,0 +1,27 @@
+{%- doc -%}
+  One checkbox row in the Ready to Wear filters: 14px rounded box, 11.52px label.
+
+  @param {object} value - Filter value
+  @param {number} extra - Position in the list (rows after the limit start hidden)
+  @param {number} limit - Rows shown before "Show more"
+{%- enddoc -%}
+
+{%- assign disabled = false -%}
+{%- if value.count == 0 and value.active == false -%}{%- assign disabled = true -%}{%- endif -%}
+<li class="cb-rtw__option{% if extra > limit %} is-extra{% endif %}">
+  <label class="cb-rtw__check{% if disabled %} is-disabled{% endif %}">
+    <input
+      type="checkbox"
+      class="cb-rtw__check-input"
+      name="{{ value.param_name }}"
+      value="{{ value.value | escape }}"
+      {% if value.active %}
+        checked
+      {% endif %}
+      {% if disabled %}
+        disabled
+      {% endif %}
+    >
+    <span class="cb-rtw__check-label">{{ value.label }}</span>
+  </label>
+</li>

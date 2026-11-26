@@ -58,7 +58,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if settings.cb_card_hover %} cb-card-hover{% endif %}">
+  <body class="cb-template-{{ template.name }}{% if template.suffix != blank %}-{{ template.suffix }}{% endif %} page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if settings.cb_card_hover %} cb-card-hover{% endif %}">
     {%- unless request.design_mode -%}{% render 'cb-page-loader' %}{%- endunless -%}
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 

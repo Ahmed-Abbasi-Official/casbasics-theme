@@ -1,0 +1,52 @@
+{%- comment -%}
+  Booking bar for phones (live store Home Service page): a rounded bar with a title, a
+  short line and a button, fixed to the bottom of the screen. It rises once the button in
+  the first section has scrolled out of view and hides while the section just before it
+  (the closing band) is on screen. Hidden on larger screens.
+{%- endcomment -%}
+<cb-sticky-cta class="cb-sticky-cta" aria-hidden="true">
+  <div class="cb-sticky-cta__text">
+    {%- if section.settings.title != blank -%}
+      <div class="cb-sticky-cta__title">{{ section.settings.title }}</div>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <div class="cb-sticky-cta__sub">{{ section.settings.subtitle }}</div>
+    {%- endif -%}
+  </div>
+  {%- if section.settings.label != blank -%}
+    <a
+      class="cb-btn cb-btn--solid cb-btn--pill"
+      href="{{ section.settings.link | default: '#' }}"
+      {% if section.settings.new_tab %}
+        target="_blank" rel="noopener"
+      {% endif %}
+      tabindex="-1"
+    >
+      {%- if section.settings.icon -%}
+        <span class="cb-btn__icon" aria-hidden="true">{%- render 'cb-icon', icon: 'chat' -%}</span>
+      {%- endif -%}
+      {{- section.settings.label -}}
+    </a>
+  {%- endif -%}
+</cb-sticky-cta>
+
+{% schema %}
+{
+  "name": "Booking bar (phones)",
+  "tag": "section",
+  "class": "cb-sticky-cta-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows at the bottom of the screen on phones after the first button scrolls away. Place it last on the page."
+    },
+    { "type": "text", "id": "title", "label": "Title", "default": "Home Service" },
+    { "type": "text", "id": "subtitle", "label": "Text", "default": "Complimentary · by appointment" },
+    { "type": "text", "id": "label", "label": "Button label", "default": "Book a visit" },
+    { "type": "url", "id": "link", "label": "Button link" },
+    { "type": "checkbox", "id": "new_tab", "label": "Open link in a new tab", "default": true },
+    { "type": "checkbox", "id": "icon", "label": "Show chat icon", "default": true }
+  ],
+  "presets": [{ "name": "Booking bar (phones)" }]
+}
+{% endschema %}

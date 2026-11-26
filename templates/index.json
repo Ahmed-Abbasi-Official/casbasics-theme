@@ -31,8 +31,8 @@
         "panel_link_label": "View all",
         "panel_position": "right-middle",
         "panel_style": "glass",
-        "show_images": false,
-        "start_collapsed": true
+        "show_images": true,
+        "start_collapsed": false
       }
     },
     "featured_seasonal": {
@@ -76,7 +76,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2><a href=\"/collections/oud-coffee-collection\" title=\"Oud & Coffee Collection\"><strong>Oud & Coffee Collection</strong></a></h2>",
+                "text": "<h2><a href=\"/collections/oud-coffee-early-access\" title=\"Oud & Coffee Collection\"><strong>Oud & Coffee Collection</strong></a></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -215,7 +215,7 @@
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "oud-coffee-collection",
+        "collection": "oud-coffee-early-access",
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "max_products": 8,
@@ -306,7 +306,7 @@
         "collection_0006"
       ],
       "settings": {
-        "heading": "Explore our featured collection",
+        "heading": "Explore our Featured Abaya Collection",
         "heading_size": "medium",
         "heading_alignment": "center",
         "show_line": true,
@@ -336,30 +336,30 @@
           "type": "quote",
           "settings": {
             "publication": "Gulf News",
-            "quote": "<p>CAS Abaya has built its reputation not only through its strong design identity but also through its commitment to ethically minded practices. -- Says <a href=\"https://gulfnews.com\" target=\"_blank\">Gulf News</a></p>",
+            "quote": "<p>CAS Abaya has built its reputation not only through its strong design identity but also through its commitment to ethically minded practices. -- Says <a href=\"https://gulfnews.com/business/corporate-news/cas-abayas-wearhope-campaign-fashion-with-a-purpose-for-humanitarian-aid-1.500355527\" target=\"_blank\" title=\"https://gulfnews.com/business/corporate-news/cas-abayas-wearhope-campaign-fashion-with-a-purpose-for-humanitarian-aid-1.500355527\">Gulf News</a></p>",
             "source": "",
-            "link_label": "Read more →",
-            "link": "https://gulfnews.com"
+            "link_label": "Read more",
+            "link": "https://gulfnews.com/business/corporate-news/cas-abayas-wearhope-campaign-fashion-with-a-purpose-for-humanitarian-aid-1.500355527"
           }
         },
         "quote_0008": {
           "type": "quote",
           "settings": {
-            "publication": "Publication two",
-            "quote": "<p>Each timeless piece is handcrafted using the most premium materials available and valued craftsmanship.</p>",
+            "publication": "Emirates Woman",
+            "quote": "<p>CAS Abaya, The Emirati Brand is redefining what it means to be a premier destination for modest wear in Dubai. Each timeless abaya is uniquely handcrafted using the most premium materials available, and valued craftsmanship -- Says <a href=\"https://emirateswoman.com/16-dubai-abaya-labels-emirati-owned-homegrown-uae-national-day/#:~:text=Discover%20on%20www.casbasics.com\" target=\"_blank\" title=\"https://emirateswoman.com/16-dubai-abaya-labels-emirati-owned-homegrown-uae-national-day/#:~:text=Discover%20on%20www.casbasics.com\">Emirates Woman</a></p>",
             "source": "",
-            "link_label": "Read more →",
-            "link": ""
+            "link_label": "Read more",
+            "link": "https://emirateswoman.com/16-dubai-abaya-labels-emirati-owned-homegrown-uae-national-day/#:~:text=Discover%20on%20www.casbasics.com"
           }
         },
         "quote_0009": {
           "type": "quote",
           "settings": {
-            "publication": "Publication three",
-            "quote": "<p>Beauty lies in the intersection of tradition and modernity — and this label lives right there.</p>",
+            "publication": "Khaleej Times",
+            "quote": "<p>CAS Abaya believes that beauty lies in the intersection of tradition and modernity, and their abayas epitomise this ethos, blending contemporary designs with timeless elegance -- Says <a href=\"https://www.khaleejtimes.com/kt-network/crystal-abaya-studio-your-sustainable-online-abaya-store\" target=\"_blank\" title=\"https://www.khaleejtimes.com/kt-network/crystal-abaya-studio-your-sustainable-online-abaya-store\">Khaleej Times</a></p>",
             "source": "",
-            "link_label": "Read more →",
-            "link": ""
+            "link_label": "Read more",
+            "link": "https://www.khaleejtimes.com/kt-network/crystal-abaya-studio-your-sustainable-online-abaya-store"
           }
         }
       },
@@ -421,7 +421,7 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_3sghae3sghae3sgh.jpg",
             "swatch": "",
             "title": "Dantel",
-            "link": "shopify://collections/dental-abaya"
+            "link": "shopify://collections/dantel-abaya"
           }
         },
         "collection_000e": {
@@ -660,7 +660,7 @@
       "settings": {
         "collection": "new-in",
         "layout_type": "grid",
-        "carousel_on_mobile": true,
+        "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
@@ -859,7 +859,7 @@
       "settings": {
         "collection": "premium-abaya",
         "layout_type": "grid",
-        "carousel_on_mobile": true,
+        "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
@@ -1058,7 +1058,7 @@
       "settings": {
         "collection": "printed-abaya",
         "layout_type": "grid",
-        "carousel_on_mobile": true,
+        "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
@@ -1116,7 +1116,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2><a href=\"/collections/dental-abaya\" title=\"Dental Abaya\"><strong>Dantel Abaya</strong></a></h2>",
+                "text": "<h2><a href=\"/collections/dantel-abaya\" title=\"Dantel Abaya\"><strong>Dantel Abaya</strong></a></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1255,9 +1255,9 @@
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "dental-abaya",
+        "collection": "dantel-abaya",
         "layout_type": "grid",
-        "carousel_on_mobile": true,
+        "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
@@ -1456,7 +1456,7 @@
       "settings": {
         "collection": "black-abaya",
         "layout_type": "grid",
-        "carousel_on_mobile": true,
+        "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
@@ -1703,7 +1703,8 @@
         "description_color": "",
         "line_color": "",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 60,
+        "mobile_full_item": "before_last_pair"
       }
     },
     "icons_values": {

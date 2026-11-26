@@ -15,27 +15,28 @@
         "width": "normal",
         "alignment": "center",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 0,
+        "style": "classic"
       },
       "blocks": {
         "subheading_002r": {
           "type": "subheading",
           "settings": {
-            "text": "#CAS ABAYA"
+            "text": "#CAS Abaya"
           }
         },
         "heading_002s": {
           "type": "heading",
           "settings": {
-            "heading": "CAS Abaya: Best Emirati Abaya Brand in Dubai",
-            "size": "large",
-            "show_line": false
+            "heading": "About CAS Abaya: Best Emirati Abaya Brand in Dubai",
+            "size": "compact",
+            "show_line": true
           }
         },
         "text_002t": {
           "type": "text",
           "settings": {
-            "text": "<p>Born in Dubai and shaped by the timeless elegance of Emirati heritage, CAS Abaya stands as a refined expression of modern modest couture. Rooted in craftsmanship and elevated by contemporary design, CAS redefines the Emirati abaya style by honouring tradition while shaping the future of luxury modest fashion.</p><p>CAS Abaya is created for women who move effortlessly between heritage and modernity — women who value refined tailoring, exceptional fabric quality, and sophisticated silhouettes. Each piece is thoughtfully designed to celebrate the grace of modest dressing while reflecting the evolving aesthetic of the latest abaya design and new abaya design movements emerging from Dubai’s dynamic fashion landscape.</p>"
+            "text": "<p>Born in Dubai and shaped by the timeless elegance of Emirati heritage, CAS Abaya stands as a refined expression of modern modest couture. Rooted in craftsmanship and elevated by contemporary design, CAS redefines the Emirati abaya style by honouring tradition while shaping the future of luxury modest fashion.<br><br>CAS Abaya is created for women who move effortlessly between heritage and modernity — women who value refined tailoring, exceptional fabric quality, and sophisticated silhouettes. Each piece is thoughtfully designed to celebrate the grace of modest dressing while reflecting the evolving aesthetic of the latest abaya design and new abaya design movements emerging from Dubai’s dynamic fashion landscape.</p>"
           }
         }
       },
@@ -51,7 +52,7 @@
         "heading": "",
         "columns": 3,
         "gap": 32,
-        "image_ratio": "portrait",
+        "image_ratio": "classic",
         "show_placeholders": true,
         "alignment": "left",
         "carousel_mobile": true,
@@ -62,22 +63,22 @@
         "column_002u": {
           "type": "column",
           "settings": {
-            "heading": "Artisanal Hand-Stitched Details",
-            "text": "<p>From delicate floral beading to sculptural threadwork, our artisans craft each detail with patience and care, creating abayas with refined dimension and grace.</p>"
+            "heading": "Craftsmanship & Design Philosophy",
+            "text": "<p>At CAS, an abaya is not simply a garment — it is a statement of identity, elegance, and cultural pride. The brand presents an elevated abaya collection Dubai is recognised for, featuring meticulously curated black abayas, intricate lace abayas, fluid pleated silhouettes, and contemporary coloured abayas enriched with detailed handwork and artisanal finishes.<br><br>Every CAS design is developed with a couture mindset. From fabric selection to final finishing, each abaya reflects a commitment to exceptional drape, precision tailoring, and luxurious detailing. The brand’s design philosophy blends classic Emirati modesty with modern structure, creating pieces suitable for daily refinement, formal occasions, and meaningful seasonal celebrations including Ramadan and Eid.</p>"
           }
         },
         "column_002v": {
           "type": "column",
           "settings": {
-            "heading": "Timeless Emirati Craftsmanship",
-            "text": "<p>Rooted in Dubai couture traditions, each abaya is tailored using high-grade fabrics, custom measurements, and finishes that feel effortless yet elevated.</p>"
+            "heading": "Customer-First Luxury Experience",
+            "text": "<p>CAS Abaya is built upon a deeply rooted customer-first philosophy. Every interaction is designed to reflect personalised luxury, from intuitive online browsing to seamless global delivery. The brand believes that exceptional fashion must be accompanied by exceptional service, ensuring each client experiences effortless shopping, transparent communication, and meticulous order care.<br><br>With worldwide shipping, CAS extends the elegance of Dubai abayas beyond borders, connecting women globally with authentic Emirati craftsmanship and refined modest fashion.</p>"
           }
         },
         "column_002w": {
           "type": "column",
           "settings": {
             "heading": "Sustainability Through Purposeful Creation",
-            "text": "<p>We craft to order, reducing waste and honouring fabrics through considered design, mindful production, and enduring styles made to last season after season.</p>"
+            "text": "<p>CAS operates through a conscious pre-order model, embodying a modern approach to sustainability within luxury fashion. Each abaya is created with intention, produced from scratch to precise measurements, minimising waste while preserving artisanal quality. This approach allows CAS to prioritise superior materials, responsible production, and enduring garment longevity.</p>"
           }
         }
       },
@@ -92,14 +93,15 @@
       "settings": {
         "height": "large",
         "zoom": true,
-        "overlay_opacity": 40,
+        "overlay_opacity": 30,
         "heading": "",
         "heading_h1": false,
-        "text": "<p>Through visionary design, elevated craftsmanship, and an unwavering commitment to quality, CAS Abaya continues to redefine the Emirati abaya experience — offering women a sophisticated expression of modern luxury, where each abaya is crafted with purpose, passion, and exceptional attention to detail.</p>",
+        "text": "<p>Through visionary design, elevated craftsmanship, and unwavering customer focus, CAS Abaya continues to shape a new chapter in modest fashion — where tradition is preserved, luxury is redefined, and every abaya tells a story of elegance, identity, and timeless sophistication.</p>",
         "horizontal_position": "center",
         "vertical_position": "middle",
         "text_alignment": "center",
-        "text_color": "#ffffff"
+        "text_color": "#000000",
+        "overlay_color": "#ffffff"
       }
     },
     "vision": {
@@ -111,8 +113,10 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "650"
       },
       "blocks": {
         "heading_002x": {
@@ -126,13 +130,53 @@
         "text_002y": {
           "type": "text",
           "settings": {
-            "text": "<p>At CAS Abaya, we believe that true elegance lies in refined simplicity and enduring quality. Our vision is to elevate the modern modest wardrobe through deliberate craftsmanship, innovative silhouettes, and an uncompromising dedication to bespoke luxury.</p>"
+            "text": "<p>CAS Abaya is guided by a vision to become a global reference in luxury modest fashion while preserving the authenticity of Emirati cultural dress. The brand continues to evolve the narrative of the trendy abaya by merging heritage craftsmanship with progressive design innovation.<br><br><br>The brand’s core values are anchored in:</p>"
+          }
+        },
+        "value_1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Cultural Respect & Preservation",
+            "content": "<p>Celebrating and modernising the elegance of Emirati abaya heritage</p>"
+          }
+        },
+        "value_2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Craftsmanship Excellence",
+            "content": "<p>Upholding couture-level attention to detail and fabric quality</p>"
+          }
+        },
+        "value_3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Customer Devotion",
+            "content": "<p>Delivering personalised service with uncompromising care</p>"
+          }
+        },
+        "value_4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Sustainable Luxury",
+            "content": "<p>Promoting responsible production through intentional design and pre-order craftsmanship</p>"
+          }
+        },
+        "value_5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Design Innovation",
+            "content": "<p>Continuously redefining the modern Dubai abaya aesthetic</p>"
           }
         }
       },
       "block_order": [
         "heading_002x",
-        "text_002y"
+        "text_002y",
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4",
+        "value_5"
       ]
     },
     "story": {
@@ -144,8 +188,10 @@
         "boxed": false,
         "text_alignment": "left",
         "vertical_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "classic": true,
+        "image_height_mobile": "full"
       },
       "blocks": {
         "heading_002z": {
@@ -159,7 +205,7 @@
         "text_0030": {
           "type": "text",
           "settings": {
-            "text": "<p>Every abaya begins with a foundation of fabric excellence. Having spent years developing and selecting high-grade textiles, CAS brings an intimate understanding of drape, weight, and movement to every collection.</p><p>From our atelier in Dubai, each piece is brought to life by master tailors who honour traditional cuts while embracing contemporary cuts and bespoke sizing.</p>"
+            "text": "<p>CAS Abaya was born from legacy, craftsmanship, and an unwavering reverence for the art of modest fashion. The story begins in Dubai in 1993, where CAS Abaya established its foundation within the abaya industry by supplying refined accessories and later becoming a distinguished source of premium fabrics trusted by designers and retailers across the region. Over decades, CAS Abaya cultivated an intimate understanding of textile excellence, artisanal craftsmanship, and the subtle language of elegance that defines the modern abaya.<br><br>In 2020, as the world stood still and reflection gave rise to reinvention, CAS Abaya transformed its heritage into a new creative expression. Crystal Abaya Studio (CAS) emerged as a natural evolution — a design house where fabric mastery meets contemporary vision. Each collection was conceived to celebrate femininity through silhouettes that flow with quiet sophistication, crafted using luxurious materials selected for their texture, movement, and timeless allure.<br><br>CAS Abaya embodies the harmony between Emirati heritage and modern refinement. The brand views the abaya not simply as attire, but as a cultural statement — one that carries identity, dignity, and individuality. Every design reflects a careful balance between tradition and progressive artistry, where minimalism meets detail, and where elegance is expressed through restraint rather than excess.<br><br>At the heart of CAS Abaya lies a philosophy that luxury must carry meaning. The brand remains deeply committed to preserving craftsmanship by supporting skilled artisans, championing women empowerment, and embracing conscious practices that respect both people and the environment. Each creation is approached with the belief that true luxury is measured not only by beauty, but by integrity and purpose.<br><br>Extending this philosophy beyond fashion, CAS Abaya dedicates AED 10 from every abaya purchased to the Red Crescent, contributing to humanitarian causes each month. This initiative reflects the brand’s conviction that refinement is inseparable from responsibility, and that fashion has the power to inspire both confidence and compassion.<br><br>CAS Abaya continues to shape a narrative where heritage meets innovation, where craftsmanship meets storytelling, and where every piece becomes part of a woman’s personal expression of grace and strength.</p>"
           }
         }
       },
@@ -175,27 +221,28 @@
         "alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
-        "background_color": "#e7e4e1"
+        "background_color": "#e7e4e1",
+        "style": "classic"
       },
       "blocks": {
         "subheading_0031": {
           "type": "subheading",
           "settings": {
-            "text": "#CAS IMPACT"
+            "text": "#CASforACause #WearHope"
           }
         },
         "heading_0032": {
           "type": "heading",
           "settings": {
             "heading": "Our Impact",
-            "size": "medium",
-            "show_line": false
+            "size": "compact",
+            "show_line": true
           }
         },
         "text_0033": {
           "type": "text",
           "settings": {
-            "text": "<p>Over AED 120,000 in donated abayas in 6 months.</p>"
+            "text": "<p>Every abaya sold helps fuel a meaningful AED 10 donation to Red Crescent every month!</p>"
           }
         },
         "button_0034": {
@@ -206,12 +253,21 @@
             "style": "text",
             "size": "medium"
           }
+        },
+        "amount": {
+          "type": "heading",
+          "settings": {
+            "heading": "Over AED 35000 is donated already in 4 months",
+            "size": "large",
+            "show_line": false
+          }
         }
       },
       "block_order": [
         "subheading_0031",
         "heading_0032",
         "text_0033",
+        "amount",
         "button_0034"
       ]
     },
@@ -223,53 +279,86 @@
         "us_label": "CAS",
         "them_label": "OTHERS",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 60,
+        "style": "cards"
       },
       "blocks": {
-        "row_0035": {
+        "row_1": {
           "type": "row",
           "settings": {
-            "us": "Customised sizes and lengths at no extra cost",
-            "them": "Extra charges for size and length alteration"
+            "us": "Customized sizes and colors with no hidden charges",
+            "them": "Extra charges for customization"
           }
         },
-        "row_0036": {
+        "row_2": {
           "type": "row",
           "settings": {
-            "us": "High-grade luxury fabrics sourced globally",
-            "them": "Standard fabrics with high markup"
+            "us": "Premium fabric at affordable prices",
+            "them": "Cheap fabric at high prices"
           }
         },
-        "row_0037": {
+        "row_3": {
           "type": "row",
           "settings": {
-            "us": "At-home stylist service with 100 abayas",
-            "them": "In-store visits only"
+            "us": "24/7 customer support available",
+            "them": "Limited customer support"
           }
         },
-        "row_0038": {
+        "row_4": {
           "type": "row",
           "settings": {
-            "us": "Matching sheila included with every abaya",
-            "them": "Sheila sold separately"
+            "us": "Flexible shopping channels: Home Service and video shopping for your convenience",
+            "them": "Offers only online shopping or in-store shopping"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "us": "Regular new designs and collections",
+            "them": "Basic designs"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "us": "Easy to navigate website with user-friendly experience",
+            "them": "Complicated websites that are hard to navigate"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "us": "Committed to sustainability as we reduce wastage while operating on a pre-order basis",
+            "them": "Fast-fashion"
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "us": "Flexible payment plans: COD, Tabby & Advance Payments",
+            "them": "Strict online payment only"
           }
         }
       },
       "block_order": [
-        "row_0035",
-        "row_0036",
-        "row_0037",
-        "row_0038"
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
       ]
     },
     "press": {
       "type": "cb-columns",
       "settings": {
-        "heading": "Featured in",
+        "heading": "Featured In",
         "show_line": true,
         "columns": 4,
         "gap": 24,
-        "image_ratio": "landscape",
+        "image_ratio": "logo",
         "show_placeholders": true,
         "alignment": "center",
         "carousel_mobile": true,
@@ -277,44 +366,96 @@
         "padding_bottom": 60
       },
       "blocks": {
-        "column_0039": {
+        "press_1": {
           "type": "column",
           "settings": {
             "heading": "",
-            "text": "<p>“A strong design identity and a commitment to ethical practices.” — Publication one</p>",
-            "link_label": "View article"
+            "text": "<p>CAS Abaya has built its reputation not only through its strong design identity but also through its commitment to ethically minded practices. -- Says Gulf News</p>",
+            "link_label": "View article",
+            "link": "https://gulfnews.com/business/corporate-news/cas-abayas-wearhope-campaign-fashion-with-a-purpose-for-humanitarian-aid-1.500355527",
+            "image": "shopify://shop_images/CAS-Abaya-trusted-by-gulf-news.png"
           }
         },
-        "column_003a": {
+        "press_2": {
           "type": "column",
           "settings": {
             "heading": "",
-            "text": "<p>“Redefining what it means to be a premier destination for modest wear.” — Publication two</p>",
-            "link_label": "View article"
+            "text": "<p>CAS Abaya, The Emirati Brand is redefining what it means to be a premier destination for modest wear in Dubai. Each timeless abaya is uniquely handcrafted using the most premium materials available, and valued craftsmanship -- Says Emirates Woman</p>",
+            "link_label": "View article",
+            "link": "https://emirateswoman.com/16-dubai-abaya-labels-emirati-owned-homegrown-uae-national-day/#:~:text=Discover%20on%20www.casbasics.com",
+            "image": "shopify://shop_images/Untitled_design_5.png"
           }
         },
-        "column_003b": {
+        "press_3": {
           "type": "column",
           "settings": {
             "heading": "",
-            "text": "<p>“Beauty in the intersection of tradition and modernity.” — Publication three</p>",
-            "link_label": "View article"
+            "text": "<p>CAS Abaya believes that beauty lies in the intersection of tradition and modernity, and their abayas epitomise this ethos, blending contemporary designs with timeless elegance -- Says Khaleej Times</p>",
+            "link_label": "View article",
+            "link": "https://www.khaleejtimes.com/kt-network/crystal-abaya-studio-your-sustainable-online-abaya-store",
+            "image": "shopify://shop_images/Untitled_design_6.png"
           }
         },
-        "column_003c": {
+        "press_4": {
           "type": "column",
           "settings": {
             "heading": "",
-            "text": "<p>“Handcrafted using the most premium materials available.” — Publication four</p>",
-            "link_label": "View article"
+            "text": "<p>In an industry where trends change quickly and consumer choices often feel transactional, CAS Abaya continues to redefine what it means to wear modest fashion with intention -- Says UAE News 247</p>",
+            "link_label": "View article",
+            "link": "https://uaenews247.com/2025/11/25/cas-for-a-purpose-uae-abaya-brand-introduces-fashion-with-meaning/",
+            "image": "shopify://shop_images/CAS_Abaya_in_UAE_News_24_7.png"
+          }
+        },
+        "press_5": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>CAS Abaya has been recognized as one of the fastest-growing abaya brands in the UAE, rapidly rising in popularity among Emirati women who value high-quality craftsmanship, personalization, and exceptional customer experience -- Says Emirati Times</p>",
+            "link_label": "View article",
+            "link": "https://emiratitimes.com/cas-abaya-rises-among-emirati-women/",
+            "image": "shopify://shop_images/emirati_times_report_on_cas_abaya-dubai.png"
+          }
+        },
+        "press_6": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>CAS Abaya is a reliable destination for all women who desire craftsmanship, custom-created style, and authentic quality in each style. From the most basic styles to simple black abayas with attention to details, the brand is ensuring a new narrative in modest fashion.</p>",
+            "link_label": "View article",
+            "link": "https://www.gulftoday.ae/lifestyle/2025/12/09/how-cas-abaya-redefines-identity-in-modest-fashion",
+            "image": "shopify://shop_images/gulf_today_by_Al_khaleej_ae_about_Cas_abaya.png"
+          }
+        },
+        "press_7": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>وذلك نابع من إيماننا بأن الموضة ينبغي أن لا تكون جميلة فقط، بل ينبغي أن تكون أيضاً ذات فائدة، ورؤيتنا وقيمنا أساس إلهام كل ما نقوم به في كريستال عباية استوديو، فعباياتنا ليست فقط جميلة ولكن أيضاً  مصممة لتدوم رغم أنها صنعت في عصر يهيمن عليه الموضة القابلة للتغير.</p>",
+            "link_label": "View article",
+            "link": "https://www.emaratalyoum.com/life/four-sides/2024-05-18-1.1853179",
+            "image": "shopify://shop_images/Amarat_ul_youm.png"
+          }
+        },
+        "press_8": {
+          "type": "column",
+          "settings": {
+            "heading": "",
+            "text": "<p>يتجاوز التزامنا بالاستدامة حدود اتجاهات الموضة؛ فهو متأصل في كل جانب من جوانب العمل. من توفير المواد الصديقة للبيئة إلى الممارسات الأخلاقية في العمل، حيث نسعى جاهدين لتقليل أثرنا البيئي وزيادة التأثير الاجتماعي الإيجابي، وذلك نابع من إيماننا بأن الموضة ينبغي أن لا تكون جميلة فقط، بل ينبغي أن تكون أيضاً ذات فائدة، ورؤيتنا وقيمنا أساس إلهام كل ما نقوم به في كريستال عباية استوديو، فعباياتنا ليست فقط جميلة ولكن أيضاً  مصممة لتدوم رغم أنها صنعت في عصر يهيمن عليه الموضة القابلة للتغير.</p>",
+            "link_label": "View article",
+            "link": "https://www.albayan.ae/economy/uae/2024-05-17-1.4874086",
+            "image": "shopify://shop_images/Untitled_design_16.png"
           }
         }
       },
       "block_order": [
-        "column_0039",
-        "column_003a",
-        "column_003b",
-        "column_003c"
+        "press_1",
+        "press_2",
+        "press_3",
+        "press_4",
+        "press_5",
+        "press_6",
+        "press_7",
+        "press_8"
       ]
     }
   },

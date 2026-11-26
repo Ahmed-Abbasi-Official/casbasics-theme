@@ -80,12 +80,14 @@ class CbPress extends HTMLElement {
   connectedCallback() {
     this.slides = [...this.querySelectorAll('[data-press-slide]')];
     this.logos = [...this.querySelectorAll('[data-press-logo]')];
+    this.dots = [...this.querySelectorAll('[data-press-dot]')];
     this.index = 0;
     if (this.slides.length < 2) return;
 
-    this.logos.forEach((logo, index) => {
-      logo.addEventListener('click', () => {
-        this.show(index);
+    [...this.logos, ...this.dots].forEach((control) => {
+      const list = control.hasAttribute('data-press-dot') ? this.dots : this.logos;
+      control.addEventListener('click', () => {
+        this.show(list.indexOf(control));
         this.restart();
       });
     });
@@ -105,6 +107,9 @@ class CbPress extends HTMLElement {
     this.index = (index + this.slides.length) % this.slides.length;
     this.slides.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== this.index)));
     this.logos.forEach((logo, i) => logo.setAttribute('aria-current', String(i === this.index)));
+    this.dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === this.index)));
+    // Phones show the logos as a row with the current one in the middle
+    this.style.setProperty('--cb-press-index', this.index);
   }
 
   start() {
@@ -389,8 +394,10 @@ class CbHeroPanel extends HTMLElement {
       storage.set(key, collapsed ? 'collapsed' : 'open');
     });
 
-    // "Show more" button in the panel footer scrolls the product list down one view (back to top at the end)
+    // "Show more" button in the panel footer scrolls the product list down one view (back to top at the end).
+    // On phones the list slides sideways, one product at a time.
     const list = this.querySelector('.cb-hero__list');
+    const sideways = () => list && list.scrollWidth > list.clientWidth + 2;
     this.querySelector('[data-panel-scroll]')?.addEventListener('click', () => {
       // Collapsed (only the title and "View all" rows show): the arrow opens the list first.
       if (this.panel.hasAttribute('data-collapsed')) {
@@ -399,9 +406,27 @@ class CbHeroPanel extends HTMLElement {
         return;
       }
       if (!list) return;
+      if (sideways()) {
+        const atEnd = list.scrollLeft + list.clientWidth >= list.scrollWidth - 2;
+        list.scrollTo({ left: atEnd ? 0 : list.scrollLeft + list.clientWidth, behavior: 'smooth' });
+        return;
+      }
       const atEnd = list.scrollTop + list.clientHeight >= list.scrollHeight - 2;
       list.scrollTo({ top: atEnd ? 0 : list.scrollTop + list.clientHeight * 0.8, behavior: 'smooth' });
     });
+
+    // Progress line under the sideways list
+    const rail = this.querySelector('[data-hero-rail]');
+    if (list && rail) {
+      const update = () => {
+        if (!sideways()) return;
+        rail.style.width = `${(list.clientWidth / list.scrollWidth) * 100}%`;
+        rail.style.left = `${(list.scrollLeft / list.scrollWidth) * 100}%`;
+      };
+      list.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
   }
 
   collapse(collapsed) {
@@ -1201,6 +1226,8 @@ const CbAnimate = (() => {
   const CARDS = 'product-card, .cb-related-card';
   const FADE = '.cb-iwt__media, .cb-overlap__image, .cb-locations__gallery';
   const FADE_UP = '.cb-image__frame';
+  const RTW_HEAD = '.cb-rtw-hero__title, .cb-rtw-hero__notes, .cb-rtw__title, .cb-rtw__desc-wrap';
+  let observer = null;
 
   const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const enabled = () => document.documentElement.classList.contains('cb-aos') && !reduced();
@@ -1239,9 +1266,49 @@ const CbAnimate = (() => {
     parts.forEach((el, i) => tag(el, 'hero', heroDelay(i + 2)));
   };
 
+  /* Product cards: 0, 150, 300… along each row, starting again on the next row.
+     Each card comes in when it is itself in view, as on the live store. */
+  const tagCards = (cards) => {
+    let rowTop = null;
+    let column = 0;
+    const tagged = [];
+    cards
+      .filter((el) => !el.closest(SKIP_INSIDE))
+      .forEach((card) => {
+        const top = Math.round(card.getBoundingClientRect().top);
+        if (rowTop === null || Math.abs(top - rowTop) > 4) {
+          rowTop = top;
+          column = 0;
+        }
+        if (tag(card, 'fade-left', Math.min(column, 4) * STEP)) {
+          card.setAttribute('data-cb-aos-self', '');
+          tagged.push(card);
+        }
+        column += 1;
+      });
+    return tagged;
+  };
+
+  /* Ready to Wear page, as on the live store: title and notes rise, then the sticky bar and the
+     filters fade, 150ms apart; the colour chips don't move */
+  const prepareRtw = (section) => {
+    let delay = STEP;
+    section.querySelectorAll(RTW_HEAD).forEach((el) => {
+      if (tag(el, 'fade-up', delay)) delay += STEP;
+    });
+    [section.querySelector('.cb-rtw__bar'), section.querySelector('.cb-rtw__form')].forEach((el) => {
+      if (tag(el, 'fade', delay)) delay += STEP;
+    });
+    tagCards([...section.querySelectorAll('.cb-rtw__card')]);
+  };
+
   const prepare = (section) => {
     if (section.querySelector('.cb-pdp')) {
       prepareProduct(section);
+      return;
+    }
+    if (section.querySelector('.cb-rtw, .cb-rtw-hero')) {
+      prepareRtw(section);
       return;
     }
     if (section.querySelector(SKIP_SECTIONS)) return;
@@ -1260,20 +1327,7 @@ const CbAnimate = (() => {
       if (tag(el, 'fade-up', delay)) delay += STEP;
     });
 
-    /* Product cards: 0, 150, 300… along each row, starting again on the next row */
-    let rowTop = null;
-    let column = 0;
-    [...section.querySelectorAll(CARDS)]
-      .filter((el) => !el.closest(SKIP_INSIDE))
-      .forEach((card) => {
-        const top = Math.round(card.getBoundingClientRect().top);
-        if (rowTop === null || Math.abs(top - rowTop) > 4) {
-          rowTop = top;
-          column = 0;
-        }
-        if (tag(card, 'fade-left', Math.min(column, 4) * STEP)) card.setAttribute('data-cb-aos-self', '');
-        column += 1;
-      });
+    tagCards([...section.querySelectorAll(CARDS)]);
   };
 
   /* Show and then let go of the attributes, so hover transitions keep their own timing */
@@ -1301,7 +1355,7 @@ const CbAnimate = (() => {
     const sections = [...document.querySelectorAll('#MainContent > .shopify-section')];
     sections.forEach(prepare);
 
-    const observer = new IntersectionObserver(
+    observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const tallEnough = entry.intersectionRect.height > window.innerHeight * 0.25;
@@ -1318,6 +1372,13 @@ const CbAnimate = (() => {
     document.querySelectorAll('[data-cb-aos-self]').forEach((card) => observer.observe(card));
   };
 
+  /* Cards added later (more products loading, filters applied) come in the same way:
+     document.dispatchEvent(new CustomEvent('cb:animate-cards', { detail: { cards } })) */
+  document.addEventListener('cb:animate-cards', (event) => {
+    if (!observer || !enabled()) return;
+    tagCards([...(event.detail?.cards || [])]).forEach((card) => observer.observe(card));
+  });
+
   return { init };
 })();
 
@@ -1327,9 +1388,60 @@ if (document.readyState === 'loading') {
   CbAnimate.init();
 }
 
+/* Mobile menu (snippets/cb-menu-drawer.liquid): + / − opens and closes a sub-menu */
+document.addEventListener('click', (event) => {
+  const toggle = event.target instanceof Element ? event.target.closest('[data-cb-mdrawer-toggle]') : null;
+  if (!toggle) return;
+  const open = toggle.getAttribute('aria-expanded') !== 'true';
+  toggle.setAttribute('aria-expanded', String(open));
+  document.getElementById(toggle.getAttribute('aria-controls'))?.classList.toggle('is-open', open);
+});
+
+/* Booking bar (sections/cb-sticky-cta.liquid): shown once the first section's button is
+   out of view, hidden again while the section just before the bar is on screen. */
+class CbStickyCta extends HTMLElement {
+  connectedCallback() {
+    if (!('IntersectionObserver' in window)) return;
+    const section = this.closest('.shopify-section');
+    const main = this.closest('main') || document;
+    const first = main.querySelector('.shopify-section');
+    const start = first && first !== section ? first.querySelector('.cb-buttons, .cb-btn') || first : null;
+    const end = section?.previousElementSibling;
+    this.startVisible = Boolean(start);
+    this.endVisible = false;
+    this.observers = [];
+    const watch = (el, key) => {
+      if (!el) return;
+      const observer = new IntersectionObserver((entries) => {
+        this[key] = entries[entries.length - 1].isIntersecting;
+        this.update();
+      });
+      observer.observe(el);
+      this.observers.push(observer);
+    };
+    watch(start, 'startVisible');
+    if (end !== first) watch(end, 'endVisible');
+    this.update();
+  }
+
+  disconnectedCallback() {
+    this.observers?.forEach((observer) => observer.disconnect());
+  }
+
+  update() {
+    const show = !this.startVisible && !this.endVisible;
+    this.classList.toggle('is-visible', show);
+    this.setAttribute('aria-hidden', show ? 'false' : 'true');
+    const link = this.querySelector('a');
+    if (link) link.tabIndex = show ? 0 : -1;
+  }
+}
+
 const define = (name, constructor) => {
   if (!customElements.get(name)) customElements.define(name, constructor);
 };
+
+define('cb-sticky-cta', CbStickyCta);
 
 define('cb-countdown', CbCountdown);
 define('cb-press', CbPress);

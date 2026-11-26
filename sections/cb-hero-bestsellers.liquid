@@ -243,6 +243,8 @@
         </ul>
 
         {%- if section.settings.panel_style == 'glass' -%}
+          {%- comment -%} Phones: the products slide sideways and this line shows how far along you are {%- endcomment -%}
+          <div class="cb-hero__rail" aria-hidden="true"><span data-hero-rail></span></div>
           <div class="cb-hero__panel-foot cb-hero__panel-foot--row">
             {%- if section.settings.panel_link_label != blank -%}
               <a class="cb-hero__view-all" href="{{ panel_collection.url | default: routes.all_products_collection_url }}">

@@ -34,7 +34,8 @@
             {%- if block.settings.link != blank and block.settings.link_label != blank -%}
               <div class="cb-press__more">
                 <a class="cb-text-link" href="{{ block.settings.link }}" target="_blank" rel="noopener">
-                  {{- block.settings.link_label -}}
+                  {{- block.settings.link_label | remove: '→' | strip -}}
+                  <svg class="cb-press__arrow" viewBox="0 0 192 192" aria-hidden="true" focusable="false"><path d="M30 96h132m-54-54 54 54-54 54" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
               </div>
             {%- endif -%}
@@ -63,6 +64,19 @@
             </li>
           {%- endfor -%}
         </ul>
+        {%- comment -%} Phones: one logo at a time with dots under it, as on the live store {%- endcomment -%}
+        <div class="cb-press__dots">
+          {%- for block in section.blocks -%}
+            {%- assign logo_label = block.settings.publication | default: block.settings.source | default: 'Press' -%}
+            <button
+              type="button"
+              class="cb-press__dot"
+              data-press-dot
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="{{ logo_label | escape }}"
+            ></button>
+          {%- endfor -%}
+        </div>
       {%- endif -%}
     </cb-press>
   </div>

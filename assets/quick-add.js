@@ -24,8 +24,10 @@ export class QuickAddComponent extends Component {
       this.closest('product-hotspot-component')
     );
     const productLink = hotspotProduct?.getHotspotProductLink();
+    if (productLink?.href) return productLink.href;
 
-    return productLink?.href || '';
+    // Cards outside product-card (e.g. the cb-rtw collection grid) pass the product URL on the component
+    return this.dataset.productUrl ? new URL(this.dataset.productUrl, window.location.href).href : '';
   }
 
   /**

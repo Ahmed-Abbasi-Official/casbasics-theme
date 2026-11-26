@@ -18,6 +18,9 @@
   if section.settings.image_height_mobile != blank and section.settings.image_height_mobile != 'default'
     assign img_h_mobile = section.settings.image_height_mobile | append: 'px'
   endif
+  if section.settings.image_height_mobile == 'full'
+    assign img_h_mobile = 'calc(100svh - 60px)'
+  endif
 
   assign container = 'cb-container cb-container--bleed'
   assign boxed = false
@@ -250,9 +253,11 @@
         { "value": "default", "label": "300px" },
         { "value": "250", "label": "250px" },
         { "value": "350", "label": "350px" },
+        { "value": "430", "label": "430px" },
         { "value": "450", "label": "450px" },
         { "value": "560", "label": "560px" },
-        { "value": "650", "label": "650px" }
+        { "value": "650", "label": "650px" },
+        { "value": "full", "label": "Screen height (less the header)" }
       ],
       "default": "default"
     },

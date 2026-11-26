@@ -2200,5 +2200,61 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "Casbasics: mobile menu",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The menu that slides in from the left when the menu (☰) button is tapped, laid out like the live store: logo and close button, the menu links with + / − for sub-menus, then Log in, Create account and Search."
+      },
+      {
+        "type": "checkbox",
+        "id": "cb_mobile_drawer",
+        "label": "Use the Casbasics menu layout",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "cb_drawer_logo",
+        "label": "Menu logo",
+        "info": "Without one, the store logo is used."
+      },
+      {
+        "type": "range",
+        "id": "cb_drawer_logo_width",
+        "label": "Menu logo width",
+        "min": 20,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "text",
+        "id": "cb_drawer_highlight",
+        "label": "Highlighted menu item",
+        "info": "The title of a menu link to show in the highlight color, e.g. Shop All. Leave empty for none.",
+        "default": "Shop All"
+      },
+      {
+        "type": "color",
+        "id": "cb_drawer_highlight_color",
+        "label": "Highlight color",
+        "default": "#6c0013"
+      },
+      {
+        "type": "checkbox",
+        "id": "cb_drawer_account_links",
+        "label": "Show Log in and Create account",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cb_drawer_search_link",
+        "label": "Show Search",
+        "default": true
+      }
+    ]
   }
 ]

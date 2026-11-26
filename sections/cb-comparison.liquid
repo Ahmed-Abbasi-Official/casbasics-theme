@@ -1,5 +1,54 @@
 {%- assign classic = false -%}
 {%- if section.settings.style == 'classic' -%}{%- assign classic = true -%}{%- endif -%}
+{%- if section.settings.style == 'cards' -%}
+  {%- comment -%} Two lists in a white card, ticks for us and crosses for others (live store About page) {%- endcomment -%}
+  <div
+    class="cb-section cb-compare-cards"
+    style="{% render 'cb-section-style', settings: section.settings %}"
+  >
+    <div class="cb-compare-cards__container">
+      {%- if section.settings.heading != blank or section.settings.text != blank -%}
+        <div class="cb-compare-cards__head">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="cb-compare-cards__title">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="cb-compare-cards__subtitle">{{ section.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      <div class="cb-compare-cards__grid">
+        <div class="cb-compare-cards__col cb-compare-cards__col--us">
+          <h3 class="cb-compare-cards__label">{{ section.settings.us_label }}</h3>
+          <ul class="cb-compare-cards__list" role="list">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.us != blank -%}
+                <li class="cb-compare-cards__item" {{ block.shopify_attributes }}>
+                  <span class="cb-compare-cards__icon" aria-hidden="true">✓</span>
+                  <span class="cb-compare-cards__text">{{ block.settings.us }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+        <div class="cb-compare-cards__divider" aria-hidden="true"></div>
+        <div class="cb-compare-cards__col cb-compare-cards__col--them">
+          <h3 class="cb-compare-cards__label">{{ section.settings.them_label }}</h3>
+          <ul class="cb-compare-cards__list" role="list">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.them != blank -%}
+                <li class="cb-compare-cards__item">
+                  <span class="cb-compare-cards__icon" aria-hidden="true">✕</span>
+                  <span class="cb-compare-cards__text">{{ block.settings.them }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- else -%}
 <div
   class="cb-section cb-compare{% if classic %} cb-compare--classic{% endif %}"
   style="{% render 'cb-section-style', settings: section.settings %}"
@@ -44,6 +93,7 @@
     </div>
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -70,7 +120,8 @@
       "label": "Style",
       "options": [
         { "value": "default", "label": "Default" },
-        { "value": "classic", "label": "Classic (760px rounded table)" }
+        { "value": "classic", "label": "Classic (760px rounded table)" },
+        { "value": "cards", "label": "Two lists in a card (ticks and crosses)" }
       ],
       "default": "default"
     },

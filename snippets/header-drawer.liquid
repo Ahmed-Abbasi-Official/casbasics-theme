@@ -79,8 +79,18 @@
         {% if block_settings.background_color != blank or block_settings.text_color != blank %}
           color-custom-{{ block.id }}
         {% endif %}
+        {% if settings.cb_mobile_drawer %}
+          cb-mdrawer
+        {% endif %}
       "
+      {% if settings.cb_mobile_drawer %}
+        style="--cb-mdrawer-highlight: {{ settings.cb_drawer_highlight_color | default: '#6c0013' }};"
+      {% endif %}
     >
+      {%- if settings.cb_mobile_drawer -%}
+        {%- comment -%} Casbasics menu, laid out like the live store {%- endcomment -%}
+        {%- render 'cb-menu-drawer', linklist: linklist, id_prefix: block.id -%}
+      {%- else -%}
       <button
         class="button close-button menu-drawer__close-button focus-inset"
         type="button"
@@ -776,6 +786,7 @@
           </ul>
         </div>
       {% endif %}
+      {%- endif -%}
     </div>
     <div
       class="menu-drawer__backdrop"

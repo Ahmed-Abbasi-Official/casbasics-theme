@@ -5,6 +5,7 @@
   @param {string} add_to_cart_text - The text to display on the button.
   @param {object} product - The product object to be added to the cart.
   @param {boolean} show_icon - Whether to render the cart icon.
+  @param {string} [icon] - "bag" for the shopping bag used on product cards (live store), otherwise the add-to-cart icon.
   @param {string} [class] - Additional CSS classes to apply to the button.
   @param {string} [id] - The ID attribute for the button.
   @param {string} [data_testid] - The data-testid attribute for testing.
@@ -44,7 +45,11 @@
         aria-hidden="true"
         class="svg-wrapper add-to-cart-icon"
       >
-        {{- 'icon-add-to-cart.svg' | inline_asset_content -}}
+        {%- if icon == 'bag' -%}
+          {{- 'icon-bag.svg' | inline_asset_content -}}
+        {%- else -%}
+          {{- 'icon-add-to-cart.svg' | inline_asset_content -}}
+        {%- endif -%}
       </span>
     {% endif %}
     {{- add_to_cart_text | default: default_add_to_cart_text -}}

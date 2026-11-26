@@ -3,13 +3,17 @@
 
   @param {string} [accelerated_checkout_buttons_layout] - { 'vertical' } Forced layout of the additional checkout buttons, instead of relying on platform's layout.
   @param {string} [section_id] - The section ID for cart discount component.
+  @param {boolean} [free_shipping] - false hides the free shipping bar (the cart drawer shows it above the products)
+  @param {string} [context] - 'drawer' adds the total to the checkout button and the note under it (live store)
 {%- enddoc -%}
 
 {% render 'text-component-shimmer-styles' %}
 {% render 'cart-typography-styles' %}
 
 <div class="cart-totals">
-  {% render 'cb-free-shipping' %}
+  {% unless free_shipping == false %}
+    {% render 'cb-free-shipping' %}
+  {% endunless %}
   {% # We need to keep this node in place to allow morphing to work properly # %}
   <div class="cart-totals__original-container cart-primary-typography">
     {%- if cart.cart_level_discount_applications.size > 0 -%}
@@ -266,8 +270,14 @@
   >
     <span class="button-text">
       {{ 'content.checkout' | t }}
+      {%- if context == 'drawer' -%}
+        <span class="cb-checkout-total"> · {{ cart.total_price | money }}</span>
+      {%- endif -%}
     </span>
   </button>
+  {%- if context == 'drawer' -%}
+    <p class="cb-checkout-note">Shipping &amp; taxes calculated at checkout</p>
+  {%- endif -%}
 
   {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons %}
     <div

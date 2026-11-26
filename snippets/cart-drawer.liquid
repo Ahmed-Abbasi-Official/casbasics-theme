@@ -64,28 +64,18 @@
           data-hydration-key="cart-drawer-inner"
         >
           {%- if cart.empty? -%}
-            <div class="theme-drawer__header">
-              <button
-                on:click="#cart-drawer/close"
-                class="theme-drawer__close-button cart-drawer__close-button--empty"
-                type="button"
-                aria-label="{{ 'actions.close' | t }}"
-              >
-                <span class="svg-wrapper">
-                  {{- 'icon-close.svg' | inline_asset_content -}}
-                </span>
-              </button>
-            </div>
+            {%- comment -%} Casbasics: "Cart (0 items)" and the close button, like the live store {%- endcomment -%}
+            {% assign cart_drawer_title = 'content.cart_title' | t %}
+            {% render 'theme-drawer-header',
+              title: cart_drawer_title,
+              drawer_id: 'cart-drawer',
+              heading_id: 'cart-drawer-title',
+              title_append: '<span class="cb-cart-count">(0 items)</span>'
+            %}
           {%- else -%}
             {% capture cart_badge_html %}
-              <span
-                class="theme-drawer__badge{% if cart.item_count == 0 %} visually-hidden{% endif %}"
-                aria-hidden="true"
-                {% if cart.item_count <= 99 %}
-                  data-maintain-ratio
-                {% endif %}
-              >
-                {{- cart.item_count -}}
+              <span class="cb-cart-count" aria-hidden="true">
+                {%- if cart.item_count == 1 -%}(1 item){%- else -%}({{ cart.item_count }} items){%- endif -%}
               </span>
               {% if cart.item_count > 0 %}
                 <span class="visually-hidden">
@@ -110,12 +100,13 @@
                 class="cart-drawer__content"
                 aria-label="{{ 'accessibility.cart' | t }}"
               >
+                {% render 'cb-free-shipping' %}
                 <scroll-hint class="cart-drawer__items">
                   {% render 'cart-products', context: 'drawer' %}
                 </scroll-hint>
 
                 <div class="cart-drawer__summary">
-                  {% render 'cart-summary', section_id: 'cart-drawer-section' %}
+                  {% render 'cart-summary', section_id: 'cart-drawer-section', free_shipping: false, context: 'drawer' %}
                 </div>
               </scroll-hint>
             {%- endif -%}

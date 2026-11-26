@@ -21,7 +21,7 @@
         "heading_hs1": {
           "type": "heading",
           "settings": {
-            "heading": "Home service",
+            "heading": "Home Service",
             "size": "caps",
             "show_line": false
           }
@@ -37,7 +37,7 @@
           "type": "button",
           "settings": {
             "label": "Request a home appointment",
-            "link": "https://wa.me/971585959872",
+            "link": "https://wa.me/971542415432?text=Hello+CAS%2C+I%27d+like+a+Home+Service+appointment.%0AArea%3A+%0APreferred+day%3A+%0ANumber+of+ladies%3A",
             "style": "solid",
             "shape": "pill",
             "icon": "chat"
@@ -63,7 +63,7 @@
         "image_position": "left",
         "image_width": "52",
         "image_height": "560",
-        "image_height_mobile": "default",
+        "image_height_mobile": "430",
         "boxed": false,
         "classic": false,
         "compact_text": true,
@@ -196,7 +196,7 @@
         "columns": 4,
         "gap": 26,
         "accent_color": "#6c0013",
-        "background_color": "#e7e4e1",
+        "background_color": "#e8e4dd",
         "text_color": "",
         "padding_top": 64,
         "padding_bottom": 48
@@ -208,7 +208,7 @@
         "icon": "users",
         "title": "Better with Family & Friends",
         "text": "Family & Friends to join. Each of them chooses her own pieces and is measured too.",
-        "box_color": "#f8f7f5",
+        "box_color": "#f7f6f4",
         "accent_color": "#6c0013",
         "background_color": "",
         "text_color": "",
@@ -222,36 +222,50 @@
         "item_hsq_1": {
           "type": "item",
           "settings": {
-            "question": "Is the home visit free?",
-            "answer": "<p>Yes. The visit is complimentary for orders of five abayas or more.</p>"
+            "question": "How long does a visit take?",
+            "answer": "<p>About two hours. We set up in your home, you take your time, and we leave it as we found it.</p>"
           }
         },
         "item_hsq_2": {
           "type": "item",
           "settings": {
-            "question": "Which areas do you cover?",
-            "answer": "<p>Message us on WhatsApp with your area and we will confirm availability.</p>"
+            "question": "Who comes to my home?",
+            "answer": "<p>Your styling team is women only. A CAS driver brings in the rails and helps set up.</p>"
           }
         },
         "item_hsq_3": {
           "type": "item",
           "settings": {
-            "question": "When will my abayas arrive?",
-            "answer": "<p>Every piece is made to order and delivered within 15–21 working days of your appointment.</p>"
+            "question": "Can my family or friends join?",
+            "answer": "<p>Yes. Invite your sisters, mother or friends to join. Each of them chooses her own pieces and is measured too.</p>"
           }
         },
         "item_hsq_4": {
           "type": "item",
           "settings": {
-            "question": "How do I pay?",
-            "answer": "<p>Your stylist confirms the payment options when you book. We accept Visa, American Express, Mastercard and Tabby, and cash on delivery is available in the UAE.</p>"
+            "question": "Which areas do you visit?",
+            "answer": "<p>We visit homes all over the UAE.</p>"
           }
         },
         "item_hsq_5": {
           "type": "item",
           "settings": {
+            "question": "When will my abayas arrive?",
+            "answer": "<p>Within 15–21 working days of your appointment, as every piece is made to order for you.</p>"
+          }
+        },
+        "item_hsq_6": {
+          "type": "item",
+          "settings": {
+            "question": "How do I pay?",
+            "answer": "<p>By card, payment link or cash.<br><br>We take 50% Advance payment on the order, and the remaining amount will be paid upon delivery of the abayas.</p>"
+          }
+        },
+        "item_hsq_7": {
+          "type": "item",
+          "settings": {
             "question": "What if I'd like a change after delivery?",
-            "answer": "<p>Message us on WhatsApp and our team will help.</p>"
+            "answer": "<p>Changes after delivery are available as a paid alteration service. Our team will let you know the cost and arrange it for you.</p>"
           }
         }
       },
@@ -260,7 +274,9 @@
         "item_hsq_2",
         "item_hsq_3",
         "item_hsq_4",
-        "item_hsq_5"
+        "item_hsq_5",
+        "item_hsq_6",
+        "item_hsq_7"
       ],
       "settings": {
         "heading": "Questions",
@@ -299,7 +315,7 @@
           "type": "button",
           "settings": {
             "label": "Request a home appointment",
-            "link": "https://wa.me/971585959872",
+            "link": "https://wa.me/971542415432?text=Hello+CAS%2C+I%27d+like+a+Home+Service+appointment.%0AArea%3A+%0APreferred+day%3A+%0ANumber+of+ladies%3A",
             "style": "light",
             "size": "medium",
             "shape": "pill",
@@ -321,6 +337,17 @@
         "padding_top": 76,
         "padding_bottom": 72
       }
+    },
+    "bar": {
+      "type": "cb-sticky-cta",
+      "settings": {
+        "title": "Home Service",
+        "subtitle": "Complimentary · by appointment",
+        "label": "Book a visit",
+        "link": "https://wa.me/971542415432?text=Hello+CAS%2C+I%27d+like+a+Home+Service+appointment.%0AArea%3A+%0APreferred+day%3A+%0ANumber+of+ladies%3A",
+        "new_tab": true,
+        "icon": true
+      }
     }
   },
   "order": [
@@ -329,6 +356,7 @@
     "how",
     "family",
     "faq",
-    "cta"
+    "cta",
+    "bar"
   ]
 }

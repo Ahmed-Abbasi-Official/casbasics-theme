@@ -23,11 +23,14 @@
   assign last_column = cols | minus: 1
   assign last_row_start = count | minus: 1 | divided_by: cols | times: cols | plus: 1
 
-  assign mobile_first_full = false
+  assign mobile_full_index = 0
   if mobile_cols == 2
     assign odd = count | modulo: 2
     if odd == 1
-      assign mobile_first_full = true
+      assign mobile_full_index = 1
+      if section.settings.mobile_full_item == 'before_last_pair' and count >= 3
+        assign mobile_full_index = count | minus: 2
+      endif
     endif
   endif
   assign mobile_last_row_start = count
@@ -85,11 +88,11 @@
             assign item_class = item_class | append: ' cb-icons__item--last-row'
           endif
 
-          if mobile_first_full and forloop.first
+          if forloop.index == mobile_full_index
             assign item_class = item_class | append: ' cb-icons__item--m-full'
           elsif mobile_cols == 2
             assign pair_position = forloop.index
-            if mobile_first_full
+            if mobile_full_index > 0 and forloop.index > mobile_full_index
               assign pair_position = forloop.index | minus: 1
             endif
             assign pair_side = pair_position | modulo: 2
@@ -99,6 +102,9 @@
           endif
           if forloop.index >= mobile_last_row_start
             assign item_class = item_class | append: ' cb-icons__item--m-last-row'
+          endif
+          if mobile_full_index > 1 and forloop.index >= mobile_full_index
+            assign item_class = item_class | append: ' cb-icons__item--m-tail'
           endif
         -%}
         <div class="cb-icons__item{{ item_class }}" {{ block.shopify_attributes }}>
@@ -235,6 +241,17 @@
     },
     { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 6, "step": 1, "default": 3 },
     { "type": "checkbox", "id": "mobile_two_columns", "label": "2 columns on mobile", "default": false },
+    {
+      "type": "select",
+      "id": "mobile_full_item",
+      "label": "Full-width item on mobile",
+      "info": "With 2 columns and an odd number of items, one item gets a row of its own",
+      "options": [
+        { "value": "first", "label": "First item" },
+        { "value": "before_last_pair", "label": "Item before the last pair" }
+      ],
+      "default": "first"
+    },
     { "type": "range", "id": "icon_size", "label": "Icon size", "min": 20, "max": 80, "step": 1, "unit": "px", "default": 36 },
     { "type": "checkbox", "id": "show_numbers", "label": "Show step numbers instead of icons", "default": false },
     { "type": "header", "content": "Colors" },
