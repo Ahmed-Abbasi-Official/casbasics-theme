@@ -215,7 +215,7 @@
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "oud-coffee-early-access",
+        "collection": "oud-coffee-collection",
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "max_products": 8,
@@ -1695,6 +1695,7 @@
         "layout": "center",
         "columns": 3,
         "mobile_two_columns": true,
+        "mobile_full_item": "before_last_pair",
         "icon_size": 45,
         "show_numbers": false,
         "box_color": "",
@@ -1703,8 +1704,7 @@
         "description_color": "",
         "line_color": "",
         "padding_top": 60,
-        "padding_bottom": 60,
-        "mobile_full_item": "before_last_pair"
+        "padding_bottom": 60
       }
     },
     "icons_values": {
@@ -1750,6 +1750,7 @@
         "layout": "center",
         "columns": 3,
         "mobile_two_columns": false,
+        "mobile_full_item": "first",
         "icon_size": 44,
         "show_numbers": false,
         "box_color": "",
@@ -2378,6 +2379,7 @@
         "layout": "center",
         "columns": 3,
         "mobile_two_columns": true,
+        "mobile_full_item": "first",
         "icon_size": 30,
         "show_numbers": false,
         "box_color": "",
