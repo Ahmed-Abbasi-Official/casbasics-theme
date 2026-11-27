@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "cb-rtw-hero",
+      "settings": {
+        "heading": "Ready to Wear Abayas",
+        "text": "<p><strong>Delivery in 1-2 Business Days</strong></p><p>Fast Delivery | No customizations | No alterations | No refunds | No exchanges</p><p><strong>NO REFUNDS OR EXCHANGES ON READY TO WEAR ABAYAS AT CAS ABAYA OUTLET</strong></p><p>Use code <strong>RTW40</strong> for 40% Off</p>",
+        "background_color": "#fcfaf6",
+        "left_image_1": "shopify://shop_images/rtw.webp",
+        "left_image_2": "shopify://shop_images/dresses.webp",
+        "left_image_3": "shopify://shop_images/umrah.webp",
+        "right_image_1": "shopify://shop_images/winter.webp",
+        "right_image_2": "shopify://shop_images/lace_2.webp",
+        "right_image_3": "shopify://shop_images/embroidered.webp",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "use_collection_text": false,
+        "use_collection_image": true,
+        "height": 450
+      }
+    },
+    "main": {
+      "type": "cb-rtw-collection",
+      "blocks": {
+        "colour_black": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Black",
+            "value": "Black",
+            "color": "#0b0b0b"
+          }
+        },
+        "colour_white": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "White",
+            "value": "White",
+            "color": "#f4f1ea"
+          }
+        },
+        "colour_beige": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Beige",
+            "value": "Beige",
+            "color": "#d6c2a8"
+          }
+        },
+        "colour_brown": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Brown",
+            "value": "Brown",
+            "color": "#7a5c48"
+          }
+        },
+        "colour_grey": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Grey",
+            "value": "Grey",
+            "color": "#8c8c8c"
+          }
+        },
+        "colour_blue": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Blue",
+            "value": "Blue",
+            "color": "#1f3a5f"
+          }
+        },
+        "colour_green": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Green",
+            "value": "Green",
+            "color": "#4f5b3a"
+          }
+        },
+        "colour_pink": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Pink",
+            "value": "Pink",
+            "color": "#d9a5ae"
+          }
+        },
+        "colour_purple": {
+          "type": "colour_chip",
+          "settings": {
+            "label": "Purple",
+            "value": "Purple",
+            "color": "#5e3b5c"
+          }
+        }
+      },
+      "block_order": [
+        "colour_black",
+        "colour_white",
+        "colour_beige",
+        "colour_brown",
+        "colour_grey",
+        "colour_blue",
+        "colour_green",
+        "colour_pink",
+        "colour_purple"
+      ],
+      "settings": {
+        "heading": "",
+        "read_more_label": "Read More",
+        "read_less_label": "Read Less",
+        "show_colour_row": true,
+        "colour_heading": "By colour",
+        "all_colours_label": "All colours",
+        "show_filters": true,
+        "options_limit": 10,
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": "2",
+        "products_per_page": 20,
+        "background_color": "",
+        "text_color": "",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main"
+  ]
+}
