@@ -1551,7 +1551,6 @@
         "column_000k": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Ready_to_wear_Designer_Abayas_in_Dubai_at_CAS_Abaya.webp",
             "heading": "Ready-to-Wear Abayas",
             "text": "<p>In a rush? No time to wait for your customized abaya? Head over to our <a href=\"/collections/ready-to-wear\">ready to wear</a> section and save time without compromising on style. Sit back, relax and receive your abaya within 1-2 business days without unnecessary hassle. Please do note that CAS does not offer any customization, alteration, or exchange on the RTW collection.</p>",
             "link_label": "Explore collection",
@@ -1561,7 +1560,6 @@
         "column_000l": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Personalize_and_customize_your_abaya_without_any_additional_charges.webp",
             "heading": "Customized Abayas",
             "text": "<p>Personalize your abaya with your preferred size and design at no extra cost. For customized sizes, we offer sizes ranging from XXS to 6XL and lengths from 49 to 62 inches. Pockets, side zippers, breastfeeding buttons are all added free of charge. Custom orders are delivered within 10-12 days.</p>",
             "link_label": "Learn more",
@@ -1571,7 +1569,6 @@
         "column_000m": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/CAS_Abaya_Dubai_-_Abaya_Size_Guide.webp",
             "heading": "Abaya Size Guide",
             "text": "<p>If you are confused regarding your size, please head over to our size chart and easily choose your abaya size and length according to your body measurements and height. If you are still unsure and require further help, please do not hesitate to contact us. We are just a call or WhatsApp away.</p>",
             "link_label": "Read size guide",
@@ -1808,7 +1805,6 @@
         "store_000z": {
           "type": "store",
           "settings": {
-            "image": "shopify://shop_images/2024-11-07_1.webp",
             "address": "7JQR+3FG - Bani Yas - East 9 - Baniyas Centre - Abu Dhabi",
             "hours": "<p>Mon - Sun: 10 AM–2 PM, 4–11 PM</p>",
             "map_link": "https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi",
@@ -1818,7 +1814,6 @@
         "store_0010": {
           "type": "store",
           "settings": {
-            "image": "shopify://shop_images/2024-11-07_1.webp",
             "address": "CAS Abaya Outlet - Ajman",
             "hours": "",
             "map_link": "https://www.google.com/maps/search/?api=1&query=CAS+Abaya+Ajman",
