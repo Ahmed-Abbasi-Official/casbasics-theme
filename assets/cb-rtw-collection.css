@@ -85,11 +85,9 @@
 }
 
 .cb-rtw-hero__text {
-  position: relative;
-  z-index: 2;
   width: 100%;
-  max-width: 500px;
-  padding: 0 16px;
+  max-width: 580px;
+  padding: 0 20px;
   color: #0b0b0b;
   text-align: center;
 }
