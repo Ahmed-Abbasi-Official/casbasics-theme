@@ -17,7 +17,7 @@
         "menu_main": {
           "type": "menu",
           "settings": {
-            "menu": "footer-shop",
+            "menu": "",
             "heading": "Shop",
             "menu_spacing": 7,
             "heading_gap": 20,
@@ -303,10 +303,10 @@
       "type": "cb-footer-bottom",
       "settings": {
         "instagram_url": "https://www.instagram.com/saifabaya.official/",
-        "tiktok_url": "https://www.tiktok.com/@crystalabayastudio",
+        "tiktok_url": "",
         "facebook_url": "https://www.facebook.com/crystalabayastudio",
-        "snapchat_url": "https://www.snapchat.com/@casabaya",
-        "pinterest_url": "https://www.pinterest.com/casabayaa/",
+        "snapchat_url": "",
+        "pinterest_url": "",
         "youtube_url": "",
         "x_url": "",
         "show_country": true,

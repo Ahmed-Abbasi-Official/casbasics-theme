@@ -1809,9 +1809,9 @@
           "type": "store",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-11-27_at_3.51.06_PM.jpg",
-            "address": "7JQR+3FG - Bani Yas - East 9 - Baniyas Centre - Abu Dhabi",
+            "address": "Souq naif shop 78 Deira Dubai",
             "hours": "<p>Mon - Sun: 10 AM–2 PM, 4–11 PM</p>",
-            "map_link": "https://www.google.com/maps/search/?api=1&query=7JQR%2B3FG+Bani+Yas+Abu+Dhabi",
+            "map_link": "",
             "map_label": "View on Google Maps"
           }
         },
