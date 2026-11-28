@@ -26,7 +26,7 @@
         "button_link_2": "shopify://collections/all",
         "show_panel": true,
         "panel_title": "Best sellers",
-        "collection": "best-seller-abaya",
+        "collection": "new-in",
         "limit": 8,
         "panel_link_label": "View all",
         "panel_position": "right-middle",
